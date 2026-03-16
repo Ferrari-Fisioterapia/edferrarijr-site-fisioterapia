@@ -149,8 +149,9 @@
  background-attachment: fixed; 
  text-align: center;
  padding-top: 60px; /* Ajuste para o menu superior */
- padding-bottom: 70px; /* Dá espaço para a faixa e a seta no rodapé */
+ padding-bottom: 0; /* REMOVIDO para a faixa ficar abaixo da seção */
  box-sizing: border-box;
+ margin-bottom: 0; /* Garante que o hero não crie espaço extra abaixo */
  }
  
  .hero-content { 
@@ -182,7 +183,7 @@
  .btn-outline:hover { background-color: white; color: var(--bg-color); transform: translateY(-3px);}
 
  /* SETINHA LEVEMENTE MAIS ALTA PARA NÃO COLIDIR COM A FAIXA */
- .scroll-indicator { position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); color: var(--accent-color); font-size: 2.5rem; opacity: 0.8; animation: bounce 2s infinite; cursor: pointer; z-index: 10; padding: 10px; }
+ .scroll-indicator { position: relative; bottom: auto; left: auto; transform: translateX(-50%); color: var(--accent-color); font-size: 2.5rem; opacity: 0.8; animation: bounce 2s infinite; cursor: pointer; z-index: 10; padding: 10px; margin: 0 auto; display: block; width: fit-content; margin-bottom: 20px; }
  @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
 
  /* --- FAIXA DINÂMICA HORIZONTAL (ANCORADA NO RODAPÉ DO HERO) --- */
@@ -196,12 +197,13 @@
  white-space: nowrap;
  overflow: hidden; 
  display: flex;
- position: absolute; /* Fixa a faixa no limite inferior da tela inicial */
- bottom: 0;
- left: 0;
+ position: relative; /* Mudado para relative para ficar no fluxo do documento */
+ bottom: auto; /* Removido posicionamento absoluto */
+ left: auto; /* Removido posicionamento absoluto */
  z-index: 5;
  font-family: 'Montserrat', sans-serif;
  border-top: 1px solid #111;
+ margin-top: -1px; /* Para garantir que cole na seção anterior */
  }
 
  .strip-content {
@@ -304,6 +306,21 @@
  .reveal-up { transform: translateY(30px); } 
  }
  </style>
+
+ <style>
+ .strip-and-scroll-indicator-section {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ padding: 40px 0; /* Espaçamento para a setinha */
+ background-color: var(--bg-color);
+ margin-top: -1px; /* Ajuste para encaixar na seção acima */
+ margin-bottom: -1px; /* Ajuste para encaixar na seção abaixo */
+ border-top: 1px solid #222;
+ border-bottom: 1px solid #222;
+ }
+ </style>
 </head>
 <body>
 
@@ -349,17 +366,23 @@
  </a>
  </div>
 
+ </div>
+ 
  <a href="#sobre" class="scroll-indicator" aria-label="Rolar para baixo">
  <i class="fa-solid fa-angles-down"></i>
  </a>
+ </main>
 
+ <section class="strip-and-scroll-indicator-section">
+ <a href="#sobre" class="scroll-indicator reveal-up" aria-label="Rolar para baixo">
+ <i class="fa-solid fa-angles-down"></i>
+ </a>
  <div class="strip">
  <div class="strip-content">
  CAMPINAS & RMC • TRT-15 • FISIOTERAPIA FORENSE • ASSISTÊNCIA TÉCNICA • ERGONOMIA • LAUDOS JUDICIAIS • CAMPINAS & RMC • TRT-15 • FISIOTERAPIA FORENSE • ASSISTÊNCIA TÉCNICA • ERGONOMIA • LAUDOS JUDICIAIS
  </div>
  </div>
-
- </main>
+ </section>
 
  <section class="bio-section" id="sobre">
  <div class="container bio-grid">
