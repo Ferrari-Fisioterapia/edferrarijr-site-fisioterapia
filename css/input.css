@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@theme {
+  --color-accent: #c4302b;
+  --color-accent-hover: #a12521;
+  --color-dark-bg: rgba(18, 18, 18, 0.95);
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-sans: "Open Sans", sans-serif;
+}
