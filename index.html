@@ -57,7 +57,6 @@
 
 <body class="antialiased selection:bg-[#c4302b] selection:text-white">
 
-    <!-- HEADER -->
     <header class="fixed top-0 w-full z-50 glass-header transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
             <div class="font-bold text-xl tracking-tight text-[#1d1d1f] flex items-center gap-2">
@@ -74,19 +73,20 @@
         </div>
     </header>
 
-    <!-- SPACER FOR FIXED HEADER -->
-    <div class="h-16 md:h-0"></div> <!-- Altura do header em mobile, zerado em desktop -->
-
-    <!-- HERO SECTION -->
-    <main id="inicio" class="pt-8 pb-12 md:pt-28 md:pb-16 px-6 overflow-hidden flex flex-col items-center text-center">
+    <div class="h-16 md:h-0"></div> <main id="inicio" class="pt-8 pb-12 md:pt-28 md:pb-16 px-6 overflow-hidden flex flex-col items-center text-center">
         <div class="max-w-4xl mx-auto z-10">
             <span class="text-[#c4302b] font-bold tracking-widest uppercase text-xs md:text-sm mb-2 block fade-in-up">Home Care Premium | Swiss Park</span>
+            
             <h1 class="headline-hero mb-3 fade-in-up delay-100">
-                A estrutura de um centro de elite.<br>Na sua casa.
+                Estrutura de centro de elite.<br>Na sua casa.
             </h1>
+            
             <p class="subhead-hero mb-6 max-w-2xl mx-auto fade-in-up delay-200 leading-normal">
-                O mesmo padrão de avaliação, tecnologia e reabilitação usado por atletas profissionais, levado até você. Recupere sua performance com total privacidade e conforto.
+                O mesmo padrão de avaliação, tecnologia e reabilitação<br class="hidden md:block">
+                usado por atletas profissionais, levado até você.<br class="hidden md:block">
+                Recupere sua performance com total conforto.
             </p>
+            
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in-up delay-300">
                 <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação%20ortopédica%20em%20casa." target="_blank" class="btn-accent text-base w-full sm:w-auto shadow-lg hover:shadow-xl">
                     <i class="fa-brands fa-whatsapp"></i> Agendar Minha Avaliação
@@ -95,7 +95,6 @@
         </div>
     </main>
 
-    <!-- BIO SECTION -->
     <section id="sobre" class="py-24 px-6 bg-white reveal">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
@@ -115,7 +114,6 @@
         </div>
     </section>
 
-    <!-- ESPECIALIDADES (BENTO GRID) -->
     <section id="especialidades" class="py-32 px-6 overflow-hidden">
         <div class="max-w-7xl mx-auto text-center mb-20">
             <h2 class="headline-section">Áreas de especialidade.</h2>
@@ -159,7 +157,6 @@
         </div>
     </section>
 
-    <!-- RECOVERY (DARK MODE) -->
     <section id="recovery" class="py-32 px-6 dark-section overflow-hidden">
         <div class="max-w-7xl mx-auto text-center mb-20">
             <span class="text-[#c4302b] font-bold tracking-widest uppercase text-sm mb-4 block">Ferrari Recovery</span>
@@ -168,7 +165,6 @@
         </div>
 
         <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Bota -->
             <div class="bento-card-dark flex flex-col text-center items-center">
                 <img src="assets/img/image_11.webp" alt="Bota Pneumática" class="w-full h-64 object-cover rounded-xl mb-8" loading="lazy">
                 <h3 class="text-3xl font-bold mb-4 text-white">Bota Pneumática</h3>
@@ -179,7 +175,6 @@
                 </div>
             </div>
 
-            <!-- Gelo -->
             <div class="bento-card-dark flex flex-col text-center items-center">
                 <img src="assets/img/image_12.webp" alt="Banheira de Gelo" class="w-full h-64 object-cover rounded-xl mb-8" loading="lazy">
                 <h3 class="text-3xl font-bold mb-4 text-white">Banheira de Gelo (Ice Bath)</h3>
@@ -206,7 +201,6 @@
         </div>
     </section>
 
-    <!-- LOCATION -->
     <section class="py-32 px-6 bg-white text-center overflow-hidden">
         <div class="max-w-3xl mx-auto">
             <i class="fa-solid fa-house-chimney-medical text-5xl text-[#c4302b] mb-8"></i>
@@ -220,7 +214,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-[#f5f5f7] py-16 px-6 border-t border-gray-200">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-[#1d1d1f] font-bold text-xl flex items-center gap-2">
@@ -236,7 +229,6 @@
         </div>
     </footer>
 
-    <!-- SCROLL ANIMATION SCRIPT -->
     <script>
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
