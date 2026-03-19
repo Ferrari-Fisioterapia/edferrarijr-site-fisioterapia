@@ -18,16 +18,15 @@
     <meta property="og:description" content="A documentação certa define quem ganha e quem perde o processo. Especialista em Fisioterapia Forense para advogados e trabalhadores.">
     <meta property="og:image" content="https://i.postimg.cc/mr8XbHSk/PERITO_JUDICIAL_E_ASSISTENTE_TÉCNICO_EM_FISIOTERAPIA_CAMPINAS_SÃO_PAULO_Fisioterapeuta_Dr_Ferrar.png">
 
-    <!-- [PERFORMANCE] Preload do LCP (Maior Pintura de Conteúdo) 
-         Isso força o navegador a baixar a imagem de fundo IMEDIATAMENTE, resolvendo o atraso de 3.9s -->
+    <!-- [PERFORMANCE] Preload do LCP -->
     <link rel="preload" as="image" href="https://i.postimg.cc/xd0pDRMt/Gemini_Generated_Image_tnbopctnbopctnbo.png">
 
-    <!-- [PERFORMANCE] Preconnect para as fontes (Acelera a Primeira Pintura - FCP) -->
+    <!-- [PERFORMANCE] Preconnect para as fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- [PERFORMANCE] Carregamento Assíncrono do FontAwesome (Remove bloqueio de renderização) -->
+    <!-- [PERFORMANCE] Carregamento Assíncrono do FontAwesome -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
@@ -194,7 +193,6 @@
         .hero { 
             height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; 
             position: relative; 
-            /* Imagem pre-carregada via tag link no head. Isso corrige o LCP alto. */
             background: linear-gradient(to bottom, rgba(18,18,18,0.6), rgba(18,18,18,0.95)), url('https://i.postimg.cc/xd0pDRMt/Gemini_Generated_Image_tnbopctnbopctnbo.png');
             background-size: cover; background-position: right center; background-attachment: fixed; 
             text-align: center; padding-top: 80px; padding-bottom: 70px; box-sizing: border-box;
@@ -229,10 +227,9 @@
         .bio-text li { font-size: 1.05rem; margin-bottom: 15px; color: #fff; font-weight: 600; display: flex; align-items: center; gap: 15px; }
         .bio-text li i { color: var(--accent-color); font-size: 1.2rem; }
         .highlight { color: var(--accent-color); font-weight: 700; }
-        /* Adicionado aspect-ratio genérico para previnir qualquer shift imperceptível */
         .bio-image img { width: 100%; height: auto; border-radius: 8px; box-shadow: 15px 15px 0px var(--accent-color); border: 1px solid #333;}
 
-        /* --- SEÇÃO ADVOGADOS (B2B) - GRID 3x3 --- */
+        /* --- SEÇÃO ADVOGADOS --- */
         .b2b-section { padding: var(--section-spacing) 0; background-color: #161616; border-top: 1px solid #222; }
         .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px;}
         .card { padding: 40px 30px; border: 1px solid #333; transition: all 0.3s ease; background-color: #121212; border-radius: 8px; position: relative;}
@@ -241,7 +238,7 @@
         .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: #fff; text-transform: uppercase;}
         .card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;}
         
-        /* --- SEÇÃO PACIENTES (B2C) --- */
+        /* --- SEÇÃO PACIENTES --- */
         .b2c-section { padding: var(--section-spacing) 0; background-color: var(--bg-color); border-top: 1px solid #222; }
         .b2c-section .section-title::after { background: var(--b2c-color); }
         .pain-list { display: flex; flex-direction: column; gap: 20px; }
@@ -277,9 +274,13 @@
         .social-links a:hover { color: var(--accent-color); }
         .footer-copyright { color: #555; font-size: 0.85rem; border-top: 1px solid #1a1a1a; padding-top: 20px; text-align: center; width: 100%; }
 
-        /* --- RESPONSIVIDADE --- */
+        /* --- RESPONSIVIDADE (AQUI ESTÁ A CORREÇÃO) --- */
         @media (max-width: 900px) {
             :root { --section-spacing: 60px; }
+            
+            /* CORREÇÃO DO MENU SOBREPOSTO: Adicionado padding-top extra apenas no mobile para descer o conteúdo */
+            .hero { padding-top: 190px; } 
+            
             .header-content { flex-direction: column; gap: 15px; }
             .top-nav { flex-wrap: wrap; justify-content: center; }
             .hero-title { font-size: 1.8rem; }
@@ -348,7 +349,6 @@
     <section class="bio-section" id="sobre">
         <div class="container bio-grid">
             <div class="bio-image reveal-up">
-                <!-- [PERFORMANCE] loading="lazy" adicionado. O navegador não perde tempo baixando essa imagem antes da tela inicial (Hero) carregar -->
                 <img src="https://i.postimg.cc/wB0f6mk7/PERITO_JUDICIAL_E_ASSISTENTE_TÉCNICO_EM_FISIOTERAPIA_CAMPINAS_SÃO_PAULO_Fisioterapeuta_Dr_Ferrar.png" alt="Dr. Ed Ferrari Jr, Fisioterapeuta Perito Judicial e Assistente Técnico especializado em TRT-15 atuando em Campinas." loading="lazy" width="600" height="600">
             </div>
             <div class="bio-text reveal-up delay-100">
