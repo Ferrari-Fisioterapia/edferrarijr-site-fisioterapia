@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- [SEO TÉCNICO] Title Tag otimizada com a Palavra-Chave Principal (Assistente Técnico Fisioterapeuta) + Local (Campinas) + Benefício -->
+    <!-- [SEO TÉCNICO] Title Tag e Meta Description -->
     <title>Assistente Técnico Fisioterapeuta em Campinas | Perícia e Laudos | Dr. Ed Ferrari Jr</title>
-    
-    <!-- [SEO TÉCNICO] Meta Description expandida para atrair tanto Advogados (Laudos, TRT-15) quanto Pacientes (INSS, LER/DORT) -->
     <meta name="description" content="Assistente Técnico Fisioterapeuta em Campinas (TRT-15). Laudos irrefutáveis para advogados trabalhistas e provas periciais para trabalhadores/pacientes contra o INSS.">
-    
     <meta name="keywords" content="Assistente Técnico Fisioterapeuta Campinas, Perito Fisioterapeuta, Advogado Trabalhista Campinas, Laudo Fisioterapêutico, Impugnação de Laudo, TRT-15, INSS negado, LER DORT, Acidente de Trabalho">
-    
     <meta name="robots" content="index, follow">
     <meta name="author" content="Dr. Ed Ferrari Jr">
     <link rel="canonical" href="https://www.edferrarijr.com/">
@@ -22,10 +18,20 @@
     <meta property="og:description" content="A documentação certa define quem ganha e quem perde o processo. Especialista em Fisioterapia Forense para advogados e trabalhadores.">
     <meta property="og:image" content="https://i.postimg.cc/mr8XbHSk/PERITO_JUDICIAL_E_ASSISTENTE_TÉCNICO_EM_FISIOTERAPIA_CAMPINAS_SÃO_PAULO_Fisioterapeuta_Dr_Ferrar.png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- [PERFORMANCE] Preload do LCP (Maior Pintura de Conteúdo) 
+         Isso força o navegador a baixar a imagem de fundo IMEDIATAMENTE, resolvendo o atraso de 3.9s -->
+    <link rel="preload" as="image" href="https://i.postimg.cc/xd0pDRMt/Gemini_Generated_Image_tnbopctnbopctnbo.png">
 
-    <!-- [SEO TÉCNICO] Schema Markup Unificado: Identidade (Person), Negócio Local (MedicalBusiness) e Serviço Jurídico (LegalService) para máxima compreensão do algoritmo do Google -->
+    <!-- [PERFORMANCE] Preconnect para as fontes (Acelera a Primeira Pintura - FCP) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- [PERFORMANCE] Carregamento Assíncrono do FontAwesome (Remove bloqueio de renderização) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- [SEO TÉCNICO] Schema Markup Unificado -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -62,7 +68,7 @@
     }
     </script>
 
-    <!-- [SEO TÉCNICO] Schema Markup de FAQPage: Fundamental para dominar o topo do Google e as buscas por voz / snippets de respostas -->
+    <!-- [SEO TÉCNICO] Schema Markup de FAQPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -119,9 +125,9 @@
             --bg-color: #121212;
             --text-primary: #ffffff;
             --text-secondary: #a0a0a0;
-            --accent-color: #C89D42; /* Dourado/Ouro */
-            --b2b-color: #C89D42; /* Dourado para Advogados */
-            --b2c-color: #4A90E2; /* Azul para Pacientes (passa confiança/saúde) */
+            --accent-color: #C89D42; 
+            --b2b-color: #C89D42; 
+            --b2c-color: #4A90E2; 
             --section-spacing: 100px;
         }
         
@@ -184,10 +190,12 @@
         h2.section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 50px; position: relative; text-align: left; text-transform: uppercase;}
         h2.section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent-color); margin-top: 20px; }
 
-        /* --- HERO SECTION (JORNADA DUPLA) --- */
+        /* --- HERO SECTION --- */
         .hero { 
             height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; 
-            position: relative; background: linear-gradient(to bottom, rgba(18,18,18,0.6), rgba(18,18,18,0.95)), url('https://i.postimg.cc/xd0pDRMt/Gemini_Generated_Image_tnbopctnbopctnbo.png');
+            position: relative; 
+            /* Imagem pre-carregada via tag link no head. Isso corrige o LCP alto. */
+            background: linear-gradient(to bottom, rgba(18,18,18,0.6), rgba(18,18,18,0.95)), url('https://i.postimg.cc/xd0pDRMt/Gemini_Generated_Image_tnbopctnbopctnbo.png');
             background-size: cover; background-position: right center; background-attachment: fixed; 
             text-align: center; padding-top: 80px; padding-bottom: 70px; box-sizing: border-box;
         }
@@ -198,7 +206,6 @@
         .hero-title span { display: block; font-size: clamp(1rem, 2vw, 1.3rem); color: var(--accent-color); letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase;}
         .hero-desc { font-size: 1.1rem; color: #e0e0e0; max-width: 750px; margin: 0 auto 35px auto; font-weight: 400; line-height: 1.6; }
         
-        /* [COPY/DESIGN] Botões de Jornada Dupla */
         .dual-cta-wrapper { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;}
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 32px; font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-radius: 6px; transition: all 0.3s ease; font-size: 0.9rem; cursor: pointer; border: none;}
         
@@ -208,7 +215,7 @@
         .btn-paciente { background-color: transparent; border: 2px solid var(--b2c-color); color: var(--text-primary); }
         .btn-paciente:hover { background-color: var(--b2c-color); color: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(74, 144, 226, 0.3);}
 
-        /* --- FAIXA DE AUTORIDADE (GATILHOS MENTAIS) --- */
+        /* --- FAIXA DE AUTORIDADE --- */
         .authority-bar { background-color: #0a0a0a; border-top: 1px solid #222; border-bottom: 1px solid #222; padding: 25px 0; }
         .authority-flex { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px; }
         .authority-item { display: flex; align-items: center; gap: 15px; color: var(--text-secondary); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; text-transform: uppercase;}
@@ -222,10 +229,10 @@
         .bio-text li { font-size: 1.05rem; margin-bottom: 15px; color: #fff; font-weight: 600; display: flex; align-items: center; gap: 15px; }
         .bio-text li i { color: var(--accent-color); font-size: 1.2rem; }
         .highlight { color: var(--accent-color); font-weight: 700; }
-        /* [SEO] Alt text descritivo na imagem */
-        .bio-image img { width: 100%; border-radius: 8px; box-shadow: 15px 15px 0px var(--accent-color); border: 1px solid #333;}
+        /* Adicionado aspect-ratio genérico para previnir qualquer shift imperceptível */
+        .bio-image img { width: 100%; height: auto; border-radius: 8px; box-shadow: 15px 15px 0px var(--accent-color); border: 1px solid #333;}
 
-        /* --- SEÇÃO ADVOGADOS (B2B) --- */
+        /* --- SEÇÃO ADVOGADOS (B2B) - GRID 3x3 --- */
         .b2b-section { padding: var(--section-spacing) 0; background-color: #161616; border-top: 1px solid #222; }
         .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px;}
         .card { padding: 40px 30px; border: 1px solid #333; transition: all 0.3s ease; background-color: #121212; border-radius: 8px; position: relative;}
@@ -243,7 +250,7 @@
         .pain-item h3 i { color: var(--b2c-color); }
         .pain-item p { color: var(--text-secondary); font-size: 1rem; }
 
-        /* --- FAQ / PERGUNTAS FREQUENTES (SEO CONTENT SILO) --- */
+        /* --- FAQ --- */
         .faq-section { padding: var(--section-spacing) 0; background-color: #161616; border-top: 1px solid #222; }
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { background-color: #121212; border: 1px solid #333; margin-bottom: 15px; border-radius: 6px; overflow: hidden; }
@@ -255,7 +262,7 @@
         .faq-answer p { margin-bottom: 20px; }
         .faq-item.active .faq-answer { padding: 20px 25px; max-height: 500px; border-top: 1px solid #222; }
 
-        /* --- MAPA E LOCALIZAÇÃO --- */
+        /* --- MAPA --- */
         .map-section { padding: var(--section-spacing) 0; text-align: center; background-color: var(--bg-color); border-top: 1px solid #222;}
         .map-container { position: relative; overflow: hidden; padding-bottom: 40%; height: 0; border: 1px solid #333; border-radius: 8px; margin: 40px auto 30px auto; max-width: 900px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; filter: invert(90%) hue-rotate(180deg) contrast(1.2); }
@@ -281,7 +288,7 @@
             .bio-grid { grid-template-columns: 1fr; }
             .authority-flex { flex-direction: column; gap: 30px; }
             .map-container { padding-bottom: 65%; } 
-            .map-container iframe { filter: none; } /* Facilita uso no mobile */
+            .map-container iframe { filter: none; }
             .footer-flex { flex-direction: column; text-align: center; }
             .contact-info { align-items: center; }
             .social-links a { margin: 0 10px; }
@@ -309,7 +316,6 @@
 
     <main class="hero">
         <div class="container hero-content reveal-up">
-            <!-- [SEO & COPY] H1 focado na palavra-chave exata e H2 (span) focado na dor do cliente -->
             <h1 class="hero-title">
                 <span>Assistência Técnica Fisioterapêutica em Campinas</span>
                 A documentação certa define quem ganha e quem perde o processo.
@@ -319,7 +325,6 @@
                 Apresente provas irrefutáveis. Atuação especializada em Fisioterapia Forense para blindar teses jurídicas de advogados e garantir os direitos de trabalhadores contra o INSS.
             </p>
 
-            <!-- [COPY B2B e B2C] Jornada dupla de conversão. Elimina fricção cognitiva. -->
             <div class="dual-cta-wrapper reveal-up delay-200">
                 <a href="#advogados" class="btn btn-advogado">
                     <i class="fa-solid fa-scale-balanced"></i> Sou Advogado
@@ -331,7 +336,6 @@
         </div>
     </main>
 
-    <!-- [GATILHO DE AUTORIDADE] Prova social institucional -->
     <section class="authority-bar">
         <div class="container authority-flex reveal-up">
             <div class="authority-item"><i class="fa-solid fa-gavel"></i> Justiça do Trabalho (TRT-15)</div>
@@ -341,11 +345,11 @@
         </div>
     </section>
 
-    <!-- [PERFIL / ABOUT SILO] -->
     <section class="bio-section" id="sobre">
         <div class="container bio-grid">
             <div class="bio-image reveal-up">
-                <img src="https://i.postimg.cc/wB0f6mk7/PERITO_JUDICIAL_E_ASSISTENTE_TÉCNICO_EM_FISIOTERAPIA_CAMPINAS_SÃO_PAULO_Fisioterapeuta_Dr_Ferrar.png" alt="Dr. Ed Ferrari Jr, Fisioterapeuta Perito Judicial e Assistente Técnico especializado em TRT-15 atuando em Campinas.">
+                <!-- [PERFORMANCE] loading="lazy" adicionado. O navegador não perde tempo baixando essa imagem antes da tela inicial (Hero) carregar -->
+                <img src="https://i.postimg.cc/wB0f6mk7/PERITO_JUDICIAL_E_ASSISTENTE_TÉCNICO_EM_FISIOTERAPIA_CAMPINAS_SÃO_PAULO_Fisioterapeuta_Dr_Ferrar.png" alt="Dr. Ed Ferrari Jr, Fisioterapeuta Perito Judicial e Assistente Técnico especializado em TRT-15 atuando em Campinas." loading="lazy" width="600" height="600">
             </div>
             <div class="bio-text reveal-up delay-100">
                 <h2 class="section-title">Autoridade Técnica Imparcial</h2>
@@ -361,7 +365,6 @@
         </div>
     </section>
 
-    <!-- [B2B SILO] Copy focado em Advogados Trabalhistas. Pragmatismo, resultados, medo da perda. -->
     <section class="b2b-section" id="advogados">
         <div class="container">
             <h2 class="section-title reveal-up">Para Advogados: Blinde Sua Tese</h2>
@@ -390,13 +393,11 @@
                     <h3>Impugnação de Laudos</h3>
                     <p>Parecer Técnico Divergente robusto e fundamentado na literatura médica e cinesiológica para descontruir laudos desfavoráveis e genéricos.</p>
                 </div>
-                <!-- [NOVO CARD] Fechando o Grid -->
                 <div class="card reveal-up delay-200">
                     <i class="fa-solid fa-industry card-icon"></i>
                     <h3>Ergonomia Forense</h3>
                     <p>Investigação in loco das condições de trabalho (NR-17). Levantamento de riscos ergonômicos para afastar ou confirmar o Nexo Causal em doenças ocupacionais.</p>
                 </div>
-                <!-- [NOVO CARD] Fechando o Grid -->
                 <div class="card reveal-up delay-300">
                     <i class="fa-solid fa-scale-unbalanced card-icon"></i>
                     <h3>Quantificação de Danos</h3>
@@ -412,7 +413,6 @@
         </div>
     </section>
 
-    <!-- [B2C SILO] Copy focado em Pacientes/Trabalhadores. Empatia, validação da dor. -->
     <section class="b2c-section" id="trabalhadores">
         <div class="container">
             <h2 class="section-title reveal-up">Para Trabalhadores: Sua Dor é Real</h2>
@@ -443,7 +443,6 @@
         </div>
     </section>
 
-    <!-- [SEO TÉCNICO] Seção FAQ para captura de Long-Tail Keywords e Snippets do Google -->
     <section class="faq-section" id="faq">
         <div class="container faq-container">
             <h2 class="section-title reveal-up" style="text-align: center;">Dúvidas Frequentes</h2>
@@ -501,7 +500,6 @@
         </div>
     </section>
 
-    <!-- [LOCAL SEO] Reforço geográfico para Campinas e Região -->
     <section class="map-section">
         <div class="container">
             <h2 class="section-title reveal-up" style="text-align: center;">Atendimento Presencial em Campinas (TRT-15)</h2>
@@ -510,7 +508,6 @@
             </p>
             
             <div class="map-container reveal-up delay-200">
-                <!-- Atributo Title otimizado para acessibilidade e SEO Local -->
                 <iframe 
                     title="Mapa da área de atuação do Perito Fisioterapeuta em Campinas e região do TRT-15"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117560.10174291882!2d-47.16335345719992!3d-22.905615699661448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c6122bf4efaf%3A0x4a187e1f7d5c5897!2sCampinas%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1711311053421!5m2!1spt-BR!2sbr" 
@@ -537,18 +534,15 @@
 
                 <div class="social-links">
                     <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 15px;">Redes Sociais</h3>
-                    <!-- [Acessibilidade] aria-labels adicionados aos ícones de redes sociais -->
                     <a href="#" target="_blank" aria-label="Acessar LinkedIn do Dr. Ed Ferrari Jr"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="#" target="_blank" aria-label="Acessar Instagram do Dr. Ed Ferrari Jr"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
-            <!-- Correção do Ano do Copyright para 2026 -->
             <p class="footer-copyright">© 2026 Dr. Ed Ferrari Jr - Assistente Técnico Fisioterapeuta. Todos os direitos reservados. Feito com rigor técnico.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll simplificado e com ajuste de cabeçalho
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -566,7 +560,6 @@
             });
         });
 
-        // Intersection Observer para animações de Reveal
         document.addEventListener("DOMContentLoaded", function() {
             const observerOptions = {
                 root: null,
@@ -588,20 +581,17 @@
                 observer.observe(el);
             });
 
-            // Lógica do Accordion da seção FAQ
             const faqQuestions = document.querySelectorAll('.faq-question');
             faqQuestions.forEach(question => {
                 question.addEventListener('click', () => {
                     const parent = question.parentElement;
                     const isActive = parent.classList.contains('active');
 
-                    // Fecha todos os outros
                     document.querySelectorAll('.faq-item').forEach(item => {
                         item.classList.remove('active');
                         item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
                     });
 
-                    // Abre o clicado se não estava ativo
                     if (!isActive) {
                         parent.classList.add('active');
                         question.setAttribute('aria-expanded', 'true');
