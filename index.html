@@ -31,59 +31,51 @@
             position: relative;
         }
 
-        /* --- THE INFINITE GRID EFFECT (100% CSS PURO) --- */
-        .grid-container-fx {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
+        /* --- AURORA BACKGROUND EFFECT (100% CSS PURO) --- */
+        .aurora-wrapper {
+            /* Máscara radial no topo à direita conforme o componente original */
+            mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
         }
 
-        .grid-pattern-base {
+        .aurora-effect {
+            --white: #ffffff;
+            --transparent: rgba(255, 255, 255, 0);
+            
+            /* Cores da Aurora adaptadas para a paleta da clínica (tons quentes e marca) */
+            --aurora-1: #c4302b; 
+            --aurora-2: #f87171;
+            --aurora-3: #fca5a5;
+            --aurora-4: #fee2e2;
+            --aurora-5: #b91c1c;
+
+            --white-gradient: repeating-linear-gradient(100deg, var(--white) 0%, var(--white) 7%, var(--transparent) 10%, var(--transparent) 12%, var(--white) 16%);
+            --aurora: repeating-linear-gradient(100deg, var(--aurora-1) 10%, var(--aurora-2) 15%, var(--aurora-3) 20%, var(--aurora-4) 25%, var(--aurora-5) 30%);
+            
             position: absolute;
             top: -50%; left: -50%; right: -50%; bottom: -50%;
-            background-size: 40px 40px;
-            background-image:
-                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-            animation: grid-scroll 20s linear infinite;
+            background-image: var(--white-gradient), var(--aurora);
+            background-size: 300% 200%;
+            background-position: 50% 50%, 50% 50%;
+            filter: blur(10px);
+            opacity: 0.15; /* Suave para manter a leitura */
+            animation: aurora-pan 45s linear infinite;
         }
 
-        .grid-pattern-active {
+        .aurora-effect::after {
+            content: "";
             position: absolute;
-            top: -50%; left: -50%; right: -50%; bottom: -50%;
-            background-size: 40px 40px;
-            background-image:
-                linear-gradient(to right, rgba(196, 48, 43, 0.2) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(196, 48, 43, 0.2) 1px, transparent 1px);
-            animation: grid-scroll 20s linear infinite;
-            /* Máscara que segue o mouse via variáveis do JS */
-            mask-image: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black, transparent);
-            -webkit-mask-image: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black, transparent);
+            inset: 0;
+            background-image: var(--white-gradient), var(--aurora);
+            background-size: 200% 100%;
+            background-attachment: fixed;
+            mix-blend-mode: overlay;
+            animation: aurora-pan 45s linear infinite;
         }
 
-        @keyframes grid-scroll {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(40px, 40px); }
-        }
-
-        /* Blobs de Fundo para dar profundidade (CSS puro) */
-        .fx-blob-1 {
-            position: absolute;
-            right: -10%; top: -10%;
-            width: 50vw; height: 50vw;
-            border-radius: 50%;
-            background: rgba(196, 48, 43, 0.06);
-            filter: blur(80px);
-        }
-        .fx-blob-2 {
-            position: absolute;
-            left: -10%; bottom: -20%;
-            width: 40vw; height: 40vw;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.03);
-            filter: blur(80px);
+        @keyframes aurora-pan {
+            from { background-position: 50% 50%, 50% 50%; }
+            to { background-position: 350% 50%, 350% 50%; }
         }
 
         /* Bento Box Grid */
@@ -186,15 +178,10 @@
         </div>
     </header>
     
-    <main id="inicio" class="hero-section px-6 overflow-hidden items-center text-center w-full">
+    <main id="inicio" class="hero-section px-6 overflow-hidden items-center text-center w-full bg-[#fbfbfd]">
         
-        <div class="grid-container-fx">
-            <div class="grid-pattern-base"></div>
-            
-            <div class="fx-blob-1"></div>
-            <div class="fx-blob-2"></div>
-            
-            <div class="grid-pattern-active"></div>
+        <div class="aurora-wrapper absolute inset-0 overflow-hidden pointer-events-none z-0">
+            <div class="aurora-effect"></div>
         </div>
 
         <div class="max-w-4xl mx-auto z-10 w-full relative pointer-events-none">
@@ -204,7 +191,7 @@
                 Estrutura de elite.<br>Na clínica ou na sua casa.
             </h1>
             
-            <p class="subhead-hero mb-8 max-w-2xl mx-auto fade-in-up delay-200 leading-relaxed px-4">
+            <p class="subhead-hero mb-8 max-w-2xl mx-auto fade-in-up delay-200 leading-relaxed px-4 text-[#1d1d1f]/80">
                 O mesmo padrão de avaliação, tecnologia e reabilitação<br class="hidden md:block">
                 usado por atletas profissionais.<br class="hidden md:block">
                 Escolha ser atendido no Swiss Park ou no conforto do seu lar.
@@ -414,28 +401,6 @@
         }
         window.addEventListener("scroll", reveal);
         reveal();
-
-        // SCRIPTS DO INFINITE GRID EFFECT (Máscara que segue o mouse)
-        document.addEventListener('DOMContentLoaded', () => {
-            const heroSection = document.getElementById('inicio');
-            // Força um valor inicial para a máscara
-            heroSection.style.setProperty('--mouse-x', `50%`);
-            heroSection.style.setProperty('--mouse-y', `50%`);
-            
-            heroSection.addEventListener('mousemove', (e) => {
-                const rect = heroSection.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                heroSection.style.setProperty('--mouse-x', `${x}px`);
-                heroSection.style.setProperty('--mouse-y', `${y}px`);
-            });
-            
-            heroSection.addEventListener('mouseleave', () => {
-                heroSection.style.setProperty('--mouse-x', `50%`);
-                heroSection.style.setProperty('--mouse-y', `50%`);
-            });
-        });
     </script>
 </body>
 </html>
