@@ -23,7 +23,7 @@
         
         /* Ajuste de Altura de Tela Inteira para a First Page */
         .hero-section {
-            min-height: calc(85vh - 64px); /* Ocupa 85% da tela, descontando o menu */
+            min-height: calc(85vh - 64px);
             margin-top: 64px; 
             display: flex;
             flex-direction: column;
@@ -36,6 +36,25 @@
         
         .bento-card-dark { background: #1d1d1f; border-radius: 28px; padding: clamp(24px, 4vw, 40px); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.4s ease; }
         .bento-card-dark:hover { transform: scale(1.02); }
+
+        /* --- PADRÃO APPLE DE ÍCONES DISCRETOS --- */
+        /* Força imagens e blocos de ícones a ficarem pequenos, alinhados e elegantes */
+        .icon-img-bento {
+            width: 48px !important;
+            height: 48px !important;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+        }
+        .icon-box-bento {
+            width: 48px !important;
+            height: 48px !important;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         /* Premium Buttons */
         .btn-primary { background-color: #1d1d1f; color: #ffffff; border-radius: 999px; padding: 14px 28px; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
@@ -69,7 +88,7 @@
             background-color: #1d1d1f;
             color: #f5f5f7;
             padding: 0.8rem 0;
-            margin: 0; /* Zerado para grudar na seção de cima e de baixo harmoniosamente */
+            margin: 0;
         }
 
         .ticker-content {
@@ -175,19 +194,19 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <div class="bento-card flex flex-col items-start reveal">
-                <img src="assets/img/image_3.png" alt="Ombro Cotovelo e Punho" class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
+                <img src="assets/img/image_3.png" alt="Ombro Cotovelo e Punho" class="icon-img-bento shadow-sm" loading="lazy">
                 <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Ombro, Cotovelo e Punho</h3>
                 <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Especialista em manguito rotador, epicondilite, síndrome do túnel do carpo e tendinites. Foco na devolução da força e mobilidade.</p>
             </div>
 
             <div class="bento-card flex flex-col items-start reveal">
-                <img src="assets/img/image_4.png" alt="Joelho e Tornozelo" class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
+                <img src="assets/img/image_4.png" alt="Joelho e Tornozelo" class="icon-img-bento shadow-sm" loading="lazy">
                 <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Joelho e Tornozelo</h3>
                 <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Reabilitação cirúrgica e conservadora. Menisco, LCA, condromalácia, fascite plantar e entorses com retorno seguro ao esporte.</p>
             </div>
 
             <div class="bento-card flex flex-col items-start reveal">
-                <img src="assets/img/image_6.png" alt="Lesões Musculares" class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
+                <img src="assets/img/image_6.png" alt="Lesões Musculares" class="icon-img-bento shadow-sm" loading="lazy">
                 <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Lesões Musculares e Ligamentares</h3>
                 <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Recuperação acelerada de estiramentos, rupturas, contraturas e distensões. Aplicação de recursos tecnológicos para cicatrização ideal.</p>
             </div>
@@ -201,7 +220,7 @@
             </div>
 
             <div class="bento-card flex flex-col items-start reveal">
-                <img src="assets/img/image_2.png" alt="Coluna" class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
+                <img src="assets/img/image_2.png" alt="Coluna" class="icon-img-bento shadow-sm" loading="lazy">
                 <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Coluna Vertebral</h3>
                 <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Hérnia de disco, dor lombar aguda, ciatalgia e correções posturais focadas em alívio rápido e estabilidade.</p>
             </div>
@@ -259,7 +278,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
                 <div class="bento-card flex flex-col items-start bg-gradient-to-br from-gray-50 to-gray-100 reveal">
-                    <div class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm bg-white flex items-center justify-center text-[#c4302b] text-xl md:text-2xl border border-gray-100">
+                    <div class="icon-box-bento bg-white text-[#c4302b] text-xl border border-gray-100 shadow-sm">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Instituto Adara</h3>
@@ -275,7 +294,7 @@
                 </div>
 
                 <div class="bento-card flex flex-col items-start bg-gradient-to-br from-gray-50 to-gray-100 reveal">
-                    <div class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm bg-white flex items-center justify-center text-[#c4302b] text-xl md:text-2xl border border-gray-100">
+                    <div class="icon-box-bento bg-white text-[#c4302b] text-xl border border-gray-100 shadow-sm">
                         <i class="fa-solid fa-house-chimney-medical"></i>
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Home Care Premium</h3>
@@ -321,7 +340,7 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 50; /* Reduzi para revelar mais rápido no scroll */
+                var elementVisible = 50;
                 
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
@@ -329,7 +348,6 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        // Trigger once on load
         reveal();
     </script>
 </body>
