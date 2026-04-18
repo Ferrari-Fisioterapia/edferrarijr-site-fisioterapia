@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Ed Ferrari Jr | Fisioterapeuta Especialista</title>
-    <meta name="description" content="Especialista em Fisioterapia Ortopédica e Esportiva. Atendimento no Instituto Adara (Swiss Park, Campinas) and Home Care Premium. Ombro, Joelho, Tornozelo, Coluna, Lesões Musculares.">
+    <meta name="description" content="Especialista em Fisioterapia Ortopédica e Esportiva. Atendimento no Instituto Adara (Swiss Park, Campinas) e Home Care Premium. Ombro, Joelho, Tornozelo, Coluna e Lesões Musculares.">
     <meta name="robots" content="index, follow">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,18 +14,18 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background-color: #fbfbfd; color: #1d1d1f; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background-color: #fbfbfd; color: #1d1d1f; overflow-x: hidden; }
         
-        /* Apple-like Typography */
-        .headline-hero { font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1; letter-spacing: -0.04em; font-weight: 800; }
-        .subhead-hero { font-size: clamp(1rem, 2.5vw, 1.6rem); line-height: 1.5; letter-spacing: -0.01em; font-weight: 500; color: #86868b; }
-        .headline-section { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; letter-spacing: -0.03em; font-weight: 800; }
+        /* Apple-like Typography - Ajustado para garantir 2 linhas no mobile */
+        .headline-hero { font-size: clamp(1.4rem, 4vw + 0.5rem, 4.5rem); line-height: 1.15; letter-spacing: -0.03em; font-weight: 800; }
+        .subhead-hero { font-size: clamp(0.95rem, 2vw, 1.25rem); line-height: 1.5; letter-spacing: -0.01em; font-weight: 500; color: #86868b; }
+        .headline-section { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -0.03em; font-weight: 800; }
         
         /* Bento Box Grid */
-        .bento-card { background: #ffffff; border-radius: 28px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; border: 1px solid rgba(0,0,0,0.02); }
+        .bento-card { background: #ffffff; border-radius: 28px; padding: clamp(24px, 4vw, 40px); box-shadow: 0 4px 24px rgba(0,0,0,0.04); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; border: 1px solid rgba(0,0,0,0.02); }
         .bento-card:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
         
-        .bento-card-dark { background: #1d1d1f; border-radius: 28px; padding: 40px; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.4s ease; }
+        .bento-card-dark { background: #1d1d1f; border-radius: 28px; padding: clamp(24px, 4vw, 40px); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.4s ease; }
         .bento-card-dark:hover { transform: scale(1.02); }
 
         /* Premium Buttons */
@@ -58,72 +58,68 @@
             overflow: hidden;
             background-color: #1d1d1f;
             color: #f5f5f7;
-            padding: 0.7rem 0; /* padding interno reduzido */
-            margin-top: 1.5rem; /* Espaçamento externo reduzido acima */
-            margin-bottom: 1.5rem; /* Espaçamento externo reduzido abaixo */
+            padding: 0.8rem 0;
+            margin-top: 1rem; 
+            margin-bottom: 1rem;
         }
 
         .ticker-content {
             display: flex;
             white-space: nowrap;
-            animation: scroll-ticker 25s linear infinite;
+            animation: scroll-ticker 20s linear infinite;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
 
         .ticker-item {
             display: inline-block;
-            padding-right: 4rem; /* Espaço entre as frases */
+            padding-right: 4rem;
         }
 
         @keyframes scroll-ticker {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%); /* Rola 50% do conteúdo total (o duplicado) */
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-        /* --- Fim do Marquee --- */
     </style>
 </head>
 
-<body class="antialiased selection:bg-[#c4302b] selection:text-white">
+<body class="antialiased selection:bg-[#c4302b] selection:text-white overflow-x-hidden w-full">
 
     <header class="fixed top-0 w-full z-50 glass-header transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
-            <div class="font-bold text-xl tracking-tight text-[#1d1d1f] flex items-center gap-2">
+            <div class="font-bold text-lg md:text-xl tracking-tight text-[#1d1d1f] flex items-center gap-2">
                 Ed Ferrari Jr<span class="text-[#c4302b]">.</span> <span class="text-xs font-semibold text-[#86868b] tracking-widest uppercase border-l-2 border-gray-200 pl-2 hidden sm:inline-block">Fisioterapeuta</span>
             </div>
-            <nav class="hidden md:flex gap-8 items-center">
+            <nav class="hidden lg:flex gap-8 items-center">
                 <a href="#inicio" class="text-sm font-medium text-[#1d1d1f]/70 hover:text-[#1d1d1f] transition">Início</a>
                 <a href="#especialidades" class="text-sm font-medium text-[#1d1d1f]/70 hover:text-[#1d1d1f] transition">Tratamentos</a>
                 <a href="#atendimento" class="text-sm font-medium text-[#1d1d1f]/70 hover:text-[#1d1d1f] transition">Onde Atendemos</a>
             </nav>
-            <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação." target="_blank" class="btn-primary px-5 py-2 text-sm">
+            <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação." target="_blank" class="btn-primary px-4 md:px-5 py-2 text-xs md:text-sm whitespace-nowrap">
                 Agendar
             </a>
         </div>
     </header>
 
-    <div class="h-16 md:h-0"></div> 
+    <div class="h-16"></div> 
     
-    <main id="inicio" class="pt-8 pb-4 md:pt-24 px-6 overflow-hidden flex flex-col items-center text-center"> <div class="max-w-4xl mx-auto z-10">
-            <span class="text-[#c4302b] font-bold tracking-widest uppercase text-xs md:text-sm mb-2 block fade-in-up">Instituto Adara & Home Care Premium</span>
+    <main id="inicio" class="pt-10 pb-6 md:pt-20 md:pb-8 px-6 overflow-hidden flex flex-col items-center text-center w-full">
+        <div class="max-w-4xl mx-auto z-10 w-full">
+            <span class="text-[#c4302b] font-bold tracking-widest uppercase text-xs md:text-sm mb-3 block fade-in-up">Instituto Adara & Home Care Premium</span>
             
-            <h1 class="headline-hero mb-3 fade-in-up delay-100">
+            <h1 class="headline-hero mb-4 fade-in-up delay-100 w-full whitespace-nowrap md:whitespace-normal">
                 Estrutura de elite.<br>Na clínica ou na sua casa.
             </h1>
             
-            <p class="subhead-hero mb-6 max-w-2xl mx-auto fade-in-up delay-200 leading-normal">
+            <p class="subhead-hero mb-8 max-w-2xl mx-auto fade-in-up delay-200 leading-relaxed px-4">
                 O mesmo padrão de avaliação, tecnologia e reabilitação<br class="hidden md:block">
                 usado por atletas profissionais.<br class="hidden md:block">
                 Escolha ser atendido no Swiss Park ou no conforto do seu lar.
             </p>
             
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in-up delay-300">
+            <div class="flex justify-center items-center fade-in-up delay-300 w-full px-4">
                 <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação." target="_blank" class="btn-accent text-base w-full sm:w-auto shadow-lg hover:shadow-xl">
                     <i class="fa-brands fa-whatsapp"></i> Agendar Minha Avaliação
                 </a>
@@ -136,25 +132,26 @@
             <div class="ticker-item">Tratamento Baseado em Evidências</div>
             <div class="ticker-item">Recuperação Acelerada</div>
             <div class="ticker-item">Minimizando lesões</div>
-            <div class="ticker-item">maximizando performance</div>
+            <div class="ticker-item">Maximizando performance</div>
             <div class="ticker-item">Tratamento Baseado em Evidências</div>
             <div class="ticker-item">Recuperação Acelerada</div>
             <div class="ticker-item">Minimizando lesões</div>
-            <div class="ticker-item">maximizando performance</div>
+            <div class="ticker-item">Maximizando performance</div>
         </div>
     </div>
 
-    <section id="sobre" class="pt-4 pb-24 px-6 bg-white reveal"> <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <section id="sobre" class="py-16 md:py-24 px-6 bg-white reveal">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-20 items-center">
                 <div class="md:col-span-5 rounded-[2rem] overflow-hidden shadow-2xl relative mx-auto w-full max-w-sm reveal">
                     <img src="assets/img/image_1.png" alt="Dr Ed Ferrari Jr" class="w-full h-auto object-cover hover:scale-105 transition duration-700" loading="lazy">
                 </div>
-                <div class="md:col-span-7 reveal delay-100">
+                <div class="md:col-span-7 reveal delay-100 text-center md:text-left">
                     <h2 class="headline-section mb-6">Chega de<br>tratamentos genéricos.</h2>
-                    <p class="text-[#86868b] text-xl mb-6 leading-relaxed">
+                    <p class="text-[#86868b] text-lg md:text-xl mb-6 leading-relaxed">
                         A maioria das sessões falha porque foca apenas em mascarar o sintoma. Como Especialista em Ortopedia e Fisioterapia Esportiva, o Dr. Ed Ferrari Jr. investiga a <strong>raiz biomecânica</strong> da sua dor articular, muscular ou ligamentar.
                     </p>
-                    <p class="text-[#86868b] text-xl leading-relaxed">
+                    <p class="text-[#86868b] text-lg md:text-xl leading-relaxed">
                         Nosso compromisso é com a sua independência. Criamos um plano de eficiência máxima com o menor número de visitas possíveis para você voltar a treinar e viver sem medo.
                     </p>
                 </div>
@@ -162,7 +159,8 @@
         </div>
     </section>
 
-    <section id="especialidades" class="py-24 px-6 overflow-hidden"> <div class="max-w-7xl mx-auto text-center mb-20">
+    <section id="especialidades" class="py-16 md:py-24 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center mb-16 md:mb-20">
             <h2 class="headline-section">Áreas de especialidade.</h2>
             <p class="subhead-hero mt-4">Soluções definitivas para o seu corpo.</p>
         </div>
@@ -170,115 +168,117 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <div class="bento-card flex flex-col items-start">
-                <img src="assets/img/image_3.png" alt="Ombro Cotovelo e Punho" class="w-16 h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
-                <h3 class="text-2xl font-bold mb-3 text-[#1d1d1f]">Ombro, Cotovelo e Punho</h3>
-                <p class="text-[#86868b] font-medium leading-relaxed">Especialista em manguito rotador, epicondilite, síndrome do túnel do carpo e tendinites. Foco na devolução da força e mobilidade.</p>
+                <img src="assets/img/image_3.png" alt="Ombro Cotovelo e Punho" class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
+                <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Ombro, Cotovelo e Punho</h3>
+                <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Especialista em manguito rotador, epicondilite, síndrome do túnel do carpo e tendinites. Foco na devolução da força e mobilidade.</p>
             </div>
 
             <div class="bento-card flex flex-col items-start">
-                <img src="assets/img/image_4.png" alt="Joelho e Tornozelo" class="w-16 h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
-                <h3 class="text-2xl font-bold mb-3 text-[#1d1d1f]">Joelho e Tornozelo</h3>
-                <p class="text-[#86868b] font-medium leading-relaxed">Reabilitação cirúrgica e conservadora. Menisco, LCA, condromalácia, fascite plantar e entorses com retorno seguro ao esporte.</p>
+                <img src="assets/img/image_4.png" alt="Joelho e Tornozelo" class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
+                <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Joelho e Tornozelo</h3>
+                <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Reabilitação cirúrgica e conservadora. Menisco, LCA, condromalácia, fascite plantar e entorses com retorno seguro ao esporte.</p>
             </div>
 
             <div class="bento-card flex flex-col items-start">
-                <img src="assets/img/image_6.png" alt="Lesões Musculares" class="w-16 h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
-                <h3 class="text-2xl font-bold mb-3 text-[#1d1d1f]">Lesões Musculares e Ligamentares</h3>
-                <p class="text-[#86868b] font-medium leading-relaxed">Recuperação acelerada de estiramentos, rupturas, contraturas e distensões. Aplicação de recursos tecnológicos para cicatrização ideal.</p>
+                <img src="assets/img/image_6.png" alt="Lesões Musculares" class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
+                <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Lesões Musculares e Ligamentares</h3>
+                <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Recuperação acelerada de estiramentos, rupturas, contraturas e distensões. Aplicação de recursos tecnológicos para cicatrização ideal.</p>
             </div>
 
             <div class="bento-card flex flex-col items-start lg:col-span-2 bg-gradient-to-br from-gray-50 to-gray-100">
-                <h3 class="text-3xl font-bold mb-4 text-[#1d1d1f]">Alta Performance</h3>
-                <p class="text-[#86868b] text-lg font-medium leading-relaxed mb-8 max-w-xl">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-[#1d1d1f]">Alta Performance</h3>
+                <p class="text-[#86868b] text-base md:text-lg font-medium leading-relaxed mb-8 max-w-xl">
                     Seu protocolo não termina quando a dor some; termina quando você bate seu Recorde Pessoal. Avaliação biomecânica e periodização de força para atletas.
                 </p>
-                <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20Avalia%C3%A7%C3%A3o%20Esportiva%20(Return%20to%20Play)." class="btn-primary">Saber mais <i class="fa-solid fa-arrow-right text-sm"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20Avalia%C3%A7%C3%A3o%20Esportiva%20(Return%20to%20Play)." class="btn-primary w-full sm:w-auto">Saber mais <i class="fa-solid fa-arrow-right text-sm"></i></a>
             </div>
 
             <div class="bento-card flex flex-col items-start">
-                <img src="assets/img/image_2.png" alt="Coluna" class="w-16 h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
-                <h3 class="text-2xl font-bold mb-3 text-[#1d1d1f]">Coluna Vertebral</h3>
-                <p class="text-[#86868b] font-medium leading-relaxed">Hérnia de disco, dor lombar aguda, ciatalgia e correções posturais focadas em alívio rápido e estabilidade.</p>
+                <img src="assets/img/image_2.png" alt="Coluna" class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm" loading="lazy">
+                <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Coluna Vertebral</h3>
+                <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Hérnia de disco, dor lombar aguda, ciatalgia e correções posturais focadas em alívio rápido e estabilidade.</p>
             </div>
 
         </div>
     </section>
 
-    <section id="recovery" class="py-24 px-6 dark-section overflow-hidden"> <div class="max-w-7xl mx-auto text-center mb-20">
+    <section id="recovery" class="py-16 md:py-24 px-6 dark-section overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center mb-16 md:mb-20">
             <span class="text-[#c4302b] font-bold tracking-widest uppercase text-sm mb-4 block">Ferrari Recovery</span>
             <h2 class="headline-section text-white">Recuperação de elite.<br>Na sua casa.</h2>
-            <p class="text-gray-400 mt-6 text-xl max-w-2xl mx-auto">Aluguel de equipamentos profissionais para acelerar sua recuperação muscular no Swiss Park e região.</p>
+            <p class="text-gray-400 mt-4 md:mt-6 text-lg md:text-xl max-w-2xl mx-auto">Aluguel de equipamentos profissionais para acelerar sua recuperação muscular no Swiss Park e região.</p>
         </div>
 
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <div class="bento-card-dark flex flex-col text-center items-center">
-                <img src="assets/img/image_11.webp" alt="Bota Pneumática" class="w-full h-64 object-cover rounded-xl mb-8" loading="lazy">
-                <h3 class="text-3xl font-bold mb-4 text-white">Bota Pneumática</h3>
-                <p class="text-gray-400 mb-8 font-medium">Compressão avançada. Drena toxinas, elimina o ácido lático e reduz o inchaço pós-treino imediatamente.</p>
+                <img src="assets/img/image_11.webp" alt="Bota Pneumática" class="w-full h-48 md:h-64 object-cover rounded-xl mb-6 md:mb-8" loading="lazy">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-white">Bota Pneumática</h3>
+                <p class="text-gray-400 mb-8 font-medium text-sm md:text-base">Compressão avançada. Drena toxinas, elimina o ácido lático e reduz o inchaço pós-treino imediatamente.</p>
                 <div class="mt-auto w-full">
-                    <div class="text-4xl font-bold text-white mb-6">R$ 347<span class="text-lg text-gray-500 font-medium">/diária</span></div>
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-6">R$ 347<span class="text-base md:text-lg text-gray-500 font-medium">/diária</span></div>
                     <a href="https://api.whatsapp.com/send?phone=5519971002263" target="_blank" class="w-full bg-white text-black rounded-full px-6 py-3 font-bold hover:bg-gray-200 transition inline-block">Reservar Bota</a>
                 </div>
             </div>
 
             <div class="bento-card-dark flex flex-col text-center items-center">
-                <img src="assets/img/image_12.webp" alt="Banheira de Gelo" class="w-full h-64 object-cover rounded-xl mb-8" loading="lazy">
-                <h3 class="text-3xl font-bold mb-4 text-white">Banheira de Gelo (Ice Bath)</h3>
-                <p class="text-gray-400 mb-8 font-medium">Crioterapia padrão ouro. Controle máximo de inflamação e recuperação profunda do sistema nervoso central.</p>
+                <img src="assets/img/image_12.webp" alt="Banheira de Gelo" class="w-full h-48 md:h-64 object-cover rounded-xl mb-6 md:mb-8" loading="lazy">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-white">Banheira de Gelo (Ice Bath)</h3>
+                <p class="text-gray-400 mb-8 font-medium text-sm md:text-base">Crioterapia padrão ouro. Controle máximo de inflamação e recuperação profunda do sistema nervoso central.</p>
                 <div class="mt-auto w-full">
-                    <div class="text-4xl font-bold text-white mb-6">R$ 247<span class="text-lg text-gray-500 font-medium">/diária</span></div>
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-6">R$ 247<span class="text-base md:text-lg text-gray-500 font-medium">/diária</span></div>
                     <a href="https://api.whatsapp.com/send?phone=5519971002263" target="_blank" class="w-full bg-white text-black rounded-full px-6 py-3 font-bold hover:bg-gray-200 transition inline-block">Reservar Banheira</a>
                 </div>
             </div>
         </div>
 
-        <div class="max-w-5xl mx-auto mt-8">
+        <div class="max-w-5xl mx-auto mt-6 md:mt-8">
             <div class="bento-card-dark bg-gradient-to-r from-[#1d1d1f] to-[#2a1312] border-[#c4302b]/30 flex flex-col md:flex-row justify-between items-center text-left">
-                <div class="mb-8 md:mb-0">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
                     <span class="bg-[#c4302b] text-white text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-4 inline-block">Recomendado</span>
-                    <h3 class="text-3xl font-bold text-white mb-2">Combo PRO (Fim de Semana)</h3>
-                    <p class="text-gray-400 font-medium">Bota de Compressão + Banheira de Gelo por 2 dias completos.</p>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Combo PRO (Fim de Semana)</h3>
+                    <p class="text-gray-400 font-medium text-sm md:text-base">Bota de Compressão + Banheira de Gelo por 2 dias completos.</p>
                 </div>
-                <div class="text-center md:text-right">
-                    <div class="text-4xl font-bold text-white mb-4">R$ 594</div>
-                    <a href="https://api.whatsapp.com/send?phone=5519971002263" target="_blank" class="btn-accent whitespace-nowrap">Quero o Combo</a>
+                <div class="text-center md:text-right w-full md:w-auto">
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-4">R$ 594</div>
+                    <a href="https://api.whatsapp.com/send?phone=5519971002263" target="_blank" class="btn-accent whitespace-nowrap w-full md:w-auto">Quero o Combo</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="atendimento" class="py-24 px-6 bg-white text-center overflow-hidden"> <div class="max-w-5xl mx-auto">
-            <h2 class="headline-section mb-12">Duas formas de cuidar de você.</h2>
+    <section id="atendimento" class="py-16 md:py-24 px-6 bg-white text-center overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="headline-section mb-10 md:mb-12">Duas formas de cuidar de você.</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
                 <div class="bento-card flex flex-col items-start bg-gradient-to-br from-gray-50 to-gray-100">
-                    <div class="w-16 h-16 mb-6 rounded-2xl shadow-sm bg-white flex items-center justify-center text-[#c4302b] text-2xl border border-gray-100">
+                    <div class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm bg-white flex items-center justify-center text-[#c4302b] text-xl md:text-2xl border border-gray-100">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 text-[#1d1d1f]">Instituto Adara</h3>
-                    <p class="text-[#86868b] font-medium leading-relaxed mb-4">
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Instituto Adara</h3>
+                    <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed mb-4">
                         Atendimento presencial em uma estrutura moderna e totalmente equipada para a sua reabilitação esportiva.
                     </p>
-                    <div class="text-[#1d1d1f] font-semibold text-sm mb-8 bg-white p-4 rounded-xl border border-gray-100 w-full">
+                    <div class="text-[#1d1d1f] font-semibold text-xs md:text-sm mb-6 md:mb-8 bg-white p-4 rounded-xl border border-gray-100 w-full">
                         Av. Antônio Artioli, 276<br>Swiss Park, Campinas - SP<br>CEP: 13049-253
                     </div>
-                    <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20no%20Instituto%20Adara." target="_blank" class="btn-primary mt-auto text-sm w-full sm:w-auto">
+                    <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20no%20Instituto%20Adara." target="_blank" class="btn-primary mt-auto text-sm w-full">
                         Agendar na Clínica
                     </a>
                 </div>
 
                 <div class="bento-card flex flex-col items-start bg-gradient-to-br from-gray-50 to-gray-100">
-                    <div class="w-16 h-16 mb-6 rounded-2xl shadow-sm bg-white flex items-center justify-center text-[#c4302b] text-2xl border border-gray-100">
+                    <div class="w-14 h-14 md:w-16 md:h-16 mb-6 rounded-2xl shadow-sm bg-white flex items-center justify-center text-[#c4302b] text-xl md:text-2xl border border-gray-100">
                         <i class="fa-solid fa-house-chimney-medical"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 text-[#1d1d1f]">Home Care Premium</h3>
-                    <p class="text-[#86868b] font-medium leading-relaxed mb-4">
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Home Care Premium</h3>
+                    <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed mb-4">
                         O nível de um centro de reabilitação de elite, com a máxima privacidade e o conforto do seu lar.
                     </p>
-                    <div class="text-[#1d1d1f] font-semibold text-sm mb-8 bg-white p-4 rounded-xl border border-gray-100 w-full">
+                    <div class="text-[#1d1d1f] font-semibold text-xs md:text-sm mb-6 md:mb-8 bg-white p-4 rounded-xl border border-gray-100 w-full">
                         Atendimento domiciliar exclusivo<br>no Swiss Park e região metropolitana<br>de Campinas.
                     </div>
-                    <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20Home%20Care." target="_blank" class="btn-primary mt-auto text-sm w-full sm:w-auto">
+                    <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20Home%20Care." target="_blank" class="btn-primary mt-auto text-sm w-full">
                         Agendar Home Care
                     </a>
                 </div>
@@ -286,13 +286,13 @@
         </div>
     </section>
 
-    <footer class="bg-[#f5f5f7] py-16 px-6 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <footer class="bg-[#f5f5f7] py-12 md:py-16 px-6 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
             <div class="text-[#1d1d1f] flex flex-col items-center md:items-start gap-2">
-                <div class="font-bold text-xl flex items-center gap-2">
+                <div class="font-bold text-lg md:text-xl flex items-center gap-2">
                     Ed Ferrari Jr<span class="text-[#c4302b]">.</span> <span class="text-xs font-semibold text-[#86868b] tracking-widest uppercase border-l-2 border-gray-300 pl-2">Fisioterapeuta</span>
                 </div>
-                <div class="text-sm text-[#86868b] text-center md:text-left mt-2">
+                <div class="text-xs md:text-sm text-[#86868b] text-center md:text-left mt-1 md:mt-2">
                     <strong>Instituto Adara:</strong> Av. Antônio Artioli, 276 - Swiss Park, Campinas - SP
                 </div>
             </div>
@@ -302,7 +302,7 @@
                 <a href="https://www.youtube.com/@EdFerrariJr" target="_blank" class="text-[#86868b] hover:text-[#1d1d1f] text-2xl transition"><i class="fa-brands fa-youtube"></i></a>
             </div>
             
-            <div class="text-[#86868b] text-sm text-center md:text-right">
+            <div class="text-[#86868b] text-xs md:text-sm text-center md:text-right">
                 © 2026 Dr. Ed Ferrari Jr.<br>Fisioterapia Ortopédica e Esportiva.
             </div>
         </div>
