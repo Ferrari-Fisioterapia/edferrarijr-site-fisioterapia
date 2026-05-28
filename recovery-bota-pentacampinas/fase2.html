@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <title>Avaliação de Experiência</title>
+  <style>
+    :root { --bg: #000000; --surface: #1C1C1E; --text-primary: #FFFFFF; --text-secondary: #86868B; --accent: #FFFFFF; --green: #32D74B; }
+    body { font-family: -apple-system, sans-serif; background-color: var(--bg); color: var(--text-primary); margin: 0; padding: 20px; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 400px; margin: 0 auto; padding-top: 40px; }
+    h1 { font-size: 28px; font-weight: 700; letter-spacing: -1px; text-align: center; margin-bottom: 8px; }
+    .subtitle { font-size: 16px; color: var(--text-secondary); text-align: center; margin-bottom: 32px; line-height: 1.4; }
+    
+    .card { background-color: var(--surface); border-radius: 18px; padding: 20px; margin-bottom: 16px; }
+    label { display: block; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+    
+    input[type="text"] { width: 100%; background: #2C2C2E; border: none; border-radius: 12px; color: white; padding: 16px; font-size: 17px; box-sizing: border-box; }
+    .price-input { display: flex; align-items: center; background: #2C2C2E; border-radius: 12px; padding: 0 16px; margin-bottom: 12px; }
+    .price-input span { color: var(--text-secondary); font-weight: bold; margin-right: 8px; }
+    .price-input input { background: transparent; border: none; color: white; padding: 16px 0; font-size: 17px; width: 100%; outline: none; }
+
+    .nota-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 10px; }
+    .btn-nota { background-color: #2C2C2E; border-radius: 10px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; cursor: pointer; }
+    .btn-nota.selected { background-color: white; color: black; }
+
+    button.main-btn { width: 100%; padding: 20px; background-color: white; color: black; border: none; border-radius: 100px; font-size: 17px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+    .screen { display: none; opacity: 0; }
+    .screen.active { display: block; opacity: 1; transition: opacity 0.4s ease; }
+    
+    .spinner { width: 30px; height: 30px; border: 3px solid rgba(255,255,255,0.1); border-radius: 50%; border-top-color: white; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <div id="step1" class="screen active">
+    <h1>Como se sente?</h1><p class="subtitle">Sua sessão terminou. Como estão suas pernas agora?</p>
+    <div class="card"><label>Nível de dor/cansaço pós-uso (1 a 10):</label><div class="nota-grid" id="gridDorPos"></div></div>
+    <div class="card"><label>Teve alguma dificuldade para ligar ou usar a bota?</label><input type="text" id="feedbackDificuldade" placeholder="Ex: Não, foi super fácil."></div>
+    <button class="main-btn" onclick="next(2)">Continuar</button>
+  </div>
+
+  <div id="step2" class="screen">
+    <h1>Percepção de Valor</h1><p class="subtitle">Quanto você pagaria por uma sessão de 20 min?</p>
+    <div class="card">
+      <label>Um preço que seria uma pechincha:</label><div class="price-input"><span>R$</span><input type="number" id="pPechincha" placeholder="0,00"></div>
+      <label>Um preço justo (nem caro, nem barato):</label><div class="price-input"><span>R$</span><input type="number" id="pBarato" placeholder="0,00"></div>
+      <label>Um preço que começa a ficar caro:</label><div class="price-input"><span>R$</span><input type="number" id="pCaro" placeholder="0,00"></div>
+      <label>Um preço absurdo (você nunca pagaria):</label><div class="price-input"><span>R$</span><input type="number" id="pAbsurdo" placeholder="0,00"></div>
+    </div>
+    <button class="main-btn" onclick="next(3)">Próximo</button>
+  </div>
+
+  <div id="step3" class="screen">
+    <h1>Recomendação</h1><p class="subtitle">De 0 a 10, qual a chance de recomendar esse recovery para um amigo?</p>
+    <div class="card"><div class="nota-grid" id="gridNps1" style="margin-bottom: 8px;"></div><div class="nota-grid" id="gridNps2"></div></div>
+    <button class="main-btn" onclick="enviar()">Finalizar Avaliação</button>
+  </div>
+
+  <div id="loading" class="screen"><div class="spinner"></div><p class="subtitle">Salvando sua avaliação...</p></div>
+  <div id="sucesso" class="screen" style="text-align:center;"><h1 style="color:var(--green); font-size:48px;">✅</h1><h1>Obrigado!</h1><p class="subtitle">Seus dados são fundamentais para definirmos os planos no box.</p></div>
+
+</div>
+
+<script>
+  const API_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
+  
+  // O JavaScript lê a URL do GitHub de forma inteligente e extrai o parâmetro do telefone
+  const urlParams = new URLSearchParams(window.location.search);
+  const tel = urlParams.get('tel');
+
+  let dorPos = null; let nps = null;
+
+  const createGrid = (id, start, end, callback) => {
+    const g = document.getElementById(id);
+    for(let i=start; i<=end; i++) {
+      let b = document.createElement('div'); b.className='btn-nota'; b.innerText=i;
+      b.onclick = () => { callback(i, b); }; g.appendChild(b);
+    }
+  };
+
+  createGrid('gridDorPos', 1, 10, (n, el) => { dorPos = n; document.querySelectorAll('#gridDorPos .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); });
+  createGrid('gridNps1', 0, 4, (n, el) => { nps = n; document.querySelectorAll('#step3 .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); });
+  createGrid('gridNps2', 5, 10, (n, el) => { nps = n; document.querySelectorAll('#step3 .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); });
+
+  function next(s) {
+    if(s===2 && !dorPos) return alert("Selecione como se sente.");
+    if(s===3 && !document.getElementById('pBarato').value) return alert("Preencha os valores de percepção.");
+    document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+    setTimeout(() => { document.querySelectorAll('.screen').forEach(x=>x.style.display='none'); const t=document.getElementById('step'+s); t.style.display='block'; void t.offsetWidth; t.classList.add('active'); }, 410);
+  }
+
+  function enviar() {
+    if(nps === null) return alert("Selecione sua nota de recomendação.");
+    document.getElementById('step3').classList.remove('active');
+    setTimeout(() => { document.getElementById('step3').style.display='none'; const l=document.getElementById('loading'); l.style.display='block'; l.classList.add('active'); }, 410);
+
+    const dados = {
+      telefone: tel, dorPos: dorPos,
+      dificuldade: document.getElementById('feedbackDificuldade').value,
+      precoPechincha: document.getElementById('pPechincha').value,
+      precoBarato: document.getElementById('pBarato').value,
+      precoCaro: document.getElementById('pCaro').value,
+      precoAbsurdo: document.getElementById('pAbsurdo').value,
+      nps: nps
+    };
+
+    fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({ acao: "fase2", dados: dados })
+    })
+    .then(res => res.json())
+    .then(res => {
+      document.getElementById('loading').classList.remove('active');
+      document.getElementById('loading').style.display='none';
+      if(res.sucesso) { const s=document.getElementById('sucesso'); s.style.display='block'; s.classList.add('active'); }
+      else alert("Erro ao salvar: " + res.erro);
+    }).catch(() => { alert("Erro de comunicação."); location.reload(); });
+  }
+</script>
+</body>
+</html>
