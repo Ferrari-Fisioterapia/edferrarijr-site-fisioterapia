@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <base target="_top">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-  <title>Recuperação Premium</title>
   <style>
     /* Design System: Apple Pro Dark Mode */
     :root {
@@ -18,113 +17,121 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg);
       color: var(--text-primary);
-      margin: 0; padding: 0;
-      display: flex; justify-content: center; align-items: center;
-      min-height: 100vh; -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container { width: 100%; max-width: 400px; padding: 32px 24px; box-sizing: border-box; display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
-    
-    /* ESTILOS DAS LOGOS PREMIUM ANIMADAS */
-    .header-logos { display: flex; justify-content: center; align-items: center; gap: 6px; margin-bottom: 32px; width: 100%; }
-    .brand-item { display: flex; align-items: center; gap: 8px; cursor: default; }
-    .brand-item:active .logo-box { transform: scale(0.95); }
-    
-    /* Quadrado transparente (Glassmorphism) */
-    .logo-box { 
-      width: 38px; height: 38px; background-color: rgba(255,255,255,0.05); 
-      border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; 
-      display: flex; justify-content: center; align-items: center; padding: 4px; box-sizing: border-box; 
-      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
-    }
-    .logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    .brand-text { font-size: 13px; font-weight: 600; color: #E5E5EA; letter-spacing: -0.2px; white-space: nowrap; }
-    .header-divider { width: 1px; height: 24px; background-color: rgba(255,255,255,0.15); margin: 0 4px; }
-
-    /* ANIMAÇÃO DE ENTRADA SUAVE */
-    .animate-header { opacity: 0; transform: translateY(-15px); animation: fadeDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-    @keyframes fadeDown { to { opacity: 1; transform: translateY(0); } }
+    .container { width: 100%; max-width: 400px; padding: 32px 24px; box-sizing: border-box; }
 
     h1 { font-weight: 700; font-size: 32px; letter-spacing: -1px; margin: 0 0 8px 0; text-align: center; }
-    p.subtitle { font-size: 16px; color: var(--text-secondary); text-align: center; margin: 0 0 32px 0; line-height: 1.4; }
+    p.subtitle { font-size: 16px; color: var(--text-secondary); text-align: center; margin: 0 0 32px 0; line-height: 1.4; font-weight: 400; }
 
+    /* Inputs Premium */
     .input-group { margin-bottom: 16px; }
     input[type="text"], input[type="tel"], input[type="email"] {
       width: 100%; background-color: var(--surface); border: none; border-radius: 14px;
       color: var(--text-primary); padding: 20px 16px; font-size: 17px; box-sizing: border-box;
+      transition: background-color 0.2s ease;
     }
     input::placeholder { color: #636366; }
     input:focus { outline: none; background-color: #2C2C2E; }
 
+    /* Botões */
     button {
       width: 100%; padding: 20px; background-color: var(--accent); color: var(--accent-text);
-      border: none; border-radius: 100px; font-size: 17px; font-weight: 600; cursor: pointer; margin-top: 16px;
+      border: none; border-radius: 100px; font-size: 17px; font-weight: 600; letter-spacing: -0.4px;
+      cursor: pointer; transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); margin-top: 16px;
     }
+    button:active { transform: scale(0.96); }
     button:disabled { background-color: #333333; color: #666666; cursor: not-allowed; }
+    
     .btn-secondary { background-color: var(--surface); color: var(--text-primary); margin-top: 24px; }
 
+    /* Grid de Notas */
     .nota-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 32px; }
     .btn-nota {
       background-color: var(--surface); border-radius: 14px; aspect-ratio: 1;
-      display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500;
+      color: var(--text-primary); cursor: pointer; transition: all 0.2s ease; user-select: none;
     }
-    .btn-nota.selecionado { background-color: var(--text-primary); color: var(--bg); font-weight: 700; }
+    .btn-nota.selecionado { background-color: var(--text-primary); color: var(--bg); font-weight: 700; transform: scale(1.05); }
 
-    .instruction-card { background-color: var(--surface); border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; align-items: center; text-align: left; }
-    .step-badge { background-color: #333333; color: var(--text-primary); width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 700; margin-right: 16px; flex-shrink: 0; }
+    /* Estilos de Instruções e Checkbox */
+    .instruction-card {
+      background-color: var(--surface); border-radius: 16px; padding: 16px;
+      margin-bottom: 12px; display: flex; align-items: center; text-align: left;
+    }
+    .step-badge {
+      background-color: #333333; color: var(--text-primary); width: 32px; height: 32px;
+      border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      font-weight: 700; font-size: 15px; margin-right: 16px; flex-shrink: 0;
+    }
     .instruction-card p { margin: 0; font-size: 15px; color: #E5E5EA; line-height: 1.4; }
     .highlight-yellow { color: var(--yellow); font-weight: 600; }
     .highlight-green { color: var(--green); font-weight: 600; }
     
-    .pressure-guide { font-size: 13px; color: var(--text-secondary); margin-top: 10px; line-height: 1.5; padding-left: 2px; border-left: 1px solid #3a3a3c; }
+    .pressure-guide {
+      font-size: 13px; color: var(--text-secondary); margin-top: 10px; 
+      line-height: 1.5; padding-left: 2px; border-left: 1px solid #3a3a3c; margin-left: 2px;
+    }
     .pressure-line { margin-bottom: 4px; }
+    .pressure-line b { color: #E5E5EA; }
 
     .checkbox-container {
-      background-color: rgba(255, 214, 10, 0.08); border: 1px solid rgba(255, 214, 10, 0.2);
-      border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; align-items: center; cursor: pointer; transition: all 0.25s ease;
+      background-color: rgba(255, 214, 10, 0.08); 
+      border: 1px solid rgba(255, 214, 10, 0.2);
+      border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; align-items: center;
+      cursor: pointer; transition: all 0.25s ease;
     }
-    .checkbox-container input[type="checkbox"] { width: 24px; height: 24px; margin: 0 16px 0 0; accent-color: var(--yellow); flex-shrink: 0; }
-    .checkbox-container span { color: var(--yellow); font-size: 14px; font-weight: 600; line-height: 1.3; }
+    .checkbox-container input[type="checkbox"] {
+      width: 24px; height: 24px; margin: 0 16px 0 0; accent-color: var(--yellow); cursor: pointer; flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+    .checkbox-container span { color: var(--yellow); font-size: 14px; font-weight: 600; line-height: 1.3; transition: color 0.25s ease; }
 
-    .checkbox-container.checked-active { background-color: rgba(50, 215, 75, 0.08); border-color: rgba(50, 215, 75, 0.3); }
+    .checkbox-container.checked-active {
+      background-color: rgba(50, 215, 75, 0.08);
+      border-color: rgba(50, 215, 75, 0.3);
+    }
     .checkbox-container.checked-active input[type="checkbox"] { accent-color: var(--green); }
     .checkbox-container.checked-active span { color: var(--green); }
 
-    .screen { display: none; opacity: 0; }
-    .screen.active { display: block; opacity: 1; transition: opacity 0.4s ease; }
+    /* Controle de Telas */
+    .screen { display: none; opacity: 0; transition: opacity 0.4s ease; }
+    .screen.active { display: block; opacity: 1; }
+
+    /* Utilitários Visuais */
     .center-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60vh; }
-    .timer-display { font-size: 64px; font-weight: 700; letter-spacing: -2px; text-align: center; margin: 16px 0 8px 0; font-variant-numeric: tabular-nums; }
+    .timer-display { font-size: 64px; font-weight: 700; letter-spacing: -2px; text-align: center; color: var(--text-primary); margin: 16px 0 8px 0; font-variant-numeric: tabular-nums; }
     
-    .spinner { width: 36px; height: 36px; border: 3px solid rgba(255, 255, 255, 0.1); border-radius: 50%; border-top-color: var(--text-primary); animation: spin 1s linear infinite; margin-bottom: 24px; }
+    /* CSS Spinner */
+    .spinner {
+      width: 36px; height: 36px; border: 3px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%; border-top-color: var(--text-primary);
+      animation: spin 1s linear infinite; margin-bottom: 24px;
+    }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
 <div class="container">
-
-  <div class="header-logos animate-header">
-    <div class="brand-item">
-      <div class="logo-box"><img src="https://i.postimg.cc/rs914jpw/image.png" alt="Penta Campinas Logo"></div>
-      <span class="brand-text">Penta Campinas</span>
-    </div>
-    <div class="header-divider"></div>
-    <div class="brand-item">
-      <div class="logo-box"><img src="https://i.postimg.cc/4xYc4spX/image.png" alt="Ferrari Recovery Logo"></div>
-      <span class="brand-text">Ferrari Recovery</span>
-    </div>
-  </div>
   
-  <div id="init" class="screen active center-content" style="height: auto; margin-top: 20px;">
+  <div id="init" class="screen active center-content">
     <div class="spinner"></div>
     <p class="subtitle" style="margin:0;">Estabelecendo conexão segura...</p>
   </div>
 
   <div id="ocupado" class="screen">
-    <div class="center-content" style="height: auto; margin-top: 40px;">
+    <div class="center-content">
       <div class="spinner" style="border-top-color: #FF453A; border-color: rgba(255, 69, 58, 0.2);"></div>
       <h1>Em Uso</h1>
       <p class="subtitle">O equipamento está ocupado no momento.</p>
@@ -136,9 +143,15 @@
   <div id="tela1" class="screen">
     <h1>Recuperação</h1>
     <p class="subtitle">Insira seus dados para liberar sua sessão.</p>
-    <div class="input-group"><input type="text" id="nome" placeholder="Nome Completo"></div>
-    <div class="input-group"><input type="tel" id="telefone" placeholder="WhatsApp (com DDD)"></div>
-    <div class="input-group"><input type="email" id="email" placeholder="E-mail"></div>
+    <div class="input-group">
+      <input type="text" id="nome" placeholder="Nome Completo" autocomplete="name">
+    </div>
+    <div class="input-group">
+      <input type="tel" id="telefone" placeholder="WhatsApp (com DDD)" autocomplete="tel">
+    </div>
+    <div class="input-group">
+      <input type="email" id="email" placeholder="E-mail" autocomplete="email">
+    </div>
     <button onclick="irParaTela2()">Continuar</button>
   </div>
 
@@ -152,26 +165,76 @@
   <div id="tela3" class="screen">
     <h1>Preparação</h1>
     <p class="subtitle">Siga os passos rigorosamente antes de ativar o sistema.</p>
-    <div class="instruction-card"><div class="step-badge">1</div><p>Sente-se, vista as botas e feche o zíper <b style="color:white">até o final</b>.</p></div>
-    <div class="instruction-card" style="align-items: flex-start;"><div class="step-badge" style="background-color: transparent; font-size:20px;">💡</div><div><p><span class="highlight-yellow">Em breve:</span> Configuração de pressão direta no app.</p><div class="pressure-guide"><div class="pressure-line">🟢 <b>75 mmHg:</b> Drenagem linfática.</div><div class="pressure-line">⭐ <b>110 mmHg:</b> Pressão <span class="highlight-green">ideal</span> recomendada.</div><div class="pressure-line">⚠️ <b>140 mmHg*:</b> Recuperação forte. *Leve formigamento.</div></div></div></div>
-    <label class="checkbox-container" id="wrapper-checkbox"><input type="checkbox" id="check-tomada" onchange="atualizarEstiloCheckbox(this)"><span>Confirmo que a estação de recovery está devidamente montada e conectada a tomada.</span></label>
-    <button onclick="enviarDados()">Liberar o Recovery ⚡</button>
+    
+    <div class="instruction-card">
+      <div class="step-badge">1</div>
+      <p>Sente-se, vista as botas e certifique-se de fechar o zíper <b style="color:white">até o final</b>.</p>
+    </div>
+    
+    <div class="instruction-card" style="align-items: flex-start; border: 1px solid rgba(255, 255, 255, 0.08);">
+      <div class="step-badge" style="background-color: transparent; font-size: 20px;">💡</div>
+      <div>
+        <p><span class="highlight-yellow">Em breve:</span> Você poderá configurar a pressão diretamente no equipamento.</p>
+        <div class="pressure-guide">
+          <div class="pressure-line">🟢 <b>75 mmHg:</b> Drenagem linfática.</div>
+          <div class="pressure-line">⭐ <b>110 mmHg:</b> Pressão <span class="highlight-green">ideal</span> recomendada.</div>
+          <div class="pressure-line">⚠️ <b>140 mmHg*:</b> Recuperação forte. *Pode gerar um leve formigamento.</div>
+        </div>
+      </div>
+    </div>
+    
+    <label class="checkbox-container" id="wrapper-checkbox">
+      <input type="checkbox" id="check-tomada" onchange="atualizarEstiloCheckbox(this)">
+      <span>Confirmo que a estação de recovery está devidamente montada e conectada a tomada.</span>
+    </label>
+    
+    <button onclick="enviarDados()" style="background-color: var(--accent); color: var(--accent-text);">Liberar o Recovery ⚡</button>
   </div>
 
-  <div id="loading" class="screen"><div class="center-content" style="height: auto; margin-top: 40px;"><div class="spinner"></div><h1>Ativando</h1><p class="subtitle">Iniciando o sistema de compressão pneumática...</p></div></div>
+  <div id="loading" class="screen">
+    <div class="center-content">
+      <div class="spinner"></div>
+      <h1>Ativando</h1>
+      <p class="subtitle">Iniciando o sistema de compressão pneumática...</p>
+    </div>
+  </div>
   
   <div id="sucesso" class="screen">
-    <div style="text-align: center; margin-bottom: 24px;"><h1 style="color: var(--green);">Sessão Ativa</h1><div class="timer-display" id="timerAtivo">20:00</div><p class="subtitle">Configure o painel do equipamento agora:</p></div>
-    <div class="instruction-card"><div class="step-badge" style="color: var(--yellow); border: 1px solid var(--yellow);">1</div><p>Pressione o botão <span class="highlight-yellow">LIGAR</span> no aparelho.</p></div>
-    <div class="instruction-card"><div class="step-badge" style="color: var(--yellow); border: 1px solid var(--yellow);">2</div><p>Selecione o modo pressionando a <span class="highlight-yellow">letra B</span>.</p></div>
-    <div class="instruction-card"><div class="step-badge" style="color: var(--green); border: 1px solid var(--green);">3</div><p>Pressione <span class="highlight-green">PLAY</span> para a bota inflar.</p></div>
-    <p class="subtitle" style="margin-top: 32px; color: var(--yellow); font-size: 13px; font-weight: 500;">🎁 Fique atento ao seu WhatsApp ao final do tempo para resgatar seus benefícios e finalizar sua avaliação!</p>
+    <div style="text-align: center; margin-bottom: 24px;">
+      <h1 style="color: var(--green);">Sessão Ativa</h1>
+      <div class="timer-display" id="timerAtivo">15:10</div>
+      <p class="subtitle" style="margin-bottom: 16px;">Configure o painel do equipamento agora:</p>
+    </div>
+
+    <div class="instruction-card">
+      <div class="step-badge" style="color: var(--yellow); border: 1px solid var(--yellow);">1</div>
+      <p>Pressione o botão <span class="highlight-yellow">LIGAR</span> no aparelho.</p>
+    </div>
+    <div class="instruction-card">
+      <div class="step-badge" style="color: var(--yellow); border: 1px solid var(--yellow);">2</div>
+      <p>Selecione o modo pressionando a <span class="highlight-yellow">letra B</span>.</p>
+    </div>
+    <div class="instruction-card">
+      <div class="step-badge" style="color: var(--green); border: 1px solid var(--green);">3</div>
+      <p>Pressione <span class="highlight-green">PLAY</span> para a bota começar a inflar.</p>
+    </div>
+    
+    <p class="subtitle" style="margin-top: 32px; color: var(--yellow); font-size: 13px; font-weight: 500;">
+      🎁 Fique atento ao seu WhatsApp ao final do tempo para resgatar seus benefícios e finalizar sua avaliação!
+    </p>
   </div>
   
   <div id="pos-sessao" class="screen">
-    <div class="center-content" style="height: auto; margin-top: 40px;">
-      <h1 style="color: var(--yellow);">Sessão Concluída!</h1><p class="subtitle">Sua recuperação muscular foi finalizada com sucesso.</p>
-      <div class="instruction-card" style="flex-direction: column; text-align: center; padding: 24px; border: 1px solid rgba(255, 214, 10, 0.2);"><div style="font-size: 48px; margin-bottom: 16px;">📱</div><h3 style="margin: 0 0 12px 0; font-size: 20px;">Fique de olho no WhatsApp!</h3><p style="color: #E5E5EA; font-size: 15px;">Nossa equipe entrará em contato em instantes para liberar seus <b style="color: var(--yellow);">benefícios exclusivos</b>.</p></div>
+    <div class="center-content">
+      <h1 style="color: var(--yellow);">Sessão Concluída!</h1>
+      <p class="subtitle">Sua recuperação muscular foi finalizada com sucesso.</p>
+      
+      <div class="instruction-card" style="flex-direction: column; text-align: center; padding: 24px; border: 1px solid rgba(255, 214, 10, 0.2);">
+        <div style="font-size: 48px; margin-bottom: 16px;">📱</div>
+        <h3 style="margin: 0 0 12px 0; font-size: 20px; color: var(--text-primary);">Fique de olho no seu WhatsApp!</h3>
+        <p style="color: #E5E5EA; font-size: 15px; margin-bottom: 0;">Nossa equipe entrará em contato em instantes para liberar seus <b style="color: var(--yellow);">benefícios exclusivos</b> e coletar seu feedback sobre a sessão.</p>
+      </div>
+      
       <button class="btn-secondary" onclick="location.reload()">Finalizar e Liberar Máquina</button>
     </div>
   </div>
@@ -179,8 +242,6 @@
 </div>
 
 <script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
-
   document.addEventListener("DOMContentLoaded", () => {
     const dadosSalvos = localStorage.getItem('botaUserData');
     if(dadosSalvos) {
@@ -190,37 +251,50 @@
       document.getElementById('email').value = u.email || "";
     }
 
-    fetch(API_URL + "?acao=status")
-      .then(res => res.json())
-      .then(res => {
-        if(res.ocupado) { showScreen('ocupado'); iniciarCronometro(res.endTime, 'timerFila', true); }
-        else { showScreen('tela1'); }
-      }).catch(() => showScreen('tela1'));
+    google.script.run.withSuccessHandler((res) => {
+      if(res.ocupado) {
+        showScreen('ocupado');
+        iniciarCronometro(res.endTime, 'timerFila', true);
+      } else {
+        showScreen('tela1');
+      }
+    }).verificarStatusMaquina();
   });
 
   function showScreen(id) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.screen').forEach(s => {
+      s.classList.remove('active');
+      setTimeout(() => s.style.display = 'none', 400);
+    });
     setTimeout(() => {
-      document.querySelectorAll('.screen').forEach(s => s.style.display = 'none');
-      const target = document.getElementById(id); target.style.display = 'block';
-      void target.offsetWidth; target.classList.add('active');
+      const target = document.getElementById(id);
+      target.style.display = 'block';
+      void target.offsetWidth; 
+      target.classList.add('active');
     }, 410);
   }
 
   function atualizarEstiloCheckbox(checkbox) {
     const wrapper = document.getElementById('wrapper-checkbox');
-    if(checkbox.checked) wrapper.classList.add('checked-active');
-    else wrapper.classList.remove('checked-active');
+    if(checkbox.checked) {
+      wrapper.classList.add('checked-active');
+      if(navigator.vibrate) navigator.vibrate(20);
+    } else {
+      wrapper.classList.remove('checked-active');
+    }
   }
 
   let notaSelecionada = null;
   const grid = document.getElementById('gridNotas');
   for (let i = 1; i <= 10; i++) {
-    let btn = document.createElement('div'); btn.className = 'btn-nota'; btn.innerText = i;
+    let btn = document.createElement('div');
+    btn.className = 'btn-nota'; btn.innerText = i;
     btn.onclick = () => {
+      if(navigator.vibrate) navigator.vibrate(30);
       notaSelecionada = i;
       document.querySelectorAll('.btn-nota').forEach(b => b.classList.remove('selecionado'));
-      btn.classList.add('selecionado'); document.getElementById('btnAvancar').disabled = false;
+      btn.classList.add('selecionado');
+      document.getElementById('btnAvancar').disabled = false;
     };
     grid.appendChild(btn);
   }
@@ -229,13 +303,24 @@
     const nome = document.getElementById('nome').value.trim();
     const tel = document.getElementById('telefone').value.trim();
     const email = document.getElementById('email').value.trim();
-    if(!nome || !tel || !email) return alert("Preencha todos os campos.");
+
+    if(!nome || !tel || !email) {
+      if(navigator.vibrate) navigator.vibrate([100,50,100]);
+      return alert("Preencha todos os campos.");
+    }
     localStorage.setItem('botaUserData', JSON.stringify({nome, telefone: tel, email}));
     showScreen('tela2');
   }
 
   function enviarDados() {
-    if(!document.getElementById('check-tomada').checked) return alert("⚠️ Confirme a trava da tomada.");
+    const checkTomada = document.getElementById('check-tomada').checked;
+    
+    if(!checkTomada) {
+      if(navigator.vibrate) navigator.vibrate([100,50,100]);
+      alert("⚠️ Por favor, confirme que a estação de Recovery está pronta marcando a caixa de seleção.");
+      return;
+    }
+
     showScreen('loading');
     const dados = {
       nome: document.getElementById('nome').value,
@@ -244,31 +329,41 @@
       dor: notaSelecionada
     };
 
-    fetch(API_URL, {
-      method: "POST",
-      body: JSON.stringify({ acao: "fase1", dados: dados })
-    })
-    .then(res => res.json())
-    .then(res => {
-      if(res.sucesso) { showScreen('sucesso'); iniciarCronometro(res.endTime, 'timerAtivo', false); }
-      else { alert(res.erro); location.reload(); }
-    }).catch(() => { alert("Erro de conexão."); location.reload(); });
+    google.script.run.withSuccessHandler((res) => {
+      if(res.sucesso) {
+        showScreen('sucesso');
+        iniciarCronometro(res.endTime, 'timerAtivo', false);
+      } else {
+        alert(res.erro);
+        location.reload(); 
+      }
+    }).processarFase1(dados);
   }
 
   function iniciarCronometro(timestampFim, idTimer, autoReload) {
     const elTimer = document.getElementById(idTimer);
+    
     const intervalo = setInterval(() => {
       const diff = timestampFim - Date.now();
+      
       if(diff <= 0) {
-        clearInterval(intervalo); elTimer.innerText = "00:00";
-        if(autoReload) setTimeout(() => location.reload(), 2000);
-        else setTimeout(() => showScreen('pos-sessao'), 1000);
+        clearInterval(intervalo);
+        elTimer.innerText = "00:00";
+        if(autoReload) {
+          setTimeout(() => location.reload(), 2000);
+        } else {
+          google.script.run.desligarBotaSonoff();
+          setTimeout(() => showScreen('pos-sessao'), 1500);
+        }
         return;
       }
-      const minutos = Math.floor(diff / 60000); const segundos = Math.floor((diff % 60000) / 1000);
+      
+      const minutos = Math.floor(diff / 60000);
+      const segundos = Math.floor((diff % 60000) / 1000);
       elTimer.innerText = minutos.toString().padStart(2, '0') + ":" + segundos.toString().padStart(2, '0');
     }, 1000);
   }
 </script>
+
 </body>
 </html>
