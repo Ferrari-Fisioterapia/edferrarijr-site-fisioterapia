@@ -1,44 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <base target="_top">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-  <title>Avaliação de Experiência</title>
   <style>
     :root { --bg: #000000; --surface: #1C1C1E; --text-primary: #FFFFFF; --text-secondary: #86868B; --accent: #FFFFFF; --green: #32D74B; }
-    body { font-family: -apple-system, sans-serif; background-color: var(--bg); color: var(--text-primary); margin: 0; padding: 20px; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh;}
-    .container { width: 100%; max-width: 400px; padding-top: 20px; }
-    
-    /* ESTILOS DAS LOGOS PREMIUM ANIMADAS */
-    .header-logos { display: flex; justify-content: center; align-items: center; gap: 6px; margin-bottom: 32px; width: 100%; }
-    .brand-item { display: flex; align-items: center; gap: 8px; cursor: default; }
-    .brand-item:active .logo-box { transform: scale(0.95); }
-    
-    /* Quadrado transparente (Glassmorphism) */
-    .logo-box { 
-      width: 38px; height: 38px; background-color: rgba(255,255,255,0.05); 
-      border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; 
-      display: flex; justify-content: center; align-items: center; padding: 4px; box-sizing: border-box; 
-      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
-    }
-    .logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    .brand-text { font-size: 13px; font-weight: 600; color: #E5E5EA; letter-spacing: -0.2px; white-space: nowrap; }
-    .header-divider { width: 1px; height: 24px; background-color: rgba(255,255,255,0.15); margin: 0 4px; }
-
-    /* ANIMAÇÃO DE ENTRADA SUAVE */
-    .animate-header { opacity: 0; transform: translateY(-15px); animation: fadeDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-    @keyframes fadeDown { to { opacity: 1; transform: translateY(0); } }
-
+    body { font-family: -apple-system, sans-serif; background-color: var(--bg); color: var(--text-primary); margin: 0; padding: 20px; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 400px; margin: 0 auto; padding-top: 40px; }
     h1 { font-size: 28px; font-weight: 700; letter-spacing: -1px; text-align: center; margin-bottom: 8px; }
     .subtitle { font-size: 16px; color: var(--text-secondary); text-align: center; margin-bottom: 32px; line-height: 1.4; }
     
     .card { background-color: var(--surface); border-radius: 18px; padding: 20px; margin-bottom: 16px; }
     label { display: block; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
     
-    input[type="text"] { width: 100%; background: #2C2C2E; border: none; border-radius: 12px; color: white; padding: 16px; font-size: 17px; box-sizing: border-box; }
+    input[type="number"], input[type="text"] {
+      width: 100%; background: #2C2C2E; border: none; border-radius: 12px;
+      color: white; padding: 16px; font-size: 17px; box-sizing: border-box; margin-bottom: 8px;
+    }
     .price-input { display: flex; align-items: center; background: #2C2C2E; border-radius: 12px; padding: 0 16px; margin-bottom: 12px; }
     .price-input span { color: var(--text-secondary); font-weight: bold; margin-right: 8px; }
-    .price-input input { background: transparent; border: none; color: white; padding: 16px 0; font-size: 17px; width: 100%; outline: none; }
+    .price-input input { background: transparent; padding: 16px 0; margin-bottom: 0; }
 
     .nota-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 10px; }
     .btn-nota { background-color: #2C2C2E; border-radius: 10px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; cursor: pointer; }
@@ -55,60 +36,73 @@
 <body>
 
 <div class="container">
-
-  <div class="header-logos animate-header">
-    <div class="brand-item">
-      <div class="logo-box"><img src="https://i.postimg.cc/rs914jpw/image.png" alt="Penta Campinas Logo"></div>
-      <span class="brand-text">Penta Campinas</span>
-    </div>
-    <div class="header-divider"></div>
-    <div class="brand-item">
-      <div class="logo-box"><img src="https://i.postimg.cc/4xYc4spX/image.png" alt="Ferrari Recovery Logo"></div>
-      <span class="brand-text">Ferrari Recovery</span>
-    </div>
-  </div>
   
   <div id="step1" class="screen active">
-    <h1>Como se sente?</h1><p class="subtitle">Sua sessão terminou. Como estão suas pernas agora?</p>
-    <div class="card"><label>Nível de dor/cansaço pós-uso (1 a 10):</label><div class="nota-grid" id="gridDorPos"></div></div>
-    <div class="card"><label>Teve alguma dificuldade para ligar ou usar a bota?</label><input type="text" id="feedbackDificuldade" placeholder="Ex: Não, foi super fácil."></div>
+    <h1>Como se sente?</h1>
+    <p class="subtitle">Sua sessão terminou. Como estão suas pernas agora?</p>
+    
+    <div class="card">
+      <label>Nível de dor/cansaço (1 a 10):</label>
+      <div class="nota-grid" id="gridDorPos"></div>
+    </div>
+
+    <div class="card">
+      <label>Teve dificuldade para ligar a bota?</label>
+      <input type="text" id="feedbackDificuldade" placeholder="Ex: Não, foi super fácil.">
+    </div>
     <button class="main-btn" onclick="next(2)">Continuar</button>
   </div>
 
   <div id="step2" class="screen">
-    <h1>Percepção de Valor</h1><p class="subtitle">Quanto você pagaria por uma sessão de 20 min?</p>
+    <h1>Percepção de Valor</h1>
+    <p class="subtitle">Quanto você pagaria por uma sessão de 20 min?</p>
+    
     <div class="card">
-      <label>Um preço que seria uma pechincha:</label><div class="price-input"><span>R$</span><input type="number" id="pPechincha" placeholder="0,00"></div>
-      <label>Um preço justo (nem caro, nem barato):</label><div class="price-input"><span>R$</span><input type="number" id="pBarato" placeholder="0,00"></div>
-      <label>Um preço que começa a ficar caro:</label><div class="price-input"><span>R$</span><input type="number" id="pCaro" placeholder="0,00"></div>
-      <label>Um preço absurdo (você nunca pagaria):</label><div class="price-input"><span>R$</span><input type="number" id="pAbsurdo" placeholder="0,00"></div>
+      <label>Um preço que seria uma pechincha:</label>
+      <div class="price-input"><span>R$</span><input type="number" id="pPechincha" placeholder="0,00"></div>
+      
+      <label>Um preço justo (nem caro, nem barato):</label>
+      <div class="price-input"><span>R$</span><input type="number" id="pBarato" placeholder="0,00"></div>
+      
+      <label>Um preço que começa a ficar caro:</label>
+      <div class="price-input"><span>R$</span><input type="number" id="pCaro" placeholder="0,00"></div>
+      
+      <label>Um preço absurdo (você nunca pagaria):</label>
+      <div class="price-input"><span>R$</span><input type="number" id="pAbsurdo" placeholder="0,00"></div>
     </div>
     <button class="main-btn" onclick="next(3)">Próximo</button>
   </div>
 
   <div id="step3" class="screen">
-    <h1>Recomendação</h1><p class="subtitle">De 0 a 10, qual a chance de recomendar esse recovery para um amigo?</p>
-    <div class="card"><div class="nota-grid" id="gridNps1" style="margin-bottom: 8px;"></div><div class="nota-grid" id="gridNps2"></div></div>
-    <button class="main-btn" onclick="enviar()">Finalizar Avaliação</button>
+    <h1>Recomendação</h1>
+    <p class="subtitle">De 0 a 10, qual a chance de você recomendar essa bota para um amigo?</p>
+    
+    <div class="card">
+      <div class="nota-grid" id="gridNps1" style="margin-bottom: 8px;"></div>
+      <div class="nota-grid" id="gridNps2"></div>
+    </div>
+    <button class="main-btn" id="btnEnviar" onclick="enviar()">Finalizar Avaliação</button>
   </div>
 
-  <div id="loading" class="screen"><div class="spinner"></div><p class="subtitle" style="margin-top:20px;">Salvando sua avaliação...</p></div>
-  <div id="sucesso" class="screen" style="text-align:center;"><h1 style="color:var(--green); font-size:48px;">✅</h1><h1>Obrigado!</h1><p class="subtitle">Seus dados são fundamentais para definirmos os planos no box.</p></div>
+  <div id="loading" class="screen">
+    <div class="spinner"></div>
+    <p class="subtitle">Salvando sua avaliação...</p>
+  </div>
+
+  <div id="sucesso" class="screen" style="text-align:center;">
+    <h1 style="color:var(--green);">✅</h1>
+    <h1>Obrigado!</h1>
+    <p class="subtitle">Seus dados são fundamentais para mantermos o projeto no box.</p>
+  </div>
 
 </div>
 
 <script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
-  
-  const urlParams = new URLSearchParams(window.location.search);
-  const tel = urlParams.get('tel');
+  const tel = "<?= telefone ?>";
+  let dorPos = null;
+  let nps = null;
 
-  if (!tel) {
-    alert("⚠️ Link de avaliação incompleto. Por favor, acesse através do link exato enviado no seu WhatsApp.");
-  }
-
-  let dorPos = null; let nps = null;
-
+  // Grids de Notas
   const createGrid = (id, start, end, callback) => {
     const g = document.getElementById(id);
     for(let i=start; i<=end; i++) {
@@ -117,28 +111,32 @@
     }
   };
 
-  createGrid('gridDorPos', 1, 10, (n, el) => { dorPos = n; document.querySelectorAll('#gridDorPos .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); });
-  createGrid('gridNps1', 0, 4, (n, el) => { nps = n; document.querySelectorAll('#step3 .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); });
-  createGrid('gridNps2', 5, 10, (n, el) => { nps = n; document.querySelectorAll('#step3 .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); });
+  createGrid('gridDorPos', 1, 10, (n, el) => { 
+    dorPos = n; document.querySelectorAll('#gridDorPos .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected');
+  });
+
+  createGrid('gridNps1', 0, 4, (n, el) => { 
+    nps = n; document.querySelectorAll('#step3 .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected');
+  });
+  createGrid('gridNps2', 5, 10, (n, el) => { 
+    nps = n; document.querySelectorAll('#step3 .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected');
+  });
 
   function next(s) {
     if(s===2 && !dorPos) return alert("Selecione como se sente.");
     if(s===3 && !document.getElementById('pBarato').value) return alert("Preencha os valores de percepção.");
     document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
-    setTimeout(() => { document.querySelectorAll('.screen').forEach(x=>x.style.display='none'); const t=document.getElementById('step'+s); t.style.display='block'; void t.offsetWidth; t.classList.add('active'); }, 410);
+    document.getElementById('step'+s).classList.add('active');
   }
 
   function enviar() {
-    if (!tel) {
-      return alert("Erro: Não foi possível identificar o seu usuário. O link parece estar incorreto.");
-    }
     if(nps === null) return alert("Selecione sua nota de recomendação.");
-    
     document.getElementById('step3').classList.remove('active');
-    setTimeout(() => { document.getElementById('step3').style.display='none'; const l=document.getElementById('loading'); l.style.display='block'; l.classList.add('active'); }, 410);
+    document.getElementById('loading').classList.add('active');
 
     const dados = {
-      telefone: tel, dorPos: dorPos,
+      telefone: tel,
+      dorPos: dorPos,
       dificuldade: document.getElementById('feedbackDificuldade').value,
       precoPechincha: document.getElementById('pPechincha').value,
       precoBarato: document.getElementById('pBarato').value,
@@ -147,17 +145,11 @@
       nps: nps
     };
 
-    fetch(API_URL, {
-      method: "POST",
-      body: JSON.stringify({ acao: "fase2", dados: dados })
-    })
-    .then(res => res.json())
-    .then(res => {
+    google.script.run.withSuccessHandler(res => {
       document.getElementById('loading').classList.remove('active');
-      document.getElementById('loading').style.display='none';
-      if(res.sucesso) { const s=document.getElementById('sucesso'); s.style.display='block'; s.classList.add('active'); }
+      if(res.sucesso) document.getElementById('sucesso').classList.add('active');
       else alert("Erro ao salvar: " + res.erro);
-    }).catch(() => { alert("Erro de comunicação."); location.reload(); });
+    }).processarFase2(dados);
   }
 </script>
 </body>
