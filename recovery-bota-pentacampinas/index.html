@@ -174,7 +174,7 @@
     <div class="instruction-card" style="align-items: flex-start; border: 1px solid rgba(255, 255, 255, 0.08);">
       <div class="step-badge" style="background-color: transparent; font-size: 20px;">💡</div>
       <div>
-        <p><span class="highlight-yellow">Em breve:</span> Você poderá configurar a pressão diretamente no equipamento.</p>
+        <p><span class="highlight-yellow">Em breve:</span> Você poderá configure a pressão diretamente no equipamento.</p>
         <div class="pressure-guide">
           <div class="pressure-line">🟢 <b>75 mmHg:</b> Drenagem linfática.</div>
           <div class="pressure-line">⭐ <b>110 mmHg:</b> Pressão <span class="highlight-green">ideal</span> recomendada.</div>
@@ -202,7 +202,7 @@
   <div id="sucesso" class="screen">
     <div style="text-align: center; margin-bottom: 24px;">
       <h1 style="color: var(--green);">Sessão Ativa</h1>
-      <div class="timer-display" id="timerAtivo">15:10</div>
+      <div class="timer-display" id="timerAtivo">15:00</div>
       <p class="subtitle" style="margin-bottom: 16px;">Configure o painel do equipamento agora:</p>
     </div>
 
@@ -242,6 +242,9 @@
 </div>
 
 <script>
+  // URL da API oficial fornecida para comunicação externa com o Google Apps Script
+  const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
+
   document.addEventListener("DOMContentLoaded", () => {
     const dadosSalvos = localStorage.getItem('botaUserData');
     if(dadosSalvos) {
@@ -251,14 +254,21 @@
       document.getElementById('email').value = u.email || "";
     }
 
-    google.script.run.withSuccessHandler((res) => {
-      if(res.ocupado) {
-        showScreen('ocupado');
-        iniciarCronometro(res.endTime, 'timerFila', true);
-      } else {
-        showScreen('tela1');
-      }
-    }).verificarStatusMaquina();
+    // Chamada externa via HTTP GET para verificar o status atual da máquina sem depender do ambiente nativo do Google
+    fetch(`${GOOGLE_WEB_APP_URL}?acao=status`)
+      .then(response => response.json())
+      .then(res => {
+        if(res.ocupado) {
+          showScreen('ocupado');
+          iniciarCronometro(res.endTime, 'timerFila', true);
+        } else {
+          showScreen('tela1');
+        }
+      })
+      .catch(erro => {
+        console.error("Erro na requisição de inicialização:", erro);
+        alert("Falha de conexão: Verifique se a sua API no Apps Script está publicada corretamente para 'Qualquer pessoa'.");
+      });
   });
 
   function showScreen(id) {
@@ -329,7 +339,20 @@
       dor: notaSelecionada
     };
 
-    google.script.run.withSuccessHandler((res) => {
+    const payload = {
+      acao: "fase1",
+      dados: dados
+    };
+
+    // Chamada externa via HTTP POST estruturada como text/plain para contornar bloqueio de CORS no redirecionamento do Google Script
+    fetch(GOOGLE_WEB_APP_URL, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(res => {
       if(res.sucesso) {
         showScreen('sucesso');
         iniciarCronometro(res.endTime, 'timerAtivo', false);
@@ -337,7 +360,11 @@
         alert(res.erro);
         location.reload(); 
       }
-    }).processarFase1(dados);
+    })
+    .catch(erro => {
+      alert("Erro ao processar ativação do equipamento: " + erro.message);
+      location.reload();
+    });
   }
 
   function iniciarCronometro(timestampFim, idTimer, autoReload) {
@@ -352,7 +379,6 @@
         if(autoReload) {
           setTimeout(() => location.reload(), 2000);
         } else {
-          google.script.run.desligarBotaSonoff();
           setTimeout(() => showScreen('pos-sessao'), 1500);
         }
         return;
