@@ -31,6 +31,41 @@
 
     .container { width: 100%; max-width: 400px; padding: 32px 24px; box-sizing: border-box; }
 
+    /* Componente de Duplo Branding Premium */
+    .brand-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+    .logo-separator {
+      width: 1px;
+      height: 32px;
+      background-color: var(--text-secondary);
+      opacity: 0.3;
+    }
+    .brand-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-secondary);
+    }
+
     h1 { font-weight: 700; font-size: 32px; letter-spacing: -1px; margin: 0 0 8px 0; text-align: center; }
     p.subtitle { font-size: 16px; color: var(--text-secondary); text-align: center; margin: 0 0 32px 0; line-height: 1.4; font-weight: 400; }
 
@@ -109,7 +144,7 @@
     .screen.active { display: block; opacity: 1; }
 
     /* Utilitários Visuais */
-    .center-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60vh; }
+    .center-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 50vh; }
     .timer-display { font-size: 64px; font-weight: 700; letter-spacing: -2px; text-align: center; color: var(--text-primary); margin: 16px 0 8px 0; font-variant-numeric: tabular-nums; }
     
     /* CSS Spinner */
@@ -124,6 +159,15 @@
 <body>
 
 <div class="container">
+  
+  <div class="brand-header">
+    <div class="logo-row">
+      <img src="https://i.postimg.cc/gJxRFMRF/image.png" alt="Penta Campinas" class="brand-logo">
+      <div class="logo-separator"></div>
+      <img src="https://i.postimg.cc/D0g7ChZh/image.png" alt="Ferrari Recovery" class="brand-logo">
+    </div>
+    <div class="brand-title">Penta Campinas &nbsp;•&nbsp; Ferrari Recovery</div>
+  </div>
   
   <div id="init" class="screen active center-content">
     <div class="spinner"></div>
@@ -174,7 +218,7 @@
     <div class="instruction-card" style="align-items: flex-start; border: 1px solid rgba(255, 255, 255, 0.08);">
       <div class="step-badge" style="background-color: transparent; font-size: 20px;">💡</div>
       <div>
-        <p><span class="highlight-yellow">Em breve:</span> Você poderá configure a pressão diretamente no equipamento.</p>
+        <p><span class="highlight-yellow">Em breve:</span> Você poderá configurar a pressão diretamente no equipamento.</p>
         <div class="pressure-guide">
           <div class="pressure-line">🟢 <b>75 mmHg:</b> Drenagem linfática.</div>
           <div class="pressure-line">⭐ <b>110 mmHg:</b> Pressão <span class="highlight-green">ideal</span> recomendada.</div>
@@ -242,7 +286,6 @@
 </div>
 
 <script>
-  // URL da API oficial fornecida para comunicação externa com o Google Apps Script
   const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -254,7 +297,6 @@
       document.getElementById('email').value = u.email || "";
     }
 
-    // Chamada externa via HTTP GET para verificar o status atual da máquina sem depender do ambiente nativo do Google
     fetch(`${GOOGLE_WEB_APP_URL}?acao=status`)
       .then(response => response.json())
       .then(res => {
@@ -344,7 +386,6 @@
       dados: dados
     };
 
-    // Chamada externa via HTTP POST estruturada como text/plain para contornar bloqueio de CORS no redirecionamento do Google Script
     fetch(GOOGLE_WEB_APP_URL, {
       method: "POST",
       mode: "cors",
