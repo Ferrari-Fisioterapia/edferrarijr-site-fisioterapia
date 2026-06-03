@@ -55,7 +55,7 @@
 
   <div id="step2" class="screen">
     <h1>Percepção de Valor</h1>
-    <p class="subtitle">Quanto você pagaria por uma sessão de 20 min?</p>
+    <p class="subtitle">Quanto você pagaria por uma sessão de 15 min?</p>
     
     <div class="card">
       <label>Um preço que seria uma pechincha:</label>
@@ -98,7 +98,13 @@
 </div>
 
 <script>
-  const tel = "<?= telefone ?>";
+  // URL oficial da API fornecida para comunicação externa com o Google Apps Script
+  const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
+
+  // MUDANÇA: Captura nativa do parâmetro "tel" direto da URL passada pelo WhatsApp
+  const urlParams = new URLSearchParams(window.location.search);
+  const tel = urlParams.get('tel') || "";
+
   let dorPos = null;
   let nps = null;
 
@@ -131,25 +137,51 @@
 
   function enviar() {
     if(nps === null) return alert("Selecione sua nota de recomendação.");
+    
+    // Trava de segurança para garantir o mapeamento da linha na planilha
+    if(!tel) {
+      return alert("Erro: Identificador de telefone ausente na URL. Não foi possível mapear seu feedback.");
+    }
+
     document.getElementById('step3').classList.remove('active');
     document.getElementById('loading').classList.add('active');
 
-    const dados = {
-      telefone: tel,
-      dorPos: dorPos,
-      dificuldade: document.getElementById('feedbackDificuldade').value,
-      precoPechincha: document.getElementById('pPechincha').value,
-      precoBarato: document.getElementById('pBarato').value,
-      precoCaro: document.getElementById('pCaro').value,
-      precoAbsurdo: document.getElementById('pAbsurdo').value,
-      nps: nps
+    const payload = {
+      acao: "fase2",
+      dados: {
+        telefone: tel,
+        dorPos: dorPos,
+        dificuldade: document.getElementById('feedbackDificuldade').value,
+        precoPechincha: document.getElementById('pPechincha').value,
+        precoBarato: document.getElementById('pBarato').value,
+        precoCaro: document.getElementById('pCaro').value,
+        precoAbsurdo: document.getElementById('pAbsurdo').value,
+        nps: nps
+      }
     };
 
-    google.script.run.withSuccessHandler(res => {
+    // MUDANÇA: Envio externo via Fetch API estruturado como text/plain para ignorar validações rígidas de CORS
+    fetch(GOOGLE_WEB_APP_URL, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(res => {
       document.getElementById('loading').classList.remove('active');
-      if(res.sucesso) document.getElementById('sucesso').classList.add('active');
-      else alert("Erro ao salvar: " + res.erro);
-    }).processarFase2(dados);
+      if(res.sucesso) {
+        document.getElementById('sucesso').classList.add('active');
+      } else {
+        alert("Erro ao salvar dados na planilha: " + res.erro);
+        document.getElementById('step3').classList.add('active');
+      }
+    })
+    .catch(erro => {
+      document.getElementById('loading').classList.remove('active');
+      document.getElementById('step3').classList.add('active');
+      alert("Falha crítica na comunicação com o banco de dados: " + erro.message);
+    });
   }
 </script>
 </body>
