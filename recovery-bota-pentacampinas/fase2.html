@@ -1,72 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <base target="_top">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <title>Ferrari Recovery - Feedback e Avaliação</title>
   <style>
-    /* Design System: Apple Pro Dark Mode */
-    :root { --bg: #000000; --surface: #1C1C1E; --text-primary: #FFFFFF; --text-secondary: #86868B; --accent: #FFFFFF; --green: #32D74B; }
-    body { font-family: -apple-system, sans-serif; background-color: var(--bg); color: var(--text-primary); margin: 0; padding: 20px; -webkit-font-smoothing: antialiased; }
-    .container { max-width: 400px; margin: 0 auto; padding-top: 20px; }
-    
+    /* Design System: Apple Pro Dark Mode (Unificado com a Fase 1) */
+    :root {
+      --bg: #000000;
+      --surface: #1C1C1E;
+      --text-primary: #FFFFFF;
+      --text-secondary: #86868B;
+      --accent: #FFFFFF;
+      --accent-text: #000000;
+      --yellow: #FFD60A;
+      --green: #32D74B;
+      --red: #FF453A;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      margin: 0; padding: 0;
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; -webkit-font-smoothing: antialiased;
+    }
+
+    .container { width: 100%; max-width: 400px; padding: 32px 24px; box-sizing: border-box; }
+
     /* Componente de Duplo Branding Premium */
-    .brand-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .logo-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 10px;
-    }
-    .brand-logo {
-      width: 64px;
-      height: 64px;
-      object-fit: contain;
-    }
-    .logo-separator {
-      width: 1px;
-      height: 32px;
-      background-color: var(--text-secondary);
-      opacity: 0.3;
-    }
-    .brand-title {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--text-secondary);
+    .brand-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 24px; }
+    .logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+    .brand-logo { width: 64px; height: 64px; object-fit: contain; }
+    .logo-separator { width: 1px; height: 32px; background-color: var(--text-secondary); opacity: 0.3; }
+    .brand-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary); }
+
+    h1 { font-size: 26px; font-weight: 700; letter-spacing: -1px; text-align: center; margin: 0 0 8px 0; }
+    .subtitle { font-size: 14px; color: var(--text-secondary); text-align: center; margin: 0 0 24px 0; line-height: 1.4; }
+    
+    /* Cards de Agrupamento */
+    .card { background-color: var(--surface); border-radius: 18px; padding: 20px; margin-bottom: 16px; box-sizing: border-box; }
+    label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 12px; color: #E5E5EA; }
+    
+    /* Inputs Monetários Customizados */
+    .price-input { display: flex; align-items: center; background: #2C2C2E; border-radius: 12px; padding: 0 16px; margin-bottom: 14px; border: 2px solid transparent; transition: border-color 0.2s ease; }
+    .price-input:focus-within { border-color: var(--text-secondary); }
+    .price-input span { color: var(--text-secondary); font-weight: bold; margin-right: 8px; font-size: 16px; }
+    .price-input input { background: transparent; border: none; padding: 16px 0; color: white; font-size: 16px; width: 100%; outline: none; }
+    
+    input[type="tel"] {
+      width: 100%; background-color: #2C2C2E; border: 2px solid transparent; border-radius: 12px;
+      color: var(--text-primary); padding: 16px; font-size: 16px; box-sizing: border-box; outline: none;
     }
 
-    h1 { font-size: 28px; font-weight: 700; letter-spacing: -1px; text-align: center; margin-bottom: 8px; }
-    .subtitle { font-size: 16px; color: var(--text-secondary); text-align: center; margin-bottom: 32px; line-height: 1.4; }
-    
-    .card { background-color: var(--surface); border-radius: 18px; padding: 20px; margin-bottom: 16px; }
-    label { display: block; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
-    
-    input[type="number"], input[type="text"] {
-      width: 100%; background: #2C2C2E; border: none; border-radius: 12px;
-      color: white; padding: 16px; font-size: 17px; box-sizing: border-box; margin-bottom: 8px;
-    }
-    .price-input { display: flex; align-items: center; background: #2C2C2E; border-radius: 12px; padding: 0 16px; margin-bottom: 12px; }
-    .price-input span { color: var(--text-secondary); font-weight: bold; margin-right: 8px; }
-    .price-input input { background: transparent; padding: 16px 0; margin-bottom: 0; }
+    /* Grids de Escala Numérica */
+    .nota-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .btn-nota { background-color: #2C2C2E; border-radius: 10px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+    .btn-nota.selected { background-color: white; color: black; transform: scale(1.05); font-weight: 700; }
 
-    .nota-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 10px; }
-    .btn-nota { background-color: #2C2C2E; border-radius: 10px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; cursor: pointer; }
-    .btn-nota.selected { background-color: white; color: black; }
+    /* Botões Alternadores Binários (Toggles) */
+    .toggle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+    .btn-toggle { background: #2C2C2E; padding: 16px; text-align: center; border-radius: 12px; font-weight: 600; cursor: pointer; font-size: 14px; transition: all 0.2s ease; }
+    .btn-toggle.active-yes { background: rgba(255, 69, 58, 0.15); border: 1px solid var(--red); color: var(--red); }
+    .btn-toggle.active-no { background: rgba(50, 215, 75, 0.15); border: 1px solid var(--green); color: var(--green); }
 
-    button.main-btn { width: 100%; padding: 20px; background-color: white; color: black; border: none; border-radius: 100px; font-size: 17px; font-weight: 600; cursor: pointer; margin-top: 10px; }
-    .screen { display: none; opacity: 0; }
-    .screen.active { display: block; opacity: 1; transition: opacity 0.4s ease; }
+    /* Botões Principais de Ação */
+    button.main-btn { width: 100%; padding: 18px; background-color: white; color: black; border: none; border-radius: 100px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: transform 0.15s ease; }
+    button.main-btn:active { transform: scale(0.97); }
     
-    .spinner { width: 30px; height: 30px; border: 3px solid rgba(255,255,255,0.1); border-radius: 50%; border-top-color: white; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+    /* Controle de Telas e Animações */
+    .screen { display: none; }
+    .screen.active { display: block; }
+    
+    .spinner { width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.1); border-radius: 50%; border-top-color: white; animation: spin 1s linear infinite; margin: 30px auto 16px; }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
@@ -76,124 +83,170 @@
   
   <div class="brand-header">
     <div class="logo-row">
-      <img src="https://i.postimg.cc/gJxRFMRF/image.png" alt="Penta Campinas" class="brand-logo">
+      <img src="https://i.postimg.cc/gJxRFMRF/image.png" alt="Penta" class="brand-logo">
       <div class="logo-separator"></div>
-      <img src="https://i.postimg.cc/D0g7ChZh/image.png" alt="Ferrari Recovery" class="brand-logo">
+      <img src="https://i.postimg.cc/D0g7ChZh/image.png" alt="Ferrari" class="brand-logo">
     </div>
     <div class="brand-title">Penta Campinas &nbsp;•&nbsp; Ferrari Recovery</div>
   </div>
+
+  <div id="error-param" class="screen" style="text-align: center;">
+    <h1 style="color:var(--red);">Identificador Ausente</h1>
+    <p class="subtitle">Não localizamos seu cadastro automaticamente. Digite seu número de WhatsApp para validar as respostas:</p>
+    <div class="card" style="background: var(--surface);">
+      <input type="tel" id="backupTel" placeholder="Ex: 19999999999">
+    </div>
+    <button class="main-btn" onclick="salvarParametroContingencia()">Acessar Pesquisa de Feedback</button>
+  </div>
   
-  <div id="step1" class="screen active">
-    <h1>Como se sente?</h1>
-    <p class="subtitle">Sua sessão terminou. Como estão suas pernas agora?</p>
+  <div id="step1" class="screen">
+    <h1>Resultado Clínico</h1>
+    <p class="subtitle">Sua sessão de 15 minutos foi encerrada. Como estão suas pernas agora?</p>
     
     <div class="card">
-      <label>Nível de dor/cansaço (1 a 10):</label>
+      <label>Nível de dor/cansaço remanescente (1 a 10):</label>
       <div class="nota-grid" id="gridDorPos"></div>
     </div>
 
     <div class="card">
-      <label>Teve dificuldade para ligar a bota?</label>
-      <input type="text" id="feedbackDificuldade" placeholder="Ex: Não, foi super fácil.">
+      <label>Teve alguma dificuldade para manusear ou ligar o equipamento físico?</label>
+      <div class="toggle-row">
+        <div class="btn-toggle" id="t-yes" onclick="setDificuldade(true)">Sim, tive</div>
+        <div class="btn-toggle" id="t-no" onclick="setDificuldade(false)">Não, foi simples</div>
+      </div>
+      <textarea id="txtDificuldade" placeholder="Descreva brevemente o problema (Ex: Zíper travando, encaixe da mangueira duro, confusão com as letras)..." style="width:100%; height: 70px; background:#2C2C2E; border:none; border-radius:10px; padding:12px; color:white; margin-top:12px; display:none; box-sizing: border-box; font-family: sans-serif; resize: none; font-size: 14px; outline: none;"></textarea>
     </div>
-    <button class="main-btn" onclick="next(2)">Continuar</button>
+    <button class="main-btn" onclick="irParaStep2()">Continuar</button>
   </div>
 
   <div id="step2" class="screen">
     <h1>Percepção de Valor</h1>
-    <p class="subtitle">Quanto você pagaria por uma sessão de 15 min?</p>
-    
+    <p class="subtitle">Ajude-nos a calibrar a viabilidade comercial deste equipamento no box.</p>
     <div class="card">
-      <label>Um preço que seria uma pechincha:</label>
-      <div class="price-input"><span>R$</span><input type="number" id="pPechincha" placeholder="0,00"></div>
+      <label>Um preço por sessão que seria uma pechincha:</label>
+      <div class="price-input"><span>R$</span><input type="number" id="pPechincha" placeholder="00" min="1"></div>
       
       <label>Um preço justo (nem caro, nem barato):</label>
-      <div class="price-input"><span>R$</span><input type="number" id="pBarato" placeholder="0,00"></div>
+      <div class="price-input"><span>R$</span><input type="number" id="pBarato" placeholder="00" min="1"></div>
       
       <label>Um preço que começa a ficar caro:</label>
-      <div class="price-input"><span>R$</span><input type="number" id="pCaro" placeholder="0,00"></div>
+      <div class="price-input"><span>R$</span><input type="number" id="pCaro" placeholder="00" min="1"></div>
       
       <label>Um preço absurdo (você nunca pagaria):</label>
-      <div class="price-input"><span>R$</span><input type="number" id="pAbsurdo" placeholder="0,00"></div>
+      <div class="price-input"><span>R$</span><input type="number" id="pAbsurdo" placeholder="00" min="1"></div>
     </div>
-    <button class="main-btn" onclick="next(3)">Próximo</button>
+    <button class="main-btn" onclick="irParaStep3()">Avançar para Recomendação</button>
   </div>
 
   <div id="step3" class="screen">
     <h1>Recomendação</h1>
-    <p class="subtitle">De 0 a 10, qual a chance de você recomendar essa bota para um amigo?</p>
-    
+    <p class="subtitle">Qual a probabilidade de você indicar este recovery para um parceiro de treino?</p>
     <div class="card">
-      <div class="nota-grid" id="gridNps1" style="margin-bottom: 8px;"></div>
-      <div class="nota-grid" id="gridNps2"></div>
+      <div class="nota-grid" id="gridNps1" style="grid-template-columns: repeat(6, 1fr);"></div>
+      <div class="nota-grid" id="gridNps2" style="grid-template-columns: repeat(5, 1fr); margin-top:10px;"></div>
     </div>
-    <button class="main-btn" id="btnEnviar" onclick="enviar()">Finalizar Avaliação</button>
+    <button class="main-btn" onclick="enviarDadosFinais()">Finalizar e Enviar Feedback</button>
   </div>
 
-  <div id="loading" class="screen">
-    <div class="spinner"></div>
-    <p class="subtitle">Salvando sua avaliação...</p>
-  </div>
-
-  <div id="sucesso" class="screen" style="text-align:center;">
-    <h1 style="color:var(--green);">✅</h1>
-    <h1>Obrigado!</h1>
-    <p class="subtitle">Seus dados são fundamentais para mantermos o projeto no box.</p>
-  </div>
+  <div id="loading" class="screen" style="text-align: center;"><div class="spinner"></div><p class="subtitle">Processando inteligência de mercado...</p></div>
+  <div id="sucesso" class="screen" style="text-align:center;"><h1 style="color:var(--green); font-size: 48px; margin-bottom: 10px;">✅</h1><h1>Obrigado!</h1><p class="subtitle">Seus dados foram consolidados no banco de dados. Bom treino!</p></div>
 
 </div>
 
 <script>
-  const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
+  const GOOGLE_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
+  const params = new URLSearchParams(window.location.search);
+  let tel = params.get('tel') || "";
+  let dorPos = null, nps = null, teveDificuldade = null;
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const tel = urlParams.get('tel') || "";
-
-  let dorPos = null;
-  let nps = null;
-
-  const createGrid = (id, start, end, callback) => {
-    const g = document.getElementById(id);
-    for(let i=start; i<=end; i++) {
-      let b = document.createElement('div'); b.className='btn-nota'; b.innerText=i;
-      b.onclick = () => { callback(i, b); }; g.appendChild(b);
+  window.onload = () => {
+    // Validação estrutural de segurança imediata
+    if(!tel) { 
+      document.getElementById('error-param').classList.add('active'); 
+    } else { 
+      inicializarFormulario(); 
     }
   };
 
-  createGrid('gridDorPos', 1, 10, (n, el) => { 
-    dorPos = n; document.querySelectorAll('#gridDorPos .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected');
-  });
-
-  createGrid('gridNps1', 0, 4, (n, el) => { 
-    nps = n; document.querySelectorAll('#step3 .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected');
-  });
-  createGrid('gridNps2', 5, 10, (n, el) => { 
-    nps = n; document.querySelectorAll('#step3 .btn-nota').forEach(x=>x.classList.remove('selected')); el.classList.add('selected');
-  });
-
-  function next(s) {
-    if(s===2 && !dorPos) return alert("Selecione como se sente.");
-    if(s===3 && !document.getElementById('pBarato').value) return alert("Preencha os valores de percepção.");
-    document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
-    document.getElementById('step'+s).classList.add('active');
+  function salvarParametroContingencia() {
+    let raw = document.getElementById('backupTel').value.replace(/\D/g, '');
+    if(raw.length < 10) return alert("Insira um número de telefone válido com DDD.");
+    tel = raw;
+    document.getElementById('error-param').classList.remove('active');
+    inicializarFormulario();
   }
 
-  function enviar() {
-    if(nps === null) return alert("Selecione sua nota de recomendação.");
-    
-    if(!tel) {
-      return alert("Erro: Identificador de telefone ausente na URL. Não foi possível mapear seu feedback.");
+  function inicializarFormulario() {
+    document.getElementById('step1').classList.add('active');
+    montarGrids();
+  }
+
+  function montarGrids() {
+    const gDor = document.getElementById('gridDorPos');
+    for(let i=1; i<=10; i++) {
+      let b = document.createElement('div'); b.className='btn-nota'; b.innerText=i;
+      b.onclick = () => { dorPos=i; limpaGrid('#gridDorPos'); b.classList.add('selected'); }; gDor.appendChild(b);
     }
+    const gN1 = document.getElementById('gridNps1');
+    for(let i=0; i<=5; i++) {
+      let b = document.createElement('div'); b.className='btn-nota'; b.innerText=i;
+      b.onclick = () => { nps=i; limpaGrid('#step3'); b.classList.add('selected'); }; gN1.appendChild(b);
+    }
+    const gN2 = document.getElementById('gridNps2');
+    for(let i=6; i<=10; i++) {
+      let b = document.createElement('div'); b.className='btn-nota'; b.innerText=i;
+      b.onclick = () => { nps=i; limpaGrid('#step3'); b.classList.add('selected'); }; gN2.appendChild(b);
+    }
+  }
 
-    document.getElementById('step3').classList.remove('active');
-    document.getElementById('loading').classList.add('active');
+  function limpaGrid(seletor) { document.querySelectorAll(`${seletor} .btn-nota`).forEach(x=>x.classList.remove('selected')); }
 
+  function setDificuldade(val) {
+    teveDificuldade = val;
+    document.getElementById('t-yes').className = 'btn-toggle' + (val ? ' active-yes' : '');
+    document.getElementById('t-no').className = 'btn-toggle' + (!val ? ' active-no' : '');
+    document.getElementById('txtDificuldade').style.display = val ? 'block' : 'none';
+  }
+
+  function irParaStep2() {
+    if(!dorPos || teveDificuldade === null) return alert("Por favor, preencha todos os campos avaliativos antes de prosseguir.");
+    trocaTela('step1', 'step2');
+  }
+
+  function irParaStep3() {
+    let pechincha = parseFloat(document.getElementById('pPechincha').value) || 0;
+    let barato = parseFloat(document.getElementById('pBarato').value) || 0;
+    let caro = parseFloat(document.getElementById('pCaro').value) || 0;
+    let absurdo = parseFloat(document.getElementById('pAbsurdo').value) || 0;
+
+    if(!pechincha || !barato || !caro || !absurdo) return alert("Todos os quatro campos monetários precisam ser preenchidos.");
+    
+    // TRAVA MATEMÁTICA RÍGIDA CONTRA DADOS CORROMPIDOS (VAN WESTENDORP LÓGICO)
+    if (!(pechincha < barato && barato <= caro && caro < absurdo)) {
+      return alert("Inconsistência Lógica de Valores!\nA regra de precificação exige que:\nPechincha < Preço Justo ≤ Começa a ficar Caro < Absurdo de Caro");
+    }
+    trocaTela('step2', 'step3');
+  }
+
+  function trocaTela(outId, inId) {
+    document.getElementById(outId).classList.remove('active');
+    document.getElementById(inId).classList.add('active');
+  }
+
+  function enviarDadosFinais() {
+    if(nps === null) return alert("Selecione sua nota de recomendação antes de encerrar.");
+    
+    trocaTela('step3', 'loading');
+    
+    let stringDificuldade = teveDificuldade ? "Sim: " + document.getElementById('txtDificuldade').value.trim() : "Não, sem dificuldades";
+
+    // Estrutura perfeitamente alinhada com as colunas do processarFase2 no Back-End
     const payload = {
       acao: "fase2",
       dados: {
         telefone: tel,
         dorPos: dorPos,
-        dificuldade: document.getElementById('feedbackDificuldade').value,
+        dificuldade: stringDificuldade,
         precoPechincha: document.getElementById('pPechincha').value,
         precoBarato: document.getElementById('pBarato').value,
         precoCaro: document.getElementById('pCaro').value,
@@ -202,26 +255,24 @@
       }
     };
 
-    fetch(GOOGLE_WEB_APP_URL, {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
+    fetch(GOOGLE_URL, { 
+      method: "POST", 
+      body: JSON.stringify(payload) 
     })
-    .then(response => response.json())
+    .then(r => r.json())
     .then(res => {
       document.getElementById('loading').classList.remove('active');
       if(res.sucesso) {
         document.getElementById('sucesso').classList.add('active');
-      } else {
-        alert("Erro ao salvar dados na planilha: " + res.erro);
-        document.getElementById('step3').classList.add('active');
+      } else { 
+        alert(res.erro); 
+        document.getElementById('step3').classList.add('active'); 
       }
     })
     .catch(erro => {
       document.getElementById('loading').classList.remove('active');
       document.getElementById('step3').classList.add('active');
-      alert("Falha crítica na comunicação com o banco de dados: " + erro.message);
+      alert("Falha crítica de comunicação na nuvem: " + erro.message);
     });
   }
 </script>
