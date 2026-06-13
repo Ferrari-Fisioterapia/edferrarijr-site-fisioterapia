@@ -14,105 +14,146 @@
       --accent-text: #000000;
       --yellow: #FFD60A;
       --green: #32D74B;
-      --red: #FF453A;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg);
       color: var(--text-primary);
-      margin: 0; padding: 0;
-      display: flex; justify-content: center; align-items: center;
-      min-height: 100vh; -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container { width: 100%; max-width: 400px; padding: 32px 24px; box-sizing: border-box; }
 
     /* Componente de Duplo Branding Premium */
-    .brand-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 24px; }
-    .logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
-    .brand-logo { width: 64px; height: 64px; object-fit: contain; }
-    .logo-separator { width: 1px; height: 32px; background-color: var(--text-secondary); opacity: 0.3; }
-    .brand-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary); }
+    .brand-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+    .logo-separator {
+      width: 1px;
+      height: 32px;
+      background-color: var(--text-secondary);
+      opacity: 0.3;
+    }
+    .brand-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-secondary);
+    }
 
-    h1 { font-weight: 700; font-size: 28px; letter-spacing: -1px; margin: 0 0 8px 0; text-align: center; }
-    p.subtitle { font-size: 14px; color: var(--text-secondary); text-align: center; margin: 0 0 28px 0; line-height: 1.4; }
+    h1 { font-weight: 700; font-size: 32px; letter-spacing: -1px; margin: 0 0 8px 0; text-align: center; }
+    p.subtitle { font-size: 16px; color: var(--text-secondary); text-align: center; margin: 0 0 32px 0; line-height: 1.4; font-weight: 400; }
 
-    /* Inputs Modernos */
+    /* Inputs Premium */
     .input-group { margin-bottom: 16px; }
     input[type="text"], input[type="tel"], input[type="email"] {
-      width: 100%; background-color: var(--surface); border: 2px solid transparent; border-radius: 14px;
-      color: var(--text-primary); padding: 18px 16px; font-size: 16px; box-sizing: border-box;
-      transition: all 0.2s ease;
+      width: 100%; background-color: var(--surface); border: none; border-radius: 14px;
+      color: var(--text-primary); padding: 20px 16px; font-size: 17px; box-sizing: border-box;
+      transition: background-color 0.2s ease;
     }
-    input:focus { outline: none; border-color: var(--text-secondary); background-color: #2C2C2E; }
+    input::placeholder { color: #636366; }
+    input:focus { outline: none; background-color: #2C2C2E; }
 
-    /* Botões Interativos */
+    /* Botões */
     button {
-      width: 100%; padding: 18px; background-color: var(--accent); color: var(--accent-text);
-      border: none; border-radius: 100px; font-size: 16px; font-weight: 600;
-      cursor: pointer; transition: transform 0.15s ease; margin-top: 16px;
+      width: 100%; padding: 20px; background-color: var(--accent); color: var(--accent-text);
+      border: none; border-radius: 100px; font-size: 17px; font-weight: 600; letter-spacing: -0.4px;
+      cursor: pointer; transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); margin-top: 16px;
     }
-    button:active { transform: scale(0.97); }
+    button:active { transform: scale(0.96); }
     button:disabled { background-color: #333333; color: #666666; cursor: not-allowed; }
-    .btn-secondary { background-color: var(--surface); color: var(--text-primary); margin-top: 12px; }
+    
+    .btn-secondary { background-color: var(--surface); color: var(--text-primary); margin-top: 24px; }
 
-    /* Grid do Painel de Dor */
-    .nota-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
+    /* Grid de Notas */
+    .nota-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 32px; }
     .btn-nota {
-      background-color: var(--surface); border-radius: 12px; aspect-ratio: 1;
-      display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 600;
-      cursor: pointer; transition: all 0.2s ease;
+      background-color: var(--surface); border-radius: 14px; aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500;
+      color: var(--text-primary); cursor: pointer; transition: all 0.2s ease; user-select: none;
     }
-    .btn-nota.selecionado { background-color: var(--text-primary); color: var(--bg); transform: scale(1.05); }
+    .btn-nota.selecionado { background-color: var(--text-primary); color: var(--bg); font-weight: 700; transform: scale(1.05); }
 
-    /* Cards de Instrução */
+    /* Estilos de Instruções e Checkbox */
     .instruction-card {
       background-color: var(--surface); border-radius: 16px; padding: 16px;
       margin-bottom: 12px; display: flex; align-items: center; text-align: left;
     }
     .step-badge {
-      background-color: #333333; color: var(--text-primary); width: 28px; height: 28px;
+      background-color: #333333; color: var(--text-primary); width: 32px; height: 32px;
       border-radius: 50%; display: flex; justify-content: center; align-items: center;
-      font-weight: 700; font-size: 14px; margin-right: 14px; flex-shrink: 0;
+      font-weight: 700; font-size: 15px; margin-right: 16px; flex-shrink: 0;
     }
-    .instruction-card p { margin: 0; font-size: 14px; color: #E5E5EA; line-height: 1.4; }
-
-    /* Caixa de Sugestão de Modos */
-    .recommendation-box {
-      background: rgba(50, 215, 75, 0.1); border: 1px solid rgba(50, 215, 75, 0.2);
-      border-radius: 14px; padding: 14px; margin-bottom: 20px; text-align: center;
-    }
-
-    /* Itens de Validação de Hardware */
-    .checklist-item {
-      display: flex; align-items: center; background: var(--surface); 
-      padding: 14px 16px; border-radius: 14px; margin-bottom: 8px; cursor: pointer;
-    }
-    .checklist-item input { margin-right: 12px; width: 20px; height: 20px; accent-color: var(--green); }
-    .checklist-item span { font-size: 14px; font-weight: 500; line-height: 1.3; }
-
-    /* Termo de Consentimento ANVISA */
-    .scroll-box {
-      background: #1C1C1E; border-radius: 14px; padding: 14px; 
-      max-height: 120px; overflow-y: scroll; font-size: 12px; 
-      color: var(--text-secondary); text-align: left; margin-bottom: 12px;
-      border: 1px solid rgba(255, 69, 58, 0.2);
-    }
-
-    /* Controle de Visibilidade de Telas */
-    .screen { display: none; }
-    .screen.active { display: block; }
-    .center-content { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 40vh; }
+    .instruction-card p { margin: 0; font-size: 15px; color: #E5E5EA; line-height: 1.4; }
+    .highlight-yellow { color: var(--yellow); font-weight: 600; }
+    .highlight-green { color: var(--green); font-weight: 600; }
     
-    /* Indicador Spinner */
+    .pressure-guide {
+      font-size: 13px; color: var(--text-secondary); margin-top: 10px; 
+      line-height: 1.5; padding-left: 2px; border-left: 1px solid #3a3a3c; margin-left: 2px;
+    }
+    .pressure-line { margin-bottom: 4px; }
+    .pressure-line b { color: #E5E5EA; }
+
+    .checkbox-container {
+      background-color: rgba(255, 214, 10, 0.08); 
+      border: 1px solid rgba(255, 214, 10, 0.2);
+      border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; align-items: center;
+      cursor: pointer; transition: all 0.25s ease;
+    }
+    .checkbox-container input[type="checkbox"] {
+      width: 24px; height: 24px; margin: 0 16px 0 0; accent-color: var(--yellow); cursor: pointer; flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+    .checkbox-container span { color: var(--yellow); font-size: 14px; font-weight: 600; line-height: 1.3; transition: color 0.25s ease; }
+
+    .checkbox-container.checked-active {
+      background-color: rgba(50, 215, 75, 0.08);
+      border-color: rgba(50, 215, 75, 0.3);
+    }
+    .checkbox-container.checked-active input[type="checkbox"] { accent-color: var(--green); }
+    .checkbox-container.checked-active span { color: var(--green); }
+
+    /* Controle de Telas */
+    .screen { display: none; opacity: 0; transition: opacity 0.4s ease; }
+    .screen.active { display: block; opacity: 1; }
+
+    /* Utilitários Visuais */
+    .center-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 50vh; }
+    .timer-display { font-size: 64px; font-weight: 700; letter-spacing: -2px; text-align: center; color: var(--text-primary); margin: 16px 0 8px 0; font-variant-numeric: tabular-nums; }
+    
+    /* CSS Spinner */
     .spinner {
       width: 36px; height: 36px; border: 3px solid rgba(255, 255, 255, 0.1);
       border-radius: 50%; border-top-color: var(--text-primary);
-      animation: spin 1s linear infinite; margin-bottom: 16px;
+      animation: spin 1s linear infinite; margin-bottom: 24px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .timer-display { font-size: 54px; font-weight: 700; text-align: center; margin: 16px 0; font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body>
@@ -121,316 +162,327 @@
   
   <div class="brand-header">
     <div class="logo-row">
-      <img src="https://i.postimg.cc/gJxRFMRF/image.png" alt="Penta" class="brand-logo">
+      <img src="https://i.postimg.cc/gJxRFMRF/image.png" alt="Penta Campinas" class="brand-logo">
       <div class="logo-separator"></div>
-      <img src="https://i.postimg.cc/D0g7ChZh/image.png" alt="Ferrari" class="brand-logo">
+      <img src="https://i.postimg.cc/D0g7ChZh/image.png" alt="Ferrari Recovery" class="brand-logo">
     </div>
     <div class="brand-title">Penta Campinas &nbsp;•&nbsp; Ferrari Recovery</div>
   </div>
-
+  
   <div id="init" class="screen active center-content">
     <div class="spinner"></div>
-    <p class="subtitle">Verificando status do hardware AVABoots...</p>
+    <p class="subtitle" style="margin:0;">Estabelecendo conexão segura...</p>
   </div>
 
-  <div id="ocupado" class="screen center-content">
-    <div class="spinner" style="border-top-color: var(--red);"></div>
-    <h1>Estação Ocupada</h1>
-    <p class="subtitle">Aguarde a liberação do circuito pneumático.</p>
-    <div class="timer-display" id="timerFila" style="color: var(--red);">00:00</div>
-    <button class="btn-secondary" onclick="location.reload()">Atualizar Status</button>
+  <div id="ocupado" class="screen">
+    <div class="center-content">
+      <div class="spinner" style="border-top-color: #FF453A; border-color: rgba(255, 69, 58, 0.2);"></div>
+      <h1>Em Uso</h1>
+      <p class="subtitle">O equipamento está ocupado no momento.</p>
+      <div class="timer-display" id="timerFila">00:00</div>
+      <button class="btn-secondary" onclick="location.reload()">Atualizar Status</button>
+    </div>
   </div>
 
   <div id="tela1" class="screen">
-    <h1>Liberação</h1>
-    <p class="subtitle">Insira seus dados para autenticar a sessão gratuita.</p>
-    <div class="input-group"><input type="text" id="nome" placeholder="Nome Completo"></div>
-    <div class="input-group"><input type="tel" id="telefone" placeholder="WhatsApp (com DDD)"></div>
-    <div class="input-group"><input type="email" id="email" placeholder="E-mail"></div>
-    <button id="btnSolicitarOtp" onclick="solicitarCodigoOtp()">Avançar para Verificação</button>
+    <h1>Recuperação</h1>
+    <p class="subtitle">Insira seus dados para liberar sua sessão.</p>
+    <div class="input-group">
+      <input type="text" id="nome" placeholder="Nome Completo" autocomplete="name">
+    </div>
+    <div class="input-group">
+      <input type="tel" id="telefone" placeholder="WhatsApp (com DDD)" autocomplete="tel">
+    </div>
+    <div class="input-group">
+      <input type="email" id="email" placeholder="E-mail" autocomplete="email">
+    </div>
+    <button onclick="irParaTela2()">Continuar</button>
   </div>
 
   <div id="telaOtp" class="screen">
-    <h1>Token de Acesso</h1>
-    <p class="subtitle">Código de 6 dígitos enviado para o e-mail informado.</p>
+    <h1>Verifique seu E-mail</h1>
+    <p class="subtitle">Enviamos um código de 6 dígitos para o e-mail informado. Insira-o abaixo para validar seu acesso.</p>
     <div class="input-group">
       <input type="text" id="codigoOtpInput" placeholder="000000" inputmode="numeric" maxlength="6" style="text-align: center; letter-spacing: 6px; font-weight: bold; font-size: 24px;">
     </div>
-    <button id="btnValidarOtp" onclick="validarCodigoServidor()">Validar Acesso</button>
-    <button class="btn-secondary" onclick="showScreen('tela1')">Corrigir Dados</button>
-  </div>
-
-  <div id="telaTermo" class="screen">
-    <h1>Termo de Aptidão</h1>
-    <p class="subtitle">Por ser um dispositivo médico ativo, confirme que você está apto para o uso.</p>
-    <div class="scroll-box">
-      <b>CONTRAINDICAÇÕES ABSOLUTAS:</b><br>
-      Este sistema NÃO deve ser utilizado se você possuir: Edema pulmonar agudo, Hipertensão descontrolada, Erisipela, Tromboflebite aguda, Insuficiência cardíaca aguda, Infecções locais agudas, Trombose Venosa Profunda (TVP), Episódios de embolia pulmonar, Feridas abertas ou pontos cirúrgicos nas pernas, Neuropatia periférica, Obstrução linfática ou fraturas ósseas recentes nos membros inferiores.
-    </div>
-    <div class="checklist-item" onclick="toggleCheck('cTermo')">
-      <input type="checkbox" id="cTermo" onclick="event.stopPropagation(); avaliarTermo();">
-      <span>Declaro que li as restrições e não possuo nenhuma das contraindicações descritas acima.</span>
-    </div>
-    <button id="btnAvancarTermo" onclick="irParaTela2()" disabled>Confirmar e Prosseguir</button>
+    <button onclick="verificarCodigoLocal()">Validar Código</button>
+    <button class="btn-secondary" onclick="showScreen('tela1')" style="margin-top: 12px; padding: 14px;">Voltar / Corrigir E-mail</button>
   </div>
 
   <div id="tela2" class="screen">
-    <h1>Cansaço Muscular</h1>
-    <p class="subtitle">De 1 a 10, qual o seu nível de dor/fadiga nas pernas neste exato momento?</p>
+    <h1>Avaliação</h1>
+    <p class="subtitle">De 1 a 10, qual o seu nível de cansaço muscular <b>neste momento</b>?</p>
     <div class="nota-grid" id="gridNotas"></div>
-    
-    <div id="boxRecomendacao" class="recommendation-box" style="display: none;">
-      <span style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold;">Calibragem Recomendada pelo Sistema</span>
-      <h3 id="txtModoSugerido" style="margin: 6px 0 0 0; color: var(--green); font-size: 18px;">-</h3>
-    </div>
-
-    <button id="btnAvancarTela3" onclick="showScreen('tela3')" disabled>Configurar Equipamento</button>
+    <button id="btnAvancar" onclick="showScreen('tela3')" disabled>Avançar</button>
   </div>
 
   <div id="tela3" class="screen">
-    <h1>Preparação Física</h1>
-    <p class="subtitle">Realize os ajustes mecânicos indispensáveis abaixo:</p>
+    <h1>Preparação</h1>
+    <p class="subtitle">Siga os passos rigorosamente antes de ativar o sistema.</p>
     
-    <div class="checklist-item" onclick="toggleCheck('c1')">
-      <input type="checkbox" id="c1" onclick="event.stopPropagation(); verificarChecklist();">
-      <span>Vesti as botas o mais alto possível e puxei o zíper <b style="color:var(--yellow)">até o final</b>.</span>
+    <div class="instruction-card">
+      <div class="step-badge">1</div>
+      <p>Sente-se, vista as botas e certifique-se de fechar o zíper <b style="color:white">até o final</b>.</p>
     </div>
-    <div class="checklist-item" onclick="toggleCheck('c2')">
-      <input type="checkbox" id="c2" onclick="event.stopPropagation(); verificarChecklist();">
-      <span>Certifiquei que <b style="color:var(--green)">apenas as pontas dos meus pés</b> estão para fora da bota.</span>
+    
+    <div class="instruction-card" style="align-items: flex-start; border: 1px solid rgba(255, 255, 255, 0.08);">
+      <div class="step-badge" style="background-color: transparent; font-size: 20px;">💡</div>
+      <div>
+        <p><span class="highlight-yellow">Em breve:</span> Você poderá configurar a pressão diretamente no equipamento.</p>
+        <div class="pressure-guide">
+          <div class="pressure-line">🟢 <b>75 mmHg:</b> Drenagem linfática.</div>
+          <div class="pressure-line">⭐ <b>110 mmHg:</b> Pressão <span class="highlight-green">ideal</span> recomendada.</div>
+          <div class="pressure-line">⚠️ <b>140 mmHg*:</b> Recuperação forte. *Pode gerar um leve formigamento.</div>
+        </div>
+      </div>
     </div>
-    <div class="checklist-item" onclick="toggleCheck('c3')">
-      <input type="checkbox" id="c3" onclick="event.stopPropagation(); verificarChecklist();">
-      <span>Conectei as mangueiras alinhando as <b style="color:var(--yellow)">setas cinza com cinza e verde com verde</b>.</span>
-    </div>
-
-    <button id="btnAtivarHardware" onclick="dispararAtivacaoFinal()" disabled style="background-color: var(--green); color: black;">Liberar Energia da Estação ⚡</button>
+    
+    <label class="checkbox-container" id="wrapper-checkbox">
+      <input type="checkbox" id="check-tomada" onchange="atualizarEstiloCheckbox(this)">
+      <span>Confirmo que a estação de recovery está devidamente montada e conectada a tomada.</span>
+    </label>
+    
+    <button onclick="enviarDados()" style="background-color: var(--accent); color: var(--accent-text);">Liberar o Recovery ⚡</button>
   </div>
 
-  <div id="loading" class="screen center-content">
-    <div class="spinner"></div>
-    <h1 id="txtLoading">Conectando...</h1>
+  <div id="loading" class="screen">
+    <div class="center-content">
+      <div class="spinner"></div>
+      <h1>Processando</h1>
+      <p class="subtitle">Aguarde a resposta da central de comando...</p>
+    </div>
   </div>
-
+  
   <div id="sucesso" class="screen">
-    <div style="text-align: center; margin-bottom: 20px;">
-      <h1 style="color: var(--green);">Estação Liberada!</h1>
+    <div style="text-align: center; margin-bottom: 24px;">
+      <h1 style="color: var(--green);">Sessão Ativa</h1>
       <div class="timer-display" id="timerAtivo">15:00</div>
-      <p class="subtitle" style="margin-bottom: 10px;">Siga as etapas abaixo no painel da máquina em sequência:</p>
+      <p class="subtitle" style="margin-bottom: 16px;">Configure o painel do equipamento agora:</p>
     </div>
 
-    <div class="instruction-card" style="border-left: 4px solid var(--yellow);">
-      <div class="step-badge" style="background: var(--yellow); color: black;">1</div>
-      <div>
-        <p style="font-weight: 700; color: #FFFFFF;">Ligue a Chave Geral</p>
-        <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Bata a chave preta localizada na parte de trás da Central de Controle.</p>
-      </div>
+    <div class="instruction-card">
+      <div class="step-badge" style="color: var(--yellow); border: 1px solid var(--yellow);">1</div>
+      <p>Pressione o botão <span class="highlight-yellow">LIGAR</span> no aparelho.</p>
     </div>
-
-    <div class="instruction-card" style="border-left: 4px solid var(--yellow);">
-      <div class="step-badge" style="background: var(--yellow); color: black;">2</div>
-      <div>
-        <p style="font-weight: 700; color: #FFFFFF;">Inicie o Painel Frontal</p>
-        <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Pressione o botão redondo <b style="color: var(--yellow);">ON/OFF</b> e segure por 2 segundos até o painel acender.</p>
-      </div>
+    <div class="instruction-card">
+      <div class="step-badge" style="color: var(--yellow); border: 1px solid var(--yellow);">2</div>
+      <p>Selecione o modo pressionando a <span class="highlight-yellow">letra B</span>.</p>
     </div>
-
-    <div class="instruction-card" style="border-left: 4px solid var(--green);">
-      <div class="step-badge" style="background: var(--green); color: black;">3</div>
-      <div>
-        <p style="font-weight: 700; color: #FFFFFF;">Selecione o <span id="lblModoPainel" style="color: var(--green);">MODO</span></p>
-        <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">⚠️ <b style="color: white;">Toque direto na letra</b> (A, B ou F) no painel. Não use as setas para mudar o modo.</p>
-      </div>
+    <div class="instruction-card">
+      <div class="step-badge" style="color: var(--green); border: 1px solid var(--green);">3</div>
+      <p>Pressione <span class="highlight-green">PLAY</span> para a bota começar a inflar.</p>
     </div>
-
-    <div class="instruction-card" style="border-left: 4px solid var(--green);">
-      <div class="step-badge" style="background: var(--green); color: black;">4</div>
-      <div>
-        <p style="font-weight: 700; color: #FFFFFF;">Ajuste a Pressão e o Tempo</p>
-        <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Use as setas <b style="color: white;">(▲/▼) de PRESSÃO</b> até acender a luz do <b style="color: var(--green);">75 mmHg</b>. Ajuste o tempo para 15 minutos.</p>
+    
+    <p class="subtitle" style="margin-top: 32px; color: var(--yellow); font-size: 13px; font-weight: 500;">
+      🎁 Fique atento ao seu WhatsApp ao final do tempo para resgatar seus benefícios e finalizar sua avaliação!
+    </p>
+  </div>
+  
+  <div id="pos-sessao" class="screen">
+    <div class="center-content">
+      <h1 style="color: var(--yellow);">Sessão Concluída!</h1>
+      <p class="subtitle">Sua recuperação muscular foi finalizada com sucesso.</p>
+      
+      <div class="instruction-card" style="flex-direction: column; text-align: center; padding: 24px; border: 1px solid rgba(255, 214, 10, 0.2);">
+        <div style="font-size: 48px; margin-bottom: 16px;">📱</div>
+        <h3 style="margin: 0 0 12px 0; font-size: 20px; color: var(--text-primary);">Fique de olho no seu WhatsApp!</h3>
+        <p style="color: #E5E5EA; font-size: 15px; margin-bottom: 0;">Nossa equipe entrará em contato em instantes para liberar seus <b style="color: var(--yellow);">benefícios exclusivos</b> e coletar seu feedback sobre a sessão.</p>
       </div>
-    </div>
-
-    <div class="instruction-card" style="background: rgba(255, 214, 10, 0.05); border: 1px dashed rgba(255, 214, 10, 0.2);">
-      <div class="step-badge" style="background: transparent; font-size: 18px;">💡</div>
-      <div>
-        <p style="font-weight: 600; color: var(--yellow); font-size: 13px; margin: 0;">Dica de Conforto (Poka-Yoke)</p>
-        <p style="font-size: 12px; color: #E5E5EA; margin-top: 2px;">Se sentir incômodo nos pés ou joelhos, toque direto no número da câmara (1 a 8) no desenho da perna para desligar aquela região.</p>
-      </div>
-    </div>
-
-    <div class="instruction-card" style="border-left: 4px solid var(--green); background: rgba(50, 215, 75, 0.05);">
-      <div class="step-badge" style="background: var(--green); color: black;">5</div>
-      <div>
-        <p style="font-weight: 700; color: #FFFFFF; text-transform: uppercase;">Pressione PLAY/PAUSE</p>
-        <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Toque no botão de iniciar para as botas começarem a inflar. Relaxe!</p>
-      </div>
+      
+      <button class="btn-secondary" onclick="location.reload()">Finalizar e Liberar Máquina</button>
     </div>
   </div>
 
 </div>
 
 <script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
-  let notaDor = null;
-  let modoSugerido = "";
+  const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
+  let codigoValidadoTemporario = "";
 
   document.addEventListener("DOMContentLoaded", () => {
-    const local = localStorage.getItem('recovery_user');
-    if(local) {
-      const u = JSON.parse(local);
+    const dadosSalvos = localStorage.getItem('botaUserData');
+    if(dadosSalvos) {
+      const u = JSON.parse(dadosSalvos);
       document.getElementById('nome').value = u.nome || "";
       document.getElementById('telefone').value = u.telefone || "";
       document.getElementById('email').value = u.email || "";
     }
 
-    fetch(`${API_URL}?acao=status`)
-      .then(r => r.json())
+    fetch(`${GOOGLE_WEB_APP_URL}?acao=status`)
+      .then(response => response.json())
       .then(res => {
         if(res.ocupado) {
           showScreen('ocupado');
-          executarCronometro(res.endTime, 'timerFila', true);
+          iniciarCronometro(res.endTime, 'timerFila', true);
         } else {
           showScreen('tela1');
         }
-      }).catch(() => alert("Falha na comunicação de rede com o servidor central."));
+      })
+      .catch(erro => {
+        console.error("Erro na requisição de inicialização:", erro);
+        alert("Falha de conexão: Verifique se a sua API no Apps Script está publicada corretamente.");
+      });
   });
 
   function showScreen(id) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-  }
-
-  function solicitarCodigoOtp() {
-    const email = document.getElementById('email').value.trim();
-    const nome = document.getElementById('nome').value.trim();
-    const telefone = document.getElementById('telefone').value.trim();
-
-    if(!email || !nome || !telefone) return alert("Por favor, preencha todos os campos obrigatórios.");
-    if(!email.includes('@') || !email.includes('.')) return alert("Insira um endereço de e-mail estruturalmente válido.");
-    
-    localStorage.setItem('recovery_user', JSON.stringify({nome, telefone, email}));
-    showScreen('loading');
-
-    fetch(API_URL, {
-      method: "POST",
-      body: JSON.stringify({ acao: "solicitarCodigo", dados: { email } })
-    })
-    .then(r => r.json())
-    .then(res => {
-      if(res.sucesso) showScreen('telaOtp');
-      else { alert(res.erro); showScreen('tela1'); }
+    document.querySelectorAll('.screen').forEach(s => {
+      s.classList.remove('active');
+      setTimeout(() => s.style.display = 'none', 400);
     });
+    setTimeout(() => {
+      const target = document.getElementById(id);
+      target.style.display = 'block';
+      void target.offsetWidth; 
+      target.classList.add('active');
+    }, 410);
   }
 
-  function validarCodigoServidor() {
-    const email = document.getElementById('email').value.trim();
-    const code = document.getElementById('codigoOtpInput').value.trim();
-    if(code.length !== 6) return alert("O token de validação deve possuir exatamente 6 dígitos.");
-
-    showScreen('loading');
-    fetch(API_URL, {
-      method: "POST",
-      body: JSON.stringify({ acao: "validarCodigo", dados: { email, codigoOtp: code } })
-    })
-    .then(r => r.json())
-    .then(res => {
-      if(res.sucesso) {
-        showScreen('telaTermo');
-      } else { alert(res.erro); showScreen('telaOtp'); }
-    });
-  }
-
-  function avaliarTermo() {
-    const check = document.getElementById('cTermo').checked;
-    document.getElementById('btnAvancarTermo').disabled = !check;
-  }
-
-  function irParaTela2() {
-    construirGridNotas();
-    showScreen('tela2');
-  }
-
-  function construirGridNotas() {
-    const grid = document.getElementById('gridNotas');
-    grid.innerHTML = "";
-    for(let i=1; i<=10; i++) {
-      let b = document.createElement('div');
-      b.className = 'btn-nota'; b.innerText = i;
-      b.onclick = () => {
-        notaDor = i;
-        document.querySelectorAll('.btn-nota').forEach(x => x.classList.remove('selecionado'));
-        b.classList.add('selecionado');
-        
-        const box = document.getElementById('boxRecomendacao');
-        const txt = document.getElementById('txtModoSugerido');
-        box.style.display = "block";
-        
-        if(i <= 4) { modoSugerido = "Modo A (Drenagem Ativa / Câmaras Singulares)"; window.modoLetra = "A"; }
-        else if(i <= 7) { modoSugerido = "Modo B (Recuperação Padrão / Câmaras Sequenciais)"; window.modoLetra = "B"; }
-        else { modoSugerido = "Modo F (Ciclo Híbrido Avançado / Compressão Forte)"; window.modoLetra = "F"; }
-        
-        txt.innerText = modoSugerido;
-        document.getElementById('lblModoPainel').innerText = `MODO ${window.modoLetra}`;
-        document.getElementById('btnAvancarTela3').disabled = false;
-      };
-      grid.appendChild(b);
+  function atualizarEstiloCheckbox(checkbox) {
+    const wrapper = document.getElementById('wrapper-checkbox');
+    if(checkbox.checked) {
+      wrapper.classList.add('checked-active');
+      if(navigator.vibrate) navigator.vibrate(20);
+    } else {
+      wrapper.classList.remove('checked-active');
     }
   }
 
-  function toggleCheck(id) {
-    const c = document.getElementById(id);
-    c.checked = !c.checked;
-    if(id === 'cTermo') avaliarTermo();
-    else verificarChecklist();
+  let notaSelecionada = null;
+  const grid = document.getElementById('gridNotas');
+  for (let i = 1; i <= 10; i++) {
+    let btn = document.createElement('div');
+    btn.className = 'btn-nota'; btn.innerText = i;
+    btn.onclick = () => {
+      if(navigator.vibrate) navigator.vibrate(30);
+      notaSelecionada = i;
+      document.querySelectorAll('.btn-nota').forEach(b => b.classList.remove('selecionado'));
+      btn.classList.add('selecionado');
+      document.getElementById('btnAvancar').disabled = false;
+    };
+    grid.appendChild(btn);
   }
 
-  function verificarChecklist() {
-    const c1 = document.getElementById('c1').checked;
-    const c2 = document.getElementById('c2').checked;
-    const c3 = document.getElementById('c3').checked;
-    document.getElementById('btnAtivarHardware').disabled = !(c1 && c2 && c3);
-  }
+  function irParaTela2() {
+    const nome = document.getElementById('nome').value.trim();
+    const tel = document.getElementById('telefone').value.trim();
+    const email = document.getElementById('email').value.trim();
 
-  function dispararAtivacaoFinal() {
+    if(!nome || !tel || !email) {
+      if(navigator.vibrate) navigator.vibrate([100,50,100]);
+      return alert("Preencha todos os campos.");
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+      return alert("Por favor, insira um e-mail válido.");
+    }
+
+    localStorage.setItem('botaUserData', JSON.stringify({nome, telefone: tel, email}));
     showScreen('loading');
-    document.getElementById('txtLoading').innerText = "Liberando a corrente elétrica para o Sonoff...";
 
-    const u = JSON.parse(localStorage.getItem('recovery_user'));
     const payload = {
-      acao: "fase1",
-      dados: { nome: u.nome, telefone: u.telefone, email: u.email, dor: notaDor }
+      acao: "solicitarCodigo",
+      dados: { email: email }
     };
 
-    fetch(API_URL, { method: "POST", body: JSON.stringify(payload) })
-    .then(r => r.json())
+    fetch(GOOGLE_WEB_APP_URL, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
     .then(res => {
       if(res.sucesso) {
-        showScreen('sucesso');
-        executarCronometro(res.endTime, 'timerAtivo', false);
+        showScreen('telaOtp');
       } else {
-        alert(res.erro);
-        location.reload();
+        alert("Erro ao enviar e-mail: " + res.erro);
+        showScreen('tela1');
       }
+    })
+    .catch(erro => {
+      alert("Erro na rede ao solicitar código: " + erro.message);
+      showScreen('tela1');
     });
   }
 
-  function executarCronometro(fim, elementoId, reloadAoTerminar) {
-    const el = document.getElementById(elementoId);
-    const int = setInterval(() => {
-      const rest = fim - Date.now();
-      if(rest <= 0) {
-        clearInterval(int);
-        el.innerText = "00:00";
-        if(reloadAoTerminar) location.reload();
-        else alert("Sessão finalizada física e digitalmente!");
+  function verificarCodigoLocal() {
+    const codigoInput = document.getElementById('codigoOtpInput').value.trim();
+    if(codigoInput.length !== 6) {
+      if(navigator.vibrate) navigator.vibrate([100,50,100]);
+      return alert("O código deve conter exatamente 6 dígitos.");
+    }
+    codigoValidadoTemporario = codigoInput;
+    if(navigator.vibrate) navigator.vibrate(40);
+    showScreen('tela2');
+  }
+
+  function enviarDados() {
+    const checkTomada = document.getElementById('check-tomada').checked;
+    
+    if(!checkTomada) {
+      if(navigator.vibrate) navigator.vibrate([100,50,100]);
+      alert("⚠️ Por favor, confirme que a estação de Recovery está pronta marcando a caixa de seleção.");
+      return;
+    }
+
+    showScreen('loading');
+    const dados = {
+      nome: document.getElementById('nome').value,
+      telefone: document.getElementById('telefone').value,
+      email: document.getElementById('email').value,
+      dor: notaSelecionada,
+      codigoOtp: codigoValidadoTemporario
+    };
+
+    const payload = {
+      acao: "fase1",
+      dados: dados
+    };
+
+    fetch(GOOGLE_WEB_APP_URL, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(res => {
+      if(res.sucesso) {
+        showScreen('sucesso');
+        iniciarCronometro(res.endTime, 'timerAtivo', false);
+      } else {
+        alert(res.erro);
+        location.reload(); 
+      }
+    })
+    .catch(erro => {
+      alert("Erro ao processar ativação do equipamento: " + erro.message);
+      location.reload();
+    });
+  }
+
+  function iniciarCronometro(timestampFim, idTimer, autoReload) {
+    const elTimer = document.getElementById(idTimer);
+    
+    const intervalo = setInterval(() => {
+      const diff = timestampFim - Date.now();
+      
+      if(diff <= 0) {
+        clearInterval(intervalo);
+        elTimer.innerText = "00:00";
+        if(autoReload) {
+          setTimeout(() => location.reload(), 2000);
+        } else {
+          setTimeout(() => showScreen('pos-sessao'), 1500);
+        }
         return;
       }
-      const m = Math.floor(rest / 60000).toString().padStart(2,'0');
-      const s = Math.floor((rest % 60000) / 1000).toString().padStart(2,'0');
-      el.innerText = `${m}:${s}`;
+      
+      const minutos = Math.floor(diff / 60000);
+      const segundos = Math.floor((diff % 60000) / 1000);
+      elTimer.innerText = minutos.toString().padStart(2, '0') + ":" + segundos.toString().padStart(2, '0');
     }, 1000);
   }
 </script>
+
 </body>
 </html>
