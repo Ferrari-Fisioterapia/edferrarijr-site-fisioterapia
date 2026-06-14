@@ -29,7 +29,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .container { width: 100%; max-width: 400px; padding: 32px 24px; box-sizing: border-box; }
+    .container { width: 100%; max-width: 400px; padding: 32px 24px; box-sizing: border-box; position: relative; }
 
     /* Componente de Duplo Branding Premium */
     .brand-header {
@@ -154,6 +154,36 @@
       animation: spin 1s linear infinite; margin-bottom: 24px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* COMPONENTE EXCLUSIVO: BOTÃO FLUTUANTE DE SUPORTE PREMIUM */
+    .btn-suporte-whatsapp {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #25D366;
+      color: #FFFFFF;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 211, 102, 0.3);
+      cursor: pointer;
+      z-index: 9999;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .btn-suporte-whatsapp:hover {
+      background-color: #20ba59;
+    }
+    .btn-suporte-whatsapp:active {
+      transform: scale(0.90);
+    }
+    .btn-suporte-whatsapp svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+    }
   </style>
 </head>
 <body>
@@ -201,7 +231,7 @@
 
   <div id="telaOtp" class="screen">
     <h1>Verifique seu E-mail</h1>
-    <p class="subtitle">Enviamos um código de 6 dígitos para o e-mail informado. Insira-o abaixo para validar seu acesso.</p>
+    <p class="subtitle">Enviamos um código de 6 dígitos para o e-mail informado. Insira-o abaixo para validar seu access.</p>
     <div class="input-group">
       <input type="text" id="codigoOtpInput" placeholder="000000" inputmode="numeric" maxlength="6" style="text-align: center; letter-spacing: 6px; font-weight: bold; font-size: 24px;">
     </div>
@@ -295,9 +325,20 @@
 
 </div>
 
+<div class="btn-suporte-whatsapp" onclick="abrirSuporteContextual()" title="Preciso de ajuda">
+  <svg viewBox="0 0 24 24">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.179.001 6.169 1.24 8.419 3.496 2.248 2.256 3.483 5.252 3.482 8.433-.004 6.616-5.34 11.963-11.91 11.963-2.005-.001-3.975-.51-5.713-1.479L0 24zm6.59-2.531c1.56.927 3.243 1.417 4.963 1.418 5.432 0 9.853-4.41 9.856-9.836.002-2.628-1.02-5.1-2.879-6.963C16.67 4.225 14.207 3.19 11.59 3.19 6.159 3.19 1.737 7.599 1.734 13.027c-.001 1.81.474 3.579 1.377 5.132l-.991 3.619 3.931-.989zM17.06 14.86c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+  </svg>
+</div>
+
 <script>
   const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
+  
+  // CONFIGURAÇÃO DE SUPORTE: COLOQUE SEU NÚMERO DE WHATSAPP DO BOX AQUI (COM DDD E SEM ESPAÇOS)
+  const WHATSAPP_SUPORTE_NUMERO = "5519999999999"; 
+
   let codigoValidadoTemporario = "";
+  let telaAtual = "init"; // Monitor lógico de estado
 
   document.addEventListener("DOMContentLoaded", () => {
     const dadosSalvos = localStorage.getItem('botaUserData');
@@ -325,6 +366,7 @@
   });
 
   function showScreen(id) {
+    telaAtual = id; // Atualiza a variável global de estado de tela
     document.querySelectorAll('.screen').forEach(s => {
       s.classList.remove('active');
       setTimeout(() => s.style.display = 'none', 400);
@@ -335,6 +377,50 @@
       void target.offsetWidth; 
       target.classList.add('active');
     }, 410);
+  }
+
+  // ENGENHARIA DE TEXTO CONTEXTUAL SEGUIDO POR CADEIA DE PENSAMENTO
+  function abrirSuporteContextual() {
+    let mensagemBase = "Olá! Estou usando o totem do Ferrari Recovery e preciso de ajuda.";
+    
+    // Altera a mensagem no WhatsApp dinamicamente baseado no erro de tela do usuário
+    switch(telaAtual) {
+      case "init":
+        mensagemBase += " O sistema está travado na tela de 'Estabelecendo conexão segura...'.";
+        break;
+      case "ocupado":
+        mensagemBase += " O sistema consta como 'Em Uso' (Equipamento Ocupado), mas identifiquei uma irregularidade.";
+        break;
+      case "tela1":
+        mensagemBase += " Estou com dificuldades para preencher meus dados iniciais (Nome, WhatsApp ou E-mail).";
+        break;
+      case "telaOtp":
+        mensagemBase += " Não recebi o código de 6 dígitos no meu e-mail ou o token inserido está acusando erro.";
+        break;
+      case "tela2":
+        mensagemBase += " Estou com dúvidas na tela de Avaliação de Cansaço Muscular.";
+        break;
+      case "tela3":
+        mensagemBase += " Estou com problemas na fase de Preparação Física (fechar o zíper da bota ou conferir a tomada).";
+        break;
+      case "loading":
+        mensagemBase += " O sistema ficou congelado na tela de 'Processando com a central de comando'.";
+        break;
+      case "sucesso":
+        mensagemBase += " A minha sessão foi liberada na tela, mas estou com dificuldades mecânicas para ligar ou configurar o painel físico do equipamento.";
+        break;
+      case "pos-sessao":
+        mensagemBase += " Minha sessão foi finalizada com sucesso, mas preciso de suporte sobre o feedback ou resgate dos benefícios.";
+        break;
+    }
+
+    const nomeUsuario = document.getElementById('nome').value.trim();
+    if(nomeUsuario) {
+      mensagemBase += ` Meu nome é ${nomeUsuario}.`;
+    }
+
+    const urlFinal = `https://api.whatsapp.com/send?phone=${WHATSAPP_SUPORTE_NUMERO}&text=${encodeURIComponent(mensagemBase)}`;
+    window.open(urlFinal, '_blank');
   }
 
   function atualizarEstiloCheckbox(checkbox) {
@@ -410,7 +496,7 @@
       if(navigator.vibrate) navigator.vibrate([100,50,100]);
       return alert("O código deve conter exatamente 6 dígitos.");
     }
-    codigoValidadoTemporario = codigoInput;
+    codigoValidadoTemporario = codeInput;
     if(navigator.vibrate) navigator.vibrate(40);
     showScreen('tela2');
   }
