@@ -4,66 +4,554 @@
   <base target="_top">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <style>
-    :root { --bg: #000000; --surface: #1C1C1E; --text-primary: #FFFFFF; --text-secondary: #86868B; --accent: #FFFFFF; --accent-text: #000000; --yellow: #FFD60A; --green: #32D74B; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; background-color: var(--bg); color: var(--text-primary); margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-    .container { width: 100%; max-width: 400px; padding: 32px 24px; box-sizing: border-box; }
+    /* Design System: Apple Pro Dark Mode */
+    :root {
+      --bg: #000000;
+      --surface: #1C1C1E;
+      --text-primary: #FFFFFF;
+      --text-secondary: #86868B;
+      --accent: #FFFFFF;
+      --accent-text: #000000;
+      --yellow: #FFD60A;
+      --green: #32D74B;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { width: 100%; max-width: 400px; padding: 32px 24px; box-sizing: border-box; position: relative; }
+
+    /* Componente de Duplo Branding Premium */
+    .brand-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .brand-logo { width: 64px; height: 64px; object-fit: contain; }
+    .logo-separator { width: 1px; height: 32px; background-color: var(--text-secondary); opacity: 0.3; }
+    .brand-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary); }
+
+    h1 { font-weight: 700; font-size: 32px; letter-spacing: -1px; margin: 0 0 8px 0; text-align: center; }
+    p.subtitle { font-size: 16px; color: var(--text-secondary); text-align: center; margin: 0 0 32px 0; line-height: 1.4; font-weight: 400; }
+
+    /* Inputs Premium */
+    .input-group { margin-bottom: 16px; }
+    input[type="text"], input[type="tel"], input[type="email"] {
+      width: 100%; background-color: var(--surface); border: none; border-radius: 14px;
+      color: var(--text-primary); padding: 20px 16px; font-size: 17px; box-sizing: border-box;
+      transition: background-color 0.2s ease;
+    }
+    input::placeholder { color: #636366; }
+    input:focus { outline: none; background-color: #2C2C2E; }
+
+    /* Botões */
+    button {
+      width: 100%; padding: 20px; background-color: var(--accent); color: var(--accent-text);
+      border: none; border-radius: 100px; font-size: 17px; font-weight: 600; letter-spacing: -0.4px;
+      cursor: pointer; transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); margin-top: 16px;
+    }
+    button:active { transform: scale(0.96); }
+    button:disabled { background-color: #333333; color: #666666; cursor: not-allowed; }
+    .btn-secondary { background-color: var(--surface); color: var(--text-primary); margin-top: 24px; }
+
+    /* Grid de Notas */
+    .nota-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 32px; }
+    .btn-nota {
+      background-color: var(--surface); border-radius: 14px; aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500;
+      color: var(--text-primary); cursor: pointer; transition: all 0.2s ease; user-select: none;
+    }
+    .btn-nota.selecionado { background-color: var(--text-primary); color: var(--bg); font-weight: 700; transform: scale(1.05); }
+
+    /* Estilos de Instruções e Checkbox */
+    .instruction-card {
+      background-color: var(--surface); border-radius: 16px; padding: 16px;
+      margin-bottom: 12px; display: flex; align-items: center; text-align: left;
+    }
+    .step-badge {
+      background-color: #333333; color: var(--text-primary); width: 32px; height: 32px;
+      border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      font-weight: 700; font-size: 15px; margin-right: 16px; flex-shrink: 0;
+    }
+    .instruction-card p { margin: 0; font-size: 15px; color: #E5E5EA; line-height: 1.4; }
+    .highlight-yellow { color: var(--yellow); font-weight: 600; }
+    .highlight-green { color: var(--green); font-weight: 600; }
+    
+    .pressure-guide { font-size: 13px; color: var(--text-secondary); margin-top: 10px; line-height: 1.5; padding-left: 2px; border-left: 1px solid #3a3a3c; margin-left: 2px; }
+    .pressure-line { margin-bottom: 4px; font-size: 15px; color: #E5E5EA; }
+    
+    .checkbox-container {
+      background-color: rgba(255, 214, 10, 0.08); 
+      border: 1px solid rgba(255, 214, 10, 0.2);
+      border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; align-items: center;
+      cursor: pointer; transition: all 0.25s ease;
+    }
+    .checkbox-container input[type="checkbox"] {
+      width: 24px; height: 24px; margin: 0 16px 0 0; accent-color: var(--yellow); cursor: pointer; flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+    .checkbox-container span { color: var(--yellow); font-size: 14px; font-weight: 600; line-height: 1.3; transition: color 0.25s ease; }
+
+    .checkbox-container.checked-active { background-color: rgba(50, 215, 75, 0.08); border-color: rgba(50, 215, 75, 0.3); }
+    .checkbox-container.checked-active input[type="checkbox"] { accent-color: var(--green); }
+    .checkbox-container.checked-active span { color: var(--green); }
+
+    /* Controle de Telas */
     .screen { display: none; opacity: 0; transition: opacity 0.4s ease; }
     .screen.active { display: block; opacity: 1; }
-    .instruction-card { background-color: var(--surface); border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px; }
-    .step-badge { background-color: #333; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
-    .checkbox-container { background-color: rgba(255, 214, 10, 0.08); border: 1px solid rgba(255, 214, 10, 0.2); border-radius: 16px; padding: 16px; margin-bottom: 24px; display: flex; align-items: center; cursor: pointer; }
-    input[type="checkbox"] { width: 24px; height: 24px; margin-right: 16px; accent-color: var(--yellow); }
-    button { width: 100%; padding: 20px; border-radius: 100px; border: none; font-weight: 600; cursor: pointer; background-color: var(--accent); color: var(--accent-text); }
-    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
-    .subtitle { color: var(--text-secondary); margin-bottom: 24px; }
-    .highlight-yellow { color: var(--yellow); font-weight: bold; }
-    .highlight-green { color: var(--green); font-weight: bold; }
+
+    /* Utilitários Visuais */
+    .center-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 50vh; }
+    .timer-display { font-size: 64px; font-weight: 700; letter-spacing: -2px; text-align: center; color: var(--text-primary); margin: 16px 0 8px 0; font-variant-numeric: tabular-nums; }
+    .wizard-step-label { color: var(--yellow); font-weight: 700; font-size: 12px; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
+    
+    .spinner { width: 36px; height: 36px; border: 3px solid rgba(255, 255, 255, 0.1); border-radius: 50%; border-top-color: var(--text-primary); animation: spin 1s linear infinite; margin-bottom: 24px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Suporte WhatsApp */
+    .suporte-wrapper { position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center; gap: 12px; z-index: 9999; cursor: pointer; }
+    .lbl-suporte { background-color: var(--surface); color: var(--text-primary); padding: 10px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.15); white-space: nowrap; pointer-events: none; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6); animation: pulseText 2s infinite ease-in-out; }
+    .btn-suporte-whatsapp { background-color: #25D366; color: #FFFFFF; border-radius: 50%; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0, 211, 102, 0.3); transition: transform 0.2s ease, background-color 0.2s ease; flex-shrink: 0; }
+    .suporte-wrapper:hover .btn-suporte-whatsapp { background-color: #20ba59; transform: scale(1.05); }
+    .suporte-wrapper:active .btn-suporte-whatsapp { transform: scale(0.95); }
+    .btn-suporte-whatsapp svg { width: 28px; height: 28px; fill: currentColor; }
+    @keyframes pulseText { 0%, 100% { opacity: 0.9; transform: scale(1); } 50% { opacity: 1; transform: scale(1.02); } }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <div id="tela3" class="screen active">
+  
+  <div class="brand-header">
+    <div class="logo-row">
+      <img src="https://i.postimg.cc/gJxRFMRF/image.png" alt="Penta Campinas" class="brand-logo">
+      <div class="logo-separator"></div>
+      <img src="https://i.postimg.cc/D0g7ChZh/image.png" alt="Ferrari Recovery" class="brand-logo">
+    </div>
+    <div class="brand-title">Penta Campinas &nbsp;•&nbsp; Ferrari Recovery</div>
+  </div>
+  
+  <div id="init" class="screen active center-content">
+    <div class="spinner"></div>
+    <p class="subtitle" style="margin:0;">Estabelecendo conexão segura...</p>
+  </div>
+
+  <div id="ocupado" class="screen">
+    <div class="center-content">
+      <div class="spinner" style="border-top-color: #FF453A; border-color: rgba(255, 69, 58, 0.2);"></div>
+      <h1>Em Uso</h1>
+      <p class="subtitle">O equipamento está ocupado no momento.</p>
+      <div class="timer-display" id="timerFila">00:00</div>
+      <button class="btn-secondary" onclick="location.reload()">Atualizar Status</button>
+    </div>
+  </div>
+
+  <div id="tela1" class="screen">
+    <h1>Recuperação</h1>
+    <p class="subtitle">Insira seus dados para liberar sua sessão.</p>
+    <div class="input-group">
+      <input type="text" id="nome" placeholder="Nome Completo" autocomplete="name">
+    </div>
+    <div class="input-group">
+      <input type="tel" id="telefone" placeholder="WhatsApp (com DDD)" autocomplete="tel">
+    </div>
+    <div class="input-group">
+      <input type="email" id="email" placeholder="E-mail" autocomplete="email">
+    </div>
+    <button onclick="irParaTela2()">Continuar</button>
+  </div>
+
+  <div id="telaOtp" class="screen">
+    <h1>Verifique seu E-mail</h1>
+    <p class="subtitle">Enviamos um código de 6 dígitos para o e-mail informado. Insira-o abaixo para validar seu acesso.</p>
+    <div class="input-group">
+      <input type="text" id="codigoOtpInput" placeholder="000000" inputmode="numeric" maxlength="6" style="text-align: center; letter-spacing: 6px; font-weight: bold; font-size: 24px;">
+    </div>
+    <button onclick="verificarCodigoLocal()">Validar Código</button>
+    <button class="btn-secondary" onclick="showScreen('tela1')" style="margin-top: 12px; padding: 14px;">Voltar / Corrigir E-mail</button>
+  </div>
+
+  <div id="tela2" class="screen">
+    <h1>Avaliação</h1>
+    <p class="subtitle">De 1 a 10, qual o seu nível de cansaço muscular <b>neste momento</b>?</p>
+    <div class="nota-grid" id="gridNotas"></div>
+    <button id="btnAvancar" onclick="showScreen('tela3')" disabled>Avançar</button>
+  </div>
+
+  <div id="tela3" class="screen">
     <h1>Preparação</h1>
-    <p class="subtitle">Siga os passos abaixo (Tempo total liberado: 17 min).</p>
+    <p class="subtitle">Antes de liberar a energia, precisamos verificar a conexão física do equipamento.</p>
     
-    <label class="checkbox-container" id="wrapper-checkbox">
-      <input type="checkbox" id="check-tomada" onchange="atualizarEstiloCheckbox(this)">
-      <span style="color: var(--yellow); font-weight: 600;">Estação conectada à tomada.</span>
+    <label class="checkbox-container" id="wrapper-checkbox-tomada">
+      <input type="checkbox" id="check-tomada" onchange="atualizarEstiloCheckbox(this, 'wrapper-checkbox-tomada')">
+      <span>Confirmo que a estação de recovery está devidamente montada e conectada à tomada.</span>
     </label>
+    
+    <button onclick="enviarDados()" style="background-color: var(--accent); color: var(--accent-text);">Ligar a Bota na Tomada ⚡</button>
+  </div>
 
-    <div class="instruction-card">
-      <div class="step-badge">1</div>
-      <p>Vista as botas e confirme que as <b>8 câmaras</b> estão com a luz azul acesa no painel.</p>
+  <div id="loading" class="screen">
+    <div class="center-content">
+      <div class="spinner"></div>
+      <h1>Processando</h1>
+      <p class="subtitle">Aguarde a resposta da central de comando...</p>
     </div>
+  </div>
 
-    <div class="instruction-card">
-      <div class="step-badge">2</div>
-      <p>No painel: Pressione <b>ON/OFF</b> → Selecione o <b>MODO D</b> → Ajuste a pressão.</p>
+  <div id="wizard-1" class="screen">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div class="wizard-step-label">PASSO 1 DE 7</div>
+      <h1>Energia</h1>
+      <p class="subtitle">A energia da tomada foi liberada!</p>
     </div>
-
-    <div class="instruction-card">
-      <div class="step-badge">3</div>
-      <p>Por fim, aperte <b>PLAY</b> para iniciar o ciclo de inflagem.</p>
+    <div class="instruction-card" style="justify-content: center; text-align: center; padding: 32px 16px;">
+      <p style="font-size: 18px;">Pressione a tecla <span class="highlight-yellow">On/Off</span> no painel do aparelho.</p>
     </div>
+    <button onclick="showScreen('wizard-2')">Avançar</button>
+  </div>
 
-    <button onclick="enviarDados()">Iniciar Recovery ⚡</button>
+  <div id="wizard-2" class="screen">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div class="wizard-step-label">PASSO 2 DE 7</div>
+      <h1>Modo de Massagem</h1>
+    </div>
+    <div class="instruction-card" style="justify-content: center; text-align: center; padding: 32px 16px;">
+      <p style="font-size: 18px;">No painel, selecione o <span class="highlight-yellow">modo D</span>.</p>
+    </div>
+    <button onclick="showScreen('wizard-3')">Avançar</button>
+  </div>
+
+  <div id="wizard-3" class="screen">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div class="wizard-step-label">PASSO 3 DE 7</div>
+      <h1>Ajuste de Pressão</h1>
+      <p class="subtitle">Gire o seletor para configurar a intensidade.</p>
+    </div>
+    <div class="instruction-card" style="flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px;">
+      <div class="pressure-line">🟢 <b>40-75 mmHg:</b> Drenagem e lipedema</div>
+      <div class="pressure-line">⭐ <b>110 mmHg:</b> Recovery moderado</div>
+      <div class="pressure-line">⚠️ <b>140 mmHg:</b> Recovery intenso <br><span style="font-size: 13px; color: var(--text-secondary);">(Aviso: você pode sentir um formigamento nesta pressão)</span></div>
+    </div>
+    <button onclick="showScreen('wizard-4')">Avançar</button>
+  </div>
+
+  <div id="wizard-4" class="screen">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div class="wizard-step-label">PASSO 4 DE 7</div>
+      <h1>Câmaras de Ar</h1>
+      <p class="subtitle">Certifique-se de que todas as zonas serão massageadas.</p>
+    </div>
+    <label class="checkbox-container" id="wrapper-checkbox-camaras">
+      <input type="checkbox" id="check-camaras" onchange="atualizarEstiloCheckbox(this, 'wrapper-checkbox-camaras', 'btn-wizard-4')">
+      <span>Confirmo que todas as câmaras estão ativadas (luzes <b>azuis</b> acesas do número 1 ao 8).</span>
+    </label>
+    <button id="btn-wizard-4" disabled onclick="showScreen('wizard-5')">Avançar</button>
+  </div>
+
+  <div id="wizard-5" class="screen">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div class="wizard-step-label">PASSO 5 DE 7</div>
+      <h1>Vestir as Botas</h1>
+    </div>
+    <div class="instruction-card">
+      <div class="step-badge" style="color: var(--yellow); border: 1px solid var(--yellow);">1</div>
+      <p>Vista a bota e feche o zíper <b style="color:white">até o final</b>.</p>
+    </div>
+    <div class="instruction-card">
+      <div class="step-badge" style="color: var(--yellow); border: 1px solid var(--yellow);">2</div>
+      <p>Conecte as setas <b style="color:var(--green)">verde</b> e <b style="color:#86868B">cinza</b> no conector central do aparelho.</p>
+    </div>
+    <button onclick="showScreen('wizard-6')">Avançar</button>
+  </div>
+
+  <div id="wizard-6" class="screen">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div class="wizard-step-label">PASSO 6 DE 7</div>
+      <h1>Iniciar Compressão</h1>
+    </div>
+    <div class="instruction-card" style="justify-content: center; text-align: center; padding: 32px 16px; border: 1px solid rgba(50, 215, 75, 0.3);">
+      <p style="font-size: 18px;">Enfim, pressione <span class="highlight-green">PLAY</span> no aparelho para a bota começar a inflar.</p>
+    </div>
+    <button onclick="showScreen('wizard-7')">Avançar</button>
+  </div>
+
+  <div id="wizard-7" class="screen">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div class="wizard-step-label">PASSO 7 DE 7</div>
+      <h1>Posição Ideal</h1>
+    </div>
+    <div class="instruction-card" style="justify-content: center; text-align: center; padding: 32px 16px;">
+      <p style="font-size: 18px;">Deite a cadeira na posição horizontal, deixando os pés elevados do chão.</p>
+    </div>
+    <button onclick="showScreen('sucesso')" style="background-color: var(--green); color: var(--accent-text);">Finalizar Configuração</button>
+  </div>
+
+  <div id="sucesso" class="screen">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <h1 style="color: var(--green);">Sessão Ativa</h1>
+      <p class="subtitle">Relaxe e aproveite sua recuperação.</p>
+      <div class="timer-display" id="timerAtivo">15:00</div>
+    </div>
+    
+    <p class="subtitle" style="margin-top: 32px; color: var(--yellow); font-size: 13px; font-weight: 500;">
+      🎁 Fique atento ao seu WhatsApp ao final do tempo para resgatar seus benefícios e finalizar sua avaliação!
+    </p>
+  </div>
+  
+  <div id="pos-sessao" class="screen">
+    <div class="center-content">
+      <h1 style="color: var(--yellow);">Sessão Concluída!</h1>
+      <p class="subtitle">Sua recuperação muscular foi finalizada com sucesso.</p>
+      
+      <div class="instruction-card" style="flex-direction: column; text-align: center; padding: 24px; border: 1px solid rgba(255, 214, 10, 0.2);">
+        <div style="font-size: 48px; margin-bottom: 16px;">📱</div>
+        <h3 style="margin: 0 0 12px 0; font-size: 20px; color: var(--text-primary);">Fique de olho no seu WhatsApp!</h3>
+        <p style="color: #E5E5EA; font-size: 15px; margin-bottom: 0;">Nossa equipe entrará em contato em instantes para liberar seus <b style="color: var(--yellow);">benefícios exclusivos</b> e coletar seu feedback sobre a sessão.</p>
+      </div>
+      
+      <button class="btn-secondary" onclick="location.reload()">Finalizar e Liberar Máquina</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="suporte-wrapper" onclick="abrirSuporteContextual()">
+  <div class="lbl-suporte">Precisa de ajuda? Click aqui.</div>
+  <div class="btn-suporte-whatsapp" title="Preciso de ajuda">
+    <svg viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.179.001 6.169 1.24 8.419 3.496 2.248 2.256 3.483 5.252 3.482 8.433-.004 6.616-5.34 11.963-11.91 11.963-2.005-.001-3.975-.51-5.713-1.479L0 24zm6.59-2.531c1.56.927 3.243 1.417 4.963 1.418 5.432 0 9.853-4.41 9.856-9.836.002-2.628-1.02-5.1-2.879-6.963C16.67 4.225 14.207 3.19 11.59 3.19 6.159 3.19 1.737 7.599 1.734 13.027c-.001 1.81.474 3.579 1.377 5.132l-.991 3.619 3.931-.989zM17.06 14.86c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    </svg>
   </div>
 </div>
 
 <script>
-  function atualizarEstiloCheckbox(checkbox) {
-    const wrapper = document.getElementById('wrapper-checkbox');
-    wrapper.style.borderColor = checkbox.checked ? 'var(--green)' : 'var(--yellow)';
-    wrapper.style.backgroundColor = checkbox.checked ? 'rgba(50, 215, 75, 0.08)' : 'rgba(255, 214, 10, 0.08)';
+  const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwmH9h_9J1n02LTQsrcAYL2lO-he3ECI4avrFKnbF-49enLHHbedYIGgkGXKkmg5h7Esw/exec";
+  const WHATSAPP_SUPORTE_NUMERO = "5519971002263"; 
+
+  let codigoValidadoTemporario = "";
+  let telaAtual = "init";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const dadosSalvos = localStorage.getItem('botaUserData');
+    if(dadosSalvos) {
+      const u = JSON.parse(dadosSalvos);
+      document.getElementById('nome').value = u.nome || "";
+      document.getElementById('telefone').value = u.telefone || "";
+      document.getElementById('email').value = u.email || "";
+    }
+
+    fetch(`${GOOGLE_WEB_APP_URL}?acao=status`)
+      .then(response => response.json())
+      .then(res => {
+        if(res.ocupado) {
+          showScreen('ocupado');
+          iniciarCronometro(res.endTime, 'timerFila', true);
+        } else {
+          showScreen('tela1');
+        }
+      })
+      .catch(erro => {
+        console.error("Erro na requisição de inicialização:", erro);
+        alert("Falha de conexão: Verifique se a sua API no Apps Script está publicada corretamente.");
+      });
+  });
+
+  function showScreen(id) {
+    telaAtual = id;
+    document.querySelectorAll('.screen').forEach(s => {
+      s.classList.remove('active');
+      setTimeout(() => s.style.display = 'none', 400);
+    });
+    setTimeout(() => {
+      const target = document.getElementById(id);
+      target.style.display = 'block';
+      void target.offsetWidth; 
+      target.classList.add('active');
+    }, 410);
+  }
+
+  function abrirSuporteContextual() {
+    let mensagemBase = "Olá! Estou usando o totem do Ferrari Recovery e preciso de ajuda.";
+    
+    switch(telaAtual) {
+      case "init": mensagemBase += " O sistema está travado na tela inicial."; break;
+      case "ocupado": mensagemBase += " O sistema consta como 'Em Uso', mas identifiquei uma irregularidade."; break;
+      case "tela1": mensagemBase += " Estou com dificuldades para preencher meus dados iniciais."; break;
+      case "telaOtp": mensagemBase += " Não recebi o código de 6 dígitos no meu e-mail ou ele dá erro."; break;
+      case "tela2": mensagemBase += " Estou com dúvidas na tela de Avaliação de Cansaço Muscular."; break;
+      case "tela3": mensagemBase += " Estou com problemas na etapa de conectar a tomada."; break;
+      case "loading": mensagemBase += " O sistema ficou congelado na tela de 'Processando'."; break;
+      case "wizard-1":
+      case "wizard-2":
+      case "wizard-3":
+      case "wizard-4":
+      case "wizard-5":
+      case "wizard-6":
+      case "wizard-7":
+        mensagemBase += " A tomada foi ligada, mas estou com dificuldade em uma das etapas de configuração do painel/bota."; break;
+      case "sucesso": mensagemBase += " Minha sessão está ativa, mas a bota não inflou corretamente."; break;
+      case "pos-sessao": mensagemBase += " Minha sessão acabou e preciso de ajuda com os benefícios/feedback."; break;
+    }
+
+    const nomeUsuario = document.getElementById('nome').value.trim();
+    if(nomeUsuario) mensagemBase += ` Meu nome é ${nomeUsuario}.`;
+
+    const urlFinal = `https://api.whatsapp.com/send?phone=${WHATSAPP_SUPORTE_NUMERO}&text=${encodeURIComponent(mensagemBase)}`;
+    window.open(urlFinal, '_blank');
+  }
+
+  function atualizarEstiloCheckbox(checkbox, wrapperId, btnId = null) {
+    const wrapper = document.getElementById(wrapperId);
+    if(checkbox.checked) {
+      wrapper.classList.add('checked-active');
+      if(navigator.vibrate) navigator.vibrate(20);
+      if(btnId) document.getElementById(btnId).disabled = false;
+    } else {
+      wrapper.classList.remove('checked-active');
+      if(btnId) document.getElementById(btnId).disabled = true;
+    }
+  }
+
+  let notaSelecionada = null;
+  const grid = document.getElementById('gridNotas');
+  for (let i = 1; i <= 10; i++) {
+    let btn = document.createElement('div');
+    btn.className = 'btn-nota'; btn.innerText = i;
+    btn.onclick = () => {
+      if(navigator.vibrate) navigator.vibrate(30);
+      notaSelecionada = i;
+      document.querySelectorAll('#gridNotas .btn-nota').forEach(b => b.classList.remove('selecionado'));
+      btn.classList.add('selecionado');
+      document.getElementById('btnAvancar').disabled = false;
+    };
+    grid.appendChild(btn);
+  }
+
+  function irParaTela2() {
+    const nome = document.getElementById('nome').value.trim();
+    const tel = document.getElementById('telefone').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if(!nome || !tel || !email) {
+      if(navigator.vibrate) navigator.vibrate([100,50,100]);
+      return alert("Preencha todos os campos.");
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+      return alert("Por favor, insira um e-mail válido.");
+    }
+
+    localStorage.setItem('botaUserData', JSON.stringify({nome, telefone: tel, email}));
+    showScreen('loading');
+
+    const payload = { acao: "solicitarCodigo", dados: { email: email } };
+
+    fetch(GOOGLE_WEB_APP_URL, {
+      method: "POST", mode: "cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(res => {
+      if(res.sucesso) showScreen('telaOtp');
+      else { alert("Erro ao enviar e-mail: " + res.erro); showScreen('tela1'); }
+    })
+    .catch(erro => { alert("Erro na rede: " + erro.message); showScreen('tela1'); });
+  }
+
+  function verificarCodigoLocal() {
+    const codigoInput = document.getElementById('codigoOtpInput').value.trim();
+    if(codigoInput.length !== 6) {
+      if(navigator.vibrate) navigator.vibrate([100,50,100]);
+      return alert("O código deve conter exatamente 6 dígitos.");
+    }
+    codigoValidadoTemporario = codigoInput;
+    if(navigator.vibrate) navigator.vibrate(40);
+    showScreen('tela2');
   }
 
   function enviarDados() {
-    if(!document.getElementById('check-tomada').checked) {
-      return alert("⚠️ É obrigatório confirmar a conexão na tomada.");
+    const checkTomada = document.getElementById('check-tomada').checked;
+    
+    if(!checkTomada) {
+      if(navigator.vibrate) navigator.vibrate([100,50,100]);
+      alert("⚠️ Por favor, confirme que a estação de Recovery está ligada na tomada marcando a caixa de seleção.");
+      return;
     }
-    // Lógica original de envio...
-    console.log("Iniciando sessão de 17 minutos...");
+
+    showScreen('loading');
+    const dados = {
+      nome: document.getElementById('nome').value,
+      telefone: document.getElementById('telefone').value,
+      email: document.getElementById('email').value,
+      dor: notaSelecionada,
+      codigoOtp: codigoValidadoTemporario
+    };
+
+    const payload = { acao: "fase1", dados: dados };
+
+    fetch(GOOGLE_WEB_APP_URL, {
+      method: "POST", mode: "cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(res => {
+      if(res.sucesso) {
+        // Inicia o Wizard de Configuração e o Timer em Background
+        showScreen('wizard-1');
+        iniciarCronometro(res.endTime, 'timerAtivo', false);
+      } else {
+        alert(res.erro);
+        location.reload(); 
+      }
+    })
+    .catch(erro => {
+      alert("Erro ao processar ativação: " + erro.message);
+      location.reload();
+    });
+  }
+
+  function iniciarCronometro(timestampFim, idTimer, autoReload) {
+    const elTimer = document.getElementById(idTimer);
+    
+    const intervalo = setInterval(() => {
+      const diff = timestampFim - Date.now();
+      
+      if(diff <= 0) {
+        clearInterval(intervalo);
+        elTimer.innerText = "00:00";
+        if(autoReload) {
+          setTimeout(() => location.reload(), 2000);
+        } else {
+          setTimeout(() => showScreen('pos-sessao'), 1500);
+        }
+        return;
+      }
+      
+      const minutos = Math.floor(diff / 60000);
+      const segundos = Math.floor((diff % 60000) / 1000);
+      elTimer.innerText = minutos.toString().padStart(2, '0') + ":" + segundos.toString().padStart(2, '0');
+    }, 1000);
   }
 </script>
 </body>
