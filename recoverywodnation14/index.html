@@ -2,22 +2,22 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Ferrari Recovery — Protocolo de Elite Wodnation</title>
 
   <style>
     :root {
       --bg: #000000;
-      --card-bg: rgba(22, 22, 23, 0.75);
-      --card-border: rgba(255, 255, 255, 0.12);
+      --card-bg: rgba(22, 22, 23, 0.82);
+      --card-border: rgba(255, 255, 255, 0.14);
       --text-primary: #f5f5f7;
       --text-secondary: #86868b;
       --text-tertiary: #6e6e73;
       --accent-green: #30d158;
       --accent-green-hover: #28b84c;
       --accent-blue: #2997ff;
-      --badge-bg: rgba(48, 209, 88, 0.12);
-      --badge-border: rgba(48, 209, 88, 0.3);
+      --input-bg: rgba(255, 255, 255, 0.06);
+      --input-border: rgba(255, 255, 255, 0.12);
     }
 
     * {
@@ -37,21 +37,21 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 16px;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Brilho de Fundo Difuso (Apple Ambient Glow) */
+    /* Ambient Glow da Apple no Fundo */
     body::before {
       content: "";
       position: absolute;
-      top: 35%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(48, 209, 88, 0.09) 0%, rgba(41, 151, 255, 0.04) 40%, rgba(0, 0, 0, 0) 70%);
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(48, 209, 88, 0.12) 0%, rgba(41, 151, 255, 0.05) 45%, rgba(0, 0, 0, 0) 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -63,170 +63,164 @@
       backdrop-filter: blur(40px);
       -webkit-backdrop-filter: blur(40px);
       border: 1px solid var(--card-border);
-      border-radius: 28px;
-      padding: 44px 36px 36px 36px;
+      border-radius: 24px;
+      padding: 28px 22px 20px 22px;
       width: 100%;
-      max-width: 500px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.5);
+      max-width: 440px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
     }
 
     .badge-discount {
       position: absolute;
-      top: -14px;
+      top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
+      background: rgba(48, 209, 88, 0.15);
+      border: 1px solid rgba(48, 209, 88, 0.35);
       color: var(--accent-green);
-      font-weight: 600;
-      font-size: 0.72rem;
-      padding: 6px 18px;
+      font-weight: 700;
+      font-size: 0.68rem;
+      padding: 4px 14px;
       border-radius: 980px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      letter-spacing: 0.06em;
       white-space: nowrap;
     }
 
-    /* Cabeçalho de Co-Branding das Marcas */
     .brand-header {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      margin-top: 8px;
-      margin-bottom: 24px;
+      gap: 12px;
+      margin-top: 4px;
+      margin-bottom: 14px;
     }
 
     .brand-logo {
-      height: 40px;
+      height: 32px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
     }
 
     .brand-divider {
       color: var(--text-tertiary);
-      font-size: 1.1rem;
-      font-weight: 300;
-      opacity: 0.5;
+      font-size: 0.9rem;
+      opacity: 0.4;
     }
 
     .header {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 14px;
     }
 
     .header h1 {
-      font-size: 1.9rem;
+      font-size: 1.55rem;
       font-weight: 700;
       letter-spacing: -0.03em;
       color: #ffffff;
-      line-height: 1.2;
-      margin-bottom: 10px;
+      line-height: 1.18;
+      margin-bottom: 6px;
     }
 
     .header p {
       color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.45;
-      font-weight: 400;
+      font-size: 0.85rem;
+      line-height: 1.35;
     }
 
     .pricing-box {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      padding: 22px;
+      border-radius: 14px;
+      padding: 12px 16px;
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pricing-info {
+      text-align: left;
     }
 
     .old-price {
       text-decoration: line-through;
       color: var(--text-tertiary);
-      font-size: 0.9rem;
-      font-weight: 400;
-      margin-bottom: 4px;
-      letter-spacing: -0.01em;
+      font-size: 0.78rem;
     }
 
     .current-price {
-      font-size: 3.2rem;
-      font-weight: 700;
+      font-size: 1.9rem;
+      font-weight: 800;
       letter-spacing: -0.04em;
       color: #ffffff;
       line-height: 1;
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
     }
 
     .current-price .currency {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       color: var(--accent-green);
-      font-weight: 600;
-      margin-right: 4px;
-    }
-
-    .current-price .cents {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      font-weight: 500;
+      margin-right: 2px;
     }
 
     .economy-tag {
-      display: inline-block;
-      margin-top: 10px;
-      background: rgba(48, 209, 88, 0.1);
+      background: rgba(48, 209, 88, 0.12);
       color: var(--accent-green);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 4px 14px;
-      border-radius: 980px;
-      letter-spacing: -0.01em;
-    }
-
-    .benefits-list {
-      list-style: none;
-      margin-bottom: 28px;
-    }
-
-    .benefits-list li {
-      color: var(--text-primary);
-      font-size: 0.92rem;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      line-height: 1.45;
-    }
-
-    .benefits-list li .icon-box {
-      width: 28px;
-      height: 28px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 6px 10px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .combo-pills {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .pill-item {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 8px 6px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-primary);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
+      gap: 5px;
     }
 
-    .benefits-list li strong {
+    .lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .input-apple {
+      width: 100%;
+      height: 42px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 10px;
+      padding: 0 14px;
       color: #ffffff;
-      font-weight: 600;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
     }
 
-    .payment-methods {
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-      letter-spacing: -0.01em;
+    .input-apple::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    .input-apple:focus {
+      border-color: var(--accent-blue);
+      background: rgba(255, 255, 255, 0.09);
     }
 
     .btn-pay-now {
@@ -234,66 +228,66 @@
       align-items: center;
       justify-content: center;
       width: 100%;
+      height: 48px;
       background: var(--accent-green);
       color: #000000;
-      text-align: center;
-      text-decoration: none;
-      font-size: 1.05rem;
-      font-weight: 600;
-      padding: 16px 24px;
+      border: none;
       border-radius: 980px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 18px rgba(48, 209, 88, 0.35);
       letter-spacing: -0.01em;
-      box-shadow: 0 4px 20px rgba(48, 209, 88, 0.3);
     }
 
     .btn-pay-now:hover {
       background: var(--accent-green-hover);
-      transform: scale(1.02);
-      box-shadow: 0 8px 28px rgba(48, 209, 88, 0.45);
+      transform: scale(1.015);
+      box-shadow: 0 6px 24px rgba(48, 209, 88, 0.5);
     }
 
     .btn-pay-now:active {
       transform: scale(0.98);
     }
 
+    .payment-methods {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
     .whatsapp-support {
-      margin-top: 24px;
       text-align: center;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 18px;
+      padding-top: 12px;
     }
 
     .whatsapp-link {
       color: var(--accent-blue);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 400;
+      font-size: 0.8rem;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: opacity 0.2s;
-    }
-
-    .whatsapp-link:hover {
-      opacity: 0.8;
+      gap: 4px;
     }
 
     .footer-note {
       text-align: center;
-      margin-top: 12px;
+      margin-top: 6px;
       color: var(--text-tertiary);
-      font-size: 0.72rem;
-      letter-spacing: -0.01em;
+      font-size: 0.68rem;
     }
   </style>
 </head>
 <body>
 
   <div class="checkout-card">
-    <div class="badge-discount">Passe VIP • Recuperação de Elite</div>
+    <div class="badge-discount">Passe VIP • Wodnation</div>
 
-    <!-- Logos Oficiais do Co-Branding -->
+    <!-- Co-Branding das Marcas -->
     <div class="brand-header">
       <img src="https://i.postimg.cc/HWcwh7XN/image.png" alt="Ferrari Recovery" class="brand-logo">
       <span class="brand-divider">✕</span>
@@ -301,50 +295,39 @@
     </div>
 
     <div class="header">
-      <h1>Destrua a Fadiga.<br>Volte Prontidão Máxima.</h1>
-      <p>O combo definitivo da Ferrari Recovery para eliminar dores musculares e acelerar a regeneração pós-WOD.</p>
+      <h1>Destrua a Fadiga.<br>Volte 100% Pronto.</h1>
+      <p>Elimine dores musculares e acabe com o ácido lático pós-WOD.</p>
     </div>
 
+    <!-- Preço e Desconto Consolidado -->
     <div class="pricing-box">
-      <div class="old-price">Preço Normal: R$ 197,00</div>
-      <div class="current-price">
-        <span class="currency">R$</span>147<span class="cents">,00</span>
+      <div class="pricing-info">
+        <div class="old-price">De R$ 197,00</div>
+        <div class="current-price">
+          <span class="currency">R$</span>147
+        </div>
       </div>
-      <div class="economy-tag">Oferta Especial Wodnation (-R$ 50,00)</div>
+      <div class="economy-tag">Economize R$ 50</div>
     </div>
 
-    <ul class="benefits-list">
-      <li>
-        <div class="icon-box">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2997ff" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <span><strong>Banheira de Gelo (Crioterapia):</strong> Vasoconstrição profunda que extermina a inflamação, anestesia a dor e "reseta" seu sistema nervoso central.</span>
-      </li>
-      <li>
-        <div class="icon-box">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#30d158" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <span><strong>Bota Pneumática de Compressão:</strong> Drenagem ativa que expulsa o acúmulo de ácido lático e toxinas, devolvendo leveza imediata às pernas.</span>
-      </li>
-      <li>
-        <div class="icon-box">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#30d158" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        </div>
-        <span><strong>Sinergia Dupla Acelerada:</strong> O uso combinado reduz o tempo de recuperação pela metade em comparação com métodos convencionais.</span>
-      </li>
-      <li>
-        <div class="icon-box">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2997ff" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
-        </div>
-        <span><strong>Padrão Dr. Ed Ferrari Jr.:</strong> Suporte e supervisão biomecânica especializada em fisioterapia esportiva de alta performance.</span>
-      </li>
-    </ul>
+    <!-- Destaques em Pílula -->
+    <div class="combo-pills">
+      <div class="pill-item">🧊 Banheira de Gelo</div>
+      <div class="pill-item">🦵 Bota Pneumática</div>
+    </div>
 
-    <div class="payment-methods">✓ Pagamento Instantâneo via PIX • Cartão de Crédito • Débito</div>
+    <!-- Formulário de Captura de Dados -->
+    <form id="checkoutForm" class="lead-form" onsubmit="processarCheckout(event)">
+      <input type="text" id="nome" placeholder="Seu Nome Completo" required class="input-apple">
+      <input type="email" id="email" placeholder="Seu E-mail" required class="input-apple">
+      <input type="tel" id="whatsapp" placeholder="Seu WhatsApp (com DDD)" required class="input-apple">
 
-    <a href="https://mpago.li/2kzBErL" class="btn-pay-now">
-      Garantir Combo Recovery • R$ 147
-    </a>
+      <button type="submit" id="btnSubmit" class="btn-pay-now">
+        Garantir Combo Recovery • R$ 147
+      </button>
+    </form>
+
+    <div class="payment-methods">✓ Pagamento Instantâneo via PIX • Cartão • Débito</div>
 
     <div class="whatsapp-support">
       <a href="https://wa.me/5519971002263?text=Olá,%20tenho%20dúvidas%20sobre%20o%20Combo%20Ferrari%20Recovery%20no%20Wodnation" target="_blank" class="whatsapp-link">
@@ -353,9 +336,45 @@
     </div>
 
     <div class="footer-note">
-      🔒 Checkout 100% Seguro Processado pelo Mercado Pago
+      🔒 Processado com segurança via Mercado Pago
     </div>
   </div>
+
+  <script>
+    async function processarCheckout(e) {
+      e.preventDefault();
+      
+      const btn = document.getElementById('btnSubmit');
+      btn.innerText = "Redirecionando...";
+      btn.style.opacity = "0.8";
+
+      const payload = {
+        nome: document.getElementById('nome').value,
+        email: document.getElementById('email').value,
+        whatsapp: document.getElementById('whatsapp').value,
+        data: new Date().toLocaleString("pt-BR")
+      };
+
+      // Cole aqui a URL do seu Google Apps Script (quando configurar o Sheets)
+      const googleScriptUrl = "COLE_AQUI_SUA_URL_DO_GOOGLE_APPS_SCRIPT";
+
+      if (googleScriptUrl && !googleScriptUrl.includes("COLE_AQUI")) {
+        try {
+          await fetch(googleScriptUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) {
+          console.error("Erro ao salvar lead:", err);
+        }
+      }
+
+      // Redireciona imediatamente para a tela oficial de R$ 147 do Mercado Pago
+      window.location.href = "https://mpago.li/2kzBErL";
+    }
+  </script>
 
 </body>
 </html>
