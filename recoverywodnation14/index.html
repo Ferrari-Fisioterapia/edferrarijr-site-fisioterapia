@@ -4,15 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ferrari Recovery - WOD Nation</title>
-  
-  <!-- SDK Oficial do Mercado Pago -->
-  <script src="https://sdk.mercadopago.com/js/v2"></script>
 
   <style>
     :root {
       --bg-color: #0f172a;
       --card-bg: #1e293b;
       --primary-color: #22c55e;
+      --primary-hover: #16a34a;
       --accent-color: #0284c7;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
@@ -150,8 +148,28 @@
       margin-bottom: 16px;
     }
 
-    .wallet-container {
-      min-height: 48px;
+    /* Botão Principal de Checkout */
+    .btn-pay-now {
+      display: block;
+      width: 100%;
+      background-color: var(--primary-color);
+      color: #0f172a;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.35);
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-pay-now:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
     }
 
     .whatsapp-support {
@@ -208,8 +226,10 @@
 
     <div class="payment-methods">✓ Pagamento instantâneo via PIX • Cartão • Débito</div>
 
-    <!-- Container do Botão Modal do Mercado Pago -->
-    <div id="wallet_container" class="wallet-container"></div>
+    <!-- Botão Direto sem Falhas -->
+    <a href="https://mpago.li/2kzBErL" class="btn-pay-now">
+      Pagar Agora R$ 147,00
+    </a>
 
     <div class="whatsapp-support">
       <a href="https://wa.me/5519971002263?text=Olá,%20tenho%20dúvidas%20sobre%20o%20Ferrari%20Recovery" target="_blank" class="whatsapp-link">
@@ -221,25 +241,6 @@
       🔒 Pagamento 100% seguro processado pelo Mercado Pago
     </div>
   </div>
-
-  <script>
-    const mp = new MercadoPago('APP_USR-cbed48f9-dce2-4f47-b83b-e6524cf89fb5', {
-      locale: 'pt-BR'
-    });
-
-    mp.bricks().create("wallet", "wallet_container", {
-      initialization: {
-        preferenceId: "193674742-84df66f1-7a4e-4600-abae-62d1ce6fb2dc",
-        redirectMode: "modal"
-      },
-      customization: {
-        texts: {
-          action: 'pay',
-          valueProp: 'security_details'
-        }
-      }
-    });
-  </script>
 
 </body>
 </html>
