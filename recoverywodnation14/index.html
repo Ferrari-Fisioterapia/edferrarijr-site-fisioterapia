@@ -3,251 +3,351 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ferrari Recovery - Protocolo de Elite WOD Nation</title>
+  <title>Ferrari Recovery — Protocolo de Elite Wodnation</title>
 
   <style>
     :root {
-      --bg-color: #0f172a;
-      --card-bg: #1e293b;
-      --primary-color: #22c55e;
-      --primary-hover: #16a34a;
-      --accent-color: #38bdf8;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-color: #334155;
+      --bg: #000000;
+      --card-bg: rgba(22, 22, 23, 0.75);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text-primary: #f5f5f7;
+      --text-secondary: #86868b;
+      --text-tertiary: #6e6e73;
+      --accent-green: #30d158;
+      --accent-green-hover: #28b84c;
+      --accent-blue: #2997ff;
+      --badge-bg: rgba(48, 209, 88, 0.12);
+      --badge-border: rgba(48, 209, 88, 0.3);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Brilho de Fundo Difuso (Apple Ambient Glow) */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(48, 209, 88, 0.09) 0%, rgba(41, 151, 255, 0.04) 40%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .checkout-card {
-      background-color: var(--card-bg);
-      border: 2px solid var(--primary-color);
-      border-radius: 20px;
-      padding: 40px 30px 30px 30px;
-      width: 100%;
-      max-width: 520px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       position: relative;
-      margin-top: 15px;
+      z-index: 1;
+      background: var(--card-bg);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 44px 36px 36px 36px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.5);
     }
 
     .badge-discount {
       position: absolute;
-      top: -18px;
+      top: -14px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: var(--primary-color);
-      color: #0f172a;
-      font-weight: 800;
-      font-size: 0.8rem;
-      padding: 6px 20px;
-      border-radius: 30px;
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      color: var(--accent-green);
+      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 6px 18px;
+      border-radius: 980px;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4);
+      letter-spacing: 0.08em;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       white-space: nowrap;
+    }
+
+    /* Cabeçalho de Co-Branding das Marcas */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+    }
+
+    .brand-divider {
+      color: var(--text-tertiary);
+      font-size: 1.1rem;
+      font-weight: 300;
+      opacity: 0.5;
     }
 
     .header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .header h1 {
       font-size: 1.9rem;
-      color: var(--text-main);
-      margin-bottom: 8px;
-      font-weight: 800;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #ffffff;
       line-height: 1.2;
+      margin-bottom: 10px;
     }
 
     .header p {
-      color: var(--text-muted);
+      color: var(--text-secondary);
       font-size: 0.95rem;
-      line-height: 1.5;
+      line-height: 1.45;
+      font-weight: 400;
     }
 
     .pricing-box {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 22px;
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .old-price {
       text-decoration: line-through;
-      color: var(--text-muted);
-      font-size: 1rem;
-      margin-bottom: 2px;
+      color: var(--text-tertiary);
+      font-size: 0.9rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
     }
 
     .current-price {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--primary-color);
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: #ffffff;
       line-height: 1;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
     }
 
-    .current-price span {
-      font-size: 1rem;
-      color: var(--text-muted);
-      font-weight: normal;
+    .current-price .currency {
+      font-size: 1.5rem;
+      color: var(--accent-green);
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    .current-price .cents {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      font-weight: 500;
     }
 
     .economy-tag {
       display: inline-block;
       margin-top: 10px;
-      background: rgba(34, 197, 94, 0.15);
-      color: var(--primary-color);
-      font-size: 0.85rem;
-      font-weight: 700;
+      background: rgba(48, 209, 88, 0.1);
+      color: var(--accent-green);
+      font-size: 0.8rem;
+      font-weight: 600;
       padding: 4px 14px;
-      border-radius: 6px;
+      border-radius: 980px;
+      letter-spacing: -0.01em;
     }
 
     .benefits-list {
       list-style: none;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .benefits-list li {
-      color: var(--text-main);
-      font-size: 0.95rem;
-      margin-bottom: 12px;
+      color: var(--text-primary);
+      font-size: 0.92rem;
+      margin-bottom: 16px;
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      line-height: 1.4;
+      gap: 14px;
+      line-height: 1.45;
     }
 
-    .benefits-list li .icon {
-      font-size: 1.1rem;
+    .benefits-list li .icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
       margin-top: 1px;
     }
 
-    .payment-methods {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--accent-color);
-      margin-bottom: 16px;
+    .benefits-list li strong {
+      color: #ffffff;
       font-weight: 600;
     }
 
+    .payment-methods {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
     .btn-pay-now {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-      background-color: var(--primary-color);
-      color: #0f172a;
+      background: var(--accent-green);
+      color: #000000;
       text-align: center;
       text-decoration: none;
-      font-size: 1.15rem;
-      font-weight: 800;
-      padding: 18px 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.35);
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 16px 24px;
+      border-radius: 980px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      letter-spacing: -0.01em;
+      box-shadow: 0 4px 20px rgba(48, 209, 88, 0.3);
     }
 
     .btn-pay-now:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
+      background: var(--accent-green-hover);
+      transform: scale(1.02);
+      box-shadow: 0 8px 28px rgba(48, 209, 88, 0.45);
+    }
+
+    .btn-pay-now:active {
+      transform: scale(0.98);
     }
 
     .whatsapp-support {
-      margin-top: 20px;
+      margin-top: 24px;
       text-align: center;
-      border-top: 1px solid var(--border-color);
-      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 18px;
     }
 
     .whatsapp-link {
-      color: var(--accent-color);
+      color: var(--accent-blue);
       text-decoration: none;
       font-size: 0.85rem;
+      font-weight: 400;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: color 0.2s;
+      transition: opacity 0.2s;
     }
 
     .whatsapp-link:hover {
-      color: var(--primary-color);
+      opacity: 0.8;
     }
 
     .footer-note {
       text-align: center;
       margin-top: 12px;
-      color: var(--text-muted);
-      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      font-size: 0.72rem;
+      letter-spacing: -0.01em;
     }
   </style>
 </head>
 <body>
 
   <div class="checkout-card">
-    <div class="badge-discount">🔥 PASSE VIP • RECUPERAÇÃO DE ELITE</div>
+    <div class="badge-discount">Passe VIP • Recuperação de Elite</div>
+
+    <!-- Logos Oficiais do Co-Branding -->
+    <div class="brand-header">
+      <img src="https://i.postimg.cc/HWcwh7XN/image.png" alt="Ferrari Recovery" class="brand-logo">
+      <span class="brand-divider">✕</span>
+      <img src="https://i.postimg.cc/qR93TjyP/image.png" alt="Wodnation" class="brand-logo">
+    </div>
 
     <div class="header">
-      <h1>Destrua a Fadiga. Volte Prontidão Máxima.</h1>
-      <p>O combo definitivo usado por atletas profissionais para eliminar dores musculares e acelerar a regeneração pós-WOD.</p>
+      <h1>Destrua a Fadiga.<br>Volte Prontidão Máxima.</h1>
+      <p>O combo definitivo da Ferrari Recovery para eliminar dores musculares e acelerar a regeneração pós-WOD.</p>
     </div>
 
     <div class="pricing-box">
       <div class="old-price">Preço Normal: R$ 197,00</div>
-      <div class="current-price">R$ 147<span>,00</span></div>
-      <div class="economy-tag">⚡ Oferta Especial WOD Nation (-R$ 50,00)</div>
+      <div class="current-price">
+        <span class="currency">R$</span>147<span class="cents">,00</span>
+      </div>
+      <div class="economy-tag">Oferta Especial Wodnation (-R$ 50,00)</div>
     </div>
 
     <ul class="benefits-list">
       <li>
-        <span class="icon">🧊</span>
+        <div class="icon-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2997ff" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
         <span><strong>Banheira de Gelo (Crioterapia):</strong> Vasoconstrição profunda que extermina a inflamação, anestesia a dor e "reseta" seu sistema nervoso central.</span>
       </li>
       <li>
-        <span class="icon">🦵</span>
-        <span><strong>Bota Pneumática de Compressão:</strong> Drenagem ativa que expulsa o acúmulo de ácido lático e toxinas, devolvendo a leveza imediata às pernas.</span>
+        <div class="icon-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#30d158" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <span><strong>Bota Pneumática de Compressão:</strong> Drenagem ativa que expulsa o acúmulo de ácido lático e toxinas, devolvendo leveza imediata às pernas.</span>
       </li>
       <li>
-        <span class="icon">🚀</span>
+        <div class="icon-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#30d158" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
         <span><strong>Sinergia Dupla Acelerada:</strong> O uso combinado reduz o tempo de recuperação pela metade em comparação com métodos convencionais.</span>
       </li>
       <li>
-        <span class="icon">👨‍⚕️</span>
+        <div class="icon-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2997ff" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+        </div>
         <span><strong>Padrão Dr. Ed Ferrari Jr.:</strong> Suporte e supervisão biomecânica especializada em fisioterapia esportiva de alta performance.</span>
       </li>
     </ul>
 
     <div class="payment-methods">✓ Pagamento Instantâneo via PIX • Cartão de Crédito • Débito</div>
 
-    <!-- Botão Principal com Link Direto -->
     <a href="https://mpago.li/2kzBErL" class="btn-pay-now">
       Garantir Combo Recovery • R$ 147
     </a>
 
     <div class="whatsapp-support">
-      <a href="https://wa.me/5519971002263?text=Olá,%20tenho%20dúvidas%20sobre%20o%20Combo%20Recovery%20WOD%20Nation" target="_blank" class="whatsapp-link">
+      <a href="https://wa.me/5519971002263?text=Olá,%20tenho%20dúvidas%20sobre%20o%20Combo%20Ferrari%20Recovery%20no%20Wodnation" target="_blank" class="whatsapp-link">
         💬 Dúvidas sobre o agendamento? Fale no WhatsApp
       </a>
     </div>
