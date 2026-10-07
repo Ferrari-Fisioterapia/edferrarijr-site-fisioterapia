@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferrari Recovery - WOD Nation</title>
+  
+  <!-- SDK Oficial do Mercado Pago -->
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --primary-color: #22c55e;
+      --accent-color: #0284c7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .checkout-card {
+      background-color: var(--card-bg);
+      border: 2px solid var(--primary-color);
+      border-radius: 20px;
+      padding: 40px 30px 30px 30px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      margin-top: 15px;
+    }
+
+    .badge-discount {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary-color);
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 6px 18px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+      white-space: nowrap;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .pricing-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+
+    .current-price {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      line-height: 1;
+    }
+
+    .current-price span {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+
+    .economy-tag {
+      display: inline-block;
+      margin-top: 8px;
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--primary-color);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    .benefits-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .benefits-list li {
+      color: var(--text-main);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .benefits-list li::before {
+      content: "✓";
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    .payment-methods {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #38bdf8;
+      margin-bottom: 16px;
+    }
+
+    .wallet-container {
+      min-height: 48px;
+    }
+
+    .whatsapp-support {
+      margin-top: 20px;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 15px;
+    }
+
+    .whatsapp-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .whatsapp-link:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="checkout-card">
+    <div class="badge-discount">🔥 Oportunidade Exclusiva</div>
+
+    <div class="header">
+      <h1>Ferrari Recovery</h1>
+      <p>Acelere sua recuperação muscular com tecnologia de nível profissional.</p>
+    </div>
+
+    <div class="pricing-box">
+      <div class="old-price">De R$ 197,00</div>
+      <div class="current-price">R$ 147<span>,00</span></div>
+      <div class="economy-tag">Você economiza R$ 50,00 hoje</div>
+    </div>
+
+    <ul class="benefits-list">
+      <li><strong>Protocolo Especializado:</strong> Recuperação pós-treino e competição</li>
+      <li>Alívio imediato da fadiga e inchaço muscular</li>
+      <li>Atendimento e suporte do Dr. Ed Ferrari Jr.</li>
+      <li>Agendamento prioritário e exclusivo</li>
+    </ul>
+
+    <div class="payment-methods">✓ Pagamento instantâneo via PIX • Cartão • Débito</div>
+
+    <!-- Container do Botão Modal do Mercado Pago -->
+    <div id="wallet_container" class="wallet-container"></div>
+
+    <div class="whatsapp-support">
+      <a href="https://wa.me/5519971002263?text=Olá,%20tenho%20dúvidas%20sobre%20o%20Ferrari%20Recovery" target="_blank" class="whatsapp-link">
+        💬 Ficou com alguma dúvida? Fale no WhatsApp
+      </a>
+    </div>
+
+    <div class="footer-note">
+      🔒 Pagamento 100% seguro processado pelo Mercado Pago
+    </div>
+  </div>
+
+  <script>
+    const mp = new MercadoPago('APP_USR-cbed48f9-dce2-4f47-b83b-e6524cf89fb5', {
+      locale: 'pt-BR'
+    });
+
+    mp.bricks().create("wallet", "wallet_container", {
+      initialization: {
+        preferenceId: "193674742-84df66f1-7a4e-4600-abae-62d1ce6fb2dc",
+        redirectMode: "modal"
+      },
+      customization: {
+        texts: {
+          action: 'pay',
+          valueProp: 'security_details'
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
