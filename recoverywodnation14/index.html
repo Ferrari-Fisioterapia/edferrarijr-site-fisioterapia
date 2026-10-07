@@ -285,7 +285,6 @@
 <body>
 
   <div class="checkout-card">
-    <!-- Texto do Selo Atualizado -->
     <div class="badge-discount">Passe VIP Recovery Wodnation</div>
 
     <!-- Co-Branding das Marcas -->
@@ -297,7 +296,6 @@
 
     <div class="header">
       <h1>Destrua a Fadiga.<br>Volte 100% Pronto.</h1>
-      <!-- Subtítulo Atualizado -->
       <p>Elimine dores musculares, acabe com o ácido lático pós-WOD e garanta sua vantagem esportiva.</p>
     </div>
 
@@ -357,19 +355,17 @@
         data: new Date().toLocaleString("pt-BR")
       };
 
-      const googleScriptUrl = "COLE_AQUI_SUA_URL_DO_GOOGLE_APPS_SCRIPT";
+      const googleScriptUrl = "https://script.google.com/macros/s/AKfycbznI9AxgyukvXrTCDI-px8wUX8HhIt7gI8p_18GHDpp7135qnOInCJqaaq4e6kw6M01/exec";
 
-      if (googleScriptUrl && !googleScriptUrl.includes("COLE_AQUI")) {
-        try {
-          await fetch(googleScriptUrl, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-        } catch (err) {
-          console.error("Erro ao salvar lead:", err);
-        }
+      try {
+        await fetch(googleScriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error("Erro ao salvar lead:", err);
       }
 
       window.location.href = "https://mpago.li/2kzBErL";
