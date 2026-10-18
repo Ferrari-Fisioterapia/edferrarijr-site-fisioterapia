@@ -232,8 +232,8 @@ SERVICOS = [
         "wa": "Olá! Gostaria de informações sobre a Ferrari Recovery (bota de compressão e banheira de gelo).",
         "secoes": [
             ("O que oferecemos", """<div class="s-grid">
-<div class="s-card"><h3>Bota de compressão pneumática</h3><p>Equipamento de compressão sequencial nas pernas, usado após treinos e provas como parte da rotina de recuperação. A sensação costuma ser de alívio e leveza, mas a resposta varia de pessoa para pessoa.</p></div>
-<div class="s-card"><h3>Banheira de gelo (ice bath)</h3><p>Imersão em água fria, usada por muitos atletas após esforços intensos. O protocolo de temperatura e de tempo é orientado por mim, e há contraindicações que avalio com você antes.</p></div>
+<div class="s-card"><img src="/assets/img/image_11.webp" alt="Bota de compressão pneumática" width="500" height="500" loading="lazy" style="width:100%;height:220px;object-fit:cover;margin-bottom:14px"><h3>Bota de compressão pneumática</h3><p>Equipamento de compressão sequencial nas pernas, usado após treinos e provas como parte da rotina de recuperação. A sensação costuma ser de alívio e leveza, mas a resposta varia de pessoa para pessoa.</p></div>
+<div class="s-card"><img src="/assets/img/image_12.webp" alt="Banheira de gelo para imersão" width="1024" height="1024" loading="lazy" style="width:100%;height:220px;object-fit:cover;margin-bottom:14px"><h3>Banheira de gelo (ice bath)</h3><p>Imersão em água fria, usada por muitos atletas após esforços intensos. O protocolo de temperatura e de tempo é orientado por mim, e há contraindicações que avalio com você antes.</p></div>
 <div class="s-card"><h3>Combo fim de semana</h3><p>Bota e banheira por dois dias, para quem tem prova ou treino pesado no fim de semana.</p></div>
 </div>"""),
             ("Como funciona", """<p>Você entra em contato pelo WhatsApp, conta o seu treino ou evento e eu envio os valores e a disponibilidade. Combinamos a entrega, a retirada e a orientação de uso. Como o uso depende da sua condição de saúde, faço algumas perguntas antes, como condições cardiovasculares, circulatórias ou de sensibilidade ao frio.</p>"""),
@@ -347,7 +347,7 @@ def esc(s):
     return s.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
 
 
-def head(title, desc, caminho, extra_ld, tipo="website"):
+def head(title, desc, caminho, extra_ld, tipo="website", imagem="/assets/img/foto-sled.webp"):
     url = f"{BASE}{caminho}"
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
@@ -364,11 +364,10 @@ def head(title, desc, caminho, extra_ld, tipo="website"):
 <meta property="og:url" content="{url}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
-<meta property="og:image" content="{BASE}/assets/img/hero_bg.jpg">
+<meta property="og:image" content="{BASE}{imagem}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/BarlowCondensed-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Barlow-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css">
 <script type="application/ld+json">{json.dumps(extra_ld, ensure_ascii=False)}</script>
 </head>
@@ -381,20 +380,20 @@ def header():
         '<a href="%s"%s>%s</a>' % (h, ' class="hide-m"' if ocultar else "", t) for h, t, ocultar in NAV
     )
     return f"""<header class="s-header"><div class="s-wide">
-<a class="s-brand" href="/">Ed Ferrari Jr<span>.</span></a>
+<a class="s-brand" href="/"><b>Ed Ferrari Jr</b><small>FISIOTERAPIA · ESPORTIVA</small></a>
 <nav class="s-nav" aria-label="Principal">{links}<a class="s-btn small" href="{wa('Olá! Gostaria de agendar uma avaliação.')}">Agendar</a></nav>
 </div></header>
 """
 
 
 def footer():
-    servicos = "".join(f'<a href="/{s["slug"]}/">{s["menu"]}</a>' for s in SERVICOS[:5])
+    servicos = "".join('<a href="/%s/">%s</a>' % (x["slug"], x["menu"]) for x in SERVICOS[:5])
     return f"""<footer class="s-footer"><div class="s-wide"><div class="cols">
-<div><strong>Ed Ferrari Jr. Fisioterapeuta</strong><br>Fisioterapia ortopédica e esportiva<br>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
+<div><div class="assin">Ed Ferrari Jr<small>FISIOTERAPIA · ESPORTIVA</small></div>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
 <div><strong>Serviços</strong>{servicos}</div>
 <div><strong>Mais</strong><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
 </div>
-<p class="s-note" style="margin-top:28px">As informações deste site são educativas e não substituem a avaliação de um profissional de saúde. Os resultados variam de pessoa para pessoa. © 2026 Ed Ferrari Jr.</p>
+<p class="s-note" style="margin-top:30px">As informações deste site são educativas e não substituem a avaliação de um profissional de saúde. Os resultados variam de pessoa para pessoa. © 2026 Ed Ferrari Jr.</p>
 </div></footer>
 </body>
 </html>
@@ -402,7 +401,7 @@ def footer():
 
 
 def cta(texto_wa, titulo="Agende sua avaliação"):
-    return f"""<section class="s-cta"><h2>{titulo}</h2><p>Atendimento no Instituto Adara (Swiss Park) e em domicílio, em Campinas e região.</p>
+    return f"""<section class="s-cta"><span class="rotulo">Atendimento em Campinas</span><h2>{titulo}</h2><p>Instituto Adara (Swiss Park) e em domicílio, em Campinas e região.</p>
 <a class="s-btn" href="{wa(texto_wa)}">Falar pelo WhatsApp</a></section>
 """
 
@@ -435,6 +434,22 @@ def crumbs_html(itens):
     return '<div class="s-crumb">' + " › ".join(partes) + "</div>"
 
 
+FOTOS = {
+    "fisioterapia-ombro-campinas": ("foto-overhead", "Atleta com barra acima da cabeça", "50% 22%"),
+    "fisioterapia-joelho-tornozelo-campinas": ("foto-afundo", "Praticante fazendo afundo ao ar livre", "50% 35%"),
+    "fisioterapia-lesoes-musculares-campinas": ("foto-costas", "Atleta de costas durante treino de sled", "50% 45%"),
+    "fisioterapia-coluna-campinas": ("foto-alongamento", "Praticante se alongando à beira de um píer", "50% 40%"),
+    "fisioterapia-esportiva-campinas": ("foto-corrida", "Corredor em movimento", "50% 40%"),
+}
+
+
+def foto_html(s):
+    f = FOTOS.get(s["slug"])
+    if not f:
+        return ""
+    return f'<div class="s-foto"><img src="/assets/img/{f[0]}.webp" alt="{f[1]}" style="object-position:{f[2]}" width="1100" height="470" loading="eager"></div>'
+
+
 def pagina_servico(s):
     caminho = f"/{s['slug']}/"
     migalhas = [("Início", "/"), (s["menu"], caminho)]
@@ -459,7 +474,7 @@ def pagina_servico(s):
     }
     corpo = "".join(f"<h2>{t}</h2>{h}" for t, h in s["secoes"])
     rel = "".join(
-        f'<a class="s-card" href="/{r["slug"]}/"><h3>{r["menu"]}</h3><p>{r["resumo"]}</p></a>'
+        f'<a class="s-card" href="/{r["slug"]}/"><span class="s-num">SERVIÇO</span><h3>{r["menu"]}</h3><p>{r["resumo"]}</p></a>'
         for r in SERVICOS
         if r["slug"] in s["rel"]
     )
@@ -471,8 +486,9 @@ def pagina_servico(s):
     html = head(s["title"], s["desc"], caminho, ld) + header()
     html += f"""<main class="s-main"><div class="s-wrap">
 {crumbs_html(migalhas)}
-<section class="s-hero"><span class="tag">{CREFITO} · Campinas</span><h1>{s['h1']}</h1><p class="lead">{s['lead']}</p>
+<section class="s-hero"><span class="rotulo">{CREFITO} · Campinas</span><div class="regua"></div><h1>{s['h1']}</h1><p class="lead">{s['lead']}</p>
 <a class="s-btn" href="{wa(s['wa'])}">Agendar avaliação</a></section>
+{foto_html(s)}
 {corpo}
 {faq_html(s['faq'])}
 {cta(s['wa'])}
@@ -498,7 +514,7 @@ def pagina_artigo(a):
                 "datePublished": DATA,
                 "dateModified": DATA,
                 "mainEntityOfPage": f"{BASE}{caminho}",
-                "image": f"{BASE}/assets/img/hero_bg.jpg",
+                "image": f"{BASE}/assets/img/foto-sled.webp",
                 "author": {"@id": f"{BASE}/#pessoa"},
                 "publisher": {"@id": f"{BASE}/#clinica"},
             },
@@ -509,7 +525,7 @@ def pagina_artigo(a):
     html = head(a["title"], a["desc"], caminho, ld, "article") + header()
     html += f"""<main class="s-main"><div class="s-wrap">
 {crumbs_html(migalhas)}
-<section class="s-hero"><span class="tag">Blog</span><h1>{a['h1']}</h1><p class="lead">{a['lead']}</p>
+<section class="s-hero"><span class="rotulo">Blog</span><div class="regua"></div><h1>{a['h1']}</h1><p class="lead">{a['lead']}</p>
 <p class="s-meta">Por Ed Ferrari Jr, fisioterapeuta ({CREFITO}) · Atualizado em 18/10/2026</p></section>
 {a['corpo']}
 {cta(texto_wa, "Quer uma avaliação individual?")}
@@ -534,12 +550,86 @@ def pagina_blog():
     html = head(titulo, desc, caminho, ld) + header()
     html += f"""<main class="s-main"><div class="s-wrap">
 {crumbs_html(migalhas)}
-<section class="s-hero"><span class="tag">Blog</span><h1>Fisioterapia esportiva e ortopédica na prática</h1><p class="lead">Conteúdo para quem treina e quer entender melhor a dor, a recuperação e o retorno ao esporte.</p></section>
+<section class="s-hero"><span class="rotulo">Blog</span><div class="regua"></div><h1>Fisioterapia esportiva e ortopédica na prática</h1><p class="lead">Conteúdo para quem treina e quer entender melhor a dor, a recuperação e o retorno ao esporte.</p></section>
 <div class="s-grid">{cards}</div>
 {cta("Olá! Gostaria de agendar uma avaliação.")}
 </div></main>
 """
     return caminho, html + footer()
+
+
+HOME_FAQ = [
+    ("Onde você atende em Campinas?", "No Instituto Adara, no Swiss Park (Av. Antônio Artioli, 276), e em domicílio no Swiss Park e na região metropolitana de Campinas."),
+    ("Preciso de pedido médico para marcar uma avaliação?", "Para a avaliação fisioterapêutica não é obrigatório. Se você tem exames ou laudos, traga para a primeira sessão. Alguns convênios pedem o pedido médico para reembolso."),
+    ("Você atende atletas de CrossFit, Hyrox e corrida?", "Sim. Faço avaliação do movimento e da carga de treino, tratamento das lesões e plano de retorno ao esporte."),
+    ("Como funciona o reembolso do convênio?", "O atendimento é particular. Eu forneço recibo e relatório para você solicitar o reembolso ao seu plano. A cobertura depende do contrato."),
+]
+
+
+def pagina_home():
+    titulo = "Fisioterapeuta Esportivo e Ortopédico em Campinas | Ed Ferrari Jr"
+    desc = "Fisioterapia ortopédica e esportiva em Campinas: ombro, joelho, coluna e lesões musculares. Atendimento no Instituto Adara (Swiss Park) e home care. Agende sua avaliação."
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "Physiotherapy", "@id": f"{BASE}/#clinica", "name": "Ed Ferrari Jr. Fisioterapia Ortopédica e Esportiva", "url": f"{BASE}/",
+         "image": f"{BASE}/assets/img/foto-sled.webp", "telephone": "+5519971002263",
+         "address": {"@type": "PostalAddress", "streetAddress": "Av. Antônio Artioli, 276", "addressLocality": "Campinas", "addressRegion": "SP", "postalCode": "13049-253", "addressCountry": "BR"},
+         "areaServed": [{"@type": "City", "name": "Campinas"}, {"@type": "Place", "name": "Swiss Park"}],
+         "medicalSpecialty": "Physiotherapy", "sameAs": ["https://www.instagram.com/edferrarijr", "https://www.youtube.com/@EdFerrariJr"], "founder": {"@id": f"{BASE}/#pessoa"}},
+        {"@type": "Person", "@id": f"{BASE}/#pessoa", "name": "Ed Ferrari Jr", "jobTitle": "Fisioterapeuta ortopédico e esportivo", "identifier": CREFITO, "url": f"{BASE}/", "worksFor": {"@id": f"{BASE}/#clinica"}},
+        {"@type": "WebSite", "@id": f"{BASE}/#site", "url": f"{BASE}/", "name": "Ed Ferrari Jr | Fisioterapia", "inLanguage": "pt-BR"},
+        faq_ld(HOME_FAQ)]}
+    cards = "".join(
+        f'<a class="s-card" href="/{x["slug"]}/"><span class="s-num">{i:02d}</span><h3>{x["menu"]}</h3><p>{x["resumo"]}</p></a>'
+        for i, x in enumerate(SERVICOS, 1))
+    blog = "".join(f'<a class="s-card" href="/blog/{a["slug"]}/"><span class="s-num">BLOG</span><h3>{a["h1"]}</h3><p>{a["lead"]}</p></a>' for a in ARTIGOS[:3])
+    h = head(titulo, desc, "/", ld) + header()
+    h += f"""<main>
+<section class="h-hero"><img class="fundo" src="/assets/img/foto-sled.webp" alt="" width="1800" height="1200" fetchpriority="high"><div class="s-wide">
+<span class="rotulo">Campinas · Instituto Adara e home care</span><div class="regua"></div>
+<h1><span class="destaque">Fisioterapia</span> ortopédica e esportiva em Campinas</h1>
+<p class="lead">Avaliação individual e reabilitação baseada em evidências, no Instituto Adara (Swiss Park) ou na sua casa.</p>
+<div class="acoes"><a class="s-btn" href="{wa('Olá! Vim pelo site e gostaria de agendar uma avaliação.')}">Agendar minha avaliação</a><a class="s-btn vazado" href="#servicos">Ver serviços</a></div>
+</div></section>
+<div class="h-faixa"><div class="s-wide"><span>Tratamento baseado em evidências</span><span>Avaliação individual</span><span>Minimizando lesões</span><span>{CREFITO}</span></div></div>
+
+<section class="h-sec"><div class="s-wide h-sobre">
+<img src="/assets/img/image_1.webp" alt="Ed Ferrari Jr, fisioterapeuta" width="600" height="800" loading="lazy">
+<div><span class="rotulo">Quem cuida de você</span><h2>Chega de tratamentos genéricos.</h2>
+<p>Muitas vezes o tratamento se limita a aliviar o sintoma. Como especialista em ortopedia e fisioterapia esportiva, eu investigo a <strong>raiz biomecânica</strong> da sua dor articular, muscular ou ligamentar.</p>
+<p>Meu compromisso é com a sua independência: um plano de eficiência máxima, com o menor número de visitas possível, para você voltar a treinar e viver sem medo.</p></div>
+</div></section>
+
+<section class="h-sec" id="servicos" style="padding-top:0"><div class="s-wide"><span class="rotulo">Serviços</span><h2>Cuidado individualizado para cada região do corpo.</h2>
+<div class="s-grid">{cards}</div></div></section>
+
+<section class="h-sec escura"><div class="s-wide"><span class="rotulo">Para quem treina</span><h2>CrossFit, Hyrox, ATHX e corrida.</h2>
+<p style="max-width:640px">Conheço as demandas do seu esporte. Avalio o movimento e a carga de treino, trato a lesão e planejo o retorno com critérios claros.</p>
+<div class="h-esportes"><a href="/fisioterapia-esportiva-campinas/" style="color:#F4F4F1;border-color:#F4F4F1">Hyrox</a><a href="/fisioterapia-esportiva-campinas/" style="color:#F4F4F1;border-color:#F4F4F1">CrossFit</a><a href="/fisioterapia-esportiva-campinas/" style="color:#F4F4F1;border-color:#F4F4F1">ATHX</a><a href="/fisioterapia-esportiva-campinas/" style="color:#F4F4F1;border-color:#F4F4F1">Corrida</a></div>
+<a class="s-btn" href="/fisioterapia-esportiva-campinas/">Fisioterapia esportiva</a></div></section>
+
+<section class="h-sec"><div class="s-wide"><span class="rotulo">Ferrari Recovery</span><h2>Recuperação pós-treino. Na sua casa.</h2>
+<p class="suave" style="max-width:640px">Aluguel de equipamentos de recuperação pós-treino no Swiss Park e região. Valores sob consulta, pelo WhatsApp.</p>
+<div class="h-duo">
+<div class="s-card"><span class="s-num">01</span><h3>Bota pneumática</h3><p>Compressão pneumática sequencial nas pernas, usada na rotina de recuperação depois de treinos e provas.</p><a class="s-btn small" href="{wa('Olá! Gostaria de informações sobre a bota de compressão.')}">Pedir informações</a></div>
+<div class="s-card"><span class="s-num">02</span><h3>Banheira de gelo</h3><p>Imersão em água fria, usada por atletas após esforços intensos. Orientação de uso e triagem antes da locação.</p><a class="s-btn small" href="{wa('Olá! Gostaria de informações sobre a banheira de gelo.')}">Pedir informações</a></div>
+<div class="s-card"><span class="s-num">03</span><h3>Combo fim de semana</h3><p>Bota de compressão e banheira de gelo por 2 dias completos.</p><a class="s-btn small" href="{wa('Olá! Gostaria de informações sobre o combo de fim de semana (bota + banheira).')}">Pedir informações</a></div>
+</div><p style="margin-top:20px"><a href="/ferrari-recovery-campinas/">Saiba mais sobre a Ferrari Recovery →</a></p></div></section>
+
+<section class="h-sec escura" id="atendimento"><div class="s-wide"><span class="rotulo">Onde atendo</span><h2>Duas formas de cuidar de você.</h2>
+<div class="h-duo">
+<div class="s-card escuro"><span class="s-num" style="color:#EE6660">01</span><h3>Instituto Adara</h3><p>Atendimento presencial em uma estrutura moderna e equipada para a sua reabilitação esportiva.</p><div class="h-end">{ENDERECO}</div><a class="s-btn small" href="{wa('Olá! Gostaria de agendar um atendimento no Instituto Adara.')}">Agendar na clínica</a></div>
+<div class="s-card escuro"><span class="s-num" style="color:#EE6660">02</span><h3>Home care</h3><p>Reabilitação na sua casa, com privacidade e conforto, no Swiss Park e na região metropolitana de Campinas.</p><a class="s-btn small" href="{wa('Olá! Gostaria de agendar um atendimento Home Care.')}">Agendar home care</a> &nbsp; <a href="/fisioterapia-home-care-campinas/" style="color:#EE6660">Saiba mais →</a></div>
+</div></div></section>
+
+<section class="h-sec"><div class="s-wide"><span class="rotulo">Blog</span><h2>Para entender melhor a sua dor.</h2><div class="s-grid">{blog}</div><p><a href="/blog/">Ver todos os artigos →</a></p></div></section>
+
+<section class="h-sec" style="padding-top:0"><div class="s-wrap s-main"><span class="rotulo">Dúvidas</span>{faq_html(HOME_FAQ).replace('<h2>Perguntas frequentes</h2>', '<h2 style="margin-top:10px">Perguntas frequentes</h2>')}
+<p style="margin-top:22px"><a href="/fisioterapia-reembolso-convenio-campinas/">Como funciona o reembolso do convênio →</a></p></div></section>
+<div class="s-wide">{cta('Olá! Vim pelo site e gostaria de agendar uma avaliação.')}</div>
+</main>
+"""
+    return "/", h + footer()
+
 
 
 def escrever(caminho, html):
@@ -550,6 +640,8 @@ def escrever(caminho, html):
 
 
 def main():
+    c, h = pagina_home()
+    escrever(c, h)
     urls = [("/", "1.0"), ("/perito-assistente-tecnico-em-fisioterapia/", "0.7")]
     for s in SERVICOS:
         c, h = pagina_servico(s)
