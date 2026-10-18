@@ -1,0 +1,57 @@
+/* Estilos das páginas de serviço e do blog (CSS puro, sem build). Mesma identidade da home. */
+:root{--ink:#1d1d1f;--mute:#6e6e73;--bg:#fbfbfd;--card:#fff;--accent:#c4302b;--accent-d:#a12521;--line:#e8e8ed}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.s-wrap{max-width:860px;margin:0 auto;padding:0 24px}
+.s-wide{max-width:1100px;margin:0 auto;padding:0 24px}
+.s-header{position:sticky;top:0;z-index:50;background:rgba(251,251,253,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.s-header .s-wide{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.s-brand{font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.s-brand span{color:var(--accent)}
+.s-nav{display:flex;gap:22px;align-items:center}
+.s-nav a{font-size:.88rem;font-weight:500;color:#1d1d1fb3;text-decoration:none}
+.s-nav a:hover{color:var(--ink)}
+.s-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff!important;text-decoration:none;font-weight:600;border-radius:999px;padding:13px 26px;font-size:1rem;transition:.25s}
+.s-btn:hover{background:var(--accent-d);transform:scale(1.02)}
+.s-btn.dark{background:var(--ink)}
+.s-btn.small{padding:9px 18px;font-size:.85rem}
+.s-btn svg{width:18px;height:18px;fill:currentColor}
+.s-crumb{font-size:.82rem;color:var(--mute);padding:28px 0 0}
+.s-crumb a{color:var(--mute)}
+.s-hero{padding:18px 0 40px}
+.s-hero .tag{color:var(--accent);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem}
+.s-hero h1{font-size:clamp(1.9rem,4.6vw,3rem);line-height:1.12;letter-spacing:-.03em;font-weight:800;margin:10px 0 16px}
+.s-hero p.lead{font-size:1.18rem;color:var(--mute);margin:0 0 26px;max-width:680px}
+.s-main h2{font-size:clamp(1.4rem,2.6vw,1.8rem);letter-spacing:-.02em;line-height:1.2;margin:46px 0 12px}
+.s-main h3{font-size:1.1rem;margin:26px 0 6px}
+.s-main p,.s-main li{font-size:1.04rem}
+.s-main ul{padding-left:1.2em}
+.s-main li{margin:6px 0}
+.s-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 26px;margin:22px 0;box-shadow:0 4px 24px rgba(0,0,0,.03)}
+.s-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:22px 0}
+.s-grid .s-card{margin:0}
+.s-grid a.s-card{text-decoration:none;color:inherit;transition:.25s;display:block}
+.s-grid a.s-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.08)}
+.s-grid h3{margin:0 0 6px}
+.s-grid p{margin:0;color:var(--mute);font-size:.95rem}
+.s-faq details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:10px 0}
+.s-faq summary{font-weight:600;cursor:pointer}
+.s-faq details p{margin:10px 0 0;color:var(--mute)}
+.s-cta{background:#1d1d1f;color:#f5f5f7;border-radius:28px;padding:36px 30px;margin:48px 0;text-align:center}
+.s-cta h2{margin:0 0 8px;color:#fff}
+.s-cta p{color:#a1a1a6;margin:0 0 22px}
+.s-note{font-size:.85rem;color:var(--mute);border-top:1px solid var(--line);padding-top:18px;margin-top:40px}
+.s-footer{background:#f5f5f7;border-top:1px solid var(--line);margin-top:60px;padding:40px 0;font-size:.9rem;color:var(--mute)}
+.s-footer .cols{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between}
+.s-footer a{color:var(--mute);display:block;margin:4px 0;text-decoration:none}
+.s-footer a:hover{color:var(--ink)}
+.s-footer strong{color:var(--ink)}
+.s-meta{font-size:.85rem;color:var(--mute);margin-bottom:20px}
+@media(max-width:820px){.s-nav a.hide-m{display:none}.s-nav{gap:14px}}
+@media(max-width:560px){.s-nav a:not(.s-btn){display:none}}
+/* home: bloco de FAQ e links de serviço */
+.h-faq{max-width:860px;margin:0 auto}
+.h-more{display:inline-block;margin-top:14px;font-weight:600;font-size:.9rem;color:var(--accent);text-decoration:none}
+.h-more:hover{text-decoration:underline}

@@ -1,0 +1,576 @@
+#!/usr/bin/env python3
+"""Gera as páginas de serviço, o blog, o sitemap e o robots.txt.
+
+Uso (na raiz do repositório):  python3 tools/gerar_paginas.py
+Para mudar um texto, edite SERVICOS ou ARTIGOS abaixo e rode de novo.
+A home (index.html) e a página do perito são editadas à mão.
+"""
+import json
+import os
+from urllib.parse import quote
+
+BASE = "https://www.edferrarijr.com"
+RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FONE = "5519971002263"
+DATA = "2026-10-18"
+ENDERECO = "Av. Antônio Artioli, 276 - Swiss Park, Campinas - SP, 13049-253"
+CREFITO = "CREFITO-3/306266-F"
+
+WA_SVG = ""
+
+
+def wa(texto):
+    return f"https://api.whatsapp.com/send?phone={FONE}&text={quote(texto)}"
+
+
+# ---------------------------------------------------------------- conteúdo
+SERVICOS = [
+    {
+        "slug": "fisioterapia-ombro-campinas",
+        "menu": "Ombro, cotovelo e punho",
+        "resumo": "Manguito rotador, epicondilite, túnel do carpo e tendinites.",
+        "title": "Fisioterapia para Ombro, Cotovelo e Punho em Campinas | Ed Ferrari Jr",
+        "desc": "Fisioterapia para dor no ombro, manguito rotador, epicondilite, túnel do carpo e tendinites em Campinas. Avaliação individual no Swiss Park ou em casa.",
+        "h1": "Fisioterapia para ombro, cotovelo e punho em Campinas",
+        "lead": "Dor ao levantar o braço, ao pegar peso ou ao digitar costuma ter causas diferentes. Eu faço a avaliação para entender qual estrutura está sobrecarregada e montar o plano de reabilitação para o seu caso.",
+        "wa": "Olá! Gostaria de agendar uma avaliação para dor no ombro, cotovelo ou punho.",
+        "secoes": [
+            ("Quais problemas eu avalio e trato", """<ul>
+<li><strong>Ombro:</strong> tendinopatia e lesões do manguito rotador, bursite, dor no ombro após luxação ou cirurgia.</li>
+<li><strong>Cotovelo:</strong> epicondilite lateral ("cotovelo de tenista") e medial ("cotovelo de golfista").</li>
+<li><strong>Punho e mão:</strong> síndrome do túnel do carpo, tenossinovite de De Quervain e outras tendinites.</li>
+<li><strong>Pós-operatório:</strong> reabilitação depois de cirurgia no ombro, cotovelo ou punho, conforme a orientação do cirurgião.</li>
+</ul>"""),
+            ("Como funciona a avaliação", """<p>A primeira sessão é dedicada à avaliação. Converso sobre sua rotina, seu trabalho ou esporte e o histórico da dor. Depois avalio amplitude de movimento, força, estabilidade da articulação e o padrão do movimento. Com isso, defino os exercícios e as técnicas manuais da fase em que você está e quais sinais indicam que é preciso falar com o seu médico.</p>
+<p>O tratamento combina exercícios terapêuticos, terapia manual e orientações para a rotina ou o treino. A frequência e a duração dependem do diagnóstico e da sua resposta, e eu ajusto o plano ao longo das sessões.</p>"""),
+            ("Atletas e praticantes de musculação, CrossFit e Hyrox", """<p>O ombro é uma das regiões mais exigidas em movimentos acima da cabeça, como o overhead, o snatch, as barras e as argolas, e em exercícios de empurrar, como supino e flexões. Quando a dor aparece nesses movimentos, a reabilitação inclui ajustar a técnica, a carga e o volume do treino. O objetivo é reduzir a dor e preparar o seu retorno ao treino de forma gradual, com critérios definidos.</p>
+<p>Veja também: <a href="/blog/dor-no-ombro-crossfit/">dor no ombro no CrossFit: sinais de que vale uma avaliação</a>.</p>"""),
+        ],
+        "faq": [
+            ("Preciso de pedido médico para fazer fisioterapia?", "Para iniciar a avaliação fisioterapêutica não é obrigatório. Se você já tem exames ou laudo, traga para a primeira sessão, pois eles ajudam no planejamento. Alguns convênios exigem o pedido médico para reembolso."),
+            ("Quantas sessões vou precisar?", "Depende do problema, do tempo de sintomas e da sua rotina. Eu defino uma estimativa depois da avaliação e reviso o plano conforme sua evolução."),
+            ("Posso continuar treinando durante o tratamento?", "Na maioria dos casos é possível manter parte do treino, adaptando movimentos, cargas e volume. Eu oriento o que manter e o que modificar em cada fase."),
+        ],
+        "rel": ["fisioterapia-esportiva-campinas", "fisioterapia-lesoes-musculares-campinas", "fisioterapia-reembolso-convenio-campinas"],
+    },
+    {
+        "slug": "fisioterapia-joelho-tornozelo-campinas",
+        "menu": "Joelho e tornozelo",
+        "resumo": "Menisco, LCA, condromalácia, fascite plantar e entorses.",
+        "title": "Fisioterapia para Joelho e Tornozelo em Campinas | Ed Ferrari Jr",
+        "desc": "Fisioterapia para dor no joelho e tornozelo em Campinas: menisco, LCA, condromalácia, fascite plantar e entorses, com retorno gradual ao esporte.",
+        "h1": "Fisioterapia para joelho e tornozelo em Campinas",
+        "lead": "Joelho e tornozelo suportam o peso do corpo em tudo o que fazemos, de subir escadas a correr uma prova. Eu avalio o que está gerando a dor e conduzo a reabilitação tanto de casos conservadores quanto de pós-operatório.",
+        "wa": "Olá! Gostaria de agendar uma avaliação para dor no joelho ou tornozelo.",
+        "secoes": [
+            ("Quais problemas eu avalio e trato", """<ul>
+<li><strong>Joelho:</strong> lesões de menisco, ligamento cruzado anterior (LCA), condromalácia, síndrome da dor patelofemoral, tendinopatia patelar e dor na parte lateral do joelho.</li>
+<li><strong>Tornozelo e pé:</strong> entorses, instabilidade do tornozelo, tendinopatia de Aquiles e fascite plantar.</li>
+<li><strong>Pós-operatório:</strong> reconstrução de LCA, meniscectomia e outras cirurgias, seguindo o protocolo e as orientações do cirurgião.</li>
+</ul>"""),
+            ("Como conduzo a reabilitação", """<p>A avaliação inclui histórico, testes de força, estabilidade e mobilidade e a análise de como você agacha, aterrissa, caminha e corre. A partir disso, o plano passa por fases: controle da dor e do inchaço, recuperação do movimento e da força, trabalho de controle neuromuscular e, para quem pratica esporte, retorno gradual ao treino.</p>
+<p>No retorno ao esporte, uso testes funcionais, como força, saltos e agilidade, para decidir junto com você quando aumentar a carga. A ideia é voltar com critérios e não só quando a dor diminuir.</p>"""),
+            ("Corredores, CrossFit e Hyrox", """<p>Corrida, agachamentos, afundos, sled push e wall balls exigem muito do joelho e do tornozelo. Em muitos casos a dor vem de um aumento rápido de volume ou de intensidade, e não de uma lesão estrutural. A avaliação ajuda a separar uma coisa da outra.</p>
+<p>Veja também: <a href="/blog/dor-no-joelho-corrida/">dor no joelho na corrida: por que acontece e quando investigar</a>.</p>"""),
+        ],
+        "faq": [
+            ("Dor no joelho sempre exige cirurgia?", "Não. Muitos casos de dor no joelho são tratados com reabilitação. A necessidade de cirurgia é uma decisão médica, tomada com base em exames e na avaliação clínica."),
+            ("Tive entorse e já não dói mais. Preciso de fisioterapia?", "Mesmo sem dor, pode ficar perda de estabilidade e de equilíbrio, o que aumenta o risco de novas entorses. Uma avaliação mostra se há déficits a corrigir."),
+            ("Atende pós-operatório?", "Sim. Trabalho junto ao protocolo e às orientações do cirurgião, adaptando a evolução à sua resposta."),
+        ],
+        "rel": ["fisioterapia-esportiva-campinas", "fisioterapia-lesoes-musculares-campinas", "fisioterapia-home-care-campinas"],
+    },
+    {
+        "slug": "fisioterapia-lesoes-musculares-campinas",
+        "menu": "Lesões musculares e ligamentares",
+        "resumo": "Estiramentos, rupturas, contraturas e distensões.",
+        "title": "Fisioterapia para Lesões Musculares e Ligamentares em Campinas | Ed Ferrari Jr",
+        "desc": "Fisioterapia para estiramentos, distensões, rupturas, contraturas e lesões ligamentares em Campinas, com avaliação individual e retorno gradual ao treino.",
+        "h1": "Fisioterapia para lesões musculares e ligamentares em Campinas",
+        "lead": "Estiramento na coxa, dor na panturrilha ou uma entorse forte pedem condutas diferentes. A avaliação define a gravidade, o que pode ser trabalhado agora e em que momento sua carga de treino volta a subir.",
+        "wa": "Olá! Gostaria de agendar uma avaliação para uma lesão muscular ou ligamentar.",
+        "secoes": [
+            ("Situações que eu atendo", """<ul>
+<li>Estiramentos e distensões de posterior de coxa, quadríceps, adutores e panturrilha.</li>
+<li>Rupturas musculares parciais, com encaminhamento ao médico quando necessário.</li>
+<li>Contraturas e dores musculares persistentes.</li>
+<li>Lesões ligamentares leves e moderadas, como entorses de tornozelo, joelho e punho.</li>
+</ul>"""),
+            ("Como é o processo", """<p>Primeiro avalio o mecanismo da lesão, o local da dor, a força e a mobilidade. Se houver sinais que pedem exame de imagem ou avaliação médica, eu oriento. O tratamento usa exercícios progressivos, terapia manual e recursos de eletrotermofototerapia quando indicados. A sequência é sempre baseada na fase do tecido e nos seus objetivos.</p>
+<p>Para atletas, o retorno é planejado em etapas: corrida leve, mudanças de direção, saltos e esforço máximo, sempre com critérios de força e de controle do movimento.</p>"""),
+            ("Prevenção de novas lesões", """<p>Depois que você está sem dor, ainda há trabalho a fazer. Revisamos o volume de treino, a distribuição de cargas na semana, o aquecimento e os déficits de força que podem ter contribuído para a lesão. Isso reduz a chance de repetir o problema, embora nenhuma estratégia elimine o risco por completo.</p>"""),
+        ],
+        "faq": [
+            ("Quanto tempo leva para voltar a treinar depois de um estiramento?", "Varia conforme a gravidade e o músculo envolvido. Depois da avaliação, passo uma estimativa e os critérios que usamos para liberar cada etapa."),
+            ("Gelo ou calor?", "Depende da fase e do tipo de lesão. Na avaliação eu explico o que faz sentido no seu caso."),
+            ("Preciso fazer ressonância antes?", "Nem sempre. Eu avalio e, se houver indicação, oriento a procurar o médico para o exame de imagem."),
+        ],
+        "rel": ["fisioterapia-esportiva-campinas", "fisioterapia-joelho-tornozelo-campinas", "ferrari-recovery-campinas"],
+    },
+    {
+        "slug": "fisioterapia-coluna-campinas",
+        "menu": "Coluna vertebral",
+        "resumo": "Hérnia de disco, dor lombar, ciatalgia e postura.",
+        "title": "Fisioterapia para Coluna, Dor Lombar e Hérnia de Disco em Campinas | Ed Ferrari Jr",
+        "desc": "Fisioterapia para dor lombar, hérnia de disco, ciatalgia e dor cervical em Campinas. Avaliação individual, exercícios e orientações para a rotina.",
+        "h1": "Fisioterapia para coluna, dor lombar e hérnia de disco em Campinas",
+        "lead": "Dor nas costas é uma das queixas mais comuns, e nem sempre tem relação com hérnia de disco. A avaliação ajuda a identificar o que piora e o que alivia os sintomas, e a montar um plano que cabe na sua rotina.",
+        "wa": "Olá! Gostaria de agendar uma avaliação para dor na coluna.",
+        "secoes": [
+            ("Quadros que eu avalio e trato", """<ul>
+<li>Dor lombar aguda e crônica.</li>
+<li>Hérnia de disco e protrusões, com ou sem dor irradiada.</li>
+<li>Ciatalgia (dor que desce pela perna).</li>
+<li>Dor cervical e na região entre as escápulas, comum em quem passa muitas horas sentado.</li>
+<li>Dor na coluna ligada ao treino, como agachamento, levantamento terra e remada.</li>
+</ul>"""),
+            ("O que a avaliação inclui", """<p>Avalio a coluna e também quadril, ombros e padrões de movimento, porque a dor muitas vezes está relacionada com a forma como o corpo distribui o esforço. Pesquiso sinais de alerta que exigem encaminhamento médico, como perda de força progressiva, alteração de sensibilidade importante, dor noturna intensa ou perda de controle de esfíncteres.</p>
+<p>O tratamento costuma combinar exercícios de estabilização e fortalecimento, mobilidade, terapia manual e orientação sobre postura, ergonomia e retorno às atividades. Educação sobre dor é parte importante: entender o que está acontecendo reduz o medo de se mexer.</p>"""),
+            ("Treino e coluna", """<p>Quem treina força, CrossFit ou corrida pode precisar adaptar a técnica, os movimentos e a carga por um período. Eu indico alternativas que mantêm você ativo sem agravar os sintomas, e trabalho o retorno aos exercícios principais de forma progressiva.</p>"""),
+        ],
+        "faq": [
+            ("Hérnia de disco tem que operar?", "A maior parte dos casos é tratada sem cirurgia. A indicação cirúrgica é uma decisão médica e depende dos sintomas, da evolução e dos exames."),
+            ("Quando devo procurar um médico com urgência?", "Em caso de fraqueza que piora rápido, formigamento importante na região íntima, perda de controle de urina ou fezes, febre com dor nas costas ou dor após trauma forte."),
+            ("Posso fazer academia com dor lombar?", "Muitas vezes sim, com adaptações. Eu oriento o que manter e o que ajustar para o seu caso."),
+        ],
+        "rel": ["fisioterapia-esportiva-campinas", "fisioterapia-home-care-campinas", "fisioterapia-reembolso-convenio-campinas"],
+    },
+    {
+        "slug": "fisioterapia-esportiva-campinas",
+        "menu": "Fisioterapia esportiva",
+        "resumo": "Retorno ao esporte e performance: CrossFit, Hyrox, ATHX e corrida.",
+        "title": "Fisioterapia Esportiva em Campinas: CrossFit, Hyrox e Corrida | Ed Ferrari Jr",
+        "desc": "Fisioterapeuta esportivo em Campinas para praticantes de CrossFit, Hyrox, ATHX e corrida. Avaliação biomecânica, retorno ao esporte e prevenção de lesões.",
+        "h1": "Fisioterapia esportiva em Campinas para CrossFit, Hyrox e corrida",
+        "lead": "Se você treina forte e tem uma dor que não passa, ou quer evitar a próxima lesão, a fisioterapia esportiva trabalha com as demandas do seu esporte. Eu avalio o seu movimento, a sua carga de treino e o seu histórico de lesões.",
+        "wa": "Olá! Gostaria de agendar uma avaliação de fisioterapia esportiva.",
+        "secoes": [
+            ("Para quem é", """<ul>
+<li>Praticantes de <strong>CrossFit</strong>, funcional e musculação com dor ou limitação em algum movimento.</li>
+<li>Atletas e amadores de <strong>Hyrox</strong> e <strong>ATHX</strong> que combinam corrida e estações de força e querem chegar à prova bem preparados.</li>
+<li><strong>Corredores</strong> de rua com dores recorrentes no joelho, na canela, no tornozelo ou no quadril.</li>
+<li>Quem está <strong>voltando de lesão ou cirurgia</strong> e quer um retorno com critérios claros.</li>
+</ul>"""),
+            ("O que a avaliação esportiva inclui", """<p>Além do exame clínico, avalio os movimentos do seu esporte: agachar, correr, saltar, puxar, empurrar e levantar carga acima da cabeça. Medimos força, assimetrias entre os lados, mobilidade e controle do movimento. Também olhamos a sua programação de treino: volume, intensidade, descanso e o que mudou nas semanas antes de a dor começar.</p>
+<p>Com isso, monto um plano que combina tratamento da queixa, exercícios específicos e ajustes no treino. O objetivo é que você continue treinando da melhor forma possível durante o processo, quando o seu caso permitir.</p>"""),
+            ("Retorno ao esporte e prevenção", """<p>O retorno ao treino é planejado em etapas, com testes funcionais de força, saltos e agilidade e com progressão de carga. A prevenção de lesões não é uma garantia, mas treinar com boa preparação física, carga bem distribuída e recuperação adequada diminui os riscos. Conheça também a <a href="/ferrari-recovery-campinas/">Ferrari Recovery</a>, com bota de compressão e banheira de gelo para a recuperação pós-treino.</p>"""),
+            ("Preparação para provas", """<p>Se você tem uma prova de Hyrox, ATHX ou corrida no calendário, uma avaliação preventiva antes do período mais intenso de treino pode apontar pontos fracos e déficits que merecem atenção. Leia também: <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: como treinar sem se lesionar</a>.</p>"""),
+        ],
+        "faq": [
+            ("Preciso estar lesionado para marcar?", "Não. Muitos atletas fazem uma avaliação preventiva, para identificar déficits de força, mobilidade ou assimetrias antes que virem dor."),
+            ("Você entende de CrossFit e Hyrox?", "Sim. Eu acompanho o esporte, conheço os movimentos e as demandas das provas e converso com o seu treinador, se você quiser, para alinhar a volta ao treino."),
+            ("Atende fora da clínica?", "Sim. Há atendimento no Instituto Adara e a domicílio, no Swiss Park e na região metropolitana de Campinas."),
+        ],
+        "rel": ["fisioterapia-ombro-campinas", "fisioterapia-joelho-tornozelo-campinas", "ferrari-recovery-campinas"],
+    },
+    {
+        "slug": "fisioterapia-home-care-campinas",
+        "menu": "Fisioterapia home care",
+        "resumo": "Atendimento domiciliar no Swiss Park e região de Campinas.",
+        "title": "Fisioterapia Home Care em Campinas e Swiss Park | Ed Ferrari Jr",
+        "desc": "Fisioterapia domiciliar em Campinas e no Swiss Park: avaliação e reabilitação ortopédica e esportiva na sua casa, com privacidade e conforto.",
+        "h1": "Fisioterapia home care em Campinas e Swiss Park",
+        "lead": "Reabilitação ortopédica e esportiva na sua casa, com o mesmo método de avaliação que uso no consultório. Indicada para quem tem pouco tempo, está em pós-operatório ou prefere mais privacidade.",
+        "wa": "Olá! Gostaria de saber mais sobre o atendimento de fisioterapia home care.",
+        "secoes": [
+            ("Quando o home care faz sentido", """<ul>
+<li>Pós-operatório recente, quando se deslocar é difícil.</li>
+<li>Rotina corrida: o atendimento acontece no seu horário, sem deslocamento.</li>
+<li>Preferência por mais privacidade e conforto.</li>
+<li>Pessoas que querem fazer a reabilitação junto com o espaço de treino em casa.</li>
+</ul>"""),
+            ("Como funciona", """<p>Levo os equipamentos portáteis necessários para a avaliação e para os exercícios. A primeira sessão inclui a avaliação completa, a definição do plano e a orientação sobre o que fazer entre as sessões. Podemos usar o espaço da sua casa ou condomínio, como sala, academia e quintal.</p>
+<p>Atendo no <strong>Swiss Park</strong> e na região metropolitana de Campinas. Fale pelo WhatsApp para confirmar se o seu endereço está na área de atendimento.</p>"""),
+            ("O que posso tratar em casa", """<p>Dores e lesões do ombro, joelho, tornozelo e coluna, lesões musculares, reabilitação pós-cirúrgica e preparação física terapêutica. Quando um caso exige estrutura que só existe na clínica, indico o <strong>Instituto Adara</strong>, onde também atendo.</p>"""),
+        ],
+        "faq": [
+            ("Qual a área de atendimento?", "Swiss Park e a região metropolitana de Campinas. Envie o seu bairro pelo WhatsApp para confirmar."),
+            ("O atendimento domiciliar tem a mesma qualidade do da clínica?", "A avaliação e o método são os mesmos. Em casos que exigem equipamentos específicos da clínica, combinamos sessões no Instituto Adara."),
+            ("Tem reembolso pelo convênio?", "Eu forneço recibo e relatório para você solicitar o reembolso. A cobertura depende do seu plano."),
+        ],
+        "rel": ["fisioterapia-reembolso-convenio-campinas", "fisioterapia-coluna-campinas", "fisioterapia-esportiva-campinas"],
+    },
+    {
+        "slug": "fisioterapia-reembolso-convenio-campinas",
+        "menu": "Reembolso do convênio",
+        "resumo": "Como funciona o reembolso de fisioterapia pelo plano de saúde.",
+        "title": "Fisioterapia Particular com Reembolso do Convênio em Campinas | Ed Ferrari Jr",
+        "desc": "Entenda como funciona o reembolso de fisioterapia pelo plano de saúde: recibo, relatório e documentos para solicitar em Campinas.",
+        "h1": "Fisioterapia com reembolso do convênio em Campinas",
+        "lead": "Muitos planos de saúde reembolsam parte das sessões de fisioterapia feitas fora da rede credenciada. Eu forneço a documentação necessária para você fazer a solicitação.",
+        "wa": "Olá! Gostaria de entender como funciona o reembolso do convênio na fisioterapia.",
+        "secoes": [
+            ("Como funciona na prática", """<ol>
+<li>Você faz a avaliação e as sessões de forma particular.</li>
+<li>Eu emito o <strong>recibo</strong> de cada sessão e, quando o plano pede, um <strong>relatório</strong> com a avaliação e a evolução.</li>
+<li>Você envia os documentos ao seu plano pelo aplicativo ou site, seguindo as regras dele.</li>
+<li>O plano analisa e, se houver cobertura, reembolsa o valor conforme o seu contrato.</li>
+</ol>"""),
+            ("O que varia de plano para plano", """<p>Cada plano tem as suas regras: percentual ou tabela de reembolso, limite de sessões, necessidade de pedido médico e prazo para solicitar. Por isso, vale conferir com o seu plano antes de começar. Eu ajudo a organizar o relatório com as informações que o plano costuma pedir, mas não posso garantir o reembolso, pois a decisão é do plano.</p>"""),
+            ("Documentos que costumam ser pedidos", """<ul>
+<li>Pedido ou indicação médica, quando exigido pelo plano.</li>
+<li>Recibo com dados do profissional e do registro no CREFITO.</li>
+<li>Relatório fisioterapêutico com diagnóstico funcional e plano de tratamento.</li>
+<li>Formulário de reembolso do próprio plano.</li>
+</ul>"""),
+        ],
+        "faq": [
+            ("Você é credenciado a convênios?", "O atendimento é particular. Eu forneço a documentação para você solicitar o reembolso diretamente ao seu plano."),
+            ("O reembolso é garantido?", "Não. Quem define a cobertura e o valor é o seu plano, de acordo com o contrato."),
+            ("Posso pedir o relatório depois das sessões?", "Sim. Peça pelo WhatsApp e eu preparo o relatório com a evolução do seu tratamento."),
+        ],
+        "rel": ["fisioterapia-home-care-campinas", "fisioterapia-ombro-campinas", "fisioterapia-coluna-campinas"],
+    },
+    {
+        "slug": "ferrari-recovery-campinas",
+        "menu": "Ferrari Recovery",
+        "resumo": "Bota de compressão e banheira de gelo para recuperação pós-treino.",
+        "title": "Ferrari Recovery: Aluguel de Bota de Compressão e Banheira de Gelo em Campinas",
+        "desc": "Aluguel de bota de compressão pneumática e banheira de gelo (ice bath) para recuperação pós-treino em Campinas e Swiss Park. Fale pelo WhatsApp.",
+        "h1": "Ferrari Recovery: bota de compressão e banheira de gelo em Campinas",
+        "lead": "Equipamentos de recuperação usados por atletas, disponíveis para locação por diária no Swiss Park e região. Para quem treina forte e quer incluir um protocolo de recuperação na rotina.",
+        "wa": "Olá! Gostaria de informações sobre a Ferrari Recovery (bota de compressão e banheira de gelo).",
+        "secoes": [
+            ("O que oferecemos", """<div class="s-grid">
+<div class="s-card"><h3>Bota de compressão pneumática</h3><p>Equipamento de compressão sequencial nas pernas, usado após treinos e provas como parte da rotina de recuperação. A sensação costuma ser de alívio e leveza, mas a resposta varia de pessoa para pessoa.</p></div>
+<div class="s-card"><h3>Banheira de gelo (ice bath)</h3><p>Imersão em água fria, usada por muitos atletas após esforços intensos. O protocolo de temperatura e de tempo é orientado por mim, e há contraindicações que avalio com você antes.</p></div>
+<div class="s-card"><h3>Combo fim de semana</h3><p>Bota e banheira por dois dias, para quem tem prova ou treino pesado no fim de semana.</p></div>
+</div>"""),
+            ("Como funciona", """<p>Você entra em contato pelo WhatsApp, conta o seu treino ou evento e eu envio os valores e a disponibilidade. Combinamos a entrega, a retirada e a orientação de uso. Como o uso depende da sua condição de saúde, faço algumas perguntas antes, como condições cardiovasculares, circulatórias ou de sensibilidade ao frio.</p>"""),
+            ("Importante", """<p>Bota e banheira de gelo são recursos de recuperação e conforto. Não substituem a avaliação de uma dor persistente ou de uma lesão. Se você sente dor que não melhora, marque uma <a href="/fisioterapia-esportiva-campinas/">avaliação de fisioterapia esportiva</a>.</p>"""),
+        ],
+        "faq": [
+            ("Quanto custa?", "Os valores variam conforme o equipamento e o período. Fale pelo WhatsApp e eu envio na hora."),
+            ("Quem não deve usar a banheira de gelo?", "Pessoas com certas condições cardiovasculares, circulatórias ou sensibilidade ao frio devem conversar comigo e com o médico antes. Faço essa triagem antes da locação."),
+            ("A bota de compressão serve para quê?", "É usada como recurso de recuperação após treinos e provas. Ela não trata lesões."),
+        ],
+        "rel": ["fisioterapia-esportiva-campinas", "fisioterapia-lesoes-musculares-campinas", "fisioterapia-home-care-campinas"],
+    },
+]
+
+ARTIGOS = [
+    {
+        "slug": "dor-no-ombro-crossfit",
+        "title": "Dor no ombro no CrossFit: sinais de que vale uma avaliação",
+        "desc": "Dor no ombro em movimentos acima da cabeça é comum no CrossFit. Veja causas frequentes, o que pode ajudar e quando procurar um fisioterapeuta.",
+        "h1": "Dor no ombro no CrossFit: sinais de que vale uma avaliação",
+        "lead": "O ombro é uma das regiões mais exigidas no CrossFit. Nem toda dor significa lesão, mas alguns sinais merecem atenção.",
+        "servico": "fisioterapia-ombro-campinas",
+        "corpo": """<h2>Por que o ombro sofre tanto</h2>
+<p>O ombro é a articulação mais móvel do corpo e depende muito dos músculos para ficar estável. No CrossFit ele é exigido em movimentos acima da cabeça (overhead, snatch, thruster), em barras e argolas e em empurrar e puxar com carga. Quando o volume sobe rápido, a técnica falha por cansaço ou o ombro tem pouca mobilidade, a região pode ficar sobrecarregada.</p>
+<h2>Causas comuns de dor</h2>
+<ul>
+<li>Sobrecarga dos tendões do manguito rotador.</li>
+<li>Pouca mobilidade do ombro ou da coluna torácica, que leva a compensações.</li>
+<li>Aumento rápido de volume de ginásticos, como kipping, toes to bar e muscle up.</li>
+<li>Fraqueza dos músculos que estabilizam a escápula.</li>
+<li>Lesões antigas que nunca foram reabilitadas.</li>
+</ul>
+<h2>Sinais de que vale uma avaliação</h2>
+<ul>
+<li>A dor dura mais de uma ou duas semanas.</li>
+<li>Dói à noite ou ao deitar sobre o ombro.</li>
+<li>Você perdeu força ou amplitude de movimento.</li>
+<li>A dor aparece sempre no mesmo movimento.</li>
+<li>Há formigamento no braço ou na mão.</li>
+</ul>
+<h2>O que você pode fazer enquanto isso</h2>
+<p>Reduza o volume dos movimentos que doem, procure variações que não pioram os sintomas e mantenha o resto do treino. Evite insistir na carga com dor que piora a cada repetição. Se a dor não melhorar em poucos dias, uma avaliação identifica o que está acontecendo e orienta o que manter e o que ajustar.</p>
+<p>Se houver trauma, deformidade, perda súbita de força ou dor muito intensa, procure atendimento médico.</p>""",
+    },
+    {
+        "slug": "dor-no-joelho-corrida",
+        "title": "Dor no joelho na corrida: por que acontece e quando investigar",
+        "desc": "Dor no joelho é uma das queixas mais comuns entre corredores. Entenda causas frequentes, o papel da carga de treino e quando buscar fisioterapia.",
+        "h1": "Dor no joelho na corrida: por que acontece e quando investigar",
+        "lead": "Dor no joelho é uma queixa comum em quem corre. Na maioria das vezes ela tem relação com a carga de treino, e não com uma lesão grave.",
+        "servico": "fisioterapia-joelho-tornozelo-campinas",
+        "corpo": """<h2>A carga de treino conta muito</h2>
+<p>O joelho absorve força a cada passada. Quando o volume ou a intensidade sobem rápido, como em semanas com muitos quilômetros, aumento de tiros ou de subidas, os tecidos podem não ter tempo de se adaptar. Mudar de tênis, de piso ou voltar de uma pausa longa também pode contribuir.</p>
+<h2>Causas frequentes</h2>
+<ul>
+<li><strong>Dor patelofemoral:</strong> dor na frente do joelho, que piora ao descer escadas, agachar ou ficar sentado por muito tempo.</li>
+<li><strong>Síndrome da banda iliotibial:</strong> dor na parte lateral do joelho, que costuma aparecer após certa distância.</li>
+<li><strong>Tendinopatia patelar:</strong> dor logo abaixo da patela, mais comum em quem salta ou faz muito agachamento.</li>
+<li><strong>Lesões de menisco ou ligamento:</strong> costumam vir de torção ou trauma e podem causar inchaço, travamento ou sensação de falseio.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<ul>
+<li>A dor persiste por mais de uma ou duas semanas ou piora a cada treino.</li>
+<li>Há inchaço, travamento ou a sensação de que o joelho cede.</li>
+<li>Você sentiu um estalo seguido de dor após uma torção.</li>
+<li>A dor muda a sua forma de correr ou de caminhar.</li>
+</ul>
+<h2>O que pode ajudar</h2>
+<p>Reduza temporariamente o volume e evite aumentar quilometragem e intensidade ao mesmo tempo. Fortalecimento de quadril, coxa e panturrilha faz parte da reabilitação de muitos corredores. A avaliação mostra quais são os seus pontos fracos e como adaptar o treino sem parar de correr, quando for possível.</p>
+<p>Em caso de trauma importante, incapacidade de apoiar o pé ou inchaço grande, procure atendimento médico.</p>""",
+    },
+    {
+        "slug": "hyrox-prevencao-de-lesoes",
+        "title": "Hyrox: como treinar sem se lesionar",
+        "desc": "O Hyrox combina corrida e estações de força. Veja onde costumam surgir as dores, como organizar a carga de treino e quando fazer uma avaliação preventiva.",
+        "h1": "Hyrox: como treinar sem se lesionar",
+        "lead": "O Hyrox junta 8 km de corrida com 8 estações de força e resistência. A mistura é divertida, e também exige atenção à carga e à recuperação.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que a prova exige do corpo</h2>
+<p>A prova alterna corrida com estações como SkiErg, sled push, sled pull, burpee broad jump, remo, farmer's carry, sandbag lunges e wall balls. Isso significa muito volume de corrida combinado com esforço de pernas, ombros, costas e pegada. Sem uma preparação adequada, essa combinação pode sobrecarregar as articulações e os tendões.</p>
+<h2>Regiões que costumam reclamar</h2>
+<ul>
+<li><strong>Joelhos e tornozelos:</strong> pelo volume de corrida e por afundos com carga.</li>
+<li><strong>Costas:</strong> por cargas carregadas, remo e burpees repetidos.</li>
+<li><strong>Ombros:</strong> em wall balls e SkiErg com muitas repetições.</li>
+<li><strong>Panturrilhas e posteriores:</strong> pelo trabalho de propulsão no sled e na corrida.</li>
+</ul>
+<h2>Como organizar o treino</h2>
+<ul>
+<li>Aumente o volume de corrida e de estações de forma gradual, e não ambos de uma vez.</li>
+<li>Inclua treino de força para pernas, costas e ombros ao longo da semana.</li>
+<li>Reserve dias de descanso e semanas de carga reduzida.</li>
+<li>Treine as estações com a técnica correta antes de aumentar a carga.</li>
+<li>Durma bem e cuide da alimentação, pois a recuperação faz parte do treino.</li>
+</ul>
+<h2>Avaliação preventiva</h2>
+<p>Se você tem uma prova marcada, uma avaliação antes do período mais pesado de treino pode apontar assimetrias de força, limitações de mobilidade e dores antigas que merecem atenção. Nenhuma estratégia garante que lesões não aconteçam, mas conhecer seus pontos fracos permite ajustar o treino com mais segurança.</p>""",
+    },
+]
+
+# ---------------------------------------------------------------- templates
+NAV = [
+    ("/fisioterapia-esportiva-campinas/", "Esportiva", True),
+    ("/fisioterapia-home-care-campinas/", "Home care", True),
+    ("/ferrari-recovery-campinas/", "Recovery", True),
+    ("/blog/", "Blog", False),
+]
+
+
+def esc(s):
+    return s.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
+
+
+def head(title, desc, caminho, extra_ld, tipo="website"):
+    url = f"{BASE}{caminho}"
+    return f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc)}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="{tipo}">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Ed Ferrari Jr | Fisioterapia">
+<meta property="og:url" content="{url}">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(desc)}">
+<meta property="og:image" content="{BASE}/assets/img/hero_bg.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<script type="application/ld+json">{json.dumps(extra_ld, ensure_ascii=False)}</script>
+</head>
+<body>
+"""
+
+
+def header():
+    links = "".join(
+        '<a href="%s"%s>%s</a>' % (h, ' class="hide-m"' if ocultar else "", t) for h, t, ocultar in NAV
+    )
+    return f"""<header class="s-header"><div class="s-wide">
+<a class="s-brand" href="/">Ed Ferrari Jr<span>.</span></a>
+<nav class="s-nav" aria-label="Principal">{links}<a class="s-btn small" href="{wa('Olá! Gostaria de agendar uma avaliação.')}">Agendar</a></nav>
+</div></header>
+"""
+
+
+def footer():
+    servicos = "".join(f'<a href="/{s["slug"]}/">{s["menu"]}</a>' for s in SERVICOS[:5])
+    return f"""<footer class="s-footer"><div class="s-wide"><div class="cols">
+<div><strong>Ed Ferrari Jr. Fisioterapeuta</strong><br>Fisioterapia ortopédica e esportiva<br>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
+<div><strong>Serviços</strong>{servicos}</div>
+<div><strong>Mais</strong><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
+</div>
+<p class="s-note" style="margin-top:28px">As informações deste site são educativas e não substituem a avaliação de um profissional de saúde. Os resultados variam de pessoa para pessoa. © 2026 Ed Ferrari Jr.</p>
+</div></footer>
+</body>
+</html>
+"""
+
+
+def cta(texto_wa, titulo="Agende sua avaliação"):
+    return f"""<section class="s-cta"><h2>{titulo}</h2><p>Atendimento no Instituto Adara (Swiss Park) e em domicílio, em Campinas e região.</p>
+<a class="s-btn" href="{wa(texto_wa)}">Falar pelo WhatsApp</a></section>
+"""
+
+
+def faq_html(faq):
+    itens = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in faq)
+    return f'<h2>Perguntas frequentes</h2><div class="s-faq">{itens}</div>'
+
+
+def faq_ld(faq):
+    return {
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq
+        ],
+    }
+
+
+def crumbs_ld(itens):
+    return {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "name": n, "item": f"{BASE}{c}"} for i, (n, c) in enumerate(itens)
+        ],
+    }
+
+
+def crumbs_html(itens):
+    partes = [f'<a href="{c}">{n}</a>' for n, c in itens[:-1]] + [itens[-1][0]]
+    return '<div class="s-crumb">' + " › ".join(partes) + "</div>"
+
+
+def pagina_servico(s):
+    caminho = f"/{s['slug']}/"
+    migalhas = [("Início", "/"), (s["menu"], caminho)]
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "MedicalWebPage",
+                "@id": f"{BASE}{caminho}#pagina",
+                "url": f"{BASE}{caminho}",
+                "name": s["title"],
+                "description": s["desc"],
+                "inLanguage": "pt-BR",
+                "dateModified": DATA,
+                "about": {"@type": "MedicalSpecialty", "name": "Physiotherapy"},
+                "author": {"@id": f"{BASE}/#pessoa"},
+                "publisher": {"@id": f"{BASE}/#clinica"},
+            },
+            crumbs_ld(migalhas),
+            faq_ld(s["faq"]),
+        ],
+    }
+    corpo = "".join(f"<h2>{t}</h2>{h}" for t, h in s["secoes"])
+    rel = "".join(
+        f'<a class="s-card" href="/{r["slug"]}/"><h3>{r["menu"]}</h3><p>{r["resumo"]}</p></a>'
+        for r in SERVICOS
+        if r["slug"] in s["rel"]
+    )
+    artigos_rel = "".join(
+        f'<a class="s-card" href="/blog/{a["slug"]}/"><h3>{a["h1"]}</h3><p>{a["lead"]}</p></a>'
+        for a in ARTIGOS
+        if a["servico"] == s["slug"]
+    )
+    html = head(s["title"], s["desc"], caminho, ld) + header()
+    html += f"""<main class="s-main"><div class="s-wrap">
+{crumbs_html(migalhas)}
+<section class="s-hero"><span class="tag">{CREFITO} · Campinas</span><h1>{s['h1']}</h1><p class="lead">{s['lead']}</p>
+<a class="s-btn" href="{wa(s['wa'])}">Agendar avaliação</a></section>
+{corpo}
+{faq_html(s['faq'])}
+{cta(s['wa'])}
+<h2>Veja também</h2><div class="s-grid">{rel}{artigos_rel}</div>
+</div></main>
+"""
+    return caminho, html + footer()
+
+
+def pagina_artigo(a):
+    caminho = f"/blog/{a['slug']}/"
+    serv = next(s for s in SERVICOS if s["slug"] == a["servico"])
+    migalhas = [("Início", "/"), ("Blog", "/blog/"), (a["h1"], caminho)]
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "@id": f"{BASE}{caminho}#artigo",
+                "headline": a["h1"],
+                "description": a["desc"],
+                "inLanguage": "pt-BR",
+                "datePublished": DATA,
+                "dateModified": DATA,
+                "mainEntityOfPage": f"{BASE}{caminho}",
+                "image": f"{BASE}/assets/img/hero_bg.jpg",
+                "author": {"@id": f"{BASE}/#pessoa"},
+                "publisher": {"@id": f"{BASE}/#clinica"},
+            },
+            crumbs_ld(migalhas),
+        ],
+    }
+    texto_wa = f"Olá! Li o artigo \"{a['h1']}\" e gostaria de agendar uma avaliação."
+    html = head(a["title"], a["desc"], caminho, ld, "article") + header()
+    html += f"""<main class="s-main"><div class="s-wrap">
+{crumbs_html(migalhas)}
+<section class="s-hero"><span class="tag">Blog</span><h1>{a['h1']}</h1><p class="lead">{a['lead']}</p>
+<p class="s-meta">Por Ed Ferrari Jr, fisioterapeuta ({CREFITO}) · Atualizado em 18/10/2026</p></section>
+{a['corpo']}
+{cta(texto_wa, "Quer uma avaliação individual?")}
+<p>Saiba mais sobre <a href="/{serv['slug']}/">{serv['menu'].lower()}</a> e sobre a <a href="/fisioterapia-esportiva-campinas/">fisioterapia esportiva em Campinas</a>.</p>
+<p class="s-note">Este conteúdo é informativo e não substitui a consulta com um profissional de saúde. Cada caso exige avaliação individual.</p>
+</div></main>
+"""
+    return caminho, html + footer()
+
+
+def pagina_blog():
+    caminho = "/blog/"
+    titulo = "Blog de Fisioterapia Esportiva e Ortopédica | Ed Ferrari Jr, Campinas"
+    desc = "Artigos sobre dor no ombro, joelho, coluna, corrida, CrossFit e Hyrox, escritos pelo fisioterapeuta Ed Ferrari Jr."
+    migalhas = [("Início", "/"), ("Blog", caminho)]
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "CollectionPage", "@id": f"{BASE}{caminho}#pagina", "url": f"{BASE}{caminho}", "name": titulo, "description": desc, "inLanguage": "pt-BR"},
+        crumbs_ld(migalhas)]}
+    cards = "".join(
+        f'<a class="s-card" href="/blog/{a["slug"]}/"><h3>{a["h1"]}</h3><p>{a["lead"]}</p></a>' for a in ARTIGOS
+    )
+    html = head(titulo, desc, caminho, ld) + header()
+    html += f"""<main class="s-main"><div class="s-wrap">
+{crumbs_html(migalhas)}
+<section class="s-hero"><span class="tag">Blog</span><h1>Fisioterapia esportiva e ortopédica na prática</h1><p class="lead">Conteúdo para quem treina e quer entender melhor a dor, a recuperação e o retorno ao esporte.</p></section>
+<div class="s-grid">{cards}</div>
+{cta("Olá! Gostaria de agendar uma avaliação.")}
+</div></main>
+"""
+    return caminho, html + footer()
+
+
+def escrever(caminho, html):
+    pasta = os.path.join(RAIZ, caminho.strip("/"))
+    os.makedirs(pasta, exist_ok=True)
+    with open(os.path.join(pasta, "index.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+
+
+def main():
+    urls = [("/", "1.0"), ("/perito-assistente-tecnico-em-fisioterapia/", "0.7")]
+    for s in SERVICOS:
+        c, h = pagina_servico(s)
+        escrever(c, h)
+        urls.append((c, "0.9"))
+    c, h = pagina_blog()
+    escrever(c, h)
+    urls.append((c, "0.6"))
+    for a in ARTIGOS:
+        c, h = pagina_artigo(a)
+        escrever(c, h)
+        urls.append((c, "0.6"))
+    itens = "".join(
+        f"  <url><loc>{BASE}{c}</loc><lastmod>{DATA}</lastmod><priority>{p}</priority></url>\n" for c, p in urls
+    )
+    with open(os.path.join(RAIZ, "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{itens}</urlset>\n')
+    with open(os.path.join(RAIZ, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")
+    print(f"{len(urls)} URLs geradas")
+
+
+if __name__ == "__main__":
+    main()
