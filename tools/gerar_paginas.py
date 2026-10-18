@@ -3,7 +3,7 @@
 
 Uso (na raiz do repositório):  python3 tools/gerar_paginas.py
 Para mudar um texto, edite SERVICOS ou ARTIGOS abaixo e rode de novo.
-A home (index.html) e a página do perito são editadas à mão.
+A home e a página do perito também são geradas aqui (pagina_home, pagina_perito).
 """
 import json
 import os
@@ -339,6 +339,7 @@ NAV = [
     ("/fisioterapia-esportiva-campinas/", "Esportiva", True),
     ("/fisioterapia-home-care-campinas/", "Home care", True),
     ("/ferrari-recovery-campinas/", "Recovery", True),
+    ("/perito-assistente-tecnico-em-fisioterapia/", "Perícia", True),
     ("/blog/", "Blog", False),
 ]
 
@@ -369,9 +370,12 @@ def head(title, desc, caminho, extra_ld, tipo="website", imagem="/assets/img/fot
 <link rel="preload" href="/assets/fonts/BarlowCondensed-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Barlow-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="/assets/js/site.js" defer></script>
 <script type="application/ld+json">{json.dumps(extra_ld, ensure_ascii=False)}</script>
 </head>
 <body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
 """
 
 
@@ -381,6 +385,7 @@ def header():
     )
     return f"""<header class="s-header"><div class="s-wide">
 <a class="s-brand" href="/"><b>Ed Ferrari Jr</b><small>FISIOTERAPIA · ESPORTIVA</small></a>
+<input type="checkbox" id="mn" class="mn-chk" aria-label="Abrir menu"><label for="mn" class="mn-btn" aria-hidden="true"><i></i></label>
 <nav class="s-nav" aria-label="Principal">{links}<a class="s-btn small" href="{wa('Olá! Gostaria de agendar uma avaliação.')}">Agendar</a></nav>
 </div></header>
 """
@@ -395,13 +400,14 @@ def footer():
 </div>
 <p class="s-note" style="margin-top:30px">As informações deste site são educativas e não substituem a avaliação de um profissional de saúde. Os resultados variam de pessoa para pessoa. © 2026 Ed Ferrari Jr.</p>
 </div></footer>
+<a class="barra-cta" href="{wa('Olá! Gostaria de agendar uma avaliação.')}">Agendar pelo WhatsApp</a>
 </body>
 </html>
 """
 
 
-def cta(texto_wa, titulo="Agende sua avaliação"):
-    return f"""<section class="s-cta"><span class="rotulo">Atendimento em Campinas</span><h2>{titulo}</h2><p>Instituto Adara (Swiss Park) e em domicílio, em Campinas e região.</p>
+def cta(texto_wa, titulo="Agende sua avaliação", sub="Instituto Adara (Swiss Park) e em domicílio, em Campinas e região."):
+    return f"""<section class="s-cta"><span class="rotulo">Atendimento em Campinas</span><h2>{titulo}</h2><p>{sub}</p>
 <a class="s-btn" href="{wa(texto_wa)}">Falar pelo WhatsApp</a></section>
 """
 
@@ -484,7 +490,7 @@ def pagina_servico(s):
         if a["servico"] == s["slug"]
     )
     html = head(s["title"], s["desc"], caminho, ld) + header()
-    html += f"""<main class="s-main"><div class="s-wrap">
+    html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
 {crumbs_html(migalhas)}
 <section class="s-hero"><span class="rotulo">{CREFITO} · Campinas</span><div class="regua"></div><h1>{s['h1']}</h1><p class="lead">{s['lead']}</p>
 <a class="s-btn" href="{wa(s['wa'])}">Agendar avaliação</a></section>
@@ -523,7 +529,7 @@ def pagina_artigo(a):
     }
     texto_wa = f"Olá! Li o artigo \"{a['h1']}\" e gostaria de agendar uma avaliação."
     html = head(a["title"], a["desc"], caminho, ld, "article") + header()
-    html += f"""<main class="s-main"><div class="s-wrap">
+    html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
 {crumbs_html(migalhas)}
 <section class="s-hero"><span class="rotulo">Blog</span><div class="regua"></div><h1>{a['h1']}</h1><p class="lead">{a['lead']}</p>
 <p class="s-meta">Por Ed Ferrari Jr, fisioterapeuta ({CREFITO}) · Atualizado em 18/10/2026</p></section>
@@ -548,7 +554,7 @@ def pagina_blog():
         f'<a class="s-card" href="/blog/{a["slug"]}/"><h3>{a["h1"]}</h3><p>{a["lead"]}</p></a>' for a in ARTIGOS
     )
     html = head(titulo, desc, caminho, ld) + header()
-    html += f"""<main class="s-main"><div class="s-wrap">
+    html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
 {crumbs_html(migalhas)}
 <section class="s-hero"><span class="rotulo">Blog</span><div class="regua"></div><h1>Fisioterapia esportiva e ortopédica na prática</h1><p class="lead">Conteúdo para quem treina e quer entender melhor a dor, a recuperação e o retorno ao esporte.</p></section>
 <div class="s-grid">{cards}</div>
@@ -564,6 +570,9 @@ HOME_FAQ = [
     ("Você atende atletas de CrossFit, Hyrox e corrida?", "Sim. Faço avaliação do movimento e da carga de treino, tratamento das lesões e plano de retorno ao esporte."),
     ("Como funciona o reembolso do convênio?", "O atendimento é particular. Eu forneço recibo e relatório para você solicitar o reembolso ao seu plano. A cobertura depende do contrato."),
 ]
+
+
+TICKER = "".join("<span>%s</span>" % x for x in ["Ombro", "Joelho", "Tornozelo", "Coluna", "Lesões musculares", "Hyrox", "CrossFit", "ATHX", "Corrida", "Home care", "Recovery"]) * 2
 
 
 def pagina_home():
@@ -583,14 +592,15 @@ def pagina_home():
         for i, x in enumerate(SERVICOS, 1))
     blog = "".join(f'<a class="s-card" href="/blog/{a["slug"]}/"><span class="s-num">BLOG</span><h3>{a["h1"]}</h3><p>{a["lead"]}</p></a>' for a in ARTIGOS[:3])
     h = head(titulo, desc, "/", ld) + header()
-    h += f"""<main>
-<section class="h-hero"><img class="fundo" src="/assets/img/foto-sled.webp" alt="" width="1800" height="1200" fetchpriority="high"><div class="s-wide">
+    h += f"""<main id="conteudo">
+<section class="h-hero"><video class="fundo" autoplay muted loop playsinline preload="metadata" poster="/assets/img/foto-sled.webp" aria-hidden="true"><source src="/assets/video/hero.mp4" type="video/mp4"></video><div class="s-wide">
 <span class="rotulo">Campinas · Instituto Adara e home care</span><div class="regua"></div>
 <h1><span class="destaque">Fisioterapia</span> ortopédica e esportiva em Campinas</h1>
 <p class="lead">Avaliação individual e reabilitação baseada em evidências, no Instituto Adara (Swiss Park) ou na sua casa.</p>
 <div class="acoes"><a class="s-btn" href="{wa('Olá! Vim pelo site e gostaria de agendar uma avaliação.')}">Agendar minha avaliação</a><a class="s-btn vazado" href="#servicos">Ver serviços</a></div>
 </div></section>
 <div class="h-faixa"><div class="s-wide"><span>Tratamento baseado em evidências</span><span>Avaliação individual</span><span>Minimizando lesões</span><span>{CREFITO}</span></div></div>
+<div class="ticker" aria-hidden="true"><div>{TICKER}</div></div>
 
 <section class="h-sec"><div class="s-wide h-sobre">
 <img src="/assets/img/image_1.webp" alt="Ed Ferrari Jr, fisioterapeuta" width="600" height="800" loading="lazy">
@@ -648,7 +658,7 @@ def pagina_link_bio():
     ]
     cards = "".join(f'<a class="s-card" href="{h}"><span class="s-num">{i:02d}</span><h3>{t}</h3><p>{d}</p></a>' for i, (t, d, h) in enumerate(botoes, 1))
     h = head(titulo, desc, caminho, ld, robots="noindex, follow") + header()
-    h += f"""<main class="s-main"><div class="s-wrap">
+    h += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
 <section class="s-hero"><span class="rotulo">{CREFITO} · Campinas</span><div class="regua"></div><h1>Ed Ferrari<br><span class="destaque">Fisio esportivo</span></h1>
 <p class="lead">Para quem treina Hyrox, CrossFit e corrida. Escolha o que você procura.</p></section>
 <div class="s-grid" style="grid-template-columns:1fr">{cards}</div>
@@ -656,6 +666,99 @@ def pagina_link_bio():
 """
     return caminho, h + footer()
 
+
+
+
+PERITO_FAQ = [
+    ("Qual a diferença entre perito judicial e assistente técnico?",
+     "O perito judicial é nomeado pelo juiz e atua de forma imparcial. O assistente técnico é indicado por uma das partes (o advogado ou o trabalhador) para acompanhar a perícia, formular quesitos e, se for o caso, apresentar um parecer técnico próprio. Na mesma ação, o profissional atua em um papel só."),
+    ("Como contestar um laudo que negou meu benefício no INSS?",
+     "A contestação passa pela via jurídica, com o seu advogado. A parte técnica pode ser apoiada por um parecer fisioterapêutico que descreve a sua limitação funcional com base em avaliação e exames. A decisão cabe à Justiça, e o resultado depende de cada caso."),
+    ("O que é LER/DORT e como se avalia a relação com o trabalho?",
+     "LER e DORT são termos para distúrbios ligados a esforços repetitivos e condições de trabalho. A relação com a função é avaliada pela análise da atividade, da biomecânica e dos exames clínicos. Quem decide sobre o nexo é o juiz, com base nas provas do processo."),
+    ("Por que um advogado trabalhista pode precisar de um fisioterapeuta assistente?",
+     "Questões de capacidade funcional, concausa e ergonomia têm natureza técnica. O assistente técnico ajuda o advogado a compreender o laudo, formular quesitos adequados e, se houver divergência técnica, fundamentá-la na literatura."),
+    ("Como são definidos os honorários?",
+     "Os honorários são pagos pela parte que contrata e variam com a complexidade do caso (por exemplo, se há acompanhamento presencial da perícia e a emissão de parecer). Faço uma análise inicial para alinhar o escopo e o valor antes de começar."),
+]
+
+
+def pagina_perito():
+    caminho = "/perito-assistente-tecnico-em-fisioterapia/"
+    titulo = "Perito e Assistente Técnico em Fisioterapia em Campinas | Ed Ferrari Jr"
+    desc = "Assistência técnica fisioterapêutica em Campinas e região: parecer de viabilidade, quesitos, acompanhamento da perícia e análise de laudos para advogados e trabalhadores (TRT-15, Justiça Federal e TJSP)."
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "ProfessionalService", "@id": f"{BASE}{caminho}#servico", "name": "Assistência técnica e perícia em fisioterapia", "url": f"{BASE}{caminho}",
+         "description": desc, "provider": {"@id": f"{BASE}/#pessoa"}, "areaServed": [{"@type": "City", "name": "Campinas"}, {"@type": "AdministrativeArea", "name": "Região Metropolitana de Campinas"}],
+         "telephone": "+5519971002263", "inLanguage": "pt-BR"},
+        {"@type": "Person", "@id": f"{BASE}/#pessoa", "name": "Ed Ferrari Jr", "jobTitle": "Fisioterapeuta", "identifier": CREFITO, "url": f"{BASE}/"},
+        crumbs_ld([("Início", "/"), ("Perícia e assistência técnica", caminho)]), faq_ld(PERITO_FAQ)]}
+    adv = [
+        ("Parecer de viabilidade", "Análise de prontuários e exames antes do ajuizamento, apontando os aspectos técnicos que merecem atenção no caso."),
+        ("Quesitos", "Elaboração de quesitos preliminares, suplementares e de esclarecimento, direcionados aos pontos técnicos da controvérsia."),
+        ("Acompanhamento da perícia", "Presença no ato pericial, em Campinas e região, acompanhando o exame físico e as metodologias aplicadas."),
+        ("Análise de laudos", "Parecer técnico divergente, quando houver, fundamentado na literatura de cinesiologia e biomecânica."),
+        ("Análise do posto de trabalho", "Levantamento ergonômico no local de trabalho (NR-17) para descrever os fatores de risco da atividade."),
+        ("Capacidade funcional", "Descrição da limitação funcional com base em instrumentos reconhecidos, como a CIF, para subsidiar a análise de danos."),
+    ]
+    adv_html = "".join(f'<div class="s-card"><span class="s-num">{i:02d}</span><h3>{t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(adv, 1))
+    trab = [
+        ("LER/DORT e esforço repetitivo", "Descrição técnica da atividade e da limitação funcional, relacionando função, movimentos exigidos e exames."),
+        ("Doenças da coluna", "Análise da carga física da função, da postura e dos exames para apoiar a discussão sobre a relação com o trabalho."),
+        ("Benefício negado ou cessado", "Avaliação funcional detalhada, que o seu advogado pode usar para fundamentar o pedido de revisão."),
+    ]
+    trab_html = "".join(f'<div class="s-card"><span class="s-num">{i:02d}</span><h3>{t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(trab, 1))
+    passos = [
+        ("Contato e triagem", "Você conta o caso, o tipo de processo e os prazos. Eu indico se e como a assistência técnica pode ajudar."),
+        ("Análise dos documentos", "Leitura de exames, laudos, prontuários e documentos do processo."),
+        ("Avaliação e atuação", "Avaliação funcional, análise do posto de trabalho e acompanhamento da perícia, conforme o caso."),
+        ("Parecer técnico", "Entrega do parecer ou dos quesitos, nos prazos combinados com o advogado."),
+    ]
+    passos_html = "".join(f'<div class="pt-passo"><span class="s-num">PASSO {i:02d}</span><h3>{t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(passos, 1))
+    msg_adv = "Olá, Dr. Ed! Sou advogado(a) e gostaria de conversar sobre assistência técnica em fisioterapia em um caso."
+    msg_trab = "Olá, Dr. Ed! Gostaria de saber como funciona a avaliação técnica da minha lesão para o meu processo."
+    h = head(titulo, desc, caminho, ld, imagem="/assets/img/foto-sled.webp") + header()
+    h += f"""<main id="conteudo">
+<section class="pt-hero"><div class="s-wide"><div>
+<span class="rotulo">Perícia e assistência técnica · Campinas e região</span><div class="regua"></div>
+<h1>Assistência técnica em <span class="destaque">fisioterapia</span> para o seu processo</h1>
+<p class="lead">Parecer técnico fisioterapêutico para advogados e para trabalhadores em processos que discutem capacidade funcional, relação com o trabalho e danos.</p>
+<div class="acoes" style="display:flex;gap:14px;flex-wrap:wrap"><a class="s-btn" href="{wa(msg_adv)}">Sou advogado(a)</a><a class="s-btn vazado" href="{wa(msg_trab)}">Sou trabalhador(a)</a></div>
+<div class="pt-chips"><span>TRT-15</span><span>Justiça Federal e INSS</span><span>TJSP</span><span>{CREFITO}</span></div>
+</div>
+<div class="pt-doc" aria-hidden="true"><b>Parecer técnico</b><small>FISIOTERAPIA · ASSISTÊNCIA TÉCNICA</small><i></i><i></i><i></i><i></i><i></i><i></i><span class="sel">Análise individual</span></div>
+</div></section>
+
+<section class="h-sec"><div class="s-wide"><span class="rotulo">Os dois papéis</span><h2>Perito do juízo ou assistente técnico?</h2>
+<p class="suave" style="max-width:680px">São funções diferentes e o profissional atua em apenas uma delas na mesma ação.</p>
+<div class="pt-papeis">
+<div class="pt-papel"><span class="s-num">PERITO DO JUÍZO</span><h3>Nomeado pelo juiz</h3><p>Atua de forma imparcial, realiza o exame e entrega o laudo ao juízo.</p></div>
+<div class="pt-papel destaque-p"><span class="s-num">ASSISTENTE TÉCNICO</span><h3>Indicado por uma das partes</h3><p>Acompanha a perícia, ajuda a formular quesitos e pode apresentar um parecer técnico próprio sobre o laudo.</p></div>
+</div></div></section>
+
+<section class="h-sec escura"><div class="s-wide"><span class="rotulo">Para advogados</span><h2>Apoio técnico do pedido ao laudo.</h2>
+<p style="max-width:680px">O embate sobre capacidade física, concausa e ergonomia é técnico. Estes são os pontos em que a assistência fisioterapêutica costuma ajudar.</p>
+<div class="s-grid" style="margin-top:28px">{adv_html}</div>
+<p style="margin-top:26px"><a class="s-btn" href="{wa(msg_adv)}">Conversar sobre um caso</a></p></div></section>
+
+<section class="h-sec"><div class="s-wide"><span class="rotulo">Para trabalhadores e pacientes</span><h2>Sua limitação, descrita tecnicamente.</h2>
+<p class="suave" style="max-width:680px">A Justiça trabalha com documentos técnicos. Um parecer fisioterapêutico organiza e descreve o que o seu corpo consegue e não consegue fazer.</p>
+<div class="s-grid" style="margin-top:28px">{trab_html}</div>
+<div class="pt-aviso">O parecer é um documento técnico. Não há garantia de resultado em processos judiciais: a decisão cabe ao juiz.</div>
+<h3 style="margin-top:30px">O que levar na primeira conversa</h3>
+<div class="s-main"><ul>
+<li>Exames de imagem e laudos médicos</li><li>Prontuários e relatórios de tratamento</li><li>CAT (comunicação de acidente de trabalho), se houver</li><li>Descrição das suas funções e da rotina de trabalho</li><li>Documentos do INSS e do processo, se já existirem</li></ul></div></div></section>
+
+<section class="h-sec escura"><div class="s-wide"><span class="rotulo">Como funciona</span><h2>Quatro passos, com prazos combinados.</h2>
+<div class="pt-passos">{passos_html}</div></div></section>
+
+<section class="h-sec"><div class="s-wrap s-main"><span class="rotulo">Onde atuo</span><h2 style="margin-top:10px">Campinas e região.</h2>
+<p>Atuo em processos da Justiça do Trabalho (TRT-15), da Justiça Federal (INSS) e da Justiça Estadual (TJSP), com acompanhamento presencial de perícias em Campinas e na Região Metropolitana.</p>
+{faq_html(PERITO_FAQ)}</div></section>
+<div class="s-wide">{cta(msg_adv, "Converse sobre o seu caso", "Conte o tipo de processo e os prazos. Respondo pelo WhatsApp e indico como a assistência técnica pode ajudar.")}</div>
+</main>
+"""
+    return caminho, h + footer()
 
 
 def escrever(caminho, html):
@@ -669,6 +772,8 @@ def main():
     c, h = pagina_home()
     escrever(c, h)
     c, h = pagina_link_bio()
+    escrever(c, h)
+    c, h = pagina_perito()
     escrever(c, h)
     urls = [("/", "1.0"), ("/perito-assistente-tecnico-em-fisioterapia/", "0.7")]
     for s in SERVICOS:
