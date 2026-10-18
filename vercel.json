@@ -1,0 +1,34 @@
+{
+  "redirects": [
+    {
+      "source": "/agendar",
+      "destination": "https://api.whatsapp.com/send?phone=5519971002263&text=Oi%20Ed%2C%20vim%20do%20Instagram%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o.",
+      "permanent": false
+    },
+    {
+      "source": "/recovery",
+      "destination": "/ferrari-recovery-campinas/?utm_source=instagram&utm_medium=bio",
+      "permanent": false
+    },
+    {
+      "source": "/reembolso",
+      "destination": "/fisioterapia-reembolso-convenio-campinas/?utm_source=instagram&utm_medium=story",
+      "permanent": false
+    },
+    {
+      "source": "/hyrox",
+      "destination": "/blog/hyrox-prevencao-de-lesoes/?utm_source=instagram&utm_medium=story",
+      "permanent": false
+    },
+    {
+      "source": "/ombro",
+      "destination": "/blog/dor-no-ombro-crossfit/?utm_source=instagram&utm_medium=story",
+      "permanent": false
+    },
+    {
+      "source": "/joelho",
+      "destination": "/blog/dor-no-joelho-corrida/?utm_source=instagram&utm_medium=story",
+      "permanent": false
+    }
+  ]
+}

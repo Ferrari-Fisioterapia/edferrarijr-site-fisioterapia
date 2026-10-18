@@ -347,7 +347,7 @@ def esc(s):
     return s.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
 
 
-def head(title, desc, caminho, extra_ld, tipo="website", imagem="/assets/img/foto-sled.webp"):
+def head(title, desc, caminho, extra_ld, tipo="website", imagem="/assets/img/foto-sled.webp", robots="index, follow, max-image-preview:large"):
     url = f"{BASE}{caminho}"
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
@@ -356,7 +356,7 @@ def head(title, desc, caminho, extra_ld, tipo="website", imagem="/assets/img/fot
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="{robots}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="{tipo}">
 <meta property="og:locale" content="pt_BR">
@@ -632,6 +632,32 @@ def pagina_home():
 
 
 
+def pagina_link_bio():
+    """Página de links da bio do @edferrarijr. Fora do Google (noindex) e fora do sitemap."""
+    caminho = "/instagram/"
+    titulo = "Links do Ed Ferrari | Fisioterapia Esportiva em Campinas"
+    desc = "Agende sua avaliação, veja o home care, o reembolso do convênio e os artigos do blog."
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "name": titulo, "url": f"{BASE}{caminho}"}
+    botoes = [
+        ("Agendar avaliação", "Pelo WhatsApp, no Instituto Adara ou em casa", wa("Oi Ed, vim do Instagram e quero agendar uma avaliação.")),
+        ("Fisioterapia para Hyrox, CrossFit e corrida", "Retorno ao esporte e prevenção", "/fisioterapia-esportiva-campinas/?utm_source=instagram&utm_medium=bio"),
+        ("Atendimento em casa", "Home care no Swiss Park e região", "/fisioterapia-home-care-campinas/?utm_source=instagram&utm_medium=bio"),
+        ("Reembolso do convênio", "Como pedir ao seu plano", "/fisioterapia-reembolso-convenio-campinas/?utm_source=instagram&utm_medium=bio"),
+        ("Ferrari Recovery", "Bota de compressão e banheira de gelo", "/ferrari-recovery-campinas/?utm_source=instagram&utm_medium=bio"),
+        ("Blog", "Artigos sobre dor, treino e recuperação", "/blog/?utm_source=instagram&utm_medium=bio"),
+    ]
+    cards = "".join(f'<a class="s-card" href="{h}"><span class="s-num">{i:02d}</span><h3>{t}</h3><p>{d}</p></a>' for i, (t, d, h) in enumerate(botoes, 1))
+    h = head(titulo, desc, caminho, ld, robots="noindex, follow") + header()
+    h += f"""<main class="s-main"><div class="s-wrap">
+<section class="s-hero"><span class="rotulo">{CREFITO} · Campinas</span><div class="regua"></div><h1>Ed Ferrari<br><span class="destaque">Fisio esportivo</span></h1>
+<p class="lead">Para quem treina Hyrox, CrossFit e corrida. Escolha o que você procura.</p></section>
+<div class="s-grid" style="grid-template-columns:1fr">{cards}</div>
+</div></main>
+"""
+    return caminho, h + footer()
+
+
+
 def escrever(caminho, html):
     pasta = os.path.join(RAIZ, caminho.strip("/"))
     os.makedirs(pasta, exist_ok=True)
@@ -641,6 +667,8 @@ def escrever(caminho, html):
 
 def main():
     c, h = pagina_home()
+    escrever(c, h)
+    c, h = pagina_link_bio()
     escrever(c, h)
     urls = [("/", "1.0"), ("/perito-assistente-tecnico-em-fisioterapia/", "0.7")]
     for s in SERVICOS:
