@@ -1,398 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Ed Ferrari Jr | Fisioterapeuta Especialista</title>
-    <meta name="description" content="Especialista em Fisioterapia Ortopédica e Esportiva. Atendimento no Instituto Adara (Swiss Park, Campinas) e Home Care Premium. Ombro, Joelho, Tornozelo, Coluna e Lesões Musculares.">
-    <meta name="robots" content="index, follow">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background-color: #fbfbfd; color: #1d1d1f; overflow-x: hidden; }
-        
-        /* Apple-like Typography */
-        .headline-hero { font-size: clamp(1.4rem, 4vw + 0.5rem, 4.5rem); line-height: 1.15; letter-spacing: -0.03em; font-weight: 800; }
-        .subhead-hero { font-size: clamp(0.95rem, 2vw, 1.25rem); line-height: 1.5; letter-spacing: -0.01em; font-weight: 500; color: #86868b; }
-        .headline-section { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -0.03em; font-weight: 800; }
-        
-        /* Ajuste de Altura de Tela Inteira para a First Page */
-        .hero-section {
-            min-height: calc(85vh - 64px);
-            margin-top: 64px; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-        }
-
-        /* --- SHADCN AURORA BACKGROUND (Tradução para CSS Puro) --- */
-        .aurora-bg {
-            position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            opacity: 0.6; /* Intensidade do efeito */
-            filter: blur(10px);
-            pointer-events: none;
-            
-            /* Variáveis de Cor - Ajustadas para a sua identidade visual (Vermelhos/Bordô) */
-            --aurora: repeating-linear-gradient(100deg, #c4302b 10%, #f87171 15%, #fca5a5 20%, #b91c1c 25%, #ef4444 30%);
-            --white-gradient: repeating-linear-gradient(100deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 7%, transparent 10%, transparent 12%, rgba(255,255,255,0.9) 16%);
-            
-            background-image: var(--white-gradient), var(--aurora);
-            background-size: 300% 200%;
-            background-position: 50% 50%, 50% 50%;
-            
-            /* Máscara radial idêntica ao showRadialGradient do React */
-            mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
-            will-change: transform;
-        }
-
-        .aurora-bg::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: var(--white-gradient), var(--aurora);
-            background-size: 200% 100%;
-            background-attachment: fixed;
-            mix-blend-mode: overlay;
-            animation: animate-aurora 60s linear infinite;
-        }
-
-        @keyframes animate-aurora {
-            from { background-position: 50% 50%, 50% 50%; }
-            to { background-position: 350% 50%, 350% 50%; }
-        }
-        /* --- FIM DO EFEITO AURORA --- */
-
-        /* Bento Box Grid */
-        .bento-card { background: #ffffff; border-radius: 28px; padding: clamp(24px, 4vw, 40px); box-shadow: 0 4px 24px rgba(0,0,0,0.04); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; border: 1px solid rgba(0,0,0,0.02); }
-        .bento-card:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-        
-        .bento-card-dark { background: #1d1d1f; border-radius: 28px; padding: clamp(24px, 4vw, 40px); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.4s ease; }
-        .bento-card-dark:hover { transform: scale(1.02); }
-
-        /* PADRÃO APPLE DE ÍCONES DISCRETOS */
-        .icon-img-bento {
-            width: 48px !important;
-            height: 48px !important;
-            object-fit: contain;
-            margin-bottom: 1.5rem;
-            border-radius: 12px;
-        }
-        .icon-box-bento {
-            width: 48px !important;
-            height: 48px !important;
-            margin-bottom: 1.5rem;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Premium Buttons */
-        .btn-primary { background-color: #1d1d1f; color: #ffffff; border-radius: 999px; padding: 14px 28px; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; z-index: 20; position: relative;}
-        .btn-primary:hover { background-color: #333336; transform: scale(1.02); }
-        
-        .btn-accent { background-color: #c4302b; color: #ffffff; border-radius: 999px; padding: 14px 28px; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; z-index: 20; position: relative;}
-        .btn-accent:hover { background-color: #a12521; transform: scale(1.02); box-shadow: 0 8px 20px rgba(196, 48, 43, 0.3); }
-
-        /* Glassmorphism Header */
-        .glass-header { background: rgba(251, 251, 253, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-
-        /* Subtle Fade In Animation */
-        .fade-in-up { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        .delay-400 { animation-delay: 400ms; }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
-        /* Scroll Reveal Utility Classes */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Custom Dark Section Gradient */
-        .dark-section { background: radial-gradient(circle at top, #2a2a2d 0%, #000000 70%); color: #f5f5f7; }
-
-        /* --- Estilos do Marquee Moderno --- */
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background-color: #1d1d1f;
-            color: #f5f5f7;
-            padding: 0.8rem 0;
-            margin: 0;
-        }
-
-        .ticker-content {
-            display: flex;
-            white-space: nowrap;
-            animation: scroll-ticker 25s linear infinite;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .ticker-item {
-            display: inline-block;
-            padding-right: 4rem;
-        }
-
-        @keyframes scroll-ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fisioterapeuta Esportivo e Ortopédico em Campinas | Ed Ferrari Jr</title>
+<meta name="description" content="Fisioterapia ortopédica e esportiva em Campinas: ombro, joelho, coluna e lesões musculares. Atendimento no Instituto Adara (Swiss Park) e home care. Agende sua avaliação.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.edferrarijr.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Ed Ferrari Jr | Fisioterapia">
+<meta property="og:url" content="https://www.edferrarijr.com/">
+<meta property="og:title" content="Fisioterapeuta Esportivo e Ortopédico em Campinas | Ed Ferrari Jr">
+<meta property="og:description" content="Fisioterapia ortopédica e esportiva em Campinas: ombro, joelho, coluna e lesões musculares. Atendimento no Instituto Adara (Swiss Park) e home care. Agende sua avaliação.">
+<meta property="og:image" content="https://www.edferrarijr.com/assets/img/foto-sled.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/BarlowCondensed-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="/assets/js/site.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Physiotherapy", "@id": "https://www.edferrarijr.com/#clinica", "name": "Ed Ferrari Jr. Fisioterapia Ortopédica e Esportiva", "url": "https://www.edferrarijr.com/", "image": "https://www.edferrarijr.com/assets/img/foto-sled.webp", "telephone": "+5519971002263", "address": {"@type": "PostalAddress", "streetAddress": "Av. Antônio Artioli, 276", "addressLocality": "Campinas", "addressRegion": "SP", "postalCode": "13049-253", "addressCountry": "BR"}, "areaServed": [{"@type": "City", "name": "Campinas"}, {"@type": "Place", "name": "Swiss Park"}], "medicalSpecialty": "Physiotherapy", "sameAs": ["https://www.instagram.com/edferrarijr", "https://www.youtube.com/@EdFerrariJr"], "founder": {"@id": "https://www.edferrarijr.com/#pessoa"}}, {"@type": "Person", "@id": "https://www.edferrarijr.com/#pessoa", "name": "Ed Ferrari Jr", "jobTitle": "Fisioterapeuta ortopédico e esportivo", "identifier": "CREFITO-3/306266-F", "url": "https://www.edferrarijr.com/", "worksFor": {"@id": "https://www.edferrarijr.com/#clinica"}}, {"@type": "WebSite", "@id": "https://www.edferrarijr.com/#site", "url": "https://www.edferrarijr.com/", "name": "Ed Ferrari Jr | Fisioterapia", "inLanguage": "pt-BR"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Onde você atende em Campinas?", "acceptedAnswer": {"@type": "Answer", "text": "No Instituto Adara, no Swiss Park (Av. Antônio Artioli, 276), e em domicílio no Swiss Park e na região metropolitana de Campinas."}}, {"@type": "Question", "name": "Preciso de pedido médico para marcar uma avaliação?", "acceptedAnswer": {"@type": "Answer", "text": "Para a avaliação fisioterapêutica não é obrigatório. Se você tem exames ou laudos, traga para a primeira sessão. Alguns convênios pedem o pedido médico para reembolso."}}, {"@type": "Question", "name": "Você atende atletas de CrossFit, Hyrox e corrida?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Faço avaliação do movimento e da carga de treino, tratamento das lesões e plano de retorno ao esporte."}}, {"@type": "Question", "name": "Como funciona o reembolso do convênio?", "acceptedAnswer": {"@type": "Answer", "text": "O atendimento é particular. Eu forneço recibo e relatório para você solicitar o reembolso ao seu plano. A cobertura depende do contrato."}}]}]}</script>
 </head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="s-header"><div class="s-wide">
+<a class="s-brand" href="/"><b>Ed Ferrari Jr</b><small>FISIOTERAPIA · ESPORTIVA</small></a>
+<input type="checkbox" id="mn" class="mn-chk" aria-label="Abrir menu"><label for="mn" class="mn-btn" aria-hidden="true"><i></i></label>
+<nav class="s-nav" aria-label="Principal"><a href="/fisioterapia-esportiva-campinas/" class="hide-m">Esportiva</a><a href="/fisioterapia-home-care-campinas/" class="hide-m">Home care</a><a href="/ferrari-recovery-campinas/" class="hide-m">Recovery</a><a href="/perito-assistente-tecnico-em-fisioterapia/" class="hide-m">Perícia</a><a href="/blog/">Blog</a><a class="s-btn small" href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Agendar</a></nav>
+</div></header>
+<main id="conteudo">
+<section class="h-hero"><video class="fundo" autoplay muted loop playsinline preload="metadata" poster="/assets/img/foto-sled.webp" aria-hidden="true"><source src="/assets/video/hero.mp4" type="video/mp4"></video><div class="s-wide">
+<span class="rotulo">Campinas · Instituto Adara e home care</span><div class="regua"></div>
+<h1><span class="destaque">Fisioterapia</span> ortopédica e esportiva em Campinas</h1>
+<p class="lead">Avaliação individual e reabilitação baseada em evidências, no Instituto Adara (Swiss Park) ou na sua casa.</p>
+<div class="acoes"><a class="s-btn" href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Agendar minha avaliação</a><a class="s-btn vazado" href="#servicos">Ver serviços</a></div>
+</div></section>
+<div class="h-faixa"><div class="s-wide"><span>Tratamento baseado em evidências</span><span>Avaliação individual</span><span>Minimizando lesões</span><span>CREFITO-3/306266-F</span></div></div>
+<div class="ticker" aria-hidden="true"><div><span>Ombro</span><span>Joelho</span><span>Tornozelo</span><span>Coluna</span><span>Lesões musculares</span><span>Hyrox</span><span>CrossFit</span><span>ATHX</span><span>Corrida</span><span>Home care</span><span>Recovery</span><span>Ombro</span><span>Joelho</span><span>Tornozelo</span><span>Coluna</span><span>Lesões musculares</span><span>Hyrox</span><span>CrossFit</span><span>ATHX</span><span>Corrida</span><span>Home care</span><span>Recovery</span></div></div>
 
-<body class="antialiased selection:bg-[#c4302b] selection:text-white overflow-x-hidden w-full">
+<section class="h-sec"><div class="s-wide h-sobre">
+<img src="/assets/img/image_1.webp" alt="Ed Ferrari Jr, fisioterapeuta" width="600" height="800" loading="lazy">
+<div><span class="rotulo">Quem cuida de você</span><h2>Chega de tratamentos genéricos.</h2>
+<p>Muitas vezes o tratamento se limita a aliviar o sintoma. Como especialista em ortopedia e fisioterapia esportiva, eu investigo a <strong>raiz biomecânica</strong> da sua dor articular, muscular ou ligamentar.</p>
+<p>Meu compromisso é com a sua independência: um plano de eficiência máxima, com o menor número de visitas possível, para você voltar a treinar e viver sem medo.</p></div>
+</div></section>
 
-    <header class="fixed top-0 w-full z-50 glass-header transition-all duration-300 h-16">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-full">
-            <div class="font-bold text-lg md:text-xl tracking-tight text-[#1d1d1f] flex items-center gap-2">
-                Ed Ferrari Jr<span class="text-[#c4302b]">.</span> <span class="text-xs font-semibold text-[#86868b] tracking-widest uppercase border-l-2 border-gray-200 pl-2 hidden sm:inline-block">Fisioterapeuta</span>
-            </div>
-            <nav class="hidden lg:flex gap-8 items-center">
-                <a href="#inicio" class="text-sm font-medium text-[#1d1d1f]/70 hover:text-[#1d1d1f] transition">Início</a>
-                <a href="#especialidades" class="text-sm font-medium text-[#1d1d1f]/70 hover:text-[#1d1d1f] transition">Tratamentos</a>
-                <a href="#atendimento" class="text-sm font-medium text-[#1d1d1f]/70 hover:text-[#1d1d1f] transition">Onde Atendemos</a>
-            </nav>
-            <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação." target="_blank" class="btn-primary px-4 md:px-5 py-2 text-xs md:text-sm whitespace-nowrap">
-                Agendar
-            </a>
-        </div>
-    </header>
-    
-    <main id="inicio" class="hero-section px-6 overflow-hidden items-center text-center w-full bg-[#fbfbfd] relative">
-        
-        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-            <div class="aurora-bg"></div>
-        </div>
+<section class="h-sec" id="servicos" style="padding-top:0"><div class="s-wide"><span class="rotulo">Serviços</span><h2>Cuidado individualizado para cada região do corpo.</h2>
+<div class="s-grid"><a class="s-card" href="/fisioterapia-ombro-campinas/"><span class="s-num">01</span><h3>Ombro, cotovelo e punho</h3><p>Manguito rotador, epicondilite, túnel do carpo e tendinites.</p></a><a class="s-card" href="/fisioterapia-joelho-tornozelo-campinas/"><span class="s-num">02</span><h3>Joelho e tornozelo</h3><p>Menisco, LCA, condromalácia, fascite plantar e entorses.</p></a><a class="s-card" href="/fisioterapia-lesoes-musculares-campinas/"><span class="s-num">03</span><h3>Lesões musculares e ligamentares</h3><p>Estiramentos, rupturas, contraturas e distensões.</p></a><a class="s-card" href="/fisioterapia-coluna-campinas/"><span class="s-num">04</span><h3>Coluna vertebral</h3><p>Hérnia de disco, dor lombar, ciatalgia e postura.</p></a><a class="s-card" href="/fisioterapia-esportiva-campinas/"><span class="s-num">05</span><h3>Fisioterapia esportiva</h3><p>Retorno ao esporte e performance: CrossFit, Hyrox, ATHX e corrida.</p></a><a class="s-card" href="/fisioterapia-home-care-campinas/"><span class="s-num">06</span><h3>Fisioterapia home care</h3><p>Atendimento domiciliar no Swiss Park e região de Campinas.</p></a><a class="s-card" href="/fisioterapia-reembolso-convenio-campinas/"><span class="s-num">07</span><h3>Reembolso do convênio</h3><p>Como funciona o reembolso de fisioterapia pelo plano de saúde.</p></a><a class="s-card" href="/ferrari-recovery-campinas/"><span class="s-num">08</span><h3>Ferrari Recovery</h3><p>Bota de compressão e banheira de gelo para recuperação pós-treino.</p></a></div></div></section>
 
-        <div class="max-w-4xl mx-auto z-10 w-full relative pointer-events-none">
-            <span class="text-[#c4302b] font-bold tracking-widest uppercase text-xs md:text-sm mb-3 block fade-in-up">Instituto Adara & Home Care Premium</span>
-            
-            <h1 class="headline-hero mb-4 fade-in-up delay-100 w-full whitespace-nowrap md:whitespace-normal drop-shadow-sm inline-block">
-                Estrutura de elite.<br>Na clínica ou na sua casa.
-            </h1>
-            
-            <p class="subhead-hero mb-8 max-w-2xl mx-auto fade-in-up delay-200 leading-relaxed px-4 text-[#1d1d1f]/80">
-                O mesmo padrão de avaliação, tecnologia e reabilitação<br class="hidden md:block">
-                usado por atletas profissionais.<br class="hidden md:block">
-                Escolha ser atendido no Swiss Park ou no conforto do seu lar.
-            </p>
-            
-            <div class="flex justify-center items-center fade-in-up delay-300 w-full px-4 pointer-events-auto">
-                <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação." target="_blank" class="btn-accent text-base shadow-lg hover:shadow-xl px-8 relative z-20">
-                    <i class="fa-brands fa-whatsapp"></i> Agendar Minha Avaliação
-                </a>
-            </div>
-        </div>
-    </main>
+<section class="h-sec escura"><div class="s-wide"><span class="rotulo">Para quem treina</span><h2>CrossFit, Hyrox, ATHX e corrida.</h2>
+<p style="max-width:640px">Conheço as demandas do seu esporte. Avalio o movimento e a carga de treino, trato a lesão e planejo o retorno com critérios claros.</p>
+<div class="h-esportes"><a href="/fisioterapia-esportiva-campinas/" style="color:#F4F4F1;border-color:#F4F4F1">Hyrox</a><a href="/fisioterapia-esportiva-campinas/" style="color:#F4F4F1;border-color:#F4F4F1">CrossFit</a><a href="/fisioterapia-esportiva-campinas/" style="color:#F4F4F1;border-color:#F4F4F1">ATHX</a><a href="/fisioterapia-esportiva-campinas/" style="color:#F4F4F1;border-color:#F4F4F1">Corrida</a></div>
+<a class="s-btn" href="/fisioterapia-esportiva-campinas/">Fisioterapia esportiva</a></div></section>
 
-    <div class="ticker-wrap fade-in-up delay-300 relative z-20">
-        <div class="ticker-content">
-            <div class="ticker-item">Tratamento Baseado em Evidências</div>
-            <div class="ticker-item">Recuperação Acelerada</div>
-            <div class="ticker-item">Minimizando lesões</div>
-            <div class="ticker-item">Maximizando performance</div>
-            <div class="ticker-item">Tratamento Baseado em Evidências</div>
-            <div class="ticker-item">Recuperação Acelerada</div>
-            <div class="ticker-item">Minimizando lesões</div>
-            <div class="ticker-item">Maximizando performance</div>
-        </div>
-    </div>
+<section class="h-sec"><div class="s-wide"><span class="rotulo">Ferrari Recovery</span><h2>Recuperação pós-treino. Na sua casa.</h2>
+<p class="suave" style="max-width:640px">Aluguel de equipamentos de recuperação pós-treino no Swiss Park e região. Valores sob consulta, pelo WhatsApp.</p>
+<div class="h-duo">
+<div class="s-card"><span class="s-num">01</span><h3>Bota pneumática</h3><p>Compressão pneumática sequencial nas pernas, usada na rotina de recuperação depois de treinos e provas.</p><a class="s-btn small" href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20bota%20de%20compress%C3%A3o.">Pedir informações</a></div>
+<div class="s-card"><span class="s-num">02</span><h3>Banheira de gelo</h3><p>Imersão em água fria, usada por atletas após esforços intensos. Orientação de uso e triagem antes da locação.</p><a class="s-btn small" href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20banheira%20de%20gelo.">Pedir informações</a></div>
+<div class="s-card"><span class="s-num">03</span><h3>Combo fim de semana</h3><p>Bota de compressão e banheira de gelo por 2 dias completos.</p><a class="s-btn small" href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20combo%20de%20fim%20de%20semana%20%28bota%20%2B%20banheira%29.">Pedir informações</a></div>
+</div><p style="margin-top:20px"><a href="/ferrari-recovery-campinas/">Saiba mais sobre a Ferrari Recovery →</a></p></div></section>
 
-    <section id="sobre" class="py-16 md:py-24 px-6 bg-white fade-in-up delay-400 relative z-20">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-20 items-center">
-                <div class="md:col-span-5 rounded-[2rem] overflow-hidden shadow-2xl relative mx-auto w-full max-w-sm">
-                    <img src="assets/img/image_1.png" alt="Dr Ed Ferrari Jr" class="w-full h-auto object-cover hover:scale-105 transition duration-700" loading="lazy">
-                </div>
-                <div class="md:col-span-7 text-center md:text-left">
-                    <h2 class="headline-section mb-6">Chega de<br>tratamentos genéricos.</h2>
-                    <p class="text-[#86868b] text-lg md:text-xl mb-6 leading-relaxed">
-                        A maioria das sessões falha porque foca apenas em mascarar o sintoma. Como Especialista em Ortopedia e Fisioterapia Esportiva, o Dr. Ed Ferrari Jr. investiga a <strong>raiz biomecânica</strong> da sua dor articular, muscular ou ligamentar.
-                    </p>
-                    <p class="text-[#86868b] text-lg md:text-xl leading-relaxed">
-                        Nosso compromisso é com a sua independência. Criamos um plano de eficiência máxima com o menor número de visitas possíveis para você voltar a treinar e viver sem medo.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="h-sec escura" id="atendimento"><div class="s-wide"><span class="rotulo">Onde atendo</span><h2>Duas formas de cuidar de você.</h2>
+<div class="h-duo">
+<div class="s-card escuro"><span class="s-num" style="color:#EE6660">01</span><h3>Instituto Adara</h3><p>Atendimento presencial em uma estrutura moderna e equipada para a sua reabilitação esportiva.</p><div class="h-end">Av. Antônio Artioli, 276 - Swiss Park, Campinas - SP, 13049-253</div><a class="s-btn small" href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20atendimento%20no%20Instituto%20Adara.">Agendar na clínica</a></div>
+<div class="s-card escuro"><span class="s-num" style="color:#EE6660">02</span><h3>Home care</h3><p>Reabilitação na sua casa, com privacidade e conforto, no Swiss Park e na região metropolitana de Campinas.</p><a class="s-btn small" href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20atendimento%20Home%20Care.">Agendar home care</a> &nbsp; <a href="/fisioterapia-home-care-campinas/" style="color:#EE6660">Saiba mais →</a></div>
+</div></div></section>
 
-    <section id="especialidades" class="py-16 md:py-24 px-6 overflow-hidden relative z-20 bg-[#fbfbfd]">
-        <div class="max-w-7xl mx-auto text-center mb-16 md:mb-20">
-            <h2 class="headline-section reveal">Áreas de especialidade.</h2>
-            <p class="subhead-hero mt-4 reveal">Soluções definitivas para o seu corpo.</p>
-        </div>
-        
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <div class="bento-card flex flex-col items-start reveal">
-                <img src="assets/img/image_3.png" alt="Ombro Cotovelo e Punho" class="icon-img-bento shadow-sm" loading="lazy">
-                <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Ombro, Cotovelo e Punho</h3>
-                <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Especialista em manguito rotador, epicondilite, síndrome do túnel do carpo e tendinites. Foco na devolução da força e mobilidade.</p>
-            </div>
+<section class="h-sec"><div class="s-wide"><span class="rotulo">Blog</span><h2>Para entender melhor a sua dor.</h2><div class="s-grid"><a class="s-card" href="/blog/dor-no-ombro-crossfit/"><span class="s-num">BLOG</span><h3>Dor no ombro no CrossFit: sinais de que vale uma avaliação</h3><p>O ombro é uma das regiões mais exigidas no CrossFit. Nem toda dor significa lesão, mas alguns sinais merecem atenção.</p></a><a class="s-card" href="/blog/dor-no-joelho-corrida/"><span class="s-num">BLOG</span><h3>Dor no joelho na corrida: por que acontece e quando investigar</h3><p>Dor no joelho é uma queixa comum em quem corre. Na maioria das vezes ela tem relação com a carga de treino, e não com uma lesão grave.</p></a><a class="s-card" href="/blog/hyrox-prevencao-de-lesoes/"><span class="s-num">BLOG</span><h3>Hyrox: como treinar sem se lesionar</h3><p>O Hyrox junta 8 km de corrida com 8 estações de força e resistência. A mistura é divertida, e também exige atenção à carga e à recuperação.</p></a></div><p><a href="/blog/">Ver todos os artigos →</a></p></div></section>
 
-            <div class="bento-card flex flex-col items-start reveal">
-                <img src="assets/img/image_4.png" alt="Joelho e Tornozelo" class="icon-img-bento shadow-sm" loading="lazy">
-                <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Joelho e Tornozelo</h3>
-                <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Reabilitação cirúrgica e conservadora. Menisco, LCA, condromalácia, fascite plantar e entorses com retorno seguro ao esporte.</p>
-            </div>
-
-            <div class="bento-card flex flex-col items-start reveal">
-                <img src="assets/img/image_6.png" alt="Lesões Musculares" class="icon-img-bento shadow-sm" loading="lazy">
-                <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Lesões Musculares e Ligamentares</h3>
-                <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Recuperação acelerada de estiramentos, rupturas, contraturas e distensões. Aplicação de recursos tecnológicos para cicatrização ideal.</p>
-            </div>
-
-            <div class="bento-card flex flex-col items-start lg:col-span-2 bg-gradient-to-br from-gray-50 to-gray-100 reveal">
-                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-[#1d1d1f]">Alta Performance</h3>
-                <p class="text-[#86868b] text-base md:text-lg font-medium leading-relaxed mb-8 max-w-xl">
-                    Seu protocolo não termina quando a dor some; termina quando você bate seu Recorde Pessoal. Avaliação biomecânica e periodização de força para atletas.
-                </p>
-                <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20Avalia%C3%A7%C3%A3o%20Esportiva%20(Return%20to%20Play)." class="btn-primary px-8">Saber mais <i class="fa-solid fa-arrow-right text-sm"></i></a>
-            </div>
-
-            <div class="bento-card flex flex-col items-start reveal">
-                <img src="assets/img/image_2.png" alt="Coluna" class="icon-img-bento shadow-sm" loading="lazy">
-                <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Coluna Vertebral</h3>
-                <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed">Hérnia de disco, dor lombar aguda, ciatalgia e correções posturais focadas em alívio rápido e estabilidade.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="recovery" class="py-16 md:py-24 px-6 dark-section overflow-hidden relative z-20">
-        <div class="max-w-7xl mx-auto text-center mb-16 md:mb-20">
-            <span class="text-[#c4302b] font-bold tracking-widest uppercase text-sm mb-4 block reveal">Ferrari Recovery</span>
-            <h2 class="headline-section text-white reveal">Recuperação de elite.<br>Na sua casa.</h2>
-            <p class="text-gray-400 mt-4 md:mt-6 text-lg md:text-xl max-w-2xl mx-auto reveal">Aluguel de equipamentos profissionais para acelerar sua recuperação muscular no Swiss Park e região.</p>
-        </div>
-
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <div class="bento-card-dark flex flex-col text-center items-center reveal">
-                <img src="assets/img/image_11.webp" alt="Bota Pneumática" class="w-full h-48 md:h-64 object-cover rounded-xl mb-6 md:mb-8" loading="lazy">
-                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-white">Bota Pneumática</h3>
-                <p class="text-gray-400 mb-8 font-medium text-sm md:text-base">Compressão avançada. Drena toxinas, elimina o ácido lático e reduz o inchaço pós-treino imediatamente.</p>
-                <div class="mt-auto w-full">
-                    <div class="text-3xl md:text-4xl font-bold text-white mb-6">R$ 347<span class="text-base md:text-lg text-gray-500 font-medium">/diária</span></div>
-                    <a href="https://api.whatsapp.com/send?phone=5519971002263" target="_blank" class="w-full bg-white text-black rounded-full px-6 py-3 font-bold hover:bg-gray-200 transition inline-block">Reservar Bota</a>
-                </div>
-            </div>
-
-            <div class="bento-card-dark flex flex-col text-center items-center reveal">
-                <img src="assets/img/image_12.webp" alt="Banheira de Gelo" class="w-full h-48 md:h-64 object-cover rounded-xl mb-6 md:mb-8" loading="lazy">
-                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-white">Banheira de Gelo (Ice Bath)</h3>
-                <p class="text-gray-400 mb-8 font-medium text-sm md:text-base">Crioterapia padrão ouro. Controle máximo de inflamação e recuperação profunda do sistema nervoso central.</p>
-                <div class="mt-auto w-full">
-                    <div class="text-3xl md:text-4xl font-bold text-white mb-6">R$ 247<span class="text-base md:text-lg text-gray-500 font-medium">/diária</span></div>
-                    <a href="https://api.whatsapp.com/send?phone=5519971002263" target="_blank" class="w-full bg-white text-black rounded-full px-6 py-3 font-bold hover:bg-gray-200 transition inline-block">Reservar Banheira</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="max-w-5xl mx-auto mt-6 md:mt-8 reveal">
-            <div class="bento-card-dark bg-gradient-to-r from-[#1d1d1f] to-[#2a1312] border-[#c4302b]/30 flex flex-col md:flex-row justify-between items-center text-left gap-6">
-                <div class="text-center md:text-left flex-1">
-                    <span class="bg-[#c4302b] text-white text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full mb-4 inline-block">Recomendado</span>
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Combo PRO (Fim de Semana)</h3>
-                    <p class="text-gray-400 font-medium text-sm md:text-base">Bota de Compressão + Banheira de Gelo por 2 dias completos.</p>
-                </div>
-                <div class="text-center md:text-right flex flex-col items-center md:items-end">
-                    <div class="text-3xl md:text-4xl font-bold text-white mb-4">R$ 594</div>
-                    <a href="https://api.whatsapp.com/send?phone=5519971002263" target="_blank" class="btn-accent whitespace-nowrap px-8 py-3">Quero o Combo</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="atendimento" class="py-16 md:py-24 px-6 bg-white text-center overflow-hidden relative z-20">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="headline-section mb-10 md:mb-12 reveal">Duas formas de cuidar de você.</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
-                <div class="bento-card flex flex-col items-start bg-gradient-to-br from-gray-50 to-gray-100 reveal">
-                    <div class="icon-box-bento bg-white text-[#c4302b] text-xl border border-gray-100 shadow-sm">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Instituto Adara</h3>
-                    <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed mb-4">
-                        Atendimento presencial em uma estrutura moderna e totalmente equipada para a sua reabilitação esportiva.
-                    </p>
-                    <div class="text-[#1d1d1f] font-semibold text-xs md:text-sm mb-6 md:mb-8 bg-white p-4 rounded-xl border border-gray-100 w-full">
-                        Av. Antônio Artioli, 276<br>Swiss Park, Campinas - SP<br>CEP: 13049-253
-                    </div>
-                    <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20no%20Instituto%20Adara." target="_blank" class="btn-primary mt-auto text-sm px-8">
-                        Agendar na Clínica
-                    </a>
-                </div>
-
-                <div class="bento-card flex flex-col items-start bg-gradient-to-br from-gray-50 to-gray-100 reveal">
-                    <div class="icon-box-bento bg-white text-[#c4302b] text-xl border border-gray-100 shadow-sm">
-                        <i class="fa-solid fa-house-chimney-medical"></i>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold mb-3 text-[#1d1d1f]">Home Care Premium</h3>
-                    <p class="text-[#86868b] text-sm md:text-base font-medium leading-relaxed mb-4">
-                        O nível de um centro de reabilitação de elite, com a máxima privacidade e o conforto do seu lar.
-                    </p>
-                    <div class="text-[#1d1d1f] font-semibold text-xs md:text-sm mb-6 md:mb-8 bg-white p-4 rounded-xl border border-gray-100 w-full">
-                        Atendimento domiciliar exclusivo<br>no Swiss Park e região metropolitana<br>de Campinas.
-                    </div>
-                    <a href="https://api.whatsapp.com/send?phone=5519971002263&text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20Home%20Care." target="_blank" class="btn-primary mt-auto text-sm px-8">
-                        Agendar Home Care
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-[#f5f5f7] py-12 md:py-16 px-6 border-t border-gray-200 relative z-20">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
-            <div class="text-[#1d1d1f] flex flex-col items-center md:items-start gap-2">
-                <div class="font-bold text-lg md:text-xl flex items-center gap-2">
-                    Ed Ferrari Jr<span class="text-[#c4302b]">.</span> <span class="text-xs font-semibold text-[#86868b] tracking-widest uppercase border-l-2 border-gray-300 pl-2">Fisioterapeuta</span>
-                </div>
-                <div class="text-xs md:text-sm text-[#86868b] text-center md:text-left mt-1 md:mt-2">
-                    <strong>Instituto Adara:</strong> Av. Antônio Artioli, 276 - Swiss Park, Campinas - SP
-                </div>
-            </div>
-            
-            <div class="flex gap-6">
-                <a href="https://www.instagram.com/edferrarijr" target="_blank" class="text-[#86868b] hover:text-[#1d1d1f] text-2xl transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@EdFerrariJr" target="_blank" class="text-[#86868b] hover:text-[#1d1d1f] text-2xl transition"><i class="fa-brands fa-youtube"></i></a>
-            </div>
-            
-            <div class="text-[#86868b] text-xs md:text-sm text-center md:text-right">
-                © 2026 Dr. Ed Ferrari Jr.<br>Fisioterapia Ortopédica e Esportiva.
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 50; 
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal();
-    </script>
+<section class="h-sec" style="padding-top:0"><div class="s-wrap s-main"><span class="rotulo">Dúvidas</span><h2 style="margin-top:10px">Perguntas frequentes</h2><div class="s-faq"><details><summary>Onde você atende em Campinas?</summary><p>No Instituto Adara, no Swiss Park (Av. Antônio Artioli, 276), e em domicílio no Swiss Park e na região metropolitana de Campinas.</p></details><details><summary>Preciso de pedido médico para marcar uma avaliação?</summary><p>Para a avaliação fisioterapêutica não é obrigatório. Se você tem exames ou laudos, traga para a primeira sessão. Alguns convênios pedem o pedido médico para reembolso.</p></details><details><summary>Você atende atletas de CrossFit, Hyrox e corrida?</summary><p>Sim. Faço avaliação do movimento e da carga de treino, tratamento das lesões e plano de retorno ao esporte.</p></details><details><summary>Como funciona o reembolso do convênio?</summary><p>O atendimento é particular. Eu forneço recibo e relatório para você solicitar o reembolso ao seu plano. A cobertura depende do contrato.</p></details></div>
+<p style="margin-top:22px"><a href="/fisioterapia-reembolso-convenio-campinas/">Como funciona o reembolso do convênio →</a></p></div></section>
+<div class="s-wide"><section class="s-cta"><span class="rotulo">Atendimento em Campinas</span><h2>Agende sua avaliação</h2><p>Instituto Adara (Swiss Park) e em domicílio, em Campinas e região.</p>
+<a class="s-btn" href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Falar pelo WhatsApp</a></section>
+</div>
+</main>
+<footer class="s-footer"><div class="s-wide"><div class="cols">
+<div><div class="assin">Ed Ferrari Jr<small>FISIOTERAPIA · ESPORTIVA</small></div>CREFITO-3/306266-F<br><br>Av. Antônio Artioli, 276 - Swiss Park, Campinas - SP, 13049-253<br>WhatsApp: (19) 97100-2263</div>
+<div><strong>Serviços</strong><a href="/fisioterapia-ombro-campinas/">Ombro, cotovelo e punho</a><a href="/fisioterapia-joelho-tornozelo-campinas/">Joelho e tornozelo</a><a href="/fisioterapia-lesoes-musculares-campinas/">Lesões musculares e ligamentares</a><a href="/fisioterapia-coluna-campinas/">Coluna vertebral</a><a href="/fisioterapia-esportiva-campinas/">Fisioterapia esportiva</a></div>
+<div><strong>Mais</strong><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
+</div>
+<p class="s-note" style="margin-top:30px">As informações deste site são educativas e não substituem a avaliação de um profissional de saúde. Os resultados variam de pessoa para pessoa. © 2026 Ed Ferrari Jr.</p>
+</div></footer>
+<a class="barra-cta" href="https://api.whatsapp.com/send?phone=5519971002263&text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Agendar pelo WhatsApp</a>
 </body>
 </html>
