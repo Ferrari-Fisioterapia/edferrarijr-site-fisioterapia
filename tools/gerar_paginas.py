@@ -259,7 +259,7 @@ SERVICOS = [
         "btn": "Pedir proposta para o meu evento",
         "cta": ("Peça uma proposta para o seu evento", "Conte o nome do evento, a data, o local, o esporte e quantos atletas participam. Eu respondo com a proposta."),
         "secoes": [
-            ("Para quem é", """<p>Para organizadores de corridas, competições de CrossFit, Hyrox, ATHX e outros eventos de performance que querem oferecer recuperação a quem participa. A Ferrari Recovery é o recovery oficial do Wodnation e leva para o seu evento a mesma estrutura.</p>
+            ("Para quem é", """<p>Para organizadores de corridas, competições de CrossFit, Hyrox, ATHX e outros eventos de performance que querem oferecer recuperação a quem participa. A Ferrari Recovery pode ser o recovery oficial do seu evento.</p>
 <div class="s-grid">
 <div class="s-card"><span class="s-num">CORRIDA</span><h3>Provas de rua e de trilha</h3><p>Recuperação na chegada, quando o atleta mais procura um lugar para parar e se recuperar.</p></div>
 <div class="s-card"><span class="s-num">CROSSFIT</span><h3>Competições e campeonatos</h3><p>Para quem faz várias baterias no mesmo dia ou no fim de semana e precisa voltar à próxima prova.</p></div>
@@ -269,12 +269,12 @@ SERVICOS = [
             ("O que a estação do evento inclui", """<div class="s-grid">
 <div class="s-card"><h3>Bota de compressão pneumática</h3><p>Compressão sequencial nas pernas, usada após o esforço como parte da rotina de recuperação.</p></div>
 <div class="s-card"><h3>Banheira de gelo (ice bath)</h3><p>Imersão em água fria para quem gosta desse recurso depois da prova, com tempo e temperatura orientados no local.</p></div>
-<div class="s-card"><h3>Fisioterapeuta no local</h3><p>Eu faço a triagem de quem pode usar cada recurso, oriento o tempo de uso e converso com o atleta sobre a recuperação. Quem relata dor que pede avaliação é orientado a procurar atendimento.</p></div>
+<div class="s-card"><h3>Fisioterapeuta no local</h3><p>Eu faço a triagem de quem pode usar cada recurso, oriento o tempo de uso e converso com o atleta sobre a recuperação. Conforme o evento, também é possível combinar terapia manual, alongamento e avaliação rápida com o fisioterapeuta. Quem relata dor que pede avaliação é orientado a procurar atendimento.</p></div>
 </div>"""),
             ("Por que ter um fisioterapeuta na estação", """<p>Bota e banheira de gelo são ótimos recursos, mas nem todo mundo deve usá-los do mesmo jeito. Condições cardiovasculares, circulatórias ou de sensibilidade ao frio, por exemplo, pedem cuidado. Com um fisioterapeuta na estação, a triagem é feita antes do uso e a orientação é individual, o que torna a experiência mais segura e mais profissional para o atleta e para a imagem do seu evento.</p>"""),
             ("Como funciona", """<ol>
 <li>Você entra em contato pelo WhatsApp com o nome do evento, a data, o local, o esporte e uma estimativa do número de participantes.</li>
-<li>Eu respondo com a proposta, a estrutura necessária no local (espaço, tomada e acesso à água) e os valores.</li>
+<li>Eu respondo com a proposta, a estrutura necessária no local (ambiente coberto e apto, com energia e acesso à água) e os valores.</li>
 <li>Combinamos montagem, horários de funcionamento e como os atletas vão acessar a estação.</li>
 <li>No dia, a estação funciona com a minha presença e você acompanha tudo com a nossa equipe.</li>
 </ol>"""),
@@ -282,7 +282,8 @@ SERVICOS = [
         ],
         "faq": [
             ("Quanto custa levar a Ferrari Recovery ao meu evento?", "Depende do formato, da duração e do número de participantes. Mande os dados do evento pelo WhatsApp e eu envio uma proposta."),
-            ("O que preciso oferecer no local?", "Um espaço coberto ou com sombra, ponto de energia e acesso à água. Confirmo os detalhes de cada evento na proposta."),
+            ("O que preciso oferecer no local?", "Um ambiente coberto e apto para a Ferrari Recovery operar, com energia para as botas e acesso à água para a banheira. Confirmo os detalhes de cada evento na proposta."),
+            ("Quantos equipamentos levam para o evento?", "A quantidade de botas e banheiras é negociada de acordo com o tamanho do evento e o fluxo de atletas, e a proposta é feita caso a caso."),
             ("Os atletas pagam para usar ou o organizador contrata?", "Os dois formatos são possíveis. Podemos montar a estação contratada pelo organizador ou com acesso pago pelo atleta. Combinamos o que fizer mais sentido para o seu evento."),
             ("Funciona para evento pequeno?", "Sim. Conte o tamanho do evento pelo WhatsApp e eu indico o que cabe."),
             ("Quem não deve usar a banheira de gelo?", "Pessoas com certas condições cardiovasculares, circulatórias ou sensibilidade ao frio devem passar pela triagem do fisioterapeuta antes e, em alguns casos, conversar com o médico."),
