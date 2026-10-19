@@ -39,6 +39,13 @@
       u.searchParams.set('text',t+' (origem: '+og+')');a.href=u.toString();a.setAttribute('data-og','1')}catch(_){}
   }
   document.querySelectorAll('a[href*="api.whatsapp.com"]').forEach(marca);
+  // Google Analytics 4: só liga quando o ID de medição (G-XXXXXXX) for preenchido
+  var GA_ID='';
+  if(GA_ID){
+    var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;document.head.appendChild(gs);
+    window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};
+    gtag('js',new Date());gtag('set','user_properties',{origem:og});gtag('config',GA_ID);
+  }
   // evento de clique no WhatsApp (Vercel Analytics, se ativado, e GA, se existir)
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href*="api.whatsapp.com"]');if(!a)return;
