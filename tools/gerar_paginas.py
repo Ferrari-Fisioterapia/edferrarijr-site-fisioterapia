@@ -294,6 +294,45 @@ SERVICOS = [
 
 ARTIGOS = [
     {
+        "slug": "dor-lombar-crossfit-hyrox",
+        "title": "Dor lombar no CrossFit e Hyrox: quando investigar",
+        "desc": "Dor lombar é comum em CrossFit e Hyrox. Veja causas frequentes, sinais de alerta e quando procurar um fisioterapeuta em Campinas.",
+        "h1": "Dor lombar no CrossFit e Hyrox: quando investigar",
+        "lead": "Dor lombar é uma das queixas mais comuns de quem treina com carga. Em muitos casos ela tem relação com volume, técnica e cansaço, e não com uma lesão grave, mas alguns sinais pedem avaliação.",
+        "servico": "fisioterapia-coluna-campinas",
+        "corpo": """<h2>Dor lombar no CrossFit é normal?</h2>
+<p>Uma sensação leve de trabalho na lombar depois de um levantamento terra pesado pode acontecer. Dor que atrapalha o treino, piora a cada série ou continua no dia seguinte não deve ser tratada como parte do esporte: vale entender a causa antes que ela limite o seu treino.</p>
+<h2>Por que a lombar sofre no CrossFit e no Hyrox</h2>
+<ul>
+<li>Levantamento terra, clean e snatch quando a técnica se perde com o cansaço e a coluna sai da posição.</li>
+<li>Muitas repetições de burpees, kettlebell swing e remo, que pedem o tronco o tempo todo.</li>
+<li>Cargas carregadas, como farmer's carry e sandbag, e o sled, que exigem um tronco firme por muito tempo.</li>
+<li>Aumento rápido de volume, pouca recuperação e noites mal dormidas.</li>
+<li>Pouca mobilidade de quadril e de coluna torácica, que faz a lombar compensar.</li>
+<li>Fraqueza de glúteos e dos músculos do tronco.</li>
+</ul>
+<h2>O que observar no seu treino</h2>
+<ul>
+<li>Em qual movimento a dor aparece e se é no começo do treino ou só depois de cansar.</li>
+<li>Se você mudou volume, carga ou frequência nas últimas semanas.</li>
+<li>Se a sua técnica muda quando o cansaço chega. Gravar uma série ajuda a perceber.</li>
+</ul>
+<h2>Sinais de que vale uma avaliação</h2>
+<ul>
+<li>A dor dura mais de uma ou duas semanas.</li>
+<li>Piora a cada treino ou atrapalha tarefas do dia a dia, como sentar, levantar da cama ou dirigir.</li>
+<li>Desce para a perna, com formigamento ou sensação de fraqueza.</li>
+<li>Acorda você à noite.</li>
+<li>Volta sempre no mesmo movimento.</li>
+</ul>
+<h2>Quando procurar atendimento médico</h2>
+<p>Procure um médico se a dor começou depois de uma queda ou trauma, se há perda de força na perna, formigamento na região genital, alteração para urinar ou evacuar, febre ou dor intensa e constante que não melhora com repouso.</p>
+<h2>O que pode ajudar enquanto isso</h2>
+<p>Reduza a carga e o volume dos movimentos que provocam a dor e mantenha o resto do treino, usando variações que não pioram os sintomas. Revise a técnica antes de aumentar o peso, aumente o volume aos poucos e cuide do sono e da recuperação. Fortalecer glúteos, posteriores de coxa e tronco faz parte da reabilitação de muitos praticantes. A avaliação mostra o que está limitando o seu movimento e como ajustar o treino, sem parar tudo quando não for necessário.</p>
+<h2>Como voltar ao treino com critério</h2>
+<p>Quando a dor diminui, retome por etapas: primeiro os movimentos leves e sem dor, depois cargas moderadas e só então a intensidade de competição ou de WOD. Se a dor voltar em algum degrau, volte um passo e peça orientação. Voltar com pressa é uma das formas mais comuns de a dor se repetir.</p>""",
+    },
+    {
         "slug": "dor-no-ombro-crossfit",
         "title": "Dor no ombro no CrossFit: sinais de que vale uma avaliação",
         "desc": "Dor no ombro em movimentos acima da cabeça é comum no CrossFit. Veja causas frequentes, o que pode ajudar e quando procurar um fisioterapeuta.",
