@@ -21,11 +21,36 @@
   // menu do celular fecha ao navegar
   var mn=document.getElementById('mn');
   if(mn)document.querySelectorAll('.s-nav a').forEach(function(a){a.addEventListener('click',function(){mn.checked=false})});
+  // origem do lead: guarda de onde a pessoa chegou e anota no texto do WhatsApp
+  var og=(function(){
+    try{var k=sessionStorage.getItem('og');if(k)return k}catch(_){}
+    var q=new URLSearchParams(location.search),o=q.get('utm_source')||q.get('origem')||'';
+    if(!o&&document.referrer){try{
+      var r=new URL(document.referrer).hostname.replace(/^www\./,'');
+      if(r&&r.indexOf('edferrarijr.com')<0)o=/google\./.test(r)?'google':/bing\./.test(r)?'bing':/instagram\./.test(r)?'instagram':/facebook\.|fb\./.test(r)?'facebook':/duckduckgo\./.test(r)?'duckduckgo':r;
+    }catch(_){}}
+    o=(o||'direto').toLowerCase().replace(/[^a-z0-9._-]/g,'').slice(0,30)||'direto';
+    try{sessionStorage.setItem('og',o)}catch(_){}
+    return o;
+  })();
+  function marca(a){
+    if(a.getAttribute('data-og'))return;
+    try{var u=new URL(a.href),t=u.searchParams.get('text')||'';
+      u.searchParams.set('text',t+' (origem: '+og+')');a.href=u.toString();a.setAttribute('data-og','1')}catch(_){}
+  }
+  document.querySelectorAll('a[href*="api.whatsapp.com"]').forEach(marca);
+  // Google Analytics 4: só liga quando o ID de medição (G-XXXXXXX) for preenchido
+  var GA_ID='G-05ECV1TCKJ';
+  if(GA_ID){
+    var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;document.head.appendChild(gs);
+    window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};
+    gtag('js',new Date());gtag('set','user_properties',{origem:og});gtag('config',GA_ID);
+  }
   // evento de clique no WhatsApp (Vercel Analytics, se ativado, e GA, se existir)
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href*="api.whatsapp.com"]');if(!a)return;
-    var p=location.pathname;
-    try{if(window.va)window.va('event',{name:'whatsapp_click',data:{pagina:p}})}catch(_){}
-    try{if(window.gtag)window.gtag('event','whatsapp_click',{pagina:p})}catch(_){}
+    var p=location.pathname;marca(a);
+    try{if(window.va)window.va('event',{name:'whatsapp_click',data:{pagina:p,origem:og}})}catch(_){}
+    try{if(window.gtag)window.gtag('event','whatsapp_click',{pagina:p,origem:og})}catch(_){}
   },true);
 })();
