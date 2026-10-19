@@ -40,7 +40,7 @@
   }
   document.querySelectorAll('a[href*="api.whatsapp.com"]').forEach(marca);
   // Google Analytics 4: só liga quando o ID de medição (G-XXXXXXX) for preenchido
-  var GA_ID='';
+  var GA_ID='G-05ECV1TCKJ';
   if(GA_ID){
     var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;document.head.appendChild(gs);
     window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};
