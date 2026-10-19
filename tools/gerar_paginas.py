@@ -237,6 +237,7 @@ SERVICOS = [
 <div class="s-card"><h3>Combo fim de semana</h3><p>Bota e banheira por dois dias, para quem tem prova ou treino pesado no fim de semana.</p></div>
 </div>"""),
             ("Como funciona", """<p>Você entra em contato pelo WhatsApp, conta o seu treino ou evento e eu envio os valores e a disponibilidade. Combinamos a entrega, a retirada e a orientação de uso. Como o uso depende da sua condição de saúde, faço algumas perguntas antes, como condições cardiovasculares, circulatórias ou de sensibilidade ao frio.</p>"""),
+            ("Tem um evento esportivo?", """<p>Organiza uma corrida, uma competição de CrossFit, Hyrox ou ATHX? A Ferrari Recovery também monta uma estação de recuperação no seu evento, com bota, banheira de gelo e fisioterapeuta no local. <a href="/recovery-para-eventos-esportivos/">Veja como funciona e peça uma proposta</a>.</p>"""),
             ("Importante", """<p>Bota e banheira de gelo são recursos de recuperação e conforto. Não substituem a avaliação de uma dor persistente ou de uma lesão. Se você sente dor que não melhora, marque uma <a href="/fisioterapia-esportiva-campinas/">avaliação de fisioterapia esportiva</a>.</p>"""),
         ],
         "faq": [
@@ -244,7 +245,49 @@ SERVICOS = [
             ("Quem não deve usar a banheira de gelo?", "Pessoas com certas condições cardiovasculares, circulatórias ou sensibilidade ao frio devem conversar comigo e com o médico antes. Faço essa triagem antes da locação."),
             ("A bota de compressão serve para quê?", "É usada como recurso de recuperação após treinos e provas. Ela não trata lesões."),
         ],
-        "rel": ["fisioterapia-esportiva-campinas", "fisioterapia-lesoes-musculares-campinas", "fisioterapia-home-care-campinas"],
+        "rel": ["recovery-para-eventos-esportivos", "fisioterapia-esportiva-campinas", "fisioterapia-lesoes-musculares-campinas"],
+    },
+    {
+        "slug": "recovery-para-eventos-esportivos",
+        "menu": "Recovery em eventos",
+        "resumo": "Estação de recuperação com bota, banheira de gelo e fisioterapeuta para o seu evento.",
+        "title": "Recovery para Evento Esportivo em Campinas: Bota, Banheira de Gelo e Fisioterapeuta",
+        "desc": "Leve a Ferrari Recovery ao seu evento de corrida, CrossFit, Hyrox ou ATHX: bota de compressão, banheira de gelo e fisioterapeuta no local. Peça uma proposta pelo WhatsApp.",
+        "h1": "Leve a Ferrari Recovery para o seu evento esportivo",
+        "lead": "Uma estação de recuperação montada no seu evento, com bota de compressão, banheira de gelo e fisioterapeuta no local. Um diferencial para quem compete e uma experiência a mais para quem organiza.",
+        "wa": "Olá! Organizo um evento esportivo e gostaria de uma proposta para levar a Ferrari Recovery até ele.",
+        "btn": "Pedir proposta para o meu evento",
+        "cta": ("Peça uma proposta para o seu evento", "Conte o nome do evento, a data, o local, o esporte e quantos atletas participam. Eu respondo com a proposta."),
+        "secoes": [
+            ("Para quem é", """<p>Para organizadores de corridas, competições de CrossFit, Hyrox, ATHX e outros eventos de performance que querem oferecer recuperação a quem participa. A Ferrari Recovery é o recovery oficial do Wodnation e leva para o seu evento a mesma estrutura.</p>
+<div class="s-grid">
+<div class="s-card"><span class="s-num">CORRIDA</span><h3>Provas de rua e de trilha</h3><p>Recuperação na chegada, quando o atleta mais procura um lugar para parar e se recuperar.</p></div>
+<div class="s-card"><span class="s-num">CROSSFIT</span><h3>Competições e campeonatos</h3><p>Para quem faz várias baterias no mesmo dia ou no fim de semana e precisa voltar à próxima prova.</p></div>
+<div class="s-card"><span class="s-num">HYROX</span><h3>Provas de Hyrox</h3><p>Pernas, ombros e costas muito exigidos em uma prova longa e intensa.</p></div>
+<div class="s-card"><span class="s-num">ATHX</span><h3>Eventos de ATHX</h3><p>Estrutura de recuperação para atletas que competem em formatos híbridos de alta demanda.</p></div>
+</div>"""),
+            ("O que a estação do evento inclui", """<div class="s-grid">
+<div class="s-card"><h3>Bota de compressão pneumática</h3><p>Compressão sequencial nas pernas, usada após o esforço como parte da rotina de recuperação.</p></div>
+<div class="s-card"><h3>Banheira de gelo (ice bath)</h3><p>Imersão em água fria para quem gosta desse recurso depois da prova, com tempo e temperatura orientados no local.</p></div>
+<div class="s-card"><h3>Fisioterapeuta no local</h3><p>Eu faço a triagem de quem pode usar cada recurso, oriento o tempo de uso e converso com o atleta sobre a recuperação. Quem relata dor que pede avaliação é orientado a procurar atendimento.</p></div>
+</div>"""),
+            ("Por que ter um fisioterapeuta na estação", """<p>Bota e banheira de gelo são ótimos recursos, mas nem todo mundo deve usá-los do mesmo jeito. Condições cardiovasculares, circulatórias ou de sensibilidade ao frio, por exemplo, pedem cuidado. Com um fisioterapeuta na estação, a triagem é feita antes do uso e a orientação é individual, o que torna a experiência mais segura e mais profissional para o atleta e para a imagem do seu evento.</p>"""),
+            ("Como funciona", """<ol>
+<li>Você entra em contato pelo WhatsApp com o nome do evento, a data, o local, o esporte e uma estimativa do número de participantes.</li>
+<li>Eu respondo com a proposta, a estrutura necessária no local (espaço, tomada e acesso à água) e os valores.</li>
+<li>Combinamos montagem, horários de funcionamento e como os atletas vão acessar a estação.</li>
+<li>No dia, a estação funciona com a minha presença e você acompanha tudo com a nossa equipe.</li>
+</ol>"""),
+            ("Importante", """<p>A estação é de recuperação e conforto. Ela não substitui a avaliação de uma dor persistente ou de uma lesão. Os valores e o formato dependem do evento, e a proposta é feita caso a caso.</p>"""),
+        ],
+        "faq": [
+            ("Quanto custa levar a Ferrari Recovery ao meu evento?", "Depende do formato, da duração e do número de participantes. Mande os dados do evento pelo WhatsApp e eu envio uma proposta."),
+            ("O que preciso oferecer no local?", "Um espaço coberto ou com sombra, ponto de energia e acesso à água. Confirmo os detalhes de cada evento na proposta."),
+            ("Os atletas pagam para usar ou o organizador contrata?", "Os dois formatos são possíveis. Podemos montar a estação contratada pelo organizador ou com acesso pago pelo atleta. Combinamos o que fizer mais sentido para o seu evento."),
+            ("Funciona para evento pequeno?", "Sim. Conte o tamanho do evento pelo WhatsApp e eu indico o que cabe."),
+            ("Quem não deve usar a banheira de gelo?", "Pessoas com certas condições cardiovasculares, circulatórias ou sensibilidade ao frio devem passar pela triagem do fisioterapeuta antes e, em alguns casos, conversar com o médico."),
+        ],
+        "rel": ["ferrari-recovery-campinas", "fisioterapia-esportiva-campinas", "fisioterapia-lesoes-musculares-campinas"],
     },
 ]
 
@@ -396,7 +439,7 @@ def footer():
     return f"""<footer class="s-footer"><div class="s-wide"><div class="cols">
 <div><div class="assin">Ed Ferrari Jr<small>FISIOTERAPIA · ESPORTIVA</small></div>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
 <div><strong>Serviços</strong>{servicos}</div>
-<div><strong>Mais</strong><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
+<div><strong>Mais</strong><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/recovery-para-eventos-esportivos/">Recovery em eventos</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
 </div>
 <p class="s-note" style="margin-top:30px">As informações deste site são educativas e não substituem a avaliação de um profissional de saúde. Os resultados variam de pessoa para pessoa. © 2026 Ed Ferrari Jr.</p>
 </div></footer>
@@ -445,6 +488,7 @@ FOTOS = {
     "fisioterapia-joelho-tornozelo-campinas": ("foto-afundo", "Praticante fazendo afundo ao ar livre", "50% 35%"),
     "fisioterapia-lesoes-musculares-campinas": ("foto-costas", "Atleta de costas durante treino de sled", "50% 45%"),
     "fisioterapia-coluna-campinas": ("foto-alongamento", "Praticante se alongando à beira de um píer", "50% 40%"),
+    "recovery-para-eventos-esportivos": ("foto-sled", "Atleta durante prova de sled push", "50% 40%"),
     "fisioterapia-esportiva-campinas": ("foto-corrida", "Corredor em movimento", "50% 40%"),
 }
 
@@ -493,11 +537,11 @@ def pagina_servico(s):
     html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
 {crumbs_html(migalhas)}
 <section class="s-hero"><span class="rotulo">{CREFITO} · Campinas</span><div class="regua"></div><h1>{s['h1']}</h1><p class="lead">{s['lead']}</p>
-<a class="s-btn" href="{wa(s['wa'])}">Agendar avaliação</a></section>
+<a class="s-btn" href="{wa(s['wa'])}">{s.get('btn', 'Agendar avaliação')}</a></section>
 {foto_html(s)}
 {corpo}
 {faq_html(s['faq'])}
-{cta(s['wa'])}
+{cta(s['wa'], *s.get('cta', ()))}
 <h2>Veja também</h2><div class="s-grid">{rel}{artigos_rel}</div>
 </div></main>
 """
