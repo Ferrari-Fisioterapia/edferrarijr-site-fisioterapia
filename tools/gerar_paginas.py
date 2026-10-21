@@ -376,6 +376,30 @@ ARTIGOS = [
 <h2>Avaliação preventiva</h2>
 <p>Se você tem uma prova marcada, uma avaliação antes do período mais pesado de treino pode apontar assimetrias de força, limitações de mobilidade e dores antigas que merecem atenção. Nenhuma estratégia garante que lesões não aconteçam, mas conhecer seus pontos fracos permite ajustar o treino com mais segurança.</p>""",
     },
+    {
+        "slug": "hyrox-tampa-2026-o-que-muda-para-quem-viaja",
+        "data": "2026-10-21",
+        "title": "Hyrox Tampa 2026: próxima etapa e cuidados para quem viaja para competir",
+        "desc": "O Hyrox segue de São Paulo para Tampa, nos EUA, de 22 a 25 de outubro de 2026. Veja a data, o local e como viajar para competir sem chegar com o corpo cansado.",
+        "h1": "Hyrox Tampa 2026: próxima etapa e cuidados para quem viaja para competir",
+        "lead": "Depois de São Paulo, o circuito do Hyrox segue para Tampa, na Flórida, de 22 a 25 de outubro de 2026.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que está no calendário oficial</h2>
+<p>A página oficial do evento, no <a href="https://hyrox.com/event/hyrox-tampa/" rel="noopener" target="_blank">site do Hyrox</a>, marca a etapa de Tampa, nos Estados Unidos, de 22 a 25 de outubro de 2026. Segundo as informações públicas do evento, a prova acontece no Tampa Convention Center, no centro da cidade.</p>
+<p>No Brasil, a temporada 2026/2027 foi aberta em São Paulo, em 17 de outubro, no Distrito Anhembi, com provas individuais, em duplas e em revezamento, <a href="https://distritoanhembi.com.br/?p=16834" rel="noopener" target="_blank">segundo o próprio Distrito Anhembi</a>.</p>
+<h2>Viajar para competir também cobra do corpo</h2>
+<p>Voos longos e muitas horas sentado costumam sobrecarregar a lombar e o quadril, justamente as regiões que o Hyrox exige depois, com sled, carregadas e corrida. Quem chega à prova direto do aeroporto começa em desvantagem.</p>
+<ul>
+<li><strong>Chegue com dias de antecedência</strong> sempre que possível, para o corpo se ajustar ao fuso, ao clima e à rotina.</li>
+<li><strong>Levante e caminhe</strong> durante o voo ou a viagem de carro, de tempos em tempos.</li>
+<li><strong>Hidrate-se</strong> antes, durante e depois da viagem; o ambiente da prova pode ser quente e úmido.</li>
+<li><strong>Não estreie nada</strong> na semana da prova: tênis, estratégia de ritmo, alimentação e suplementos devem ser os que você já usa nos treinos.</li>
+<li><strong>Reduza o volume de treino</strong> na semana da competição, mantendo o movimento leve, em vez de tentar compensar a viagem.</li>
+</ul>
+<h2>E depois da prova</h2>
+<p>O corpo ainda precisa de recuperação: sono, alimentação, hidratação e uma retomada gradual dos treinos. Dor que persiste por mais de uma ou duas semanas, ou que muda a forma como você se move, merece avaliação. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: como treinar sem se lesionar</a>.</p>
+<p>Este texto é um resumo independente do calendário oficial e não tem vínculo com a organização do Hyrox. Confira sempre datas e regras no site oficial do evento.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
@@ -562,8 +586,8 @@ def pagina_artigo(a):
                 "headline": a["h1"],
                 "description": a["desc"],
                 "inLanguage": "pt-BR",
-                "datePublished": DATA,
-                "dateModified": DATA,
+                "datePublished": a.get("data", DATA),
+                "dateModified": a.get("data", DATA),
                 "mainEntityOfPage": f"{BASE}{caminho}",
                 "image": f"{BASE}/assets/img/foto-sled.webp",
                 "author": {"@id": f"{BASE}/#pessoa"},
@@ -577,7 +601,7 @@ def pagina_artigo(a):
     html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
 {crumbs_html(migalhas)}
 <section class="s-hero"><span class="rotulo">Blog</span><div class="regua"></div><h1>{a['h1']}</h1><p class="lead">{a['lead']}</p>
-<p class="s-meta">Por Ed Ferrari Jr, fisioterapeuta ({CREFITO}) · Atualizado em 18/10/2026</p></section>
+<p class="s-meta">Por Ed Ferrari Jr, fisioterapeuta ({CREFITO}) · Atualizado em {a.get('data', DATA)[8:10]}/{a.get('data', DATA)[5:7]}/{a.get('data', DATA)[:4]}</p></section>
 {a['corpo']}
 {cta(texto_wa, "Quer uma avaliação individual?")}
 <p>Saiba mais sobre <a href="/{serv['slug']}/">{serv['menu'].lower()}</a> e sobre a <a href="/fisioterapia-esportiva-campinas/">fisioterapia esportiva em Campinas</a>.</p>
@@ -825,6 +849,7 @@ def main():
         c, h = pagina_servico(s)
         escrever(c, h)
         urls.append((c, "0.9"))
+    ultimo = {}
     c, h = pagina_blog()
     escrever(c, h)
     urls.append((c, "0.6"))
@@ -832,8 +857,9 @@ def main():
         c, h = pagina_artigo(a)
         escrever(c, h)
         urls.append((c, "0.6"))
+        ultimo[c] = a.get("data", DATA)
     itens = "".join(
-        f"  <url><loc>{BASE}{c}</loc><lastmod>{DATA}</lastmod><priority>{p}</priority></url>\n" for c, p in urls
+        f"  <url><loc>{BASE}{c}</loc><lastmod>{ultimo.get(c, DATA)}</lastmod><priority>{p}</priority></url>\n" for c, p in urls
     )
     with open(os.path.join(RAIZ, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{itens}</urlset>\n')
