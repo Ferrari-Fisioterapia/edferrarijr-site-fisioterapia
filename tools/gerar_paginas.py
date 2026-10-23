@@ -400,6 +400,35 @@ ARTIGOS = [
 <p>O corpo ainda precisa de recuperação: sono, alimentação, hidratação e uma retomada gradual dos treinos. Dor que persiste por mais de uma ou duas semanas, ou que muda a forma como você se move, merece avaliação. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: como treinar sem se lesionar</a>.</p>
 <p>Este texto é um resumo independente do calendário oficial e não tem vínculo com a organização do Hyrox. Confira sempre datas e regras no site oficial do evento.</p>""",
     },
+    {
+        "slug": "athx-final-2026-lisboa-preparacao-e-prevencao",
+        "data": "2026-10-22",
+        "title": "ATHX 2026: final em Lisboa e como se preparar sem se lesionar",
+        "desc": "A final do ATHX 2026 será em Lisboa, de 27 a 29 de novembro. Veja o que o site oficial informa e como proteger ombros, lombar e joelhos na reta final da classificação.",
+        "h1": "ATHX 2026: final em Lisboa e como se preparar sem se lesionar",
+        "lead": "A final do ATHX 2026 será em Lisboa, de 27 a 29 de novembro. Para quem busca a vaga, a reta final pede treino bem organizado.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o ATHX informa</h2>
+<p>Segundo o <a href="https://athxgames.com/finals-qualification/2026" rel="noopener" target="_blank">site oficial do ATHX</a>, a final de 2026 acontece de 27 a 29 de novembro, no Lisbon Exhibition and Congress Centre, em Lisboa. As vagas são conquistadas nas etapas disputadas ao longo de 2026. No <a href="https://athxgames.com/events" rel="noopener" target="_blank">calendário de eventos</a>, ainda aparecem as etapas de Amsterdam e de Los Angeles, ambas em 7 de novembro.</p>
+<p>O formato, conforme o ATHX, tem cerca de 2 horas e meia de prova, dividida em seis zonas. É uma competição híbrida, que combina força e resistência.</p>
+<h2>O que uma prova assim cobra do corpo</h2>
+<p>Esforços longos que misturam levantamentos, deslocamentos e trabalho cardiorrespiratório costumam sobrecarregar regiões específicas:</p>
+<ul>
+<li><strong>Ombros:</strong> movimentos acima da cabeça repetidos, com carga.</li>
+<li><strong>Lombar:</strong> levantamentos e transições com o tronco já cansado.</li>
+<li><strong>Joelhos e quadris:</strong> agachamentos, corrida e mudanças de ritmo.</li>
+</ul>
+<h2>Como organizar a reta final</h2>
+<ul>
+<li>Evite aumentar volume e intensidade ao mesmo tempo nas últimas semanas.</li>
+<li>Mantenha treino de força para as regiões mais exigidas, com técnica antes de carga.</li>
+<li>Planeje o descanso e a semana mais leve antes da etapa ou da final.</li>
+<li>Não estreie tênis, estratégia de ritmo ou alimentação perto da competição.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que se repete nos treinos, que piora a cada sessão ou que muda a forma como você se move merece avaliação antes da prova, e não depois. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: como treinar sem se lesionar</a>, que traz princípios parecidos para outra prova híbrida.</p>
+<p>Este texto é um resumo independente do que consta no site oficial do ATHX e não tem vínculo com a organização. Confira sempre datas e regras no site oficial.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
