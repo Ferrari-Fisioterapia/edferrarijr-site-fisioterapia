@@ -3,10 +3,13 @@
 
 Uso (na raiz do repositório):  python3 tools/gerar_paginas.py
 Para mudar um texto, edite SERVICOS ou ARTIGOS abaixo e rode de novo.
+Artigo novo: "data" (AAAA-MM-DD) põe no topo do blog; "temas" (chaves de TEMAS) liga os filtros;
+"foto" = (arquivo em assets/img sem .webp, alt, posição). A miniatura do card fica em assets/img/blog/.
 A home e a página do perito também são geradas aqui (pagina_home, pagina_perito).
 """
 import json
 import os
+import re
 from urllib.parse import quote
 
 BASE = "https://www.edferrarijr.com"
@@ -44,7 +47,7 @@ SERVICOS = [
             ("Como funciona a avaliação", """<p>A primeira sessão é dedicada à avaliação. Converso sobre sua rotina, seu trabalho ou esporte e o histórico da dor. Depois avalio amplitude de movimento, força, estabilidade da articulação e o padrão do movimento. Com isso, defino os exercícios e as técnicas manuais da fase em que você está e quais sinais indicam que é preciso falar com o seu médico.</p>
 <p>O tratamento combina exercícios terapêuticos, terapia manual e orientações para a rotina ou o treino. A frequência e a duração dependem do diagnóstico e da sua resposta, e eu ajusto o plano ao longo das sessões.</p>"""),
             ("Atletas e praticantes de musculação, CrossFit e Hyrox", """<p>O ombro é uma das regiões mais exigidas em movimentos acima da cabeça, como o overhead, o snatch, as barras e as argolas, e em exercícios de empurrar, como supino e flexões. Quando a dor aparece nesses movimentos, a reabilitação inclui ajustar a técnica, a carga e o volume do treino. O objetivo é reduzir a dor e preparar o seu retorno ao treino de forma gradual, com critérios definidos.</p>
-<p>Veja também: <a href="/blog/dor-no-ombro-crossfit/">dor no ombro no CrossFit: sinais de que vale uma avaliação</a>.</p>"""),
+<p>Veja também: <a href="/blog/dor-no-ombro-crossfit/">dor no ombro no CrossFit: 5 sinais de que não é só cansaço</a>.</p>"""),
         ],
         "faq": [
             ("Preciso de pedido médico para fazer fisioterapia?", "Para iniciar a avaliação fisioterapêutica não é obrigatório. Se você já tem exames ou laudo, traga para a primeira sessão, pois eles ajudam no planejamento. Alguns convênios exigem o pedido médico para reembolso."),
@@ -71,7 +74,7 @@ SERVICOS = [
             ("Como conduzo a reabilitação", """<p>A avaliação inclui histórico, testes de força, estabilidade e mobilidade e a análise de como você agacha, aterrissa, caminha e corre. A partir disso, o plano passa por fases: controle da dor e do inchaço, recuperação do movimento e da força, trabalho de controle neuromuscular e, para quem pratica esporte, retorno gradual ao treino.</p>
 <p>No retorno ao esporte, uso testes funcionais, como força, saltos e agilidade, para decidir junto com você quando aumentar a carga. A ideia é voltar com critérios e não só quando a dor diminuir.</p>"""),
             ("Corredores, CrossFit e Hyrox", """<p>Corrida, agachamentos, afundos, sled push e wall balls exigem muito do joelho e do tornozelo. Em muitos casos a dor vem de um aumento rápido de volume ou de intensidade, e não de uma lesão estrutural. A avaliação ajuda a separar uma coisa da outra.</p>
-<p>Veja também: <a href="/blog/dor-no-joelho-corrida/">dor no joelho na corrida: por que acontece e quando investigar</a>.</p>"""),
+<p>Veja também: <a href="/blog/dor-no-joelho-corrida/">joelho doendo na corrida: as 4 causas mais comuns e quando investigar</a>.</p>"""),
         ],
         "faq": [
             ("Dor no joelho sempre exige cirurgia?", "Não. Muitos casos de dor no joelho são tratados com reabilitação. A necessidade de cirurgia é uma decisão médica, tomada com base em exames e na avaliação clínica."),
@@ -154,7 +157,7 @@ SERVICOS = [
             ("O que a avaliação esportiva inclui", """<p>Além do exame clínico, avalio os movimentos do seu esporte: agachar, correr, saltar, puxar, empurrar e levantar carga acima da cabeça. Medimos força, assimetrias entre os lados, mobilidade e controle do movimento. Também olhamos a sua programação de treino: volume, intensidade, descanso e o que mudou nas semanas antes de a dor começar.</p>
 <p>Com isso, monto um plano que combina tratamento da queixa, exercícios específicos e ajustes no treino. O objetivo é que você continue treinando da melhor forma possível durante o processo, quando o seu caso permitir.</p>"""),
             ("Retorno ao esporte e prevenção", """<p>O retorno ao treino é planejado em etapas, com testes funcionais de força, saltos e agilidade e com progressão de carga. A prevenção de lesões não é uma garantia, mas treinar com boa preparação física, carga bem distribuída e recuperação adequada diminui os riscos. Conheça também a <a href="/ferrari-recovery-campinas/">Ferrari Recovery</a>, com bota de compressão e banheira de gelo para a recuperação pós-treino.</p>"""),
-            ("Preparação para provas", """<p>Se você tem uma prova de Hyrox, ATHX ou corrida no calendário, uma avaliação preventiva antes do período mais intenso de treino pode apontar pontos fracos e déficits que merecem atenção. Leia também: <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: como treinar sem se lesionar</a>.</p>"""),
+            ("Preparação para provas", """<p>Se você tem uma prova de Hyrox, ATHX ou corrida no calendário, uma avaliação preventiva antes do período mais intenso de treino pode apontar pontos fracos e déficits que merecem atenção. Leia também: <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a>.</p>"""),
         ],
         "faq": [
             ("Preciso estar lesionado para marcar?", "Não. Muitos atletas fazem uma avaliação preventiva, para identificar déficits de força, mobilidade ou assimetrias antes que virem dor."),
@@ -295,10 +298,12 @@ SERVICOS = [
 ARTIGOS = [
     {
         "slug": "dor-no-ombro-crossfit",
-        "title": "Dor no ombro no CrossFit: sinais de que vale uma avaliação",
-        "desc": "Dor no ombro em movimentos acima da cabeça é comum no CrossFit. Veja causas frequentes, o que pode ajudar e quando procurar um fisioterapeuta.",
-        "h1": "Dor no ombro no CrossFit: sinais de que vale uma avaliação",
-        "lead": "O ombro é uma das regiões mais exigidas no CrossFit. Nem toda dor significa lesão, mas alguns sinais merecem atenção.",
+        "temas": ["crossfit", "prevencao"],
+        "foto": ("foto-overhead", "Atleta com barra acima da cabeça", "50% 22%"),
+        "title": "Dor no ombro no CrossFit: 5 sinais de que não é só cansaço",
+        "desc": "Ombro doendo no overhead, na barra ou no snatch? Veja as causas mais comuns no CrossFit, 5 sinais de alerta e o que ajustar no treino enquanto isso.",
+        "h1": "Dor no ombro no CrossFit: 5 sinais de que não é só cansaço",
+        "lead": "O ombro é a região que mais reclama no CrossFit. Nem toda dor é lesão, mas estes sinais pedem atenção antes de você colocar mais carga.",
         "servico": "fisioterapia-ombro-campinas",
         "corpo": """<h2>Por que o ombro sofre tanto</h2>
 <p>O ombro é a articulação mais móvel do corpo e depende muito dos músculos para ficar estável. No CrossFit ele é exigido em movimentos acima da cabeça (overhead, snatch, thruster), em barras e argolas e em empurrar e puxar com carga. Quando o volume sobe rápido, a técnica falha por cansaço ou o ombro tem pouca mobilidade, a região pode ficar sobrecarregada.</p>
@@ -324,10 +329,12 @@ ARTIGOS = [
     },
     {
         "slug": "dor-no-joelho-corrida",
-        "title": "Dor no joelho na corrida: por que acontece e quando investigar",
-        "desc": "Dor no joelho é uma das queixas mais comuns entre corredores. Entenda causas frequentes, o papel da carga de treino e quando buscar fisioterapia.",
-        "h1": "Dor no joelho na corrida: por que acontece e quando investigar",
-        "lead": "Dor no joelho é uma queixa comum em quem corre. Na maioria das vezes ela tem relação com a carga de treino, e não com uma lesão grave.",
+        "temas": ["corrida", "prevencao"],
+        "foto": ("foto-corrida-laranja", "Pernas de corredor em movimento na pista", "50% 50%"),
+        "title": "Joelho doendo na corrida? As 4 causas mais comuns e quando investigar",
+        "desc": "Dor no joelho é uma das queixas mais comuns de quem corre. Entenda as 4 causas mais frequentes, o papel da carga de treino e quando buscar fisioterapia.",
+        "h1": "Joelho doendo na corrida? As 4 causas mais comuns e quando investigar",
+        "lead": "Na maioria das vezes a dor no joelho de quem corre tem mais a ver com a carga de treino do que com uma lesão grave. Saber diferenciar muda tudo.",
         "servico": "fisioterapia-joelho-tornozelo-campinas",
         "corpo": """<h2>A carga de treino conta muito</h2>
 <p>O joelho absorve força a cada passada. Quando o volume ou a intensidade sobem rápido, como em semanas com muitos quilômetros, aumento de tiros ou de subidas, os tecidos podem não ter tempo de se adaptar. Mudar de tênis, de piso ou voltar de uma pausa longa também pode contribuir.</p>
@@ -351,9 +358,11 @@ ARTIGOS = [
     },
     {
         "slug": "hyrox-prevencao-de-lesoes",
-        "title": "Hyrox: como treinar sem se lesionar",
-        "desc": "O Hyrox combina corrida e estações de força. Veja onde costumam surgir as dores, como organizar a carga de treino e quando fazer uma avaliação preventiva.",
-        "h1": "Hyrox: como treinar sem se lesionar",
+        "temas": ["hyrox", "prevencao"],
+        "foto": ("foto-sled", "Atleta empurrando o sled durante treino", "50% 40%"),
+        "title": "Hyrox: as 4 regiões que mais reclamam e como treinar para chegar inteiro",
+        "desc": "O Hyrox junta corrida e estações de força. Veja onde as dores costumam aparecer, como organizar a carga de treino e quando fazer uma avaliação preventiva.",
+        "h1": "Hyrox: as 4 regiões que mais reclamam e como organizar o treino",
         "lead": "O Hyrox junta 8 km de corrida com 8 estações de força e resistência. A mistura é divertida, e também exige atenção à carga e à recuperação.",
         "servico": "fisioterapia-esportiva-campinas",
         "corpo": """<h2>O que a prova exige do corpo</h2>
@@ -379,6 +388,8 @@ ARTIGOS = [
     {
         "slug": "hyrox-tampa-2026-o-que-muda-para-quem-viaja",
         "data": "2026-10-21",
+        "temas": ["hyrox", "radar"],
+        "foto": ("foto-costas", "Atleta de costas durante prova de sled", "50% 45%"),
         "title": "Hyrox Tampa 2026: próxima etapa e cuidados para quem viaja para competir",
         "desc": "O Hyrox segue de São Paulo para Tampa, nos EUA, de 22 a 25 de outubro de 2026. Veja a data, o local e como viajar para competir sem chegar com o corpo cansado.",
         "h1": "Hyrox Tampa 2026: próxima etapa e cuidados para quem viaja para competir",
@@ -397,12 +408,14 @@ ARTIGOS = [
 <li><strong>Reduza o volume de treino</strong> na semana da competição, mantendo o movimento leve, em vez de tentar compensar a viagem.</li>
 </ul>
 <h2>E depois da prova</h2>
-<p>O corpo ainda precisa de recuperação: sono, alimentação, hidratação e uma retomada gradual dos treinos. Dor que persiste por mais de uma ou duas semanas, ou que muda a forma como você se move, merece avaliação. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: como treinar sem se lesionar</a>.</p>
+<p>O corpo ainda precisa de recuperação: sono, alimentação, hidratação e uma retomada gradual dos treinos. Dor que persiste por mais de uma ou duas semanas, ou que muda a forma como você se move, merece avaliação. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a>.</p>
 <p>Este texto é um resumo independente do calendário oficial e não tem vínculo com a organização do Hyrox. Confira sempre datas e regras no site oficial do evento.</p>""",
     },
     {
         "slug": "athx-final-2026-lisboa-preparacao-e-prevencao",
         "data": "2026-10-22",
+        "temas": ["athx", "radar", "prevencao"],
+        "foto": ("foto-barra", "Atleta segurando a barra na altura dos ombros", "50% 30%"),
         "title": "ATHX 2026: final em Lisboa e como se preparar sem se lesionar",
         "desc": "A final do ATHX 2026 será em Lisboa, de 27 a 29 de novembro. Veja o que o site oficial informa e como proteger ombros, lombar e joelhos na reta final da classificação.",
         "h1": "ATHX 2026: final em Lisboa e como se preparar sem se lesionar",
@@ -426,7 +439,7 @@ ARTIGOS = [
 <li>Não estreie tênis, estratégia de ritmo ou alimentação perto da competição.</li>
 </ul>
 <h2>Quando procurar avaliação</h2>
-<p>Dor que se repete nos treinos, que piora a cada sessão ou que muda a forma como você se move merece avaliação antes da prova, e não depois. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: como treinar sem se lesionar</a>, que traz princípios parecidos para outra prova híbrida.</p>
+<p>Dor que se repete nos treinos, que piora a cada sessão ou que muda a forma como você se move merece avaliação antes da prova, e não depois. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a>, que traz princípios parecidos para outra prova híbrida.</p>
 <p>Este texto é um resumo independente do que consta no site oficial do ATHX e não tem vínculo com a organização. Confira sempre datas e regras no site oficial.</p>""",
     },
 ]
@@ -554,6 +567,64 @@ def foto_html(s):
     return f'<div class="s-foto"><img src="/assets/img/{f[0]}.webp" alt="{f[1]}" style="object-position:{f[2]}" width="1100" height="470" loading="eager"></div>'
 
 
+TEMAS = {
+    "hyrox": "Hyrox",
+    "crossfit": "CrossFit",
+    "athx": "ATHX",
+    "corrida": "Corrida",
+    "prevencao": "Prevenção de lesão",
+    "radar": "Radar",
+}
+
+
+def temas(a):
+    """Temas do artigo; sem o campo "temas", deduz pelo título."""
+    if a.get("temas"):
+        return a["temas"]
+    t = (a["h1"] + " " + a["title"]).lower()
+    achados = [k for k in ("hyrox", "crossfit", "athx", "corrida") if k in t]
+    if any(x in t for x in ("dor", "lesão", "lesões", "prevenção")):
+        achados.append("prevencao")
+    return achados or ["prevencao"]
+
+
+def capa(a):
+    """(arquivo, alt, posição) da foto do artigo; sem "foto", usa a do serviço ligado ao artigo."""
+    return a.get("foto") or FOTOS.get(a["servico"]) or ("foto-sled", "Atleta durante treino", "50% 40%")
+
+
+def miniatura(nome):
+    """Versão leve da foto para os cards (assets/img/blog/); se não existir, usa a original."""
+    return f"/assets/img/blog/{nome}.webp" if os.path.exists(os.path.join(RAIZ, "assets", "img", "blog", nome + ".webp")) else f"/assets/img/{nome}.webp"
+
+
+def data_br(a):
+    d = a.get("data", DATA)
+    return f"{d[8:10]}/{d[5:7]}/{d[:4]}"
+
+
+def leitura(a):
+    palavras = len(re.sub(r"<[^>]+>", " ", a["corpo"]).split())
+    return max(1, -(-palavras // 200))
+
+
+def recentes():
+    """Artigos do mais novo para o mais antigo (sem "data" contam como DATA, na ordem da lista)."""
+    return sorted(ARTIGOS, key=lambda a: a.get("data", DATA), reverse=True)
+
+
+def card_artigo(a, destaque=False, lazy=True):
+    f = capa(a)
+    tt = temas(a)
+    rotulo = ("Mais recente · " if destaque else "") + " · ".join(TEMAS[t] for t in tt[:2])
+    busca = esc(" ".join([a["h1"], a["lead"], a["desc"]] + [TEMAS[t] for t in tt]).lower())
+    carga = ' loading="lazy" decoding="async"' if lazy else ""
+    return (f'<a class="b-card{" b-dest" if destaque else ""}" href="/blog/{a["slug"]}/" data-temas="{" ".join(tt)}" data-busca="{busca}">'
+            f'<img src="{miniatura(f[0])}" alt="{esc(f[1])}" style="object-position:{f[2]}" width="720" height="480"{carga}>'
+            f'<span class="b-txt"><span class="b-tag">{rotulo}</span><h3>{a["h1"]}</h3><p>{a["lead"]}</p>'
+            f'<span class="b-meta">{data_br(a)} · {leitura(a)} min de leitura</span></span></a>')
+
+
 def pagina_servico(s):
     caminho = f"/{s['slug']}/"
     migalhas = [("Início", "/"), (s["menu"], caminho)]
@@ -583,8 +654,8 @@ def pagina_servico(s):
         if r["slug"] in s["rel"]
     )
     artigos_rel = "".join(
-        f'<a class="s-card" href="/blog/{a["slug"]}/"><h3>{a["h1"]}</h3><p>{a["lead"]}</p></a>'
-        for a in ARTIGOS
+        f'<a class="s-card" href="/blog/{a["slug"]}/"><span class="s-num">BLOG</span><h3>{a["h1"]}</h3><p>{a["lead"]}</p></a>'
+        for a in recentes()
         if a["servico"] == s["slug"]
     )
     html = head(s["title"], s["desc"], caminho, ld) + header()
@@ -618,7 +689,8 @@ def pagina_artigo(a):
                 "datePublished": a.get("data", DATA),
                 "dateModified": a.get("data", DATA),
                 "mainEntityOfPage": f"{BASE}{caminho}",
-                "image": f"{BASE}/assets/img/foto-sled.webp",
+                "image": f"{BASE}/assets/img/{capa(a)[0]}.webp",
+                "keywords": ", ".join(TEMAS[t] for t in temas(a)),
                 "author": {"@id": f"{BASE}/#pessoa"},
                 "publisher": {"@id": f"{BASE}/#clinica"},
             },
@@ -626,36 +698,52 @@ def pagina_artigo(a):
         ],
     }
     texto_wa = f"Olá! Li o artigo \"{a['h1']}\" e gostaria de agendar uma avaliação."
-    html = head(a["title"], a["desc"], caminho, ld, "article") + header()
+    f = capa(a)
+    tt = temas(a)
+    chips = "".join(f'<a class="b-chip" href="/blog/?tema={t}">{TEMAS[t]}</a>' for t in tt)
+    # continue lendo: mais temas em comum primeiro, depois os mais recentes
+    outros = [x for x in recentes() if x["slug"] != a["slug"]]
+    outros.sort(key=lambda x: len(set(temas(x)) & set(tt)), reverse=True)
+    mais = "".join(card_artigo(x) for x in outros[:3])
+    html = head(a["title"], a["desc"], caminho, ld, "article", imagem=f"/assets/img/{f[0]}.webp") + header()
     html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
 {crumbs_html(migalhas)}
 <section class="s-hero"><span class="rotulo">Blog</span><div class="regua"></div><h1>{a['h1']}</h1><p class="lead">{a['lead']}</p>
-<p class="s-meta">Por Ed Ferrari Jr, fisioterapeuta ({CREFITO}) · Atualizado em {a.get('data', DATA)[8:10]}/{a.get('data', DATA)[5:7]}/{a.get('data', DATA)[:4]}</p></section>
+<p class="s-meta">Por Ed Ferrari Jr, fisioterapeuta ({CREFITO}) · Atualizado em {data_br(a)} · {leitura(a)} min de leitura</p>
+<div class="b-chips">{chips}</div></section>
+<div class="s-foto"><img src="/assets/img/{f[0]}.webp" alt="{esc(f[1])}" style="object-position:{f[2]}" width="1100" height="470" loading="eager"></div>
 {a['corpo']}
 {cta(texto_wa, "Quer uma avaliação individual?")}
 <p>Saiba mais sobre <a href="/{serv['slug']}/">{serv['menu'].lower()}</a> e sobre a <a href="/fisioterapia-esportiva-campinas/">fisioterapia esportiva em Campinas</a>.</p>
 <p class="s-note">Este conteúdo é informativo e não substitui a consulta com um profissional de saúde. Cada caso exige avaliação individual.</p>
-</div></main>
+</div>
+<section class="h-sec" style="padding-top:20px"><div class="s-wide"><span class="rotulo">Continue lendo</span><h2>Você também pode gostar</h2><div class="b-grid">{mais}</div><p><a href="/blog/">Ver todos os artigos →</a></p></div></section>
+</main>
 """
     return caminho, html + footer()
 
 
 def pagina_blog():
     caminho = "/blog/"
-    titulo = "Blog de Fisioterapia Esportiva e Ortopédica | Ed Ferrari Jr, Campinas"
-    desc = "Artigos sobre dor no ombro, joelho, coluna, corrida, CrossFit e Hyrox, escritos pelo fisioterapeuta Ed Ferrari Jr."
+    titulo = "Blog de Fisioterapia Esportiva: CrossFit, Hyrox, ATHX e Corrida | Ed Ferrari Jr"
+    desc = "Dor no ombro, joelho e lombar, prevenção de lesão e notícias de CrossFit, Hyrox, ATHX e corrida, explicadas pelo fisioterapeuta Ed Ferrari Jr, de Campinas."
     migalhas = [("Início", "/"), ("Blog", caminho)]
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": f"{BASE}{caminho}#pagina", "url": f"{BASE}{caminho}", "name": titulo, "description": desc, "inLanguage": "pt-BR"},
         crumbs_ld(migalhas)]}
-    cards = "".join(
-        f'<a class="s-card" href="/blog/{a["slug"]}/"><h3>{a["h1"]}</h3><p>{a["lead"]}</p></a>' for a in ARTIGOS
-    )
+    lista = recentes()
+    cards = "".join(card_artigo(a, destaque=(i == 0), lazy=(i > 1)) for i, a in enumerate(lista))
+    usados = {t for a in lista for t in temas(a)}
+    chips = '<button type="button" class="b-chip on" data-tema="">Todos</button>' + "".join(
+        f'<button type="button" class="b-chip" data-tema="{t}">{n}</button>' for t, n in TEMAS.items() if t in usados)
     html = head(titulo, desc, caminho, ld) + header()
-    html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
+    html += f"""<main id="conteudo" class="s-main"><div class="s-wide">
 {crumbs_html(migalhas)}
-<section class="s-hero"><span class="rotulo">Blog</span><div class="regua"></div><h1>Fisioterapia esportiva e ortopédica na prática</h1><p class="lead">Conteúdo para quem treina e quer entender melhor a dor, a recuperação e o retorno ao esporte.</p></section>
-<div class="s-grid">{cards}</div>
+<section class="s-hero"><span class="rotulo">Blog</span><div class="regua"></div><h1>Treine forte. <span class="destaque">Entenda o seu corpo.</span></h1><p class="lead">Respostas de fisioterapeuta para as dúvidas de quem faz CrossFit, Hyrox, ATHX e corrida, e as notícias do Radar com o olhar de quem cuida de atleta.</p></section>
+<div class="b-filtros"><input class="b-busca" type="search" placeholder="Buscar: ombro, joelho, Hyrox..." aria-label="Buscar no blog" autocomplete="off">
+<div class="b-chips" role="group" aria-label="Filtrar por tema">{chips}</div>
+<p class="b-vazio" hidden>Nenhum artigo encontrado. Tente outra palavra ou <a href="{wa('Olá! Vi o blog e queria tirar uma dúvida.')}">mande a sua dúvida pelo WhatsApp</a>: ela pode virar o próximo artigo.</p></div>
+<div class="b-grid" data-blog>{cards}</div>
 {cta("Olá! Gostaria de agendar uma avaliação.")}
 </div></main>
 """
@@ -688,7 +776,7 @@ def pagina_home():
     cards = "".join(
         f'<a class="s-card" href="/{x["slug"]}/"><span class="s-num">{i:02d}</span><h3>{x["menu"]}</h3><p>{x["resumo"]}</p></a>'
         for i, x in enumerate(SERVICOS, 1))
-    blog = "".join(f'<a class="s-card" href="/blog/{a["slug"]}/"><span class="s-num">BLOG</span><h3>{a["h1"]}</h3><p>{a["lead"]}</p></a>' for a in ARTIGOS[:3])
+    blog = "".join(card_artigo(a) for a in recentes()[:3])
     h = head(titulo, desc, "/", ld) + header()
     h += f"""<main id="conteudo">
 <section class="h-hero"><video class="fundo" autoplay muted loop playsinline preload="metadata" poster="/assets/img/foto-sled.webp" aria-hidden="true"><source src="/assets/video/hero.mp4" type="video/mp4"></video><div class="s-wide">
@@ -729,7 +817,7 @@ def pagina_home():
 <div class="s-card escuro"><span class="s-num" style="color:#EE6660">02</span><h3>Home care</h3><p>Reabilitação na sua casa, com privacidade e conforto, no Swiss Park e na região metropolitana de Campinas.</p><a class="s-btn small" href="{wa('Olá! Gostaria de agendar um atendimento Home Care.')}">Agendar home care</a> &nbsp; <a href="/fisioterapia-home-care-campinas/" style="color:#EE6660">Saiba mais →</a></div>
 </div></div></section>
 
-<section class="h-sec"><div class="s-wide"><span class="rotulo">Blog</span><h2>Para entender melhor a sua dor.</h2><div class="s-grid">{blog}</div><p><a href="/blog/">Ver todos os artigos →</a></p></div></section>
+<section class="h-sec"><div class="s-wide"><span class="rotulo">Blog</span><h2>Para entender melhor a sua dor.</h2><div class="b-grid">{blog}</div><p><a href="/blog/">Ver todos os artigos →</a></p></div></section>
 
 <section class="h-sec" style="padding-top:0"><div class="s-wrap s-main"><span class="rotulo">Dúvidas</span>{faq_html(HOME_FAQ).replace('<h2>Perguntas frequentes</h2>', '<h2 style="margin-top:10px">Perguntas frequentes</h2>')}
 <p style="margin-top:22px"><a href="/fisioterapia-reembolso-convenio-campinas/">Como funciona o reembolso do convênio →</a></p></div></section>
