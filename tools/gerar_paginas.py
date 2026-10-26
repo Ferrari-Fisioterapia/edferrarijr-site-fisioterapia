@@ -297,6 +297,41 @@ SERVICOS = [
 
 ARTIGOS = [
     {
+        "slug": "canelite-corrida-hyrox",
+        "data": "2026-10-26",
+        "temas": ["corrida", "hyrox", "prevencao"],
+        "foto": ("foto-corrida", "Corredor em treino na rua", "50% 50%"),
+        "title": "Canelite na corrida e no Hyrox: quando a dor pede avaliação",
+        "desc": "Dor na canela ao correr? Veja o que é a canelite, por que aparece em quem corre e faz Hyrox, sinais de alerta e quando procurar fisioterapia em Campinas.",
+        "h1": "Canelite na corrida e no Hyrox: quando a dor na canela pede avaliação",
+        "lead": "Canelite é o nome popular da dor na parte de dentro da canela de quem corre. Na maioria das vezes ela é sinal de que a carga subiu mais rápido do que o osso e os músculos conseguiram acompanhar. Alguns sinais, porém, pedem avaliação antes do próximo treino.",
+        "servico": "fisioterapia-joelho-tornozelo-campinas",
+        "corpo": """<h2>O que é canelite</h2>
+<p>O nome técnico mais usado é síndrome do estresse tibial medial. É uma dor ao longo da borda de dentro da tíbia, o osso da canela, que aparece com a corrida e com saltos. Ela vem da sobrecarga repetida sobre o osso e sobre os músculos que se prendem nele.</p>
+<h2>Por que aparece em quem corre e faz Hyrox</h2>
+<p>A canela recebe impacto a cada passada. No Hyrox, além da corrida entre as estações, entram burpee broad jumps, afundos e muito tempo em pé com carga. A dor costuma surgir quando várias coisas mudam juntas:</p>
+<ul>
+<li>Aumento rápido de quilometragem, de tiros ou de dias de corrida.</li>
+<li>Volta aos treinos depois de uma pausa, no ritmo de antes.</li>
+<li>Troca de tênis ou de piso, como sair da esteira para o asfalto.</li>
+<li>Pouca força de panturrilha e de quadril para absorver o impacto.</li>
+<li>Pouco descanso entre sessões de corrida e de saltos.</li>
+</ul>
+<h2>Como saber se é só canelite</h2>
+<p>Na canelite típica, a dor ocupa uma faixa mais longa da canela, aparece no começo do treino, pode aliviar no meio e volta depois. Já alguns sinais pedem uma avaliação antes de continuar correndo:</p>
+<ul>
+<li>A dor fica em um ponto pequeno, que dói muito quando você aperta o osso.</li>
+<li>Dói para caminhar, em repouso ou à noite.</li>
+<li>A dor piora a cada treino, mesmo com menos volume.</li>
+<li>Aparece sempre depois de um mesmo tempo de corrida, com sensação de pressão, dormência ou fraqueza no pé, e some quando você para.</li>
+</ul>
+<p>Esses sinais podem indicar outra condição, como fratura por estresse ou síndrome compartimental, que precisam de diagnóstico médico. Nesses casos, procure um médico.</p>
+<h2>O que fazer enquanto isso</h2>
+<p>Reduza o volume e a intensidade da corrida e dos saltos em vez de insistir com dor. Atividades de menor impacto, como bike ou remo, costumam ajudar a manter o condicionamento. Se a dor não melhora em poucos dias de ajuste, uma avaliação mostra o que está sobrecarregando a canela e como voltar ao volume de antes de forma gradual.</p>
+<h2>Como a fisioterapia ajuda</h2>
+<p>Na avaliação eu olho a sua rotina de treino, a forma como você corre e a força de panturrilha, pé e quadril. A partir disso, ajustamos a carga, fortalecemos o que está falhando e planejamos a volta à corrida e às estações do Hyrox em etapas.</p>""",
+    },
+    {
         "slug": "dor-no-ombro-crossfit",
         "temas": ["crossfit", "prevencao"],
         "foto": ("foto-overhead", "Atleta com barra acima da cabeça", "50% 22%"),
