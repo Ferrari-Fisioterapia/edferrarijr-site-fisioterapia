@@ -442,6 +442,36 @@ ARTIGOS = [
 <p>Dor que se repete nos treinos, que piora a cada sessão ou que muda a forma como você se move merece avaliação antes da prova, e não depois. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a>, que traz princípios parecidos para outra prova híbrida.</p>
 <p>Este texto é um resumo independente do que consta no site oficial do ATHX e não tem vínculo com a organização. Confira sempre datas e regras no site oficial.</p>""",
     },
+    {
+        "slug": "hyrox-rio-de-janeiro-2026-como-chegar-bem",
+        "data": "2026-10-26",
+        "temas": ["hyrox", "radar", "prevencao"],
+        "foto": ("foto-remo", "Atleta no remo durante prova de Hyrox", "50% 50%"),
+        "title": "Hyrox Rio de Janeiro 2026: como chegar bem e sem lesão",
+        "desc": "O Hyrox Rio de Janeiro 2026 será no Riocentro, em novembro. Veja o que o site oficial informa e como organizar as últimas semanas para proteger ombros, lombar e joelhos.",
+        "h1": "Hyrox Rio de Janeiro 2026: como chegar bem e sem lesão",
+        "lead": "A etapa brasileira do Hyrox volta ao Riocentro em novembro. Nas últimas semanas, o que mais protege o corpo é um treino organizado.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o Hyrox informa</h2>
+<p>Segundo a <a href="https://hyrox.com/event/hyrox-rio-de-janeiro/" rel="noopener" target="_blank">página oficial do Hyrox Rio de Janeiro</a>, a etapa da temporada 26/27 acontece em novembro de 2026, no Riocentro, na Barra Olímpica, o mesmo endereço da edição de 2025. A página indica o dia 21 de novembro e avisa que a programação é provisória e pode mudar. Antes de viajar, confira data e horário da sua divisão no site oficial.</p>
+<h2>O que a prova cobra do corpo</h2>
+<p>O Hyrox alterna corridas e estações de força, como sled, remo, afundo e wall balls. Isso costuma sobrecarregar regiões específicas:</p>
+<ul>
+<li><strong>Ombros:</strong> empurrar e puxar o sled, remar e lançar a bola repetidamente.</li>
+<li><strong>Lombar:</strong> transições entre corrida e estações com o tronco já cansado.</li>
+<li><strong>Joelhos e quadris:</strong> afundos e corrida em sequência.</li>
+</ul>
+<h2>Como organizar as últimas semanas</h2>
+<ul>
+<li>Ajuste a carga aos poucos, sem aumentar volume e intensidade ao mesmo tempo.</li>
+<li>Treine as transições entre corrida e estações, não só cada parte separada.</li>
+<li>Planeje uma semana mais leve antes da prova.</li>
+<li>Não estreie tênis, estratégia de ritmo ou alimentação perto da competição.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que persiste, piora a cada treino ou muda a forma como você se move merece avaliação agora, e não na semana da prova. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a>.</p>
+<p>Este texto é um resumo independente do que consta no site oficial do Hyrox e não tem vínculo com a organização. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
