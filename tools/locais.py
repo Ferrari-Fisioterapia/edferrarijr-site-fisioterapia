@@ -41,6 +41,7 @@ LOCAIS = [
             ("Você atende pelo convênio?", "Não sou credenciado, o atendimento é particular. Mas eu preparo toda a documentação (recibos, relatório e laudo fisioterapêutico) para você pedir o reembolso ao seu plano. O valor reembolsado depende do seu contrato."),
             ("Preciso de pedido médico?", "Para a avaliação, não. Alguns planos pedem a indicação médica para reembolsar; vale conferir com o seu."),
             ("Quanto tempo dura a sessão?", "A sessão é individual. O tempo e a frequência são definidos na avaliação, de acordo com o seu caso."),
+            ("Você faz treino para emagrecer?", "Não. Meu trabalho é fisioterapia: tratar dor, reabilitar lesões e acompanhar o exercício para você ter mais qualidade de vida e menos risco de lesão. Para metas de emagrecimento ou estética, o indicado é um profissional de educação física."),
             ("Como agendo?", "Pelo WhatsApp (19) 97100-2263. Diga o seu bairro e o que está sentindo que eu respondo com os horários."),
         ],
         "rel": ["fisioterapia-home-care-campinas", "fisioterapia-esportiva-campinas", "fisioterapia-reembolso-convenio-campinas"],
@@ -289,6 +290,7 @@ LOCAIS = [
 <li>Quem tem uma dor que volta toda vez que tenta treinar: lombar, joelho, ombro ou pescoço.</li>
 <li>Quem passou por lesão ou cirurgia e quer seguir se exercitando com acompanhamento.</li>
 <li>Quem quer começar a se exercitar depois de muito tempo parado, com segurança.</li>
+<li>Não é para quem busca emagrecimento ou meta estética: o foco é dor, saúde e qualidade de vida.</li>
 <li>Quem tem 50, 60 ou 70 anos e quer manter força, equilíbrio e autonomia.</li>
 </ul>"""),
             ("O que muda em relação a um personal", """<p>O personal trainer é o profissional de educação física que planeja o treino para objetivos como condicionamento, estética ou desempenho. O meu trabalho é outro: como fisioterapeuta, eu avalio o seu corpo, trato a dor e uso o exercício como parte do cuidado com a sua saúde. Não trabalho com emagrecimento nem com metas estéticas. Cada sessão é uma sessão de fisioterapia, registrada no seu prontuário.</p>"""),
