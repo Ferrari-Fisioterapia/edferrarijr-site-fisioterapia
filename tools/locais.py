@@ -303,11 +303,69 @@ LOCAIS = [
         ],
         "faq": [
             ("Você é personal trainer?", "Não. Sou fisioterapeuta ({crefito}). O acompanhamento é fisioterapêutico, por sessão, voltado para saúde, dor e prevenção de lesão."),
-            ("Posso pedir reembolso dessas sessões?", "Eu forneço toda a documentação. Se o seu plano reembolsa fisioterapia, você pode solicitar; a decisão e o valor são do plano."),
+            ("Posso pedir reembolso dessas sessões?", "Eu forneço toda a documentação. Se o seu plano reembolsa fisioterapia, você pode solicitar; a decisão e o valor são do plano. Para atendimento fora do consultório, alguns planos pedem pedido médico com justificativa, então vale perguntar ao seu antes de começar."),
             ("Preciso estar com dor para contratar?", "Não. Também atendo quem quer se exercitar com acompanhamento de fisioterapeuta para diminuir o risco de lesão."),
             ("O condomínio precisa autorizar?", "Muitos condomínios têm regras para profissional externo na academia. Vale confirmar com a administração; se não for possível, fazemos em casa."),
         ],
         "rel": ["voltar-a-treinar-com-fisioterapeuta-campinas", "fisioterapia-reembolso-convenio-campinas", "fisioterapeuta-swiss-park-campinas"],
+    },
+    {
+        "slug": "tendinite-fisioterapia-campinas",
+        "tipo": "necessidade",
+        "menu": "Tendinite",
+        "resumo": "Ombro, cotovelo, joelho e tendão de Aquiles: tratar sem só repousar.",
+        "title": "Tendinite: Fisioterapia em Campinas | Ed Ferrari Jr",
+        "desc": "Tendinite no ombro, cotovelo, joelho ou tendão de Aquiles? Fisioterapia em Campinas com exercício de carga progressiva. Em casa ou no Swiss Park.",
+        "h1": "Tendinite: fisioterapia em Campinas",
+        "lead": "Tendinite é a dor no tendão que piora com o uso e insiste em voltar. Repouso alivia por uns dias, mas, quando você volta à rotina ou ao treino, ela aparece de novo. Isso acontece porque o tendão precisa de carga bem dosada para se adaptar, e é aí que a fisioterapia entra.",
+        "wa": "Olá! Estou com tendinite e gostaria de agendar uma avaliação de fisioterapia.",
+        "area": "Campinas",
+        "foto": ("foto-costas", "Atleta de costas durante treino de sled", "50% 45%"),
+        "secoes": [
+            ("Onde ela mais aparece", """<ul>
+<li><strong>Ombro</strong>: dor ao levantar o braço ou ao deitar sobre o lado. Veja <a href="/fisioterapia-ombro-campinas/">dor no ombro</a>.</li>
+<li><strong>Cotovelo</strong>: epicondilite (\"cotovelo de tenista\"), comum em quem digita, carrega peso ou joga raquete.</li>
+<li><strong>Joelho</strong>: dor abaixo da patela em quem salta, agacha ou corre.</li>
+<li><strong>Tendão de Aquiles</strong>: dor no calcanhar ao acordar ou no começo da corrida.</li>
+</ul>"""),
+            ("Por que só repousar não resolve", """<p>O repouso diminui a irritação, mas também deixa o tendão menos preparado para a carga. Na fisioterapia, eu uso exercícios com carga que sobe aos poucos, conforme a resposta da dor, além de ajustar o que você faz no trabalho e no treino. O tempo de tratamento varia de pessoa para pessoa e depende de há quanto tempo a dor existe.</p>"""),
+            ("Quando procurar avaliação", """<p>Se a dor dura mais de duas semanas, piora a cada treino ou atrapalha o sono, vale avaliar. Se houve um estalo forte seguido de perda de força, procure um médico antes. O atendimento é particular, com documentação para o reembolso do plano.</p>"""),
+        ],
+        "faq": [
+            ("Tendinite tem cura?", "Na maioria dos casos, a dor melhora com tratamento e ajuste de carga, mas o tempo varia de pessoa para pessoa. A avaliação mostra o que esperar no seu caso."),
+            ("Posso continuar treinando?", "Muitas vezes sim, com ajustes. A avaliação define o que manter e o que trocar."),
+            ("Gelo ajuda?", "Pode aliviar a dor por um tempo, mas não substitui o exercício de carga progressiva."),
+        ],
+        "rel": ["fisioterapia-ombro-campinas", "fisioterapia-para-corredores-campinas", "fisioterapeuta-academia-do-condominio-campinas"],
+    },
+    {
+        "slug": "dor-no-quadril-fisioterapia-campinas",
+        "tipo": "necessidade",
+        "menu": "Dor no quadril",
+        "resumo": "Dor na virilha, na lateral do quadril ou no glúteo, de quem treina ou não.",
+        "title": "Dor no Quadril: Fisioterapia em Campinas | Ed Ferrari Jr",
+        "desc": "Dor no quadril, na virilha ou na lateral da coxa? Fisioterapia em Campinas com avaliação de força e movimento. Em casa, no condomínio ou no Swiss Park.",
+        "h1": "Dor no quadril: fisioterapia em Campinas",
+        "lead": "A dor no quadril pode aparecer na virilha, na lateral da coxa ou no glúteo, e cada lugar aponta para causas diferentes. Ela atrapalha subir escada, cruzar as pernas, deitar de lado, correr e agachar. Na avaliação eu procuro de onde vem a dor e o que está sobrecarregando a região.",
+        "wa": "Olá! Estou com dor no quadril e gostaria de agendar uma avaliação de fisioterapia.",
+        "area": "Campinas",
+        "foto": ("foto-afundo", "Praticante fazendo afundo ao ar livre", "50% 35%"),
+        "secoes": [
+            ("Onde dói e o que pode ser", """<ul>
+<li><strong>Lateral do quadril</strong>: dor ao deitar sobre o lado ou ao subir escada, muitas vezes ligada aos tendões do glúteo.</li>
+<li><strong>Virilha</strong>: dor ao agachar fundo, chutar ou mudar de direção.</li>
+<li><strong>Glúteo e parte de trás</strong>: às vezes vem da lombar. Veja <a href="/fisioterapia-coluna-campinas/">dor nas costas e hérnia de disco</a>.</li>
+</ul>
+<p>Só a avaliação diferencia essas causas. Quando necessário, peço que você converse com o médico para exames.</p>"""),
+            ("Como é o tratamento", """<p>Exercícios de força para quadril e tronco, ajuste das posições e atividades que pioram a dor e retorno gradual ao treino ou às caminhadas. Para quem corre, veja também <a href="/fisioterapia-para-corredores-campinas/">fisioterapia para corredores</a>.</p>"""),
+            ("Quando ir ao médico antes", """<p>Depois de queda, com dor forte para apoiar a perna, febre ou dor que não melhora em repouso, procure um médico primeiro.</p>"""),
+        ],
+        "faq": [
+            ("Dor no quadril é sempre artrose?", "Não. Em muitas pessoas a dor vem de tendões ou músculos ao redor do quadril, ou até da lombar."),
+            ("Você atende em casa?", "Sim, em casa ou na academia do condomínio, em Campinas e Valinhos, e também no Instituto Adara."),
+            ("Tem reembolso do convênio?", "O atendimento é particular, com recibos e relatório para você pedir o reembolso ao seu plano."),
+        ],
+        "rel": ["fisioterapia-coluna-campinas", "fisioterapeuta-academia-do-condominio-campinas", "fisioterapia-para-corredores-campinas"],
     },
     {
         "slug": "fisioterapia-pos-operatorio-joelho-campinas",
