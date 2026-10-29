@@ -472,6 +472,36 @@ ARTIGOS = [
 <p>Dor que persiste, piora a cada treino ou muda a forma como você se move merece avaliação agora, e não na semana da prova. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a>.</p>
 <p>Este texto é um resumo independente do que consta no site oficial do Hyrox e não tem vínculo com a organização. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
     },
+    {
+        "slug": "sao-silvestre-2026-preparacao-e-prevencao",
+        "data": "2026-10-28",
+        "temas": ["corrida", "radar", "prevencao"],
+        "foto": ("foto-corrida-poca", "Pernas de corredores em movimento perto de uma poça", "50% 50%"),
+        "title": "São Silvestre 2026: como se preparar para os 15 km sem se lesionar",
+        "desc": "A 101ª São Silvestre será em 31 de dezembro, com 15 km na Avenida Paulista. Veja o que o site oficial informa e como organizar o treino para proteger joelhos e canelas.",
+        "h1": "São Silvestre 2026: como se preparar para os 15 km sem se lesionar",
+        "lead": "A 101ª Corrida Internacional de São Silvestre será em 31 de dezembro. Quem vai correr ainda tem tempo de organizar a preparação.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o site oficial informa</h2>
+<p>Segundo o <a href="https://www.saosilvestre.com.br/" rel="noopener" target="_blank">site oficial da São Silvestre</a> e o <a href="https://www.saosilvestre.com.br/regulamento/" rel="noopener" target="_blank">regulamento</a>, a 101ª edição acontece em 31 de dezembro de 2026, com percurso de 15 km e largada e chegada na Avenida Paulista, em São Paulo. O regulamento prevê inscrições até 27 de novembro, ou antes, se as vagas acabarem, e exige 18 anos completos até 31 de dezembro. O kit é retirado na Expo São Silvestre, no Ibirapuera, de 26 a 30 de dezembro. O site alerta para golpes: inscreva-se apenas pelos canais oficiais.</p>
+<h2>O que 15 km cobram do corpo</h2>
+<p>Para quem corre menos distância no dia a dia, 15 km é um salto de volume. As regiões que mais costumam reclamar são:</p>
+<ul>
+<li><strong>Joelhos:</strong> dor na frente ou na lateral, que aparece depois de alguns quilômetros.</li>
+<li><strong>Canelas e tornozelos:</strong> sobrecarga quando o volume sobe rápido.</li>
+<li><strong>Quadril e lombar:</strong> cansaço da musculatura que estabiliza a pelve.</li>
+</ul>
+<h2>Como organizar as semanas até a prova</h2>
+<ul>
+<li>Aumente a distância dos longões aos poucos, sem subir volume e ritmo ao mesmo tempo.</li>
+<li>Inclua treino de força para pernas e quadril duas vezes por semana.</li>
+<li>Reserve dias de descanso e uma semana mais leve antes da prova.</li>
+<li>Não estreie tênis, meia ou estratégia de ritmo no dia da corrida.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que persiste por mais de uma ou duas semanas, piora a cada treino ou muda o jeito de correr merece avaliação antes de ganhar volume. Leia também <a href="/blog/dor-no-joelho-corrida/">Dor no joelho na corrida: por que acontece e quando investigar</a>.</p>
+<p>Este texto é um resumo independente do que consta no site oficial da São Silvestre e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
