@@ -174,9 +174,9 @@ SERVICOS = [
         "menu": "Fisioterapia home care",
         "resumo": "Atendimento domiciliar no Swiss Park e região de Campinas.",
         "title": "Fisioterapia Domiciliar em Campinas e Swiss Park | Ed Ferrari Jr",
-        "desc": "Fisioterapia domiciliar em Campinas e no Swiss Park: avaliação e reabilitação ortopédica e esportiva na sua casa, com privacidade e conforto.",
+        "desc": "Fisioterapia domiciliar em Campinas e no Swiss Park: avaliação e reabilitação ortopédica na sua casa ou na academia do condomínio, com privacidade e conforto.",
         "h1": "Fisioterapia domiciliar (home care) em Campinas e Swiss Park",
-        "lead": "Reabilitação ortopédica e esportiva na sua casa, com o mesmo método de avaliação que uso no consultório. Indicada para quem tem pouco tempo, está em pós-operatório ou prefere mais privacidade.",
+        "lead": "Reabilitação ortopédica na sua casa, com o mesmo método de avaliação que uso no consultório. Indicada para quem tem pouco tempo, está em pós-operatório ou prefere mais privacidade.",
         "wa": "Olá! Gostaria de saber mais sobre o atendimento de fisioterapia home care.",
         "secoes": [
             ("Quando o home care faz sentido", """<ul>
@@ -509,7 +509,7 @@ ARTIGOS = [
 
 # ---------------------------------------------------------------- templates
 NAV = [
-    ("/fisioterapia-esportiva-campinas/", "Esportiva", True),
+    ("/fisioterapeuta-campinas/", "Onde atendo", True),
     ("/fisioterapia-home-care-campinas/", "Home care", True),
     ("/ferrari-recovery-campinas/", "Recovery", True),
     ("/perito-assistente-tecnico-em-fisioterapia/", "Perícia", True),
@@ -557,7 +557,7 @@ def header():
         '<a href="%s"%s>%s</a>' % (h, ' class="hide-m"' if ocultar else "", t) for h, t, ocultar in NAV
     )
     return f"""<header class="s-header"><div class="s-wide">
-<a class="s-brand" href="/"><b>Ed Ferrari Jr</b><small>FISIOTERAPIA · ESPORTIVA</small></a>
+<a class="s-brand" href="/"><b>Ed Ferrari Jr</b><small>FISIOTERAPIA · ORTOPÉDICA</small></a>
 <input type="checkbox" id="mn" class="mn-chk" aria-label="Abrir menu"><label for="mn" class="mn-btn" aria-hidden="true"><i></i></label>
 <nav class="s-nav" aria-label="Principal">{links}<a class="s-btn small" href="{wa('Olá! Gostaria de agendar uma avaliação.')}">Agendar</a></nav>
 </div></header>
@@ -567,7 +567,7 @@ def header():
 def footer():
     servicos = "".join('<a href="/%s/">%s</a>' % (x["slug"], x["menu"]) for x in SERVICOS[:5])
     return f"""<footer class="s-footer"><div class="s-wide"><div class="cols">
-<div><div class="assin">Ed Ferrari Jr<small>FISIOTERAPIA · ESPORTIVA</small></div>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
+<div><div class="assin">Ed Ferrari Jr<small>FISIOTERAPIA · ORTOPÉDICA</small></div>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
 <div><strong>Serviços</strong>{servicos}</div>
 <div><strong>Mais</strong><a href="/fisioterapeuta-campinas/">Onde eu atendo</a><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/recovery-para-eventos-esportivos/">Recovery em eventos</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
 </div>
@@ -860,7 +860,7 @@ def pagina_artigo(a):
 
 def pagina_blog():
     caminho = "/blog/"
-    titulo = "Blog de Fisioterapia Esportiva: CrossFit, Hyrox, ATHX e Corrida | Ed Ferrari Jr"
+    titulo = "Blog de Fisioterapia: Dor, Lesões, CrossFit, Hyrox e Corrida | Ed Ferrari Jr"
     desc = "Dor no ombro, joelho e lombar, prevenção de lesão e notícias de CrossFit, Hyrox, ATHX e corrida, explicadas pelo fisioterapeuta Ed Ferrari Jr, de Campinas."
     migalhas = [("Início", "/"), ("Blog", caminho)]
     ld = {"@context": "https://schema.org", "@graph": [
@@ -897,15 +897,15 @@ TICKER = "".join("<span>%s</span>" % x for x in ["Ombro", "Joelho", "Tornozelo",
 
 
 def pagina_home():
-    titulo = "Fisioterapeuta Esportivo e Ortopédico em Campinas | Ed Ferrari Jr"
-    desc = "Fisioterapia ortopédica e esportiva em Campinas: ombro, joelho, coluna e lesões musculares. Atendimento no Instituto Adara (Swiss Park) e home care. Agende sua avaliação."
+    titulo = "Ed Ferrari Jr | Fisioterapia Ortopédica em Campinas e Swiss Park"
+    desc = "Fisioterapia ortopédica em Campinas: dor no ombro, joelho e coluna, lesões e pós-operatório. No Instituto Adara (Swiss Park), em casa ou no condomínio."
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Physiotherapy", "@id": f"{BASE}/#clinica", "name": "Ed Ferrari Jr. Fisioterapia Ortopédica e Esportiva", "url": f"{BASE}/",
+        {"@type": "Physiotherapy", "@id": f"{BASE}/#clinica", "name": "Ed Ferrari Jr Fisioterapia", "url": f"{BASE}/",
          "image": f"{BASE}/assets/img/foto-sled.webp", "telephone": "+5519971002263",
          "address": {"@type": "PostalAddress", "streetAddress": "Av. Antônio Artioli, 276", "addressLocality": "Campinas", "addressRegion": "SP", "postalCode": "13049-253", "addressCountry": "BR"},
-         "areaServed": [{"@type": "City", "name": "Campinas"}, {"@type": "Place", "name": "Swiss Park"}],
+         "areaServed": [{"@type": "City", "name": "Campinas"}, {"@type": "Place", "name": "Swiss Park"}, {"@type": "City", "name": "Valinhos"}],
          "medicalSpecialty": "Physiotherapy", "sameAs": ["https://www.instagram.com/edferrarijr", "https://www.youtube.com/@EdFerrariJr"], "founder": {"@id": f"{BASE}/#pessoa"}},
-        {"@type": "Person", "@id": f"{BASE}/#pessoa", "name": "Ed Ferrari Jr", "jobTitle": "Fisioterapeuta ortopédico e esportivo", "identifier": CREFITO, "url": f"{BASE}/", "worksFor": {"@id": f"{BASE}/#clinica"}},
+        {"@type": "Person", "@id": f"{BASE}/#pessoa", "name": "Ed Ferrari Jr", "jobTitle": "Fisioterapeuta ortopédico", "identifier": CREFITO, "url": f"{BASE}/", "worksFor": {"@id": f"{BASE}/#clinica"}},
         {"@type": "WebSite", "@id": f"{BASE}/#site", "url": f"{BASE}/", "name": "Ed Ferrari Jr | Fisioterapia", "inLanguage": "pt-BR"},
         faq_ld(HOME_FAQ)]}
     cards = "".join(
@@ -916,7 +916,7 @@ def pagina_home():
     h += f"""<main id="conteudo">
 <section class="h-hero"><video class="fundo" autoplay muted loop playsinline preload="metadata" poster="/assets/img/foto-sled.webp" aria-hidden="true"><source src="/assets/video/hero.mp4" type="video/mp4"></video><div class="s-wide">
 <span class="rotulo">Campinas · Instituto Adara e home care</span><div class="regua"></div>
-<h1><span class="destaque">Fisioterapia</span> ortopédica e esportiva em Campinas</h1>
+<h1><span class="destaque">Fisioterapia</span> ortopédica em Campinas</h1>
 <p class="lead">Avaliação individual e reabilitação baseada em evidências, no Instituto Adara (Swiss Park) ou na sua casa.</p>
 <div class="acoes"><a class="s-btn" href="{wa('Olá! Vim pelo site e gostaria de agendar uma avaliação.')}">Agendar minha avaliação</a><a class="s-btn vazado" href="#servicos">Ver serviços</a></div>
 </div></section>
@@ -926,7 +926,7 @@ def pagina_home():
 <section class="h-sec"><div class="s-wide h-sobre">
 <img src="/assets/img/image_1.webp" alt="Ed Ferrari Jr, fisioterapeuta" width="600" height="800" loading="lazy">
 <div><span class="rotulo">Quem cuida de você</span><h2>Chega de tratamentos genéricos.</h2>
-<p>Muitas vezes o tratamento se limita a aliviar o sintoma. Como especialista em ortopedia e fisioterapia esportiva, eu investigo a <strong>raiz biomecânica</strong> da sua dor articular, muscular ou ligamentar.</p>
+<p>Muitas vezes o tratamento se limita a aliviar o sintoma. Como fisioterapeuta ortopédico, eu investigo a <strong>raiz biomecânica</strong> da sua dor articular, muscular ou ligamentar.</p>
 <p>Meu compromisso é com a sua independência: um plano de eficiência máxima, com o menor número de visitas possível, para você voltar a treinar e viver sem medo.</p></div>
 </div></section>
 
@@ -948,7 +948,7 @@ def pagina_home():
 
 <section class="h-sec escura" id="atendimento"><div class="s-wide"><span class="rotulo">Onde atendo</span><h2>Duas formas de cuidar de você.</h2>
 <div class="h-duo">
-<div class="s-card escuro"><span class="s-num" style="color:#EE6660">01</span><h3>Instituto Adara</h3><p>Atendimento presencial em uma estrutura moderna e equipada para a sua reabilitação esportiva.</p><div class="h-end">{ENDERECO}</div><a class="s-btn small" href="{wa('Olá! Gostaria de agendar um atendimento no Instituto Adara.')}">Agendar na clínica</a></div>
+<div class="s-card escuro"><span class="s-num" style="color:#EE6660">01</span><h3>Instituto Adara</h3><p>Atendimento presencial em uma estrutura moderna e equipada para a sua reabilitação.</p><div class="h-end">{ENDERECO}</div><a class="s-btn small" href="{wa('Olá! Gostaria de agendar um atendimento no Instituto Adara.')}">Agendar na clínica</a></div>
 <div class="s-card escuro"><span class="s-num" style="color:#EE6660">02</span><h3>Home care</h3><p>Reabilitação na sua casa, com privacidade e conforto, no Swiss Park e na região metropolitana de Campinas.</p><a class="s-btn small" href="{wa('Olá! Gostaria de agendar um atendimento Home Care.')}">Agendar home care</a> &nbsp; <a href="/fisioterapia-home-care-campinas/" style="color:#EE6660">Saiba mais →</a></div>
 </div></div></section>
 
@@ -966,7 +966,7 @@ def pagina_home():
 def pagina_link_bio():
     """Página de links da bio do @edferrarijr. Fora do Google (noindex) e fora do sitemap."""
     caminho = "/instagram/"
-    titulo = "Links do Ed Ferrari | Fisioterapia Esportiva em Campinas"
+    titulo = "Links do Ed Ferrari | Fisioterapia em Campinas"
     desc = "Agende sua avaliação, veja o home care, o reembolso do convênio e os artigos do blog."
     ld = {"@context": "https://schema.org", "@type": "WebPage", "name": titulo, "url": f"{BASE}{caminho}"}
     botoes = [
@@ -980,7 +980,7 @@ def pagina_link_bio():
     cards = "".join(f'<a class="s-card" href="{h}"><span class="s-num">{i:02d}</span><h3>{t}</h3><p>{d}</p></a>' for i, (t, d, h) in enumerate(botoes, 1))
     h = head(titulo, desc, caminho, ld, robots="noindex, follow") + header()
     h += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
-<section class="s-hero"><span class="rotulo">{CREFITO} · Campinas</span><div class="regua"></div><h1>Ed Ferrari<br><span class="destaque">Fisio esportivo</span></h1>
+<section class="s-hero"><span class="rotulo">{CREFITO} · Campinas</span><div class="regua"></div><h1>Ed Ferrari<br><span class="destaque">Fisioterapeuta</span></h1>
 <p class="lead">Para quem treina Hyrox, CrossFit e corrida. Escolha o que você procura.</p></section>
 <div class="s-grid" style="grid-template-columns:1fr">{cards}</div>
 </div></main>

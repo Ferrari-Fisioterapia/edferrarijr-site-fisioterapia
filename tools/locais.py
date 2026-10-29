@@ -94,7 +94,7 @@ LOCAIS = [
         "area": "Cambuí, Campinas",
         "foto": ("foto-barra", "Mulher treinando na barra", "50% 30%"),
         "secoes": [
-            ("Fisioterapia em apartamento funciona?", """<p>Funciona bem para a maior parte dos casos ortopédicos e esportivos. Para avaliar e tratar, eu preciso de pouco espaço: o suficiente para você deitar, ficar em pé e dar alguns passos. Levo maca portátil quando é necessário, elásticos, pesos leves e os instrumentos de medida que uso na avaliação.</p>
+            ("Fisioterapia em apartamento funciona?", """<p>Funciona bem para a maior parte dos casos ortopédicos. Para avaliar e tratar, eu preciso de pouco espaço: o suficiente para você deitar, ficar em pé e dar alguns passos. Levo maca portátil quando é necessário, elásticos, pesos leves e os instrumentos de medida que uso na avaliação.</p>
 <p>Se o seu prédio tem academia, ela costuma ser ótima para a fase de fortalecimento, com halteres e polias à mão.</p>"""),
             ("Quem mais me procura no Cambuí", """<ul>
 <li>Quem passa o dia no computador e convive com dor no pescoço, nas costas ou no punho. Veja <a href="/fisioterapia-coluna-campinas/">fisioterapia para coluna</a> e <a href="/fisioterapia-ombro-campinas/">ombro, cotovelo e punho</a>.</li>
@@ -148,7 +148,7 @@ LOCAIS = [
         "title": "Fisioterapeuta em Barão Geraldo, Campinas | Ed Ferrari Jr",
         "desc": "Fisioterapeuta em Barão Geraldo, Campinas: atendimento em casa para moradores do distrito e da região da Unicamp. Ortopedia e esporte. Agende pelo WhatsApp.",
         "h1": "Fisioterapeuta em Barão Geraldo",
-        "lead": "Barão Geraldo tem ritmo próprio: muita gente corre, pedala e treina por ali, e muita gente também passa horas sentada estudando ou trabalhando na região da Unicamp. Atendo moradores do distrito em casa, com avaliação ortopédica e esportiva completa.",
+        "lead": "Barão Geraldo tem ritmo próprio: muita gente corre, pedala e treina por ali, e muita gente também passa horas sentada estudando ou trabalhando na região da Unicamp. Atendo moradores do distrito em casa, com avaliação ortopédica completa.",
         "wa": "Olá! Moro em Barão Geraldo e gostaria de saber sobre o atendimento de fisioterapia em casa.",
         "area": "Barão Geraldo, Campinas",
         "foto": ("foto-corrida-poca", "Corredor passando por uma poça", "50% 40%"),
