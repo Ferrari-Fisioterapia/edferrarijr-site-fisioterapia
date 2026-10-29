@@ -12,12 +12,15 @@ import os
 import re
 from urllib.parse import quote
 
+from locais import LOCAIS
+
 BASE = "https://www.edferrarijr.com"
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONE = "5519971002263"
 DATA = "2026-10-18"
 ENDERECO = "Av. Antônio Artioli, 276 - Swiss Park, Campinas - SP, 13049-253"
 CREFITO = "CREFITO-3/306266-F"
+DATA_LOCAIS = "2026-10-29"
 
 WA_SVG = ""
 
@@ -566,7 +569,7 @@ def footer():
     return f"""<footer class="s-footer"><div class="s-wide"><div class="cols">
 <div><div class="assin">Ed Ferrari Jr<small>FISIOTERAPIA · ESPORTIVA</small></div>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
 <div><strong>Serviços</strong>{servicos}</div>
-<div><strong>Mais</strong><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/recovery-para-eventos-esportivos/">Recovery em eventos</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
+<div><strong>Mais</strong><a href="/fisioterapeuta-campinas/">Onde eu atendo</a><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/recovery-para-eventos-esportivos/">Recovery em eventos</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
 </div>
 <p class="s-note" style="margin-top:30px">As informações deste site são educativas e não substituem a avaliação de um profissional de saúde. Os resultados variam de pessoa para pessoa. © 2026 Ed Ferrari Jr.</p>
 </div></footer>
@@ -728,6 +731,78 @@ def pagina_servico(s):
 {faq_html(s['faq'])}
 {cta(s['wa'], *s.get('cta', ()))}
 <h2>Veja também</h2><div class="s-grid">{rel}{artigos_rel}</div>
+</div></main>
+"""
+    return caminho, html + footer()
+
+
+def lista_locais(tipo):
+    cards = "".join(
+        f'<a class="s-card" href="/{x["slug"]}/"><span class="s-num">{"REGIÃO" if tipo == "regiao" else "ATENDIMENTO"}</span><h3>{x["menu"]}</h3><p>{x["resumo"]}</p></a>'
+        for x in LOCAIS if x["tipo"] == tipo
+    )
+    return f'<div class="s-grid">{cards}</div>'
+
+
+def pagina_local(s):
+    """Páginas de atendimento local (tools/locais.py): bairro, cidade ou necessidade."""
+    caminho = f"/{s['slug']}/"
+    hub = LOCAIS[0]
+    migalhas = [("Início", "/")] + ([] if s is hub else [(hub["menu"], f"/{hub['slug']}/")]) + [(s["menu"], caminho)]
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "MedicalWebPage",
+                "@id": f"{BASE}{caminho}#pagina",
+                "url": f"{BASE}{caminho}",
+                "name": s["title"],
+                "description": s["desc"],
+                "inLanguage": "pt-BR",
+                "dateModified": DATA_LOCAIS,
+                "about": {"@type": "MedicalSpecialty", "name": "Physiotherapy"},
+                "author": {"@id": f"{BASE}/#pessoa"},
+                "publisher": {"@id": f"{BASE}/#clinica"},
+            },
+            {
+                "@type": "Service",
+                "name": s["h1"],
+                "serviceType": "Fisioterapia",
+                "provider": {"@id": f"{BASE}/#clinica"},
+                "areaServed": {"@type": "Place", "name": s["area"]},
+            },
+            crumbs_ld(migalhas),
+            faq_ld([(q, a.replace("{crefito}", CREFITO)) for q, a in s["faq"]]),
+        ],
+    }
+
+    def troca(t):
+        return t.replace("{crefito}", CREFITO).replace("{{LISTA_REGIOES}}", lista_locais("regiao")).replace("{{LISTA_NECESSIDADES}}", lista_locais("necessidade"))
+
+    faq = [(q, troca(a)) for q, a in s["faq"]]
+    corpo = "".join(f"<h2>{t}</h2>{troca(h)}" for t, h in s["secoes"])
+    todos = {x["slug"]: x for x in SERVICOS + LOCAIS}
+    rel = "".join(
+        f'<a class="s-card" href="/{r}/"><span class="s-num">{"ONDE ATENDO" if r == hub["slug"] else "VEJA"}</span><h3>{todos[r]["menu"]}</h3><p>{todos[r]["resumo"]}</p></a>'
+        for r in s["rel"]
+    )
+    f = s["foto"]
+    foto = f'<div class="s-foto"><img src="/assets/img/{f[0]}.webp" alt="{f[1]}" style="object-position:{f[2]}" width="1100" height="470" loading="eager"></div>'
+    mapa = ""
+    if s["tipo"] != "necessidade":
+        mapa = (f'<h2>Consultório no Swiss Park</h2><p>{ENDERECO}. <a href="https://www.google.com/maps/search/?api=1&query={quote("Instituto Adara " + ENDERECO)}">Ver no Google Maps</a>. '
+                f'Para o atendimento em casa, mande o seu endereço pelo WhatsApp.</p>')
+    html = head(s["title"], s["desc"], caminho, ld, imagem=f"/assets/img/{f[0]}.webp") + header()
+    html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
+{crumbs_html(migalhas)}
+<section class="s-hero"><span class="rotulo">{CREFITO} · {s['area']}</span><div class="regua"></div><h1>{s['h1']}</h1><p class="lead">{s['lead']}</p>
+<a class="s-btn" href="{wa(s['wa'])}">Falar pelo WhatsApp</a></section>
+{foto}
+{corpo}
+{mapa}
+{faq_html(faq)}
+{cta(s['wa'])}
+<h2>Veja também</h2><div class="s-grid">{rel}</div>
 </div></main>
 """
     return caminho, html + footer()
@@ -1027,6 +1102,11 @@ def main():
         escrever(c, h)
         urls.append((c, "0.9"))
     ultimo = {}
+    for s in LOCAIS:
+        c, h = pagina_local(s)
+        escrever(c, h)
+        urls.append((c, "0.8"))
+        ultimo[c] = DATA_LOCAIS
     c, h = pagina_blog()
     escrever(c, h)
     urls.append((c, "0.6"))
