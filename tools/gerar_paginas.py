@@ -801,7 +801,7 @@ def pagina_local(s):
 {corpo}
 {mapa}
 {faq_html(faq)}
-{cta(s['wa'])}
+{cta(s['wa'], sub='Particular, com recibos, relatório e laudo para o reembolso do seu plano. Em casa, na academia do condomínio ou no Instituto Adara (Swiss Park).')}
 <h2>Veja também</h2><div class="s-grid">{rel}</div>
 </div></main>
 """

@@ -12,17 +12,18 @@ LOCAIS = [
         "slug": "fisioterapeuta-campinas",
         "tipo": "hub",
         "menu": "Onde eu atendo",
-        "resumo": "Fisioterapeuta em Campinas: consultório no Swiss Park e atendimento em casa.",
+        "resumo": "Fisioterapeuta em Campinas: consultório no Swiss Park, em casa ou na academia do condomínio.",
         "title": "Fisioterapeuta em Campinas perto de você | Ed Ferrari Jr",
         "desc": "Procurando fisioterapeuta perto de você em Campinas? Atendo no Instituto Adara (Swiss Park) e em domicílio em Campinas e região. Agende pelo WhatsApp.",
         "h1": "Fisioterapeuta em Campinas, no consultório ou na sua casa",
-        "lead": "Quando alguém procura \"fisioterapeuta perto de mim\", quase sempre quer duas coisas: começar logo e não perder meia hora no trânsito. Eu atendo no Instituto Adara, no Swiss Park, e vou até a sua casa em Campinas e cidades vizinhas. Aqui você vê como funciona cada formato e em que regiões eu atendo.",
+        "lead": "Quando alguém procura \"fisioterapeuta perto de mim\", quase sempre quer duas coisas: começar logo e não perder meia hora no trânsito. Eu atendo no Instituto Adara, no Swiss Park, e vou até a sua casa ou a academia do seu condomínio nos bairros de Campinas e em Valinhos. O atendimento é particular, com toda a documentação para você pedir reembolso ao seu plano.",
         "wa": "Olá! Encontrei seu site procurando fisioterapeuta em Campinas e gostaria de agendar uma avaliação.",
         "area": "Campinas",
         "foto": ("foto-alongamento", "Praticante se alongando ao ar livre", "50% 40%"),
         "secoes": [
-            ("Dois jeitos de fazer a fisioterapia", """<ul>
-<li><strong>No consultório</strong>: Instituto Adara, Av. Antônio Artioli, 276, Swiss Park. Bom para quem quer usar a estrutura da clínica e já passa pela região.</li>
+            ("Três jeitos de fazer a fisioterapia", """<ul>
+<li><strong>No consultório</strong>: Instituto Adara, Av. Antônio Artioli, 276, Swiss Park. Bom para quem quer usar a estrutura da clínica. O agendamento presencial é feito pela recepção do Adara; se preferir, me chame no WhatsApp.</li>
+<li><strong>Na academia do seu condomínio</strong>: acompanhamento fisioterapêutico do seu treino, por sessão, para tratar dor e diminuir o risco de lesão. Veja <a href="/fisioterapeuta-academia-do-condominio-campinas/">fisioterapeuta na academia do condomínio</a>.</li>
 <li><strong>Em domicílio</strong>: eu levo o material portátil até você, em casa, no condomínio ou na academia do prédio. Bom para pós-operatório, rotina apertada ou quem prefere privacidade. Veja como funciona em <a href="/fisioterapia-home-care-campinas/">fisioterapia home care</a>.</li>
 </ul>"""),
             ("Regiões em que eu atendo", """<p>Escolha a sua região para ver como funciona o atendimento aí. Se o seu bairro não está na lista, mande o endereço pelo WhatsApp que eu confirmo.</p>
@@ -37,7 +38,7 @@ LOCAIS = [
 </ol>"""),
         ],
         "faq": [
-            ("Você atende pelo convênio?", "O atendimento é particular. Eu forneço recibo e relatório para você pedir o reembolso ao seu plano, conforme as regras dele."),
+            ("Você atende pelo convênio?", "Não sou credenciado, o atendimento é particular. Mas eu preparo toda a documentação (recibos, relatório e laudo fisioterapêutico) para você pedir o reembolso ao seu plano. O valor reembolsado depende do seu contrato."),
             ("Preciso de pedido médico?", "Para a avaliação, não. Alguns planos pedem a indicação médica para reembolsar; vale conferir com o seu."),
             ("Quanto tempo dura a sessão?", "A sessão é individual. O tempo e a frequência são definidos na avaliação, de acordo com o seu caso."),
             ("Como agendo?", "Pelo WhatsApp (19) 97100-2263. Diga o seu bairro e o que está sentindo que eu respondo com os horários."),
@@ -53,7 +54,7 @@ LOCAIS = [
         "title": "Fisioterapeuta no Swiss Park, Campinas | Ed Ferrari Jr",
         "desc": "Fisioterapeuta no Swiss Park: consultório no Instituto Adara (Av. Antônio Artioli, 276) e atendimento em casa nos condomínios. Agende pelo WhatsApp.",
         "h1": "Fisioterapeuta no Swiss Park, em Campinas",
-        "lead": "O Swiss Park é a minha base. O consultório fica no Instituto Adara, na Av. Antônio Artioli, 276, e boa parte dos meus pacientes de domicílio mora nos condomínios do próprio bairro. Para quem está aqui, a fisioterapia cabe na rotina sem sair do bairro.",
+        "lead": "O Swiss Park é a minha base. O consultório fica no Instituto Adara, na Av. Antônio Artioli, 276, e a maior parte dos meus pacientes mora nos condomínios do próprio bairro. Atendo em casa, na academia do condomínio ou no consultório, sempre com documentação para reembolso do plano.",
         "wa": "Olá! Moro no Swiss Park e gostaria de agendar uma avaliação de fisioterapia.",
         "area": "Swiss Park, Campinas",
         "foto": ("foto-afundo", "Praticante fazendo afundo ao ar livre", "50% 35%"),
@@ -63,7 +64,8 @@ LOCAIS = [
 <li><strong>Instituto Adara</strong>: indicado quando o tratamento pede equipamentos da clínica ou quando você prefere separar o momento da fisioterapia da sua casa.</li>
 <li><strong>No seu condomínio</strong>: indicado no pós-operatório, quando sair de casa é difícil, ou quando a agenda está apertada. Muitos condomínios do bairro têm academia ou área comum que funcionam bem para os exercícios.</li>
 </ul>
-<p>Dá também para combinar: algumas sessões no consultório e outras em casa, conforme a fase do tratamento.</p>"""),
+<p>Dá também para combinar: algumas sessões no consultório e outras em casa, conforme a fase do tratamento. Para as sessões no Adara, o agendamento é feito pela recepção do instituto.</p>"""),
+            ("Acompanhamento na academia do condomínio", """<p>Muitos moradores do Swiss Park têm academia no condomínio e não usam por medo de se machucar ou porque uma dor sempre volta. Eu faço o acompanhamento fisioterapêutico do treino ali mesmo, por sessão: avalio, trato a dor e conduzo os exercícios com carga segura. Saiba mais em <a href="/fisioterapeuta-academia-do-condominio-campinas/">fisioterapeuta na academia do condomínio</a>.</p>"""),
             ("Atendimento no condomínio: como funciona a portaria", """<p>Para o atendimento em casa, você deixa meu nome autorizado na portaria e eu chego no horário combinado com o material portátil. Se quiser usar a academia ou outra área comum, vale confirmar antes as regras do seu condomínio para uso com profissional externo.</p>"""),
             ("O que eu mais atendo no bairro", """<ul>
 <li>Dor no ombro, no joelho e na coluna de quem treina musculação, CrossFit, Hyrox ou corre pelas ruas do bairro.</li>
@@ -76,7 +78,7 @@ LOCAIS = [
             ("Você atende em qualquer condomínio do Swiss Park?", "Sim, desde que a portaria libere a minha entrada. Mande o nome do condomínio pelo WhatsApp quando for agendar."),
             ("Posso começar em casa e depois ir ao consultório?", "Pode. É comum no pós-operatório: as primeiras semanas em casa e, quando você já se desloca bem, as sessões no Instituto Adara."),
         ],
-        "rel": ["fisioterapeuta-campinas", "fisioterapia-home-care-campinas", "fisioterapia-pos-operatorio-joelho-campinas"],
+        "rel": ["fisioterapeuta-academia-do-condominio-campinas", "fisioterapia-reembolso-convenio-campinas", "fisioterapia-pos-operatorio-joelho-campinas"],
     },
     {
         "slug": "fisioterapeuta-cambui-campinas",
@@ -215,37 +217,98 @@ LOCAIS = [
             ("O valor é o mesmo de Campinas?", "Os valores são informados pelo WhatsApp, de acordo com o local e o tipo de atendimento."),
             ("Posso fazer algumas sessões no consultório?", "Pode. O consultório fica no Instituto Adara, no Swiss Park, em Campinas."),
         ],
-        "rel": ["fisioterapia-home-care-campinas", "fisioterapeuta-vinhedo", "fisioterapeuta-campinas"],
+        "rel": ["fisioterapeuta-academia-do-condominio-campinas", "fisioterapia-home-care-campinas", "fisioterapeuta-campinas"],
     },
     {
-        "slug": "fisioterapeuta-vinhedo",
+        "slug": "fisioterapeuta-nova-campinas",
         "tipo": "regiao",
-        "menu": "Vinhedo",
-        "resumo": "Fisioterapia em casa para quem mora em Vinhedo.",
-        "title": "Fisioterapeuta em Vinhedo: fisioterapia em casa | Ed Ferrari Jr",
-        "desc": "Fisioterapeuta em Vinhedo com atendimento em casa: dor, lesão esportiva e pós-operatório tratados no seu condomínio. Agende pelo WhatsApp.",
-        "h1": "Fisioterapeuta em Vinhedo: fisioterapia na sua casa",
-        "lead": "Vinhedo tem muitos condomínios com espaço, academia e área verde, o que facilita a fisioterapia em casa. Eu atendo moradores da cidade no próprio condomínio, com avaliação ortopédica e esportiva e um plano feito para a sua rotina.",
-        "wa": "Olá! Moro em Vinhedo e gostaria de agendar uma avaliação de fisioterapia em casa.",
-        "area": "Vinhedo",
-        "foto": ("foto-overhead", "Atleta com barra acima da cabeça", "50% 22%"),
+        "menu": "Nova Campinas",
+        "resumo": "Fisioterapia em casa ou na academia do prédio, na Nova Campinas e arredores.",
+        "title": "Fisioterapeuta na Nova Campinas | Ed Ferrari Jr",
+        "desc": "Fisioterapeuta na Nova Campinas e arredores: atendimento em casa ou na academia do prédio, com documentação para reembolso do plano. Agende pelo WhatsApp.",
+        "h1": "Fisioterapeuta na Nova Campinas",
+        "lead": "Na Nova Campinas e nos bairros vizinhos, quem me procura em geral quer duas coisas: tratar uma dor sem perder tempo com deslocamento e ter alguém de confiança para orientar o exercício. Eu atendo na sua casa ou na academia do seu prédio, de forma particular, com recibo e relatório para o reembolso.",
+        "wa": "Olá! Moro na Nova Campinas e gostaria de agendar uma avaliação de fisioterapia.",
+        "area": "Nova Campinas, Campinas",
+        "foto": ("foto-alongamento", "Praticante se alongando ao ar livre", "50% 40%"),
         "secoes": [
-            ("Aproveitando o espaço do condomínio", """<p>Quando o condomínio tem academia, quadra ou área gramada, dá para fazer partes do tratamento que normalmente seriam feitas na clínica: fortalecimento com carga, exercícios de salto, corrida leve e testes de retorno ao esporte. Basta confirmar as regras de uso com profissional externo.</p>"""),
-            ("Para quem é", """<ul>
-<li>Quem tem dor no ombro, no joelho ou na coluna e quer tratar sem sair de casa.</li>
-<li>Quem está em <a href="/fisioterapia-pos-operatorio-joelho-campinas/">pós-operatório</a> e ainda não dirige.</li>
-<li>Quem treina e quer uma avaliação para prevenir lesão antes de uma prova.</li>
-</ul>"""),
-            ("Como agendar", """<p>Mande pelo WhatsApp o seu condomínio ou bairro e o que está sentindo. Eu confirmo a disponibilidade para Vinhedo e combinamos a primeira sessão, que é a avaliação.</p>"""),
+            ("Tratamento da dor, em casa", """<p>Dor no ombro, no joelho, na lombar ou no pescoço que atrapalha o trabalho, o sono ou o treino. A primeira sessão é a avaliação; a partir dela, monto um plano com tratamento e exercícios que você consegue manter entre as sessões. Veja <a href="/fisioterapia-coluna-campinas/">coluna</a> e <a href="/fisioterapia-ombro-campinas/">ombro, cotovelo e punho</a>.</p>"""),
+            ("Acompanhamento do exercício", """<p>Se você quer voltar a se exercitar, mas tem histórico de dor ou lesão, eu acompanho o seu treino como fisioterapeuta, por sessão. O foco é qualidade de vida e menos risco de lesão, com cada exercício escolhido para o seu corpo. Saiba mais em <a href="/fisioterapeuta-academia-do-condominio-campinas/">fisioterapeuta na academia do condomínio</a>.</p>"""),
+            ("Reembolso do plano", """<p>Não atendo por convênio, mas preparo recibos, relatório e laudo fisioterapêutico para você pedir o reembolso ao seu plano. A cobertura e o valor seguem o seu contrato. Entenda o passo a passo em <a href="/fisioterapia-reembolso-convenio-campinas/">reembolso do convênio</a>.</p>"""),
         ],
         "faq": [
-            ("Preciso reservar a academia do condomínio?", "Se quiser usar, sim, conforme as regras do seu condomínio. Também dá para fazer tudo dentro de casa."),
-            ("Você atende em Louveira ou Itatiba?", "Envie o endereço pelo WhatsApp que eu confirmo se consigo atender."),
-            ("Fornece relatório para o convênio?", "Sim, recibo e relatório para solicitar o reembolso. A cobertura depende do plano."),
+            ("Você atende em prédio sem academia?", "Sim. Levo o material necessário e usamos o espaço do apartamento."),
+            ("Atende nos bairros vizinhos?", "Sim. Mande o seu endereço pelo WhatsApp para eu confirmar."),
+            ("Qual a frequência das sessões?", "Definida na avaliação, de acordo com o seu objetivo e a sua rotina."),
         ],
-        "rel": ["fisioterapia-home-care-campinas", "fisioterapeuta-valinhos", "fisioterapeuta-campinas"],
+        "rel": ["fisioterapeuta-cambui-campinas", "fisioterapeuta-academia-do-condominio-campinas", "fisioterapia-reembolso-convenio-campinas"],
+    },
+    {
+        "slug": "fisioterapeuta-alphaville-campinas",
+        "tipo": "regiao",
+        "menu": "Alphaville Campinas",
+        "resumo": "Atendimento nos condomínios do Alphaville e da região da Dom Pedro.",
+        "title": "Fisioterapeuta no Alphaville Campinas | Ed Ferrari Jr",
+        "desc": "Fisioterapeuta no Alphaville Campinas e condomínios da região: atendimento em casa e na academia do condomínio, com documentação para reembolso.",
+        "h1": "Fisioterapeuta no Alphaville Campinas e condomínios da região",
+        "lead": "Nos condomínios fechados, a academia, a pista de caminhada e as quadras estão a poucos passos de casa, mas muita gente deixa de usar por causa de uma dor que não passa. Eu atendo moradores do Alphaville Campinas e dos condomínios da região em casa ou nesses espaços, como fisioterapeuta e por sessão.",
+        "wa": "Olá! Moro no Alphaville Campinas e gostaria de agendar uma avaliação de fisioterapia.",
+        "area": "Alphaville Campinas",
+        "foto": ("foto-remo", "Atleta no remo ergômetro", "50% 40%"),
+        "secoes": [
+            ("Usar a estrutura do condomínio a seu favor", """<p>Academia, quadra e pista de caminhada são ótimas para a reabilitação e para manter o corpo ativo com segurança. Na avaliação eu vejo o que você sente e o que quer fazer; depois, conduzo as sessões no espaço que funciona melhor, respeitando as regras do condomínio para profissional externo.</p>"""),
+            ("Para quem é", """<ul>
+<li>Quem tem dor no joelho, no ombro ou na coluna e quer tratar sem sair do condomínio.</li>
+<li>Quem joga tênis, beach tennis ou corre e quer cuidar de uma lesão ou evitar a próxima.</li>
+<li>Quem quer se exercitar com acompanhamento de fisioterapeuta, pensando em qualidade de vida.</li>
+</ul>"""),
+            ("Documentação para reembolso", """<p>O atendimento é particular. Eu forneço recibos, relatório e laudo para você solicitar o reembolso ao plano. Veja como funciona em <a href="/fisioterapia-reembolso-convenio-campinas/">reembolso do convênio</a>.</p>"""),
+        ],
+        "faq": [
+            ("Você atende em outros condomínios da região?", "Sim. Mande o nome do condomínio pelo WhatsApp para eu confirmar a agenda."),
+            ("Preciso avisar a portaria?", "Sim. Você autoriza a minha entrada e, se for usar a academia, confirma as regras do condomínio."),
+            ("O acompanhamento é igual ao de um personal?", "Não. Sou fisioterapeuta: o foco é tratar dor, reabilitar e diminuir o risco de lesão, por sessão."),
+        ],
+        "rel": ["fisioterapeuta-academia-do-condominio-campinas", "fisioterapia-esportiva-campinas", "fisioterapeuta-campinas"],
     },
     # ------------------------------------------------------------ necessidades
+    {
+        "slug": "fisioterapeuta-academia-do-condominio-campinas",
+        "tipo": "necessidade",
+        "menu": "Fisioterapeuta na academia do condomínio",
+        "resumo": "Acompanhamento fisioterapêutico do seu treino, por sessão, no seu condomínio.",
+        "title": "Fisioterapeuta na Academia do Condomínio, Campinas | Ed Ferrari Jr",
+        "desc": "Procurando personal, mas tem dor ou medo de se lesionar? Acompanhamento de fisioterapeuta no treino, na academia do seu condomínio em Campinas e Valinhos.",
+        "h1": "Fisioterapeuta na academia do seu condomínio",
+        "lead": "Muita gente procura \"personal perto de mim\" quando, na verdade, precisa de outra coisa: treinar sem dor e sem se machucar. Eu não sou personal, sou fisioterapeuta. Vou até a academia do seu condomínio e acompanho o seu exercício por sessão, para tratar a dor, diminuir o risco de lesão e manter você ativo com qualidade de vida.",
+        "wa": "Olá! Gostaria de saber sobre o acompanhamento de fisioterapeuta na academia do meu condomínio.",
+        "area": "Campinas e Valinhos",
+        "foto": ("foto-barra", "Mulher treinando na barra", "50% 30%"),
+        "secoes": [
+            ("Para quem é", """<ul>
+<li>Quem tem uma dor que volta toda vez que tenta treinar: lombar, joelho, ombro ou pescoço.</li>
+<li>Quem passou por lesão ou cirurgia e quer seguir se exercitando com acompanhamento.</li>
+<li>Quem quer começar a se exercitar depois de muito tempo parado, com segurança.</li>
+<li>Quem tem 50, 60 ou 70 anos e quer manter força, equilíbrio e autonomia.</li>
+</ul>"""),
+            ("O que muda em relação a um personal", """<p>O personal trainer é o profissional de educação física que planeja o treino para objetivos como condicionamento, estética ou desempenho. O meu trabalho é outro: como fisioterapeuta, eu avalio o seu corpo, trato a dor e uso o exercício como parte do cuidado com a sua saúde. Não trabalho com emagrecimento nem com metas estéticas. Cada sessão é uma sessão de fisioterapia, registrada no seu prontuário.</p>"""),
+            ("Como funciona", """<ol>
+<li><strong>Avaliação</strong>: histórico de dor e lesões, força, mobilidade e equilíbrio.</li>
+<li><strong>Plano</strong>: objetivos para a sua saúde e os exercícios que fazem sentido para o seu corpo.</li>
+<li><strong>Sessões na academia do condomínio</strong>: eu conduzo os exercícios, ajusto a carga e trato o que aparecer no caminho.</li>
+<li><strong>Reavaliações</strong>: medimos de novo para ver a evolução e ajustar o plano.</li>
+</ol>"""),
+            ("Atendimento particular com documentação para reembolso", """<p>Não atendo por convênio, mas preparo recibos, relatório e laudo fisioterapêutico de cada fase. Muitos planos reembolsam parte das sessões de fisioterapia; a cobertura, o valor e a exigência de pedido médico dependem do seu contrato. Veja o passo a passo em <a href="/fisioterapia-reembolso-convenio-campinas/">reembolso do convênio</a>.</p>"""),
+            ("Onde eu atendo", """<p>Condomínios do <a href="/fisioterapeuta-swiss-park-campinas/">Swiss Park</a> e de outros bairros de Campinas, como <a href="/fisioterapeuta-alphaville-campinas/">Alphaville</a>, <a href="/fisioterapeuta-nova-campinas/">Nova Campinas</a> e <a href="/fisioterapeuta-cambui-campinas/">Cambuí</a>, e em <a href="/fisioterapeuta-valinhos/">Valinhos</a>. Se o seu condomínio não tem academia, dá para fazer em casa com material portátil.</p>"""),
+        ],
+        "faq": [
+            ("Você é personal trainer?", "Não. Sou fisioterapeuta ({crefito}). O acompanhamento é fisioterapêutico, por sessão, voltado para saúde, dor e prevenção de lesão."),
+            ("Posso pedir reembolso dessas sessões?", "Eu forneço toda a documentação. Se o seu plano reembolsa fisioterapia, você pode solicitar; a decisão e o valor são do plano."),
+            ("Preciso estar com dor para contratar?", "Não. Também atendo quem quer se exercitar com acompanhamento de fisioterapeuta para diminuir o risco de lesão."),
+            ("O condomínio precisa autorizar?", "Muitos condomínios têm regras para profissional externo na academia. Vale confirmar com a administração; se não for possível, fazemos em casa."),
+        ],
+        "rel": ["voltar-a-treinar-com-fisioterapeuta-campinas", "fisioterapia-reembolso-convenio-campinas", "fisioterapeuta-swiss-park-campinas"],
+    },
     {
         "slug": "fisioterapia-pos-operatorio-joelho-campinas",
         "tipo": "necessidade",
@@ -425,13 +488,13 @@ LOCAIS = [
 <li><strong>Exercício terapêutico</strong>: exercícios escolhidos para a sua lesão, com carga que sobe aos poucos.</li>
 <li><strong>Testes de retorno</strong>: quando os números de força e função mostram que você está pronto, você volta ao treino normal.</li>
 </ol>"""),
-            ("E depois?", """<p>A fisioterapia cuida da fase de reabilitação. Quando você estiver liberado, segue com o seu treinador ou personal de confiança, e eu passo para ele o que foi feito e o que merece atenção. Veja também <a href="/fisioterapia-esportiva-campinas/">fisioterapia esportiva</a> e <a href="/fisioterapia-lesoes-musculares-campinas/">lesões musculares</a>.</p>"""),
+            ("E depois?", """<p>A fisioterapia cuida da fase de reabilitação. Se quiser continuar com acompanhamento fisioterapêutico no dia a dia, eu sigo com você na <a href="/fisioterapeuta-academia-do-condominio-campinas/">academia do seu condomínio</a>. Se preferir, quando você estiver liberado, segue com o seu treinador ou personal de confiança, e eu passo para ele o que foi feito e o que merece atenção. Veja também <a href="/fisioterapia-esportiva-campinas/">fisioterapia esportiva</a> e <a href="/fisioterapia-lesoes-musculares-campinas/">lesões musculares</a>.</p>"""),
         ],
         "faq": [
             ("Você é personal trainer?", "Não. Sou fisioterapeuta ({crefito}). Eu conduzo a reabilitação e a volta ao treino; depois, o treino de rotina fica com um profissional de educação física."),
             ("Posso fazer as sessões na academia do meu prédio?", "Sim, desde que o condomínio permita. Também atendo em casa e no Instituto Adara."),
             ("Quanto tempo leva para voltar?", "Depende da lesão e de como você responde. Na avaliação eu explico as etapas e os critérios de cada uma."),
         ],
-        "rel": ["fisioterapia-esportiva-campinas", "fisioterapia-lesoes-musculares-campinas", "fisioterapeuta-campinas"],
+        "rel": ["fisioterapeuta-academia-do-condominio-campinas", "fisioterapia-lesoes-musculares-campinas", "fisioterapeuta-campinas"],
     },
 ]
