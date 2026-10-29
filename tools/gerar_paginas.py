@@ -12,12 +12,15 @@ import os
 import re
 from urllib.parse import quote
 
+from locais import LOCAIS
+
 BASE = "https://www.edferrarijr.com"
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONE = "5519971002263"
 DATA = "2026-10-18"
 ENDERECO = "Av. Antônio Artioli, 276 - Swiss Park, Campinas - SP, 13049-253"
 CREFITO = "CREFITO-3/306266-F"
+DATA_LOCAIS = "2026-10-29"
 
 WA_SVG = ""
 
@@ -32,9 +35,9 @@ SERVICOS = [
         "slug": "fisioterapia-ombro-campinas",
         "menu": "Ombro, cotovelo e punho",
         "resumo": "Manguito rotador, epicondilite, túnel do carpo e tendinites.",
-        "title": "Fisioterapia para Ombro, Cotovelo e Punho em Campinas | Ed Ferrari Jr",
+        "title": "Dor no Ombro, Cotovelo ou Punho? Fisioterapia em Campinas",
         "desc": "Fisioterapia para dor no ombro, manguito rotador, epicondilite, túnel do carpo e tendinites em Campinas. Avaliação individual no Swiss Park ou em casa.",
-        "h1": "Fisioterapia para ombro, cotovelo e punho em Campinas",
+        "h1": "Dor no ombro, cotovelo ou punho: fisioterapia em Campinas",
         "lead": "Dor ao levantar o braço, ao pegar peso ou ao digitar costuma ter causas diferentes. Eu faço a avaliação para entender qual estrutura está sobrecarregada e montar o plano de reabilitação para o seu caso.",
         "wa": "Olá! Gostaria de agendar uma avaliação para dor no ombro, cotovelo ou punho.",
         "secoes": [
@@ -60,9 +63,9 @@ SERVICOS = [
         "slug": "fisioterapia-joelho-tornozelo-campinas",
         "menu": "Joelho e tornozelo",
         "resumo": "Menisco, LCA, condromalácia, fascite plantar e entorses.",
-        "title": "Fisioterapia para Joelho e Tornozelo em Campinas | Ed Ferrari Jr",
+        "title": "Dor no Joelho ou Tornozelo? Fisioterapia em Campinas | Ed Ferrari Jr",
         "desc": "Fisioterapia para dor no joelho e tornozelo em Campinas: menisco, LCA, condromalácia, fascite plantar e entorses, com retorno gradual ao esporte.",
-        "h1": "Fisioterapia para joelho e tornozelo em Campinas",
+        "h1": "Dor no joelho ou no tornozelo: fisioterapia em Campinas",
         "lead": "Joelho e tornozelo suportam o peso do corpo em tudo o que fazemos, de subir escadas a correr uma prova. Eu avalio o que está gerando a dor e conduzo a reabilitação tanto de casos conservadores quanto de pós-operatório.",
         "wa": "Olá! Gostaria de agendar uma avaliação para dor no joelho ou tornozelo.",
         "secoes": [
@@ -87,7 +90,7 @@ SERVICOS = [
         "slug": "fisioterapia-lesoes-musculares-campinas",
         "menu": "Lesões musculares e ligamentares",
         "resumo": "Estiramentos, rupturas, contraturas e distensões.",
-        "title": "Fisioterapia para Lesões Musculares e Ligamentares em Campinas | Ed Ferrari Jr",
+        "title": "Distensão e Lesão Muscular: Fisioterapia em Campinas | Ed Ferrari Jr",
         "desc": "Fisioterapia para estiramentos, distensões, rupturas, contraturas e lesões ligamentares em Campinas, com avaliação individual e retorno gradual ao treino.",
         "h1": "Fisioterapia para lesões musculares e ligamentares em Campinas",
         "lead": "Estiramento na coxa, dor na panturrilha ou uma entorse forte pedem condutas diferentes. A avaliação define a gravidade, o que pode ser trabalhado agora e em que momento sua carga de treino volta a subir.",
@@ -114,9 +117,9 @@ SERVICOS = [
         "slug": "fisioterapia-coluna-campinas",
         "menu": "Coluna vertebral",
         "resumo": "Hérnia de disco, dor lombar, ciatalgia e postura.",
-        "title": "Fisioterapia para Coluna, Dor Lombar e Hérnia de Disco em Campinas | Ed Ferrari Jr",
+        "title": "Dor nas Costas, Lombar e Hérnia de Disco: Fisioterapia em Campinas",
         "desc": "Fisioterapia para dor lombar, hérnia de disco, ciatalgia e dor cervical em Campinas. Avaliação individual, exercícios e orientações para a rotina.",
-        "h1": "Fisioterapia para coluna, dor lombar e hérnia de disco em Campinas",
+        "h1": "Dor nas costas, dor lombar e hérnia de disco: fisioterapia em Campinas",
         "lead": "Dor nas costas é uma das queixas mais comuns, e nem sempre tem relação com hérnia de disco. A avaliação ajuda a identificar o que piora e o que alivia os sintomas, e a montar um plano que cabe na sua rotina.",
         "wa": "Olá! Gostaria de agendar uma avaliação para dor na coluna.",
         "secoes": [
@@ -170,9 +173,9 @@ SERVICOS = [
         "slug": "fisioterapia-home-care-campinas",
         "menu": "Fisioterapia home care",
         "resumo": "Atendimento domiciliar no Swiss Park e região de Campinas.",
-        "title": "Fisioterapia Home Care em Campinas e Swiss Park | Ed Ferrari Jr",
+        "title": "Fisioterapia Domiciliar em Campinas e Swiss Park | Ed Ferrari Jr",
         "desc": "Fisioterapia domiciliar em Campinas e no Swiss Park: avaliação e reabilitação ortopédica e esportiva na sua casa, com privacidade e conforto.",
-        "h1": "Fisioterapia home care em Campinas e Swiss Park",
+        "h1": "Fisioterapia domiciliar (home care) em Campinas e Swiss Park",
         "lead": "Reabilitação ortopédica e esportiva na sua casa, com o mesmo método de avaliação que uso no consultório. Indicada para quem tem pouco tempo, está em pós-operatório ou prefere mais privacidade.",
         "wa": "Olá! Gostaria de saber mais sobre o atendimento de fisioterapia home care.",
         "secoes": [
@@ -566,7 +569,7 @@ def footer():
     return f"""<footer class="s-footer"><div class="s-wide"><div class="cols">
 <div><div class="assin">Ed Ferrari Jr<small>FISIOTERAPIA · ESPORTIVA</small></div>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
 <div><strong>Serviços</strong>{servicos}</div>
-<div><strong>Mais</strong><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/recovery-para-eventos-esportivos/">Recovery em eventos</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
+<div><strong>Mais</strong><a href="/fisioterapeuta-campinas/">Onde eu atendo</a><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/recovery-para-eventos-esportivos/">Recovery em eventos</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
 </div>
 <p class="s-note" style="margin-top:30px">As informações deste site são educativas e não substituem a avaliação de um profissional de saúde. Os resultados variam de pessoa para pessoa. © 2026 Ed Ferrari Jr.</p>
 </div></footer>
@@ -728,6 +731,78 @@ def pagina_servico(s):
 {faq_html(s['faq'])}
 {cta(s['wa'], *s.get('cta', ()))}
 <h2>Veja também</h2><div class="s-grid">{rel}{artigos_rel}</div>
+</div></main>
+"""
+    return caminho, html + footer()
+
+
+def lista_locais(tipo):
+    cards = "".join(
+        f'<a class="s-card" href="/{x["slug"]}/"><span class="s-num">{"REGIÃO" if tipo == "regiao" else "ATENDIMENTO"}</span><h3>{x["menu"]}</h3><p>{x["resumo"]}</p></a>'
+        for x in LOCAIS if x["tipo"] == tipo
+    )
+    return f'<div class="s-grid">{cards}</div>'
+
+
+def pagina_local(s):
+    """Páginas de atendimento local (tools/locais.py): bairro, cidade ou necessidade."""
+    caminho = f"/{s['slug']}/"
+    hub = LOCAIS[0]
+    migalhas = [("Início", "/")] + ([] if s is hub else [(hub["menu"], f"/{hub['slug']}/")]) + [(s["menu"], caminho)]
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "MedicalWebPage",
+                "@id": f"{BASE}{caminho}#pagina",
+                "url": f"{BASE}{caminho}",
+                "name": s["title"],
+                "description": s["desc"],
+                "inLanguage": "pt-BR",
+                "dateModified": DATA_LOCAIS,
+                "about": {"@type": "MedicalSpecialty", "name": "Physiotherapy"},
+                "author": {"@id": f"{BASE}/#pessoa"},
+                "publisher": {"@id": f"{BASE}/#clinica"},
+            },
+            {
+                "@type": "Service",
+                "name": s["h1"],
+                "serviceType": "Fisioterapia",
+                "provider": {"@id": f"{BASE}/#clinica"},
+                "areaServed": {"@type": "Place", "name": s["area"]},
+            },
+            crumbs_ld(migalhas),
+            faq_ld([(q, a.replace("{crefito}", CREFITO)) for q, a in s["faq"]]),
+        ],
+    }
+
+    def troca(t):
+        return t.replace("{crefito}", CREFITO).replace("{{LISTA_REGIOES}}", lista_locais("regiao")).replace("{{LISTA_NECESSIDADES}}", lista_locais("necessidade"))
+
+    faq = [(q, troca(a)) for q, a in s["faq"]]
+    corpo = "".join(f"<h2>{t}</h2>{troca(h)}" for t, h in s["secoes"])
+    todos = {x["slug"]: x for x in SERVICOS + LOCAIS}
+    rel = "".join(
+        f'<a class="s-card" href="/{r}/"><span class="s-num">{"ONDE ATENDO" if r == hub["slug"] else "VEJA"}</span><h3>{todos[r]["menu"]}</h3><p>{todos[r]["resumo"]}</p></a>'
+        for r in s["rel"]
+    )
+    f = s["foto"]
+    foto = f'<div class="s-foto"><img src="/assets/img/{f[0]}.webp" alt="{f[1]}" style="object-position:{f[2]}" width="1100" height="470" loading="eager"></div>'
+    mapa = ""
+    if s["tipo"] != "necessidade":
+        mapa = (f'<h2>Consultório no Swiss Park</h2><p>{ENDERECO}. <a href="https://www.google.com/maps/search/?api=1&query={quote("Instituto Adara " + ENDERECO)}">Ver no Google Maps</a>. '
+                f'Para o atendimento em casa, mande o seu endereço pelo WhatsApp.</p>')
+    html = head(s["title"], s["desc"], caminho, ld, imagem=f"/assets/img/{f[0]}.webp") + header()
+    html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
+{crumbs_html(migalhas)}
+<section class="s-hero"><span class="rotulo">{CREFITO} · {s['area']}</span><div class="regua"></div><h1>{s['h1']}</h1><p class="lead">{s['lead']}</p>
+<a class="s-btn" href="{wa(s['wa'])}">Falar pelo WhatsApp</a></section>
+{foto}
+{corpo}
+{mapa}
+{faq_html(faq)}
+{cta(s['wa'], sub='Particular, com recibos, relatório e laudo para o reembolso do seu plano. Em casa, na academia do condomínio ou no Instituto Adara (Swiss Park).')}
+<h2>Veja também</h2><div class="s-grid">{rel}</div>
 </div></main>
 """
     return caminho, html + footer()
@@ -1027,6 +1102,11 @@ def main():
         escrever(c, h)
         urls.append((c, "0.9"))
     ultimo = {}
+    for s in LOCAIS:
+        c, h = pagina_local(s)
+        escrever(c, h)
+        urls.append((c, "0.8"))
+        ultimo[c] = DATA_LOCAIS
     c, h = pagina_blog()
     escrever(c, h)
     urls.append((c, "0.6"))
