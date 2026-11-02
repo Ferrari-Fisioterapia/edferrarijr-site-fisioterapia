@@ -12,12 +12,15 @@ import os
 import re
 from urllib.parse import quote
 
+from locais import LOCAIS
+
 BASE = "https://www.edferrarijr.com"
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONE = "5519971002263"
 DATA = "2026-10-18"
 ENDERECO = "Av. Antônio Artioli, 276 - Swiss Park, Campinas - SP, 13049-253"
 CREFITO = "CREFITO-3/306266-F"
+DATA_LOCAIS = "2026-10-29"
 
 WA_SVG = ""
 
@@ -32,9 +35,9 @@ SERVICOS = [
         "slug": "fisioterapia-ombro-campinas",
         "menu": "Ombro, cotovelo e punho",
         "resumo": "Manguito rotador, epicondilite, túnel do carpo e tendinites.",
-        "title": "Fisioterapia para Ombro, Cotovelo e Punho em Campinas | Ed Ferrari Jr",
+        "title": "Dor no Ombro, Cotovelo ou Punho? Fisioterapia em Campinas",
         "desc": "Fisioterapia para dor no ombro, manguito rotador, epicondilite, túnel do carpo e tendinites em Campinas. Avaliação individual no Swiss Park ou em casa.",
-        "h1": "Fisioterapia para ombro, cotovelo e punho em Campinas",
+        "h1": "Dor no ombro, cotovelo ou punho: fisioterapia em Campinas",
         "lead": "Dor ao levantar o braço, ao pegar peso ou ao digitar costuma ter causas diferentes. Eu faço a avaliação para entender qual estrutura está sobrecarregada e montar o plano de reabilitação para o seu caso.",
         "wa": "Olá! Gostaria de agendar uma avaliação para dor no ombro, cotovelo ou punho.",
         "secoes": [
@@ -60,9 +63,9 @@ SERVICOS = [
         "slug": "fisioterapia-joelho-tornozelo-campinas",
         "menu": "Joelho e tornozelo",
         "resumo": "Menisco, LCA, condromalácia, fascite plantar e entorses.",
-        "title": "Fisioterapia para Joelho e Tornozelo em Campinas | Ed Ferrari Jr",
+        "title": "Dor no Joelho ou Tornozelo? Fisioterapia em Campinas | Ed Ferrari Jr",
         "desc": "Fisioterapia para dor no joelho e tornozelo em Campinas: menisco, LCA, condromalácia, fascite plantar e entorses, com retorno gradual ao esporte.",
-        "h1": "Fisioterapia para joelho e tornozelo em Campinas",
+        "h1": "Dor no joelho ou no tornozelo: fisioterapia em Campinas",
         "lead": "Joelho e tornozelo suportam o peso do corpo em tudo o que fazemos, de subir escadas a correr uma prova. Eu avalio o que está gerando a dor e conduzo a reabilitação tanto de casos conservadores quanto de pós-operatório.",
         "wa": "Olá! Gostaria de agendar uma avaliação para dor no joelho ou tornozelo.",
         "secoes": [
@@ -87,7 +90,7 @@ SERVICOS = [
         "slug": "fisioterapia-lesoes-musculares-campinas",
         "menu": "Lesões musculares e ligamentares",
         "resumo": "Estiramentos, rupturas, contraturas e distensões.",
-        "title": "Fisioterapia para Lesões Musculares e Ligamentares em Campinas | Ed Ferrari Jr",
+        "title": "Distensão e Lesão Muscular: Fisioterapia em Campinas | Ed Ferrari Jr",
         "desc": "Fisioterapia para estiramentos, distensões, rupturas, contraturas e lesões ligamentares em Campinas, com avaliação individual e retorno gradual ao treino.",
         "h1": "Fisioterapia para lesões musculares e ligamentares em Campinas",
         "lead": "Estiramento na coxa, dor na panturrilha ou uma entorse forte pedem condutas diferentes. A avaliação define a gravidade, o que pode ser trabalhado agora e em que momento sua carga de treino volta a subir.",
@@ -114,9 +117,9 @@ SERVICOS = [
         "slug": "fisioterapia-coluna-campinas",
         "menu": "Coluna vertebral",
         "resumo": "Hérnia de disco, dor lombar, ciatalgia e postura.",
-        "title": "Fisioterapia para Coluna, Dor Lombar e Hérnia de Disco em Campinas | Ed Ferrari Jr",
+        "title": "Dor nas Costas, Lombar e Hérnia de Disco: Fisioterapia em Campinas",
         "desc": "Fisioterapia para dor lombar, hérnia de disco, ciatalgia e dor cervical em Campinas. Avaliação individual, exercícios e orientações para a rotina.",
-        "h1": "Fisioterapia para coluna, dor lombar e hérnia de disco em Campinas",
+        "h1": "Dor nas costas, dor lombar e hérnia de disco: fisioterapia em Campinas",
         "lead": "Dor nas costas é uma das queixas mais comuns, e nem sempre tem relação com hérnia de disco. A avaliação ajuda a identificar o que piora e o que alivia os sintomas, e a montar um plano que cabe na sua rotina.",
         "wa": "Olá! Gostaria de agendar uma avaliação para dor na coluna.",
         "secoes": [
@@ -170,10 +173,10 @@ SERVICOS = [
         "slug": "fisioterapia-home-care-campinas",
         "menu": "Fisioterapia home care",
         "resumo": "Atendimento domiciliar no Swiss Park e região de Campinas.",
-        "title": "Fisioterapia Home Care em Campinas e Swiss Park | Ed Ferrari Jr",
-        "desc": "Fisioterapia domiciliar em Campinas e no Swiss Park: avaliação e reabilitação ortopédica e esportiva na sua casa, com privacidade e conforto.",
-        "h1": "Fisioterapia home care em Campinas e Swiss Park",
-        "lead": "Reabilitação ortopédica e esportiva na sua casa, com o mesmo método de avaliação que uso no consultório. Indicada para quem tem pouco tempo, está em pós-operatório ou prefere mais privacidade.",
+        "title": "Fisioterapia Domiciliar em Campinas e Swiss Park | Ed Ferrari Jr",
+        "desc": "Fisioterapia domiciliar em Campinas e no Swiss Park: avaliação e reabilitação ortopédica na sua casa ou na academia do condomínio, com privacidade e conforto.",
+        "h1": "Fisioterapia domiciliar (home care) em Campinas e Swiss Park",
+        "lead": "Reabilitação ortopédica na sua casa, com o mesmo método de avaliação que uso no consultório. Indicada para quem tem pouco tempo, está em pós-operatório ou prefere mais privacidade.",
         "wa": "Olá! Gostaria de saber mais sobre o atendimento de fisioterapia home care.",
         "secoes": [
             ("Quando o home care faz sentido", """<ul>
@@ -477,11 +480,71 @@ ARTIGOS = [
 <p>Dor que se repete nos treinos, que piora a cada sessão ou que muda a forma como você se move merece avaliação antes da prova, e não depois. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a>, que traz princípios parecidos para outra prova híbrida.</p>
 <p>Este texto é um resumo independente do que consta no site oficial do ATHX e não tem vínculo com a organização. Confira sempre datas e regras no site oficial.</p>""",
     },
+    {
+        "slug": "hyrox-rio-de-janeiro-2026-como-chegar-bem",
+        "data": "2026-10-26",
+        "temas": ["hyrox", "radar", "prevencao"],
+        "foto": ("foto-remo", "Atleta no remo durante prova de Hyrox", "50% 50%"),
+        "title": "Hyrox Rio de Janeiro 2026: como chegar bem e sem lesão",
+        "desc": "O Hyrox Rio de Janeiro 2026 será no Riocentro, em novembro. Veja o que o site oficial informa e como organizar as últimas semanas para proteger ombros, lombar e joelhos.",
+        "h1": "Hyrox Rio de Janeiro 2026: como chegar bem e sem lesão",
+        "lead": "A etapa brasileira do Hyrox volta ao Riocentro em novembro. Nas últimas semanas, o que mais protege o corpo é um treino organizado.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o Hyrox informa</h2>
+<p>Segundo a <a href="https://hyrox.com/event/hyrox-rio-de-janeiro/" rel="noopener" target="_blank">página oficial do Hyrox Rio de Janeiro</a>, a etapa da temporada 26/27 acontece em novembro de 2026, no Riocentro, na Barra Olímpica, o mesmo endereço da edição de 2025. A página indica o dia 21 de novembro e avisa que a programação é provisória e pode mudar. Antes de viajar, confira data e horário da sua divisão no site oficial.</p>
+<h2>O que a prova cobra do corpo</h2>
+<p>O Hyrox alterna corridas e estações de força, como sled, remo, afundo e wall balls. Isso costuma sobrecarregar regiões específicas:</p>
+<ul>
+<li><strong>Ombros:</strong> empurrar e puxar o sled, remar e lançar a bola repetidamente.</li>
+<li><strong>Lombar:</strong> transições entre corrida e estações com o tronco já cansado.</li>
+<li><strong>Joelhos e quadris:</strong> afundos e corrida em sequência.</li>
+</ul>
+<h2>Como organizar as últimas semanas</h2>
+<ul>
+<li>Ajuste a carga aos poucos, sem aumentar volume e intensidade ao mesmo tempo.</li>
+<li>Treine as transições entre corrida e estações, não só cada parte separada.</li>
+<li>Planeje uma semana mais leve antes da prova.</li>
+<li>Não estreie tênis, estratégia de ritmo ou alimentação perto da competição.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que persiste, piora a cada treino ou muda a forma como você se move merece avaliação agora, e não na semana da prova. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a>.</p>
+<p>Este texto é um resumo independente do que consta no site oficial do Hyrox e não tem vínculo com a organização. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
+    {
+        "slug": "sao-silvestre-2026-preparacao-e-prevencao",
+        "data": "2026-10-28",
+        "temas": ["corrida", "radar", "prevencao"],
+        "foto": ("foto-corrida-poca", "Pernas de corredores em movimento perto de uma poça", "50% 50%"),
+        "title": "São Silvestre 2026: como se preparar para os 15 km sem se lesionar",
+        "desc": "A 101ª São Silvestre será em 31 de dezembro, com 15 km na Avenida Paulista. Veja o que o site oficial informa e como organizar o treino para proteger joelhos e canelas.",
+        "h1": "São Silvestre 2026: como se preparar para os 15 km sem se lesionar",
+        "lead": "A 101ª Corrida Internacional de São Silvestre será em 31 de dezembro. Quem vai correr ainda tem tempo de organizar a preparação.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o site oficial informa</h2>
+<p>Segundo o <a href="https://www.saosilvestre.com.br/" rel="noopener" target="_blank">site oficial da São Silvestre</a> e o <a href="https://www.saosilvestre.com.br/regulamento/" rel="noopener" target="_blank">regulamento</a>, a 101ª edição acontece em 31 de dezembro de 2026, com percurso de 15 km e largada e chegada na Avenida Paulista, em São Paulo. O regulamento prevê inscrições até 27 de novembro, ou antes, se as vagas acabarem, e exige 18 anos completos até 31 de dezembro. O kit é retirado na Expo São Silvestre, no Ibirapuera, de 26 a 30 de dezembro. O site alerta para golpes: inscreva-se apenas pelos canais oficiais.</p>
+<h2>O que 15 km cobram do corpo</h2>
+<p>Para quem corre menos distância no dia a dia, 15 km é um salto de volume. As regiões que mais costumam reclamar são:</p>
+<ul>
+<li><strong>Joelhos:</strong> dor na frente ou na lateral, que aparece depois de alguns quilômetros.</li>
+<li><strong>Canelas e tornozelos:</strong> sobrecarga quando o volume sobe rápido.</li>
+<li><strong>Quadril e lombar:</strong> cansaço da musculatura que estabiliza a pelve.</li>
+</ul>
+<h2>Como organizar as semanas até a prova</h2>
+<ul>
+<li>Aumente a distância dos longões aos poucos, sem subir volume e ritmo ao mesmo tempo.</li>
+<li>Inclua treino de força para pernas e quadril duas vezes por semana.</li>
+<li>Reserve dias de descanso e uma semana mais leve antes da prova.</li>
+<li>Não estreie tênis, meia ou estratégia de ritmo no dia da corrida.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que persiste por mais de uma ou duas semanas, piora a cada treino ou muda o jeito de correr merece avaliação antes de ganhar volume. Leia também <a href="/blog/dor-no-joelho-corrida/">Dor no joelho na corrida: por que acontece e quando investigar</a>.</p>
+<p>Este texto é um resumo independente do que consta no site oficial da São Silvestre e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
 NAV = [
-    ("/fisioterapia-esportiva-campinas/", "Esportiva", True),
+    ("/fisioterapeuta-campinas/", "Onde atendo", True),
     ("/fisioterapia-home-care-campinas/", "Home care", True),
     ("/ferrari-recovery-campinas/", "Recovery", True),
     ("/perito-assistente-tecnico-em-fisioterapia/", "Perícia", True),
@@ -529,7 +592,7 @@ def header():
         '<a href="%s"%s>%s</a>' % (h, ' class="hide-m"' if ocultar else "", t) for h, t, ocultar in NAV
     )
     return f"""<header class="s-header"><div class="s-wide">
-<a class="s-brand" href="/"><b>Ed Ferrari Jr</b><small>FISIOTERAPIA · ESPORTIVA</small></a>
+<a class="s-brand" href="/"><b>Ed Ferrari Jr</b><small>FISIOTERAPIA · ORTOPÉDICA</small></a>
 <input type="checkbox" id="mn" class="mn-chk" aria-label="Abrir menu"><label for="mn" class="mn-btn" aria-hidden="true"><i></i></label>
 <nav class="s-nav" aria-label="Principal">{links}<a class="s-btn small" href="{wa('Olá! Gostaria de agendar uma avaliação.')}">Agendar</a></nav>
 </div></header>
@@ -539,9 +602,9 @@ def header():
 def footer():
     servicos = "".join('<a href="/%s/">%s</a>' % (x["slug"], x["menu"]) for x in SERVICOS[:5])
     return f"""<footer class="s-footer"><div class="s-wide"><div class="cols">
-<div><div class="assin">Ed Ferrari Jr<small>FISIOTERAPIA · ESPORTIVA</small></div>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
+<div><div class="assin">Ed Ferrari Jr<small>FISIOTERAPIA · ORTOPÉDICA</small></div>{CREFITO}<br><br>{ENDERECO}<br>WhatsApp: (19) 97100-2263</div>
 <div><strong>Serviços</strong>{servicos}</div>
-<div><strong>Mais</strong><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/recovery-para-eventos-esportivos/">Recovery em eventos</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
+<div><strong>Mais</strong><a href="/fisioterapeuta-campinas/">Onde eu atendo</a><a href="/fisioterapia-home-care-campinas/">Home care</a><a href="/fisioterapia-reembolso-convenio-campinas/">Reembolso do convênio</a><a href="/ferrari-recovery-campinas/">Ferrari Recovery</a><a href="/recovery-para-eventos-esportivos/">Recovery em eventos</a><a href="/perito-assistente-tecnico-em-fisioterapia/">Perícia e assistência técnica</a><a href="/blog/">Blog</a><a href="https://www.instagram.com/edferrarijr">Instagram</a><a href="https://www.youtube.com/@EdFerrariJr">YouTube</a></div>
 </div>
 <p class="s-note" style="margin-top:30px">As informações deste site são educativas e não substituem a avaliação de um profissional de saúde. Os resultados variam de pessoa para pessoa. © 2026 Ed Ferrari Jr.</p>
 </div></footer>
@@ -708,6 +771,78 @@ def pagina_servico(s):
     return caminho, html + footer()
 
 
+def lista_locais(tipo):
+    cards = "".join(
+        f'<a class="s-card" href="/{x["slug"]}/"><span class="s-num">{"REGIÃO" if tipo == "regiao" else "ATENDIMENTO"}</span><h3>{x["menu"]}</h3><p>{x["resumo"]}</p></a>'
+        for x in LOCAIS if x["tipo"] == tipo
+    )
+    return f'<div class="s-grid">{cards}</div>'
+
+
+def pagina_local(s):
+    """Páginas de atendimento local (tools/locais.py): bairro, cidade ou necessidade."""
+    caminho = f"/{s['slug']}/"
+    hub = LOCAIS[0]
+    migalhas = [("Início", "/")] + ([] if s is hub else [(hub["menu"], f"/{hub['slug']}/")]) + [(s["menu"], caminho)]
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "MedicalWebPage",
+                "@id": f"{BASE}{caminho}#pagina",
+                "url": f"{BASE}{caminho}",
+                "name": s["title"],
+                "description": s["desc"],
+                "inLanguage": "pt-BR",
+                "dateModified": DATA_LOCAIS,
+                "about": {"@type": "MedicalSpecialty", "name": "Physiotherapy"},
+                "author": {"@id": f"{BASE}/#pessoa"},
+                "publisher": {"@id": f"{BASE}/#clinica"},
+            },
+            {
+                "@type": "Service",
+                "name": s["h1"],
+                "serviceType": "Fisioterapia",
+                "provider": {"@id": f"{BASE}/#clinica"},
+                "areaServed": {"@type": "Place", "name": s["area"]},
+            },
+            crumbs_ld(migalhas),
+            faq_ld([(q, a.replace("{crefito}", CREFITO)) for q, a in s["faq"]]),
+        ],
+    }
+
+    def troca(t):
+        return t.replace("{crefito}", CREFITO).replace("{{LISTA_REGIOES}}", lista_locais("regiao")).replace("{{LISTA_NECESSIDADES}}", lista_locais("necessidade"))
+
+    faq = [(q, troca(a)) for q, a in s["faq"]]
+    corpo = "".join(f"<h2>{t}</h2>{troca(h)}" for t, h in s["secoes"])
+    todos = {x["slug"]: x for x in SERVICOS + LOCAIS}
+    rel = "".join(
+        f'<a class="s-card" href="/{r}/"><span class="s-num">{"ONDE ATENDO" if r == hub["slug"] else "VEJA"}</span><h3>{todos[r]["menu"]}</h3><p>{todos[r]["resumo"]}</p></a>'
+        for r in s["rel"]
+    )
+    f = s["foto"]
+    foto = f'<div class="s-foto"><img src="/assets/img/{f[0]}.webp" alt="{f[1]}" style="object-position:{f[2]}" width="1100" height="470" loading="eager"></div>'
+    mapa = ""
+    if s["tipo"] != "necessidade":
+        mapa = (f'<h2>Consultório no Swiss Park</h2><p>{ENDERECO}. <a href="https://www.google.com/maps/search/?api=1&query={quote("Instituto Adara " + ENDERECO)}">Ver no Google Maps</a>. '
+                f'Para o atendimento em casa, mande o seu endereço pelo WhatsApp.</p>')
+    html = head(s["title"], s["desc"], caminho, ld, imagem=f"/assets/img/{f[0]}.webp") + header()
+    html += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
+{crumbs_html(migalhas)}
+<section class="s-hero"><span class="rotulo">{CREFITO} · {s['area']}</span><div class="regua"></div><h1>{s['h1']}</h1><p class="lead">{s['lead']}</p>
+<a class="s-btn" href="{wa(s['wa'])}">Falar pelo WhatsApp</a></section>
+{foto}
+{corpo}
+{mapa}
+{faq_html(faq)}
+{cta(s['wa'], sub='Particular, com recibos, relatório e laudo para o reembolso do seu plano. Em casa, na academia do condomínio ou no Instituto Adara (Swiss Park).')}
+<h2>Veja também</h2><div class="s-grid">{rel}</div>
+</div></main>
+"""
+    return caminho, html + footer()
+
+
 def pagina_artigo(a):
     caminho = f"/blog/{a['slug']}/"
     serv = next(s for s in SERVICOS if s["slug"] == a["servico"])
@@ -760,7 +895,7 @@ def pagina_artigo(a):
 
 def pagina_blog():
     caminho = "/blog/"
-    titulo = "Blog de Fisioterapia Esportiva: CrossFit, Hyrox, ATHX e Corrida | Ed Ferrari Jr"
+    titulo = "Blog de Fisioterapia: Dor, Lesões, CrossFit, Hyrox e Corrida | Ed Ferrari Jr"
     desc = "Dor no ombro, joelho e lombar, prevenção de lesão e notícias de CrossFit, Hyrox, ATHX e corrida, explicadas pelo fisioterapeuta Ed Ferrari Jr, de Campinas."
     migalhas = [("Início", "/"), ("Blog", caminho)]
     ld = {"@context": "https://schema.org", "@graph": [
@@ -797,15 +932,15 @@ TICKER = "".join("<span>%s</span>" % x for x in ["Ombro", "Joelho", "Tornozelo",
 
 
 def pagina_home():
-    titulo = "Fisioterapeuta Esportivo e Ortopédico em Campinas | Ed Ferrari Jr"
-    desc = "Fisioterapia ortopédica e esportiva em Campinas: ombro, joelho, coluna e lesões musculares. Atendimento no Instituto Adara (Swiss Park) e home care. Agende sua avaliação."
+    titulo = "Ed Ferrari Jr | Fisioterapia Ortopédica em Campinas e Swiss Park"
+    desc = "Fisioterapia ortopédica em Campinas: dor no ombro, joelho e coluna, lesões e pós-operatório. No Instituto Adara (Swiss Park), em casa ou no condomínio."
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Physiotherapy", "@id": f"{BASE}/#clinica", "name": "Ed Ferrari Jr. Fisioterapia Ortopédica e Esportiva", "url": f"{BASE}/",
+        {"@type": "Physiotherapy", "@id": f"{BASE}/#clinica", "name": "Ed Ferrari Jr Fisioterapia", "url": f"{BASE}/",
          "image": f"{BASE}/assets/img/foto-sled.webp", "telephone": "+5519971002263",
          "address": {"@type": "PostalAddress", "streetAddress": "Av. Antônio Artioli, 276", "addressLocality": "Campinas", "addressRegion": "SP", "postalCode": "13049-253", "addressCountry": "BR"},
-         "areaServed": [{"@type": "City", "name": "Campinas"}, {"@type": "Place", "name": "Swiss Park"}],
+         "areaServed": [{"@type": "City", "name": "Campinas"}, {"@type": "Place", "name": "Swiss Park"}, {"@type": "City", "name": "Valinhos"}],
          "medicalSpecialty": "Physiotherapy", "sameAs": ["https://www.instagram.com/edferrarijr", "https://www.youtube.com/@EdFerrariJr"], "founder": {"@id": f"{BASE}/#pessoa"}},
-        {"@type": "Person", "@id": f"{BASE}/#pessoa", "name": "Ed Ferrari Jr", "jobTitle": "Fisioterapeuta ortopédico e esportivo", "identifier": CREFITO, "url": f"{BASE}/", "worksFor": {"@id": f"{BASE}/#clinica"}},
+        {"@type": "Person", "@id": f"{BASE}/#pessoa", "name": "Ed Ferrari Jr", "jobTitle": "Fisioterapeuta ortopédico", "identifier": CREFITO, "url": f"{BASE}/", "worksFor": {"@id": f"{BASE}/#clinica"}},
         {"@type": "WebSite", "@id": f"{BASE}/#site", "url": f"{BASE}/", "name": "Ed Ferrari Jr | Fisioterapia", "inLanguage": "pt-BR"},
         faq_ld(HOME_FAQ)]}
     cards = "".join(
@@ -816,7 +951,7 @@ def pagina_home():
     h += f"""<main id="conteudo">
 <section class="h-hero"><video class="fundo" autoplay muted loop playsinline preload="metadata" poster="/assets/img/foto-sled.webp" aria-hidden="true"><source src="/assets/video/hero.mp4" type="video/mp4"></video><div class="s-wide">
 <span class="rotulo">Campinas · Instituto Adara e home care</span><div class="regua"></div>
-<h1><span class="destaque">Fisioterapia</span> ortopédica e esportiva em Campinas</h1>
+<h1><span class="destaque">Fisioterapia</span> ortopédica em Campinas</h1>
 <p class="lead">Avaliação individual e reabilitação baseada em evidências, no Instituto Adara (Swiss Park) ou na sua casa.</p>
 <div class="acoes"><a class="s-btn" href="{wa('Olá! Vim pelo site e gostaria de agendar uma avaliação.')}">Agendar minha avaliação</a><a class="s-btn vazado" href="#servicos">Ver serviços</a></div>
 </div></section>
@@ -826,7 +961,7 @@ def pagina_home():
 <section class="h-sec"><div class="s-wide h-sobre">
 <img src="/assets/img/image_1.webp" alt="Ed Ferrari Jr, fisioterapeuta" width="600" height="800" loading="lazy">
 <div><span class="rotulo">Quem cuida de você</span><h2>Chega de tratamentos genéricos.</h2>
-<p>Muitas vezes o tratamento se limita a aliviar o sintoma. Como especialista em ortopedia e fisioterapia esportiva, eu investigo a <strong>raiz biomecânica</strong> da sua dor articular, muscular ou ligamentar.</p>
+<p>Muitas vezes o tratamento se limita a aliviar o sintoma. Como fisioterapeuta ortopédico, eu investigo a <strong>raiz biomecânica</strong> da sua dor articular, muscular ou ligamentar.</p>
 <p>Meu compromisso é com a sua independência: um plano de eficiência máxima, com o menor número de visitas possível, para você voltar a treinar e viver sem medo.</p></div>
 </div></section>
 
@@ -848,7 +983,7 @@ def pagina_home():
 
 <section class="h-sec escura" id="atendimento"><div class="s-wide"><span class="rotulo">Onde atendo</span><h2>Duas formas de cuidar de você.</h2>
 <div class="h-duo">
-<div class="s-card escuro"><span class="s-num" style="color:#EE6660">01</span><h3>Instituto Adara</h3><p>Atendimento presencial em uma estrutura moderna e equipada para a sua reabilitação esportiva.</p><div class="h-end">{ENDERECO}</div><a class="s-btn small" href="{wa('Olá! Gostaria de agendar um atendimento no Instituto Adara.')}">Agendar na clínica</a></div>
+<div class="s-card escuro"><span class="s-num" style="color:#EE6660">01</span><h3>Instituto Adara</h3><p>Atendimento presencial em uma estrutura moderna e equipada para a sua reabilitação.</p><div class="h-end">{ENDERECO}</div><a class="s-btn small" href="{wa('Olá! Gostaria de agendar um atendimento no Instituto Adara.')}">Agendar na clínica</a></div>
 <div class="s-card escuro"><span class="s-num" style="color:#EE6660">02</span><h3>Home care</h3><p>Reabilitação na sua casa, com privacidade e conforto, no Swiss Park e na região metropolitana de Campinas.</p><a class="s-btn small" href="{wa('Olá! Gostaria de agendar um atendimento Home Care.')}">Agendar home care</a> &nbsp; <a href="/fisioterapia-home-care-campinas/" style="color:#EE6660">Saiba mais →</a></div>
 </div></div></section>
 
@@ -866,7 +1001,7 @@ def pagina_home():
 def pagina_link_bio():
     """Página de links da bio do @edferrarijr. Fora do Google (noindex) e fora do sitemap."""
     caminho = "/instagram/"
-    titulo = "Links do Ed Ferrari | Fisioterapia Esportiva em Campinas"
+    titulo = "Links do Ed Ferrari | Fisioterapia em Campinas"
     desc = "Agende sua avaliação, veja o home care, o reembolso do convênio e os artigos do blog."
     ld = {"@context": "https://schema.org", "@type": "WebPage", "name": titulo, "url": f"{BASE}{caminho}"}
     botoes = [
@@ -880,7 +1015,7 @@ def pagina_link_bio():
     cards = "".join(f'<a class="s-card" href="{h}"><span class="s-num">{i:02d}</span><h3>{t}</h3><p>{d}</p></a>' for i, (t, d, h) in enumerate(botoes, 1))
     h = head(titulo, desc, caminho, ld, robots="noindex, follow") + header()
     h += f"""<main id="conteudo" class="s-main"><div class="s-wrap">
-<section class="s-hero"><span class="rotulo">{CREFITO} · Campinas</span><div class="regua"></div><h1>Ed Ferrari<br><span class="destaque">Fisio esportivo</span></h1>
+<section class="s-hero"><span class="rotulo">{CREFITO} · Campinas</span><div class="regua"></div><h1>Ed Ferrari<br><span class="destaque">Fisioterapeuta</span></h1>
 <p class="lead">Para quem treina Hyrox, CrossFit e corrida. Escolha o que você procura.</p></section>
 <div class="s-grid" style="grid-template-columns:1fr">{cards}</div>
 </div></main>
@@ -1002,6 +1137,11 @@ def main():
         escrever(c, h)
         urls.append((c, "0.9"))
     ultimo = {}
+    for s in LOCAIS:
+        c, h = pagina_local(s)
+        escrever(c, h)
+        urls.append((c, "0.8"))
+        ultimo[c] = DATA_LOCAIS
     c, h = pagina_blog()
     escrever(c, h)
     urls.append((c, "0.6"))

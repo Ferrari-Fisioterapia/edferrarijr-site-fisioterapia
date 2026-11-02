@@ -60,10 +60,11 @@
     try{sessionStorage.setItem('og',o)}catch(_){}
     return o;
   })();
+  var pg=location.pathname.replace(/^\/+|\/+$/g,'').split('/').pop()||'inicio';
   function marca(a){
     if(a.getAttribute('data-og'))return;
     try{var u=new URL(a.href),t=u.searchParams.get('text')||'';
-      u.searchParams.set('text',t+' (origem: '+og+')');a.href=u.toString();a.setAttribute('data-og','1')}catch(_){}
+      u.searchParams.set('text',t+' (origem: '+og+' · página: '+pg+')');a.href=u.toString();a.setAttribute('data-og','1')}catch(_){}
   }
   document.querySelectorAll('a[href*="api.whatsapp.com"]').forEach(marca);
   // Google Analytics 4: só liga quando o ID de medição (G-XXXXXXX) for preenchido
