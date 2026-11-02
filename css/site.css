@@ -238,3 +238,31 @@ h3{font-weight:700;font-size:1.45rem;line-height:1.05;letter-spacing:.01em;margi
 .h-sec.escura .s-card{background:#222;border-color:#F4F4F1;color:#F4F4F1}
 .h-sec.escura .s-card h3{color:#F4F4F1}.h-sec.escura .s-card p{color:#A3A3A0}.h-sec.escura .s-card .s-num{color:#EE6660}
 .h-sec.escura .s-grid a.s-card:hover h3{color:#EE6660}
+
+/* blog: busca, filtros por tema e cards com capa */
+.b-filtros{display:none;margin:0 0 6px}
+.js .b-filtros{display:block}
+.b-busca{width:100%;font:inherit;font-size:1.05rem;padding:14px 16px;border:2px solid var(--tinta);border-radius:0;background:var(--superficie);color:var(--tinta);-webkit-appearance:none;appearance:none}
+.b-chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.b-chip{font-family:var(--mono);font-weight:500;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px;border:2px solid var(--tinta);border-radius:0;background:transparent;color:var(--tinta);cursor:pointer;text-decoration:none;line-height:1.2}
+.b-chip.on,.b-chip:hover{background:var(--tinta);color:var(--fundo)}
+.b-vazio{color:var(--suave);margin:18px 0 0}
+.b-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin:26px 0}
+.b-card{display:flex;flex-direction:column;background:var(--superficie);border-top:2px solid var(--tinta);text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s}
+.b-card[hidden]{display:none}
+.b-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px #14141418}
+.b-card:hover h3{color:var(--marca-texto)}
+.b-card img{width:100%;aspect-ratio:3/2;object-fit:cover;background:var(--linha)}
+.b-txt{display:flex;flex-direction:column;gap:8px;flex:1;padding:18px 22px 22px}
+.b-txt h3{margin:0}
+.s-main .b-txt p,.b-txt p{margin:0;color:var(--suave);font-size:.98rem}
+.b-tag{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--marca-texto)}
+.b-meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;color:var(--suave);margin-top:auto;padding-top:6px}
+@media(min-width:861px){
+  .b-grid:not(.filtrando) .b-dest{grid-column:1/-1;flex-direction:row}
+  .b-grid:not(.filtrando) .b-dest img{width:58%;aspect-ratio:16/10}
+  .b-grid:not(.filtrando) .b-dest .b-txt{justify-content:center;padding:34px 36px}
+  .b-grid:not(.filtrando) .b-dest h3{font-size:2.3rem;line-height:1}
+  .b-grid:not(.filtrando) .b-dest p{font-size:1.1rem}
+}
+.s-hero .b-chips{margin-top:16px}
