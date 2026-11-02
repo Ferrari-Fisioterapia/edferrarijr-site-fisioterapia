@@ -300,6 +300,44 @@ SERVICOS = [
 
 ARTIGOS = [
     {
+        "slug": "entorse-de-tornozelo-crossfit",
+        "data": "2026-11-02",
+        "temas": ["crossfit", "hyrox", "prevencao"],
+        "foto": ("foto-afundo", "Atleta fazendo afundo no treino", "50% 50%"),
+        "title": "Entorse de tornozelo no CrossFit: quando voltar ao WOD",
+        "desc": "Torceu o tornozelo no box? Veja o que fazer nos primeiros dias, quando ir ao médico, como voltar ao WOD e como o equilíbrio ajuda a evitar a próxima.",
+        "h1": "Entorse de tornozelo no CrossFit: quando e como voltar ao WOD",
+        "lead": "Torcer o tornozelo num box jump, num double under ou na corrida do WOD é comum. O que define se ela vai se repetir é como você volta a treinar, não só a torção em si.",
+        "servico": "fisioterapia-joelho-tornozelo-campinas",
+        "corpo": """<h2>O que acontece na entorse</h2>
+<p>Na entorse mais comum, o pé vira para dentro e os ligamentos da parte de fora do tornozelo são esticados além do limite. Ela pode ir de um estiramento leve a uma ruptura do ligamento. No CrossFit e no Hyrox, aparece em saltos, aterrissagens, corrida e na troca rápida de estações.</p>
+<h2>Nos primeiros dias</h2>
+<ul>
+<li>Proteja o tornozelo e evite o que provoca dor forte, sem imobilizar por conta própria por muito tempo.</li>
+<li>Mantenha o pé elevado quando estiver parado se houver inchaço.</li>
+<li>Movimente o tornozelo dentro do que for confortável e treine o resto do corpo com adaptações.</li>
+</ul>
+<h2>Quando procurar um médico</h2>
+<ul>
+<li>Você não consegue apoiar o pé e dar alguns passos logo depois da torção.</li>
+<li>Há dor forte ao apertar o osso, deformidade ou inchaço muito grande.</li>
+<li>Formigamento, pé frio ou dor que piora muito nas horas seguintes.</li>
+</ul>
+<h2>Quando voltar ao WOD</h2>
+<p>Não existe um prazo único: depende do grau da lesão e de como o tornozelo responde. Antes de voltar a saltar e correr no WOD, ele precisa aguentar o que o treino exige. Na prática, eu observo alguns pontos:</p>
+<ul>
+<li>Caminhar e subir escadas sem mancar e sem dor.</li>
+<li>Equilíbrio em uma perna parecido com o do lado sem lesão.</li>
+<li>Força para subir na ponta do pé várias vezes seguidas.</li>
+<li>Pular e aterrissar com controle, primeiro com as duas pernas e depois com uma.</li>
+</ul>
+<p>A volta é em etapas: primeiro levantamentos e remo, depois corrida leve, por último saltos e double unders.</p>
+<h2>Por que o equilíbrio ajuda a evitar a próxima entorse</h2>
+<p>Quem já torceu o tornozelo tem mais chance de torcer de novo. Um estudo com atletas que tinham acabado de ter uma entorse comparou o tratamento habitual com o mesmo tratamento mais oito semanas de exercícios de equilíbrio feitos em casa. Em um ano, 22% do grupo que fez os exercícios teve uma nova entorse, contra 33% do outro grupo (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2714677/" rel="noopener" target="_blank">Hupperets e colaboradores, BMJ, 2009</a>). Ou seja, o treino de equilíbrio depois da lesão ajuda a reduzir a recaída.</p>
+<h2>Como a fisioterapia ajuda</h2>
+<p>Na avaliação eu vejo a gravidade, a mobilidade, a força e o equilíbrio do tornozelo, e monto a volta ao treino de acordo com o que você faz no box. O objetivo é voltar a saltar e correr com confiança e diminuir a chance de uma nova torção.</p>""",
+    },
+    {
         "slug": "dor-no-ombro-crossfit",
         "temas": ["crossfit", "prevencao"],
         "foto": ("foto-overhead", "Atleta com barra acima da cabeça", "50% 22%"),
