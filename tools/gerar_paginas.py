@@ -505,6 +505,36 @@ ARTIGOS = [
 <p>Dor que persiste por mais de uma ou duas semanas, piora a cada treino ou muda o jeito de correr merece avaliação antes de ganhar volume. Leia também <a href="/blog/dor-no-joelho-corrida/">Dor no joelho na corrida: por que acontece e quando investigar</a>.</p>
 <p>Este texto é um resumo independente do que consta no site oficial da São Silvestre e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
     },
+    {
+        "slug": "mundial-de-hyrox-2027-hong-kong-como-se-preparar",
+        "data": "2026-11-02",
+        "temas": ["hyrox", "radar", "prevencao"],
+        "foto": ("foto-remo", "Atleta no remo durante prova de Hyrox", "50% 50%"),
+        "title": "Mundial de Hyrox 2027 em Hong Kong: como planejar a temporada sem se lesionar",
+        "desc": "O Mundial de Hyrox 2027 será em Hong Kong, de 10 a 13 de junho. Veja o que o site oficial informa sobre a classificação e como organizar a temporada para proteger ombros, lombar e joelhos.",
+        "h1": "Mundial de Hyrox 2027 em Hong Kong: como planejar a temporada sem se lesionar",
+        "lead": "O Hyrox já definiu o local e as datas do Mundial de 2027. Para quem sonha com a vaga, planejar a temporada é parte do treino.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o Hyrox informa</h2>
+<p>Segundo a <a href="https://hyrox.com/hyrox-world-championships/" rel="noopener" target="_blank">página oficial do Hyrox World Championships</a>, o Mundial de 2027 acontece de 10 a 13 de junho, no Asiaworld-Expo, em Chek Lap Kok, Hong Kong. As etapas da temporada 26/27 que ocorrem até o fim de semana de 16 de maio de 2027 dão vagas para o evento. As etapas realizadas depois dessa data passam a valer para o Mundial de 2028. A programação por divisão ainda será divulgada.</p>
+<h2>O que uma temporada de classificação cobra do corpo</h2>
+<p>Quem busca uma vaga costuma competir mais de uma vez e treinar forte entre as etapas. As regiões que mais reclamam no Hyrox costumam ser:</p>
+<ul>
+<li><strong>Ombros:</strong> sled, remo e wall balls repetidos, com a fadiga acumulada.</li>
+<li><strong>Lombar:</strong> transições entre corrida e estações com o tronco cansado.</li>
+<li><strong>Joelhos e quadris:</strong> afundos e corrida em sequência.</li>
+</ul>
+<h2>Como organizar a temporada</h2>
+<ul>
+<li>Escolha as etapas com antecedência e planeje semanas mais leves depois de cada prova.</li>
+<li>Evite aumentar volume e intensidade ao mesmo tempo.</li>
+<li>Mantenha treino de força para as regiões mais exigidas, com técnica antes de carga.</li>
+<li>Não estreie tênis, estratégia de ritmo ou alimentação perto da competição.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que persiste, piora a cada treino ou muda a forma como você se move merece avaliação antes de ganhar volume, e não perto da prova. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a> e <a href="/blog/hyrox-rio-de-janeiro-2026-como-chegar-bem/">Hyrox Rio de Janeiro 2026: como chegar bem e sem lesão</a>.</p>
+<p>Este texto é um resumo independente do que consta no site oficial do Hyrox e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
