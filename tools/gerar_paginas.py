@@ -540,6 +540,66 @@ ARTIGOS = [
 <p>Dor que persiste por mais de uma ou duas semanas, piora a cada treino ou muda o jeito de correr merece avaliação antes de ganhar volume. Leia também <a href="/blog/dor-no-joelho-corrida/">Dor no joelho na corrida: por que acontece e quando investigar</a>.</p>
 <p>Este texto é um resumo independente do que consta no site oficial da São Silvestre e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
     },
+    {
+        "slug": "mundial-de-hyrox-2027-hong-kong-como-se-preparar",
+        "data": "2026-11-02",
+        "temas": ["hyrox", "radar", "prevencao"],
+        "foto": ("foto-remo", "Atleta no remo durante prova de Hyrox", "50% 50%"),
+        "title": "Mundial de Hyrox 2027 em Hong Kong: como planejar a temporada sem se lesionar",
+        "desc": "O Mundial de Hyrox 2027 será em Hong Kong, de 10 a 13 de junho. Veja o que o site oficial informa sobre a classificação e como organizar a temporada para proteger ombros, lombar e joelhos.",
+        "h1": "Mundial de Hyrox 2027 em Hong Kong: como planejar a temporada sem se lesionar",
+        "lead": "O Hyrox já definiu o local e as datas do Mundial de 2027. Para quem sonha com a vaga, planejar a temporada é parte do treino.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o Hyrox informa</h2>
+<p>Segundo a <a href="https://hyrox.com/hyrox-world-championships/" rel="noopener" target="_blank">página oficial do Hyrox World Championships</a>, o Mundial de 2027 acontece de 10 a 13 de junho, no Asiaworld-Expo, em Chek Lap Kok, Hong Kong. As etapas da temporada 26/27 que ocorrem até o fim de semana de 16 de maio de 2027 dão vagas para o evento. As etapas realizadas depois dessa data passam a valer para o Mundial de 2028. A programação por divisão ainda será divulgada.</p>
+<h2>O que uma temporada de classificação cobra do corpo</h2>
+<p>Quem busca uma vaga costuma competir mais de uma vez e treinar forte entre as etapas. As regiões que mais reclamam no Hyrox costumam ser:</p>
+<ul>
+<li><strong>Ombros:</strong> sled, remo e wall balls repetidos, com a fadiga acumulada.</li>
+<li><strong>Lombar:</strong> transições entre corrida e estações com o tronco cansado.</li>
+<li><strong>Joelhos e quadris:</strong> afundos e corrida em sequência.</li>
+</ul>
+<h2>Como organizar a temporada</h2>
+<ul>
+<li>Escolha as etapas com antecedência e planeje semanas mais leves depois de cada prova.</li>
+<li>Evite aumentar volume e intensidade ao mesmo tempo.</li>
+<li>Mantenha treino de força para as regiões mais exigidas, com técnica antes de carga.</li>
+<li>Não estreie tênis, estratégia de ritmo ou alimentação perto da competição.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que persiste, piora a cada treino ou muda a forma como você se move merece avaliação antes de ganhar volume, e não perto da prova. Leia também <a href="/blog/hyrox-prevencao-de-lesoes/">Hyrox: as 4 regiões que mais reclamam e como organizar o treino</a> e <a href="/blog/hyrox-rio-de-janeiro-2026-como-chegar-bem/">Hyrox Rio de Janeiro 2026: como chegar bem e sem lesão</a>.</p>
+<p>Este texto é um resumo independente do que consta no site oficial do Hyrox e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
+    {
+        "slug": "athx-2027-calendario-e-preparacao-sem-lesao",
+        "data": "2026-11-04",
+        "temas": ["athx", "radar", "prevencao"],
+        "foto": ("foto-mulher-barra", "Atleta com a barra acima da cabeça durante treino", "50% 50%"),
+        "title": "ATHX 2027: calendário das primeiras etapas e como se preparar sem se lesionar",
+        "desc": "O ATHX divulgou o calendário de 2027, com etapas em Londres, San Diego, Las Vegas e Paris. Veja o que o site oficial informa e como montar a base para provas híbridas.",
+        "h1": "ATHX 2027: calendário das primeiras etapas e como se preparar sem se lesionar",
+        "lead": "O ATHX já divulgou o calendário de 2027. Com datas definidas, dá para planejar a preparação aos poucos e proteger ombros, lombar e joelhos.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o ATHX informa</h2>
+<p>Segundo o <a href="https://athxgames.com/events" rel="noopener" target="_blank">site oficial do ATHX</a>, o calendário de 2027 já está no ar e é descrito como a maior temporada até agora, com etapas no Reino Unido, na Europa e nos EUA. As primeiras são o ATHX London, em 23 e 24 de janeiro, e o ATHX San Diego, em 23 de janeiro. Em seguida vêm o ATHX Paris, em 13 e 14 de fevereiro, no Paris Event Centre, e o ATHX Las Vegas, em 6 de fevereiro, que, segundo a <a href="https://athxgames.com/posts/hybrid-fitness-competition-las-vegas-2027" rel="noopener" target="_blank">página do evento</a>, tem cerca de 2 horas e meia de prova, seis zonas e três treinos.</p>
+<h2>O que uma prova híbrida cobra do corpo</h2>
+<p>Esforços longos que misturam levantamentos, deslocamentos e trabalho cardiorrespiratório costumam sobrecarregar regiões específicas:</p>
+<ul>
+<li><strong>Ombros:</strong> movimentos acima da cabeça repetidos, com carga.</li>
+<li><strong>Lombar:</strong> levantamentos e transições com o tronco já cansado.</li>
+<li><strong>Joelhos e quadris:</strong> agachamentos, corrida e mudanças de ritmo.</li>
+</ul>
+<h2>Como montar a base até a primeira etapa</h2>
+<ul>
+<li>Escolha a etapa-alvo e organize as semanas em blocos, com semanas mais leves entre eles.</li>
+<li>Evite aumentar volume e intensidade ao mesmo tempo.</li>
+<li>Mantenha treino de força para as regiões mais exigidas, com técnica antes de carga.</li>
+<li>Não estreie tênis, estratégia de ritmo ou alimentação perto da competição.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que persiste, piora a cada sessão ou muda a forma como você se move merece avaliação antes de ganhar volume. Leia também <a href="/blog/athx-final-2026-lisboa-preparacao-e-prevencao/">ATHX 2026: final em Lisboa e como se preparar sem se lesionar</a>.</p>
+<p>Este texto é um resumo independente do que consta no site oficial do ATHX e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
