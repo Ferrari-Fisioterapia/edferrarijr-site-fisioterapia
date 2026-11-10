@@ -565,6 +565,36 @@ ARTIGOS = [
 <p>Dor que persiste, piora a cada sessão ou muda a forma como você se move merece avaliação antes de ganhar volume. Leia também <a href="/blog/athx-final-2026-lisboa-preparacao-e-prevencao/">ATHX 2026: final em Lisboa e como se preparar sem se lesionar</a>.</p>
 <p>Este texto é um resumo independente do que consta no site oficial do ATHX e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
     },
+    {
+        "slug": "hyrox-sao-paulo-2027-como-se-preparar-sem-lesao",
+        "data": "2026-11-10",
+        "temas": ["hyrox", "radar", "prevencao"],
+        "foto": ("foto-remo", "Atleta no remo indoor durante treino funcional", "50% 50%"),
+        "title": "Hyrox São Paulo 2027: datas e como se preparar sem se lesionar",
+        "desc": "O Hyrox São Paulo 2027 será em 8 e 9 de maio. Veja o que o site oficial informa e como construir a base até lá, protegendo ombros, lombar e joelhos.",
+        "h1": "Hyrox São Paulo 2027: datas e como se preparar sem se lesionar",
+        "lead": "O Hyrox já divulgou São Paulo 2027, com dois dias de prova em maio. Dá tempo de construir a base com calma e reduzir o risco de lesão.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o Hyrox informa</h2>
+<p>Segundo a <a href="https://hyrox.com/event/hyrox-sao-paulo/" rel="noopener" target="_blank">página oficial do evento</a>, o Hyrox São Paulo acontece em 8 e 9 de maio de 2027, com dois dias de prova, e é descrito como a maior edição já realizada no Brasil. O local ainda aparece como a definir, e os horários são provisórios. De acordo com a <a href="https://hyrox.com/hyrox-world-championships/" rel="noopener" target="_blank">página do Mundial</a>, as etapas realizadas até o fim de semana de 16 de maio de 2027 dão vagas para o Mundial, em Hong Kong, de 10 a 13 de junho.</p>
+<h2>O que a prova cobra do corpo</h2>
+<p>Corrida intercalada com estações de força e resistência costuma sobrecarregar pontos específicos:</p>
+<ul>
+<li><strong>Joelhos e quadris:</strong> corridas repetidas e estações com agachamento.</li>
+<li><strong>Lombar:</strong> remo, sled e carregadas com o tronco já cansado.</li>
+<li><strong>Ombros e punhos:</strong> empurrar, puxar e segurar carga por muito tempo.</li>
+</ul>
+<h2>Como montar a base até maio</h2>
+<ul>
+<li>Organize as semanas em blocos, com semanas mais leves entre eles.</li>
+<li>Evite aumentar volume e intensidade ao mesmo tempo.</li>
+<li>Treine as transições entre corrida e estações, não só cada parte isolada.</li>
+<li>Mantenha força para as regiões mais exigidas, com técnica antes de carga.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que persiste, piora a cada sessão ou muda a forma como você se move merece avaliação antes de ganhar volume. Leia também <a href="/blog/mundial-de-hyrox-2027-hong-kong-como-se-preparar/">Mundial de Hyrox 2027: como se preparar</a>.</p>
+<p>Este texto é um resumo independente do que consta no site oficial do Hyrox e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
