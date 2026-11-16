@@ -300,6 +300,43 @@ SERVICOS = [
 
 ARTIGOS = [
     {
+        "slug": "dor-no-cotovelo-crossfit",
+        "data": "2026-11-16",
+        "temas": ["crossfit", "prevencao"],
+        "foto": ("foto-barra", "Atleta pendurado na barra fixa", "50% 30%"),
+        "title": "Dor no cotovelo no CrossFit: barra, toes to bar e pegada",
+        "desc": "Cotovelo doendo na barra, no toes to bar ou na pegada? Veja as causas mais comuns no CrossFit, o que ajustar no treino e quando procurar avaliação.",
+        "h1": "Dor no cotovelo no CrossFit: barra, toes to bar e pegada",
+        "lead": "Se o seu cotovelo começou a reclamar depois de um bloco com muita barra, muita pegada ou muito kipping, eu te explico o que costuma estar por trás e o que vale ajustar.",
+        "servico": "fisioterapia-ombro-campinas",
+        "corpo": """<h2>Por que o cotovelo reclama no CrossFit</h2>
+<p>Quase toda vez que você segura alguma coisa com força, quem trabalha são os músculos do antebraço, e os tendões deles se prendem no cotovelo. No CrossFit você passa muito tempo pendurado e apertando: pull-up, toes to bar, muscle up, remada, farmer carry, kettlebell e a própria barra. Quando esse volume sobe rápido, o tendão pode não acompanhar e começa a doer.</p>
+<h2>As dores que eu mais vejo</h2>
+<ul>
+<li><strong>Dor na parte de fora do cotovelo:</strong> é o que chamam de "cotovelo de tenista". Costuma piorar ao apertar, segurar a barra ou levantar algo com a palma para baixo.</li>
+<li><strong>Dor na parte de dentro do cotovelo:</strong> o "cotovelo de golfista". Costuma aparecer em pegadas longas, barra e movimentos de puxar.</li>
+<li><strong>Dor na frente do cotovelo:</strong> pode vir da sobrecarga do bíceps, comum depois de muitas barras com pegada supinada ou de muitas repetições de kipping.</li>
+</ul>
+<h2>O que costuma estar por trás</h2>
+<ul>
+<li>Volume de barra e de pegada que subiu de uma semana para a outra.</li>
+<li>Muitas repetições de kipping ou de butterfly antes de ter força na barra estrita.</li>
+<li>Pegada apertada demais o tempo todo, inclusive quando não precisa.</li>
+<li>Ombro e escápula que trabalham pouco, e aí o braço compensa.</li>
+</ul>
+<h2>O que você pode ajustar enquanto isso</h2>
+<p>O meu conselho é não parar tudo, e sim tirar o excesso. Diminua o volume dos movimentos que doem, troque por variações que não pioram a dor (remada com elástico, barra com apoio dos pés, kettlebell mais leve) e mantenha o resto do treino. Nos movimentos pendurados, segure a barra com a força necessária, sem esmagar. Se a dor aumenta a cada repetição, pare aquele movimento no dia.</p>
+<h2>Quando vale procurar avaliação</h2>
+<ul>
+<li>A dor passa de duas semanas mesmo reduzindo o treino.</li>
+<li>Dói para segurar uma xícara, abrir um pote ou apertar a mão de alguém.</li>
+<li>A dor aparece em repouso ou à noite.</li>
+<li>Você sente formigamento nos dedos ou perda de força na mão.</li>
+</ul>
+<p>Na avaliação eu olho o cotovelo, mas também o ombro, a escápula e a forma como você treina, para entender por que o tendão está sobrecarregado e o que dá para manter.</p>
+<p>Se a dor começou depois de uma queda, se o cotovelo inchou de repente ou se você não consegue esticar ou dobrar o braço, procure um médico antes de voltar a treinar.</p>""",
+    },
+    {
         "slug": "dor-no-ombro-crossfit",
         "temas": ["crossfit", "prevencao"],
         "foto": ("foto-overhead", "Atleta com barra acima da cabeça", "50% 22%"),
