@@ -300,6 +300,48 @@ SERVICOS = [
 
 ARTIGOS = [
     {
+        "slug": "dor-no-punho-crossfit",
+        "data": "2026-11-09",
+        "temas": ["crossfit", "prevencao"],
+        "foto": ("foto-barra", "Atleta segurando a barra na altura dos ombros", "50% 30%"),
+        "title": "Dor no punho no CrossFit: front squat, clean e handstand",
+        "desc": "Punho doendo no front squat, no clean ou na parada de mão? Veja as causas mais comuns no CrossFit, o que ajustar na posição e quando procurar avaliação.",
+        "h1": "Dor no punho no CrossFit: front squat, clean e parada de mão",
+        "lead": "O punho reclama muito no CrossFit, principalmente no front rack e no apoio de mãos. Em muitos casos a origem está na posição do ombro e da coluna, e não só no punho.",
+        "servico": "fisioterapia-ombro-campinas",
+        "corpo": """<h2>Onde o punho sofre no CrossFit</h2>
+<ul>
+<li><strong>Front rack:</strong> front squat, clean e thruster, com o punho dobrado para trás e a barra apoiada.</li>
+<li><strong>Apoio de mãos:</strong> parada de mão, handstand push-up, burpee e flexão.</li>
+<li><strong>Pegada sob carga:</strong> snatch, overhead squat, barra e kettlebell.</li>
+</ul>
+<h2>Por que dói no front rack</h2>
+<p>No front rack, a barra deveria ficar apoiada principalmente na frente dos ombros, com as mãos só guiando. Quando o ombro ou a coluna torácica não deixam os cotovelos subirem, ou quando o tronco cai para a frente no agachamento, o peso da barra vai para os punhos. Aí eles ficam dobrados no limite e com carga ao mesmo tempo.</p>
+<h2>Causas comuns</h2>
+<ul>
+<li>Pouca mobilidade de ombro, dorsal ou coluna torácica.</li>
+<li>Pegada apertada demais na barra no front rack.</li>
+<li>Pouca mobilidade de tornozelo e quadril, que inclina o tronco no agachamento.</li>
+<li>Aumento rápido de volume de paradas de mão e burpees.</li>
+<li>Pouca força de antebraço e de punho para o que o treino pede.</li>
+</ul>
+<h2>O que ajustar enquanto isso</h2>
+<ul>
+<li>Solte um pouco a pegada no front rack: a ponta dos dedos pode bastar, com os cotovelos altos.</li>
+<li>Trabalhe a mobilidade de ombro e da coluna torácica, não só a do punho.</li>
+<li>Reduza o volume dos movimentos que doem e use variações, como apoio em paralelas ou com os punhos neutros.</li>
+<li>Munhequeira pode ajudar no treino, mas não resolve a causa.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<ul>
+<li>A dor dura mais de uma ou duas semanas, mesmo com ajustes.</li>
+<li>Dói em repouso, à noite ou em tarefas simples, como abrir um pote.</li>
+<li>Há estalo com dor, inchaço, perda de força ou formigamento na mão.</li>
+<li>A dor começou depois de uma queda com a mão no chão. Nesse caso, procure um médico antes de voltar a treinar.</li>
+</ul>
+<p>Na avaliação, eu olho o punho, mas também o ombro, a coluna e o seu agachamento, para entender de onde vem a sobrecarga e o que ajustar no treino.</p>""",
+    },
+    {
         "slug": "dor-no-ombro-crossfit",
         "temas": ["crossfit", "prevencao"],
         "foto": ("foto-overhead", "Atleta com barra acima da cabeça", "50% 22%"),
