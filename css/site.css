@@ -32,6 +32,12 @@ h3{font-weight:700;font-size:1.45rem;line-height:1.05;letter-spacing:.01em;margi
 .regua{height:28px;margin:14px 0 22px;border-top:2px solid var(--tinta);
   background:repeating-linear-gradient(90deg,var(--tinta) 0 2px,transparent 2px 48px) top left/100% 28px no-repeat,
   repeating-linear-gradient(90deg,var(--linha) 0 2px,transparent 2px 12px) top left/100% 14px no-repeat}
+/* régua com a sequência de Fibonacci (1 unidade = 24 px): traço vermelho e número embaixo; site.js monta */
+.regua.fib{position:relative;margin-bottom:44px}
+.regua.fib i{position:absolute;top:-2px;width:3px;height:30px;margin-left:-1px;background:var(--marca-texto)}
+.regua.fib b{position:absolute;top:34px;transform:translateX(-50%);font-family:var(--mono);font-weight:500;font-size:.72rem;line-height:1;letter-spacing:0;color:var(--suave);font-variant-numeric:tabular-nums}
+.h-hero .regua.fib i,.pt-hero .regua.fib i{background:#EE6660}
+.h-hero .regua.fib b,.pt-hero .regua.fib b{color:#d6d5d0}
 
 /* cabeçalho */
 .s-header{position:sticky;top:0;z-index:50;background:var(--fundo);border-bottom:2px solid var(--tinta)}
@@ -176,7 +182,7 @@ h3{font-weight:700;font-size:1.45rem;line-height:1.05;letter-spacing:.01em;margi
 .h-hero .destaque{background:linear-gradient(90deg,#EE6660,#EE6660) 0 100%/0 .09em no-repeat;animation:sublinha 1s .5s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes sublinha{to{background-size:100% .09em}}
 .regua{background-size:100% 28px,100% 14px;animation:regua-in 1s .1s cubic-bezier(.2,.8,.2,1) both;transform-origin:left}
-@keyframes regua-in{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes regua-in{from{clip-path:inset(-4px 100% -40px 0)}to{clip-path:inset(-4px -4px -40px 0)}}
 /* faixa de palavras */
 .ticker{overflow:hidden;background:var(--tinta);color:#F4F4F1;padding:13px 0;border-bottom:2px solid var(--marca)}
 .ticker>div{display:flex;width:max-content;animation:rolar 32s linear infinite}
