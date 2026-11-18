@@ -117,7 +117,7 @@ SERVICOS = [
         "slug": "fisioterapia-coluna-campinas",
         "menu": "Coluna vertebral",
         "resumo": "Hérnia de disco, dor lombar, ciatalgia e postura.",
-        "title": "Dor nas Costas, Lombar e Hérnia de Disco: Fisioterapia em Campinas",
+        "title": "Dor nas Costas e Hérnia de Disco: Fisioterapia em Campinas",
         "desc": "Fisioterapia para dor lombar, hérnia de disco, ciatalgia e dor cervical em Campinas. Avaliação individual, exercícios e orientações para a rotina.",
         "h1": "Dor nas costas, dor lombar e hérnia de disco: fisioterapia em Campinas",
         "lead": "Dor nas costas é uma das queixas mais comuns, e nem sempre tem relação com hérnia de disco. A avaliação ajuda a identificar o que piora e o que alivia os sintomas, e a montar um plano que cabe na sua rotina.",
@@ -145,7 +145,7 @@ SERVICOS = [
         "slug": "fisioterapia-esportiva-campinas",
         "menu": "Fisioterapia esportiva",
         "resumo": "Retorno ao esporte e performance: CrossFit, Hyrox, ATHX e corrida.",
-        "title": "Fisioterapia Esportiva em Campinas: CrossFit, Hyrox e Corrida | Ed Ferrari Jr",
+        "title": "Fisioterapia Esportiva em Campinas: CrossFit e Hyrox | Ed Ferrari Jr",
         "desc": "Fisioterapeuta esportivo em Campinas para praticantes de CrossFit, Hyrox, ATHX e corrida. Avaliação biomecânica, retorno ao esporte e prevenção de lesões.",
         "h1": "Fisioterapia esportiva em Campinas para CrossFit, Hyrox e corrida",
         "lead": "Se você treina forte e tem uma dor que não passa, ou quer evitar a próxima lesão, a fisioterapia esportiva trabalha com as demandas do seu esporte. Eu avalio o seu movimento, a sua carga de treino e o seu histórico de lesões.",
@@ -200,7 +200,7 @@ SERVICOS = [
         "slug": "fisioterapia-reembolso-convenio-campinas",
         "menu": "Reembolso do convênio",
         "resumo": "Como funciona o reembolso de fisioterapia pelo plano de saúde.",
-        "title": "Fisioterapia Particular com Reembolso do Convênio em Campinas | Ed Ferrari Jr",
+        "title": "Fisioterapia Particular com Reembolso em Campinas | Ed Ferrari Jr",
         "desc": "Entenda como funciona o reembolso de fisioterapia pelo plano de saúde: recibo, relatório e documentos para solicitar em Campinas.",
         "h1": "Fisioterapia com reembolso do convênio em Campinas",
         "lead": "Muitos planos de saúde reembolsam parte das sessões de fisioterapia feitas fora da rede credenciada. Eu forneço a documentação necessária para você fazer a solicitação.",
@@ -231,7 +231,7 @@ SERVICOS = [
         "slug": "ferrari-recovery-campinas",
         "menu": "Ferrari Recovery",
         "resumo": "Bota de compressão e banheira de gelo para recuperação pós-treino.",
-        "title": "Ferrari Recovery: Aluguel de Bota de Compressão e Banheira de Gelo em Campinas",
+        "title": "Ferrari Recovery: Bota de Compressão e Banheira de Gelo",
         "desc": "Aluguel de bota de compressão pneumática e banheira de gelo (ice bath) para recuperação pós-treino em Campinas e Swiss Park. Fale pelo WhatsApp.",
         "h1": "Ferrari Recovery: bota de compressão e banheira de gelo em Campinas",
         "lead": "Equipamentos de recuperação usados por atletas, disponíveis para locação por diária no Swiss Park e região. Para quem treina forte e quer incluir um protocolo de recuperação na rotina.",
@@ -257,8 +257,8 @@ SERVICOS = [
         "slug": "recovery-para-eventos-esportivos",
         "menu": "Recovery em eventos",
         "resumo": "Estação de recuperação com bota, banheira de gelo e fisioterapeuta para o seu evento.",
-        "title": "Recovery para Evento Esportivo em Campinas: Bota, Banheira de Gelo e Fisioterapeuta",
-        "desc": "Leve a Ferrari Recovery ao seu evento de corrida, CrossFit, Hyrox ou ATHX: bota de compressão, banheira de gelo e fisioterapeuta no local. Peça uma proposta pelo WhatsApp.",
+        "title": "Recovery para Evento Esportivo em Campinas",
+        "desc": "Leve a Ferrari Recovery ao seu evento de corrida, CrossFit, Hyrox ou ATHX: bota, banheira de gelo e fisioterapeuta no local. Peça proposta pelo WhatsApp.",
         "h1": "Leve a Ferrari Recovery para o seu evento esportivo",
         "lead": "Uma estação de recuperação montada no seu evento, com bota de compressão, banheira de gelo e fisioterapeuta no local. Um diferencial para quem compete e uma experiência a mais para quem organiza.",
         "wa": "Olá! Organizo um evento esportivo e gostaria de uma proposta para levar a Ferrari Recovery até ele.",
@@ -334,7 +334,7 @@ ARTIGOS = [
         "slug": "dor-no-joelho-corrida",
         "temas": ["corrida", "prevencao"],
         "foto": ("foto-corrida-laranja", "Pernas de corredor em movimento na pista", "50% 50%"),
-        "title": "Joelho doendo na corrida? As 4 causas mais comuns e quando investigar",
+        "title": "Joelho doendo na corrida? 4 causas e quando investigar",
         "desc": "Dor no joelho é uma das queixas mais comuns de quem corre. Entenda as 4 causas mais frequentes, o papel da carga de treino e quando buscar fisioterapia.",
         "h1": "Joelho doendo na corrida? As 4 causas mais comuns e quando investigar",
         "lead": "Na maioria das vezes a dor no joelho de quem corre tem mais a ver com a carga de treino do que com uma lesão grave. Saber diferenciar muda tudo.",
@@ -363,7 +363,7 @@ ARTIGOS = [
         "slug": "hyrox-prevencao-de-lesoes",
         "temas": ["hyrox", "prevencao"],
         "foto": ("foto-sled", "Atleta empurrando o sled durante treino", "50% 40%"),
-        "title": "Hyrox: as 4 regiões que mais reclamam e como treinar para chegar inteiro",
+        "title": "Hyrox: as 4 regiões que mais doem e como chegar inteiro",
         "desc": "O Hyrox junta corrida e estações de força. Veja onde as dores costumam aparecer, como organizar a carga de treino e quando fazer uma avaliação preventiva.",
         "h1": "Hyrox: as 4 regiões que mais reclamam e como organizar o treino",
         "lead": "O Hyrox junta 8 km de corrida com 8 estações de força e resistência. A mistura é divertida, e também exige atenção à carga e à recuperação.",
@@ -393,7 +393,7 @@ ARTIGOS = [
         "data": "2026-10-21",
         "temas": ["hyrox", "radar"],
         "foto": ("foto-costas", "Atleta de costas durante prova de sled", "50% 45%"),
-        "title": "Hyrox Tampa 2026: próxima etapa e cuidados para quem viaja para competir",
+        "title": "Hyrox Tampa 2026: cuidados para quem viaja e compete",
         "desc": "O Hyrox segue de São Paulo para Tampa, nos EUA, de 22 a 25 de outubro de 2026. Veja a data, o local e como viajar para competir sem chegar com o corpo cansado.",
         "h1": "Hyrox Tampa 2026: próxima etapa e cuidados para quem viaja para competir",
         "lead": "Depois de São Paulo, o circuito do Hyrox segue para Tampa, na Flórida, de 22 a 25 de outubro de 2026.",
@@ -419,8 +419,8 @@ ARTIGOS = [
         "data": "2026-10-22",
         "temas": ["athx", "radar", "prevencao"],
         "foto": ("foto-barra", "Atleta segurando a barra na altura dos ombros", "50% 30%"),
-        "title": "ATHX 2026: final em Lisboa e como se preparar sem se lesionar",
-        "desc": "A final do ATHX 2026 será em Lisboa, de 27 a 29 de novembro. Veja o que o site oficial informa e como proteger ombros, lombar e joelhos na reta final da classificação.",
+        "title": "ATHX 2026: final em Lisboa e como evitar lesão",
+        "desc": "A final do ATHX 2026 será em Lisboa, de 27 a 29 de novembro. Veja o que o site oficial informa e como proteger ombros, lombar e joelhos na reta final.",
         "h1": "ATHX 2026: final em Lisboa e como se preparar sem se lesionar",
         "lead": "A final do ATHX 2026 será em Lisboa, de 27 a 29 de novembro. Para quem busca a vaga, a reta final pede treino bem organizado.",
         "servico": "fisioterapia-esportiva-campinas",
@@ -451,7 +451,7 @@ ARTIGOS = [
         "temas": ["hyrox", "radar", "prevencao"],
         "foto": ("foto-remo", "Atleta no remo durante prova de Hyrox", "50% 50%"),
         "title": "Hyrox Rio de Janeiro 2026: como chegar bem e sem lesão",
-        "desc": "O Hyrox Rio de Janeiro 2026 será no Riocentro, em novembro. Veja o que o site oficial informa e como organizar as últimas semanas para proteger ombros, lombar e joelhos.",
+        "desc": "O Hyrox Rio de Janeiro 2026 será no Riocentro, em novembro. Veja o que o site oficial informa e como organizar as últimas semanas sem se lesionar.",
         "h1": "Hyrox Rio de Janeiro 2026: como chegar bem e sem lesão",
         "lead": "A etapa brasileira do Hyrox volta ao Riocentro em novembro. Nas últimas semanas, o que mais protege o corpo é um treino organizado.",
         "servico": "fisioterapia-esportiva-campinas",
@@ -480,8 +480,8 @@ ARTIGOS = [
         "data": "2026-10-28",
         "temas": ["corrida", "radar", "prevencao"],
         "foto": ("foto-corrida-poca", "Pernas de corredores em movimento perto de uma poça", "50% 50%"),
-        "title": "São Silvestre 2026: como se preparar para os 15 km sem se lesionar",
-        "desc": "A 101ª São Silvestre será em 31 de dezembro, com 15 km na Avenida Paulista. Veja o que o site oficial informa e como organizar o treino para proteger joelhos e canelas.",
+        "title": "São Silvestre 2026: como treinar para os 15 km sem lesão",
+        "desc": "A 101ª São Silvestre será em 31 de dezembro, com 15 km na Paulista. Veja o que o site oficial informa e como treinar protegendo joelhos e canelas.",
         "h1": "São Silvestre 2026: como se preparar para os 15 km sem se lesionar",
         "lead": "A 101ª Corrida Internacional de São Silvestre será em 31 de dezembro. Quem vai correr ainda tem tempo de organizar a preparação.",
         "servico": "fisioterapia-esportiva-campinas",
@@ -510,8 +510,8 @@ ARTIGOS = [
         "data": "2026-11-02",
         "temas": ["hyrox", "radar", "prevencao"],
         "foto": ("foto-remo", "Atleta no remo durante prova de Hyrox", "50% 50%"),
-        "title": "Mundial de Hyrox 2027 em Hong Kong: como planejar a temporada sem se lesionar",
-        "desc": "O Mundial de Hyrox 2027 será em Hong Kong, de 10 a 13 de junho. Veja o que o site oficial informa sobre a classificação e como organizar a temporada para proteger ombros, lombar e joelhos.",
+        "title": "Mundial de Hyrox 2027: como planejar a temporada sem lesão",
+        "desc": "O Mundial de Hyrox 2027 será em Hong Kong, de 10 a 13 de junho. Veja o que o site oficial informa e como organizar a temporada sem se lesionar.",
         "h1": "Mundial de Hyrox 2027 em Hong Kong: como planejar a temporada sem se lesionar",
         "lead": "O Hyrox já definiu o local e as datas do Mundial de 2027. Para quem sonha com a vaga, planejar a temporada é parte do treino.",
         "servico": "fisioterapia-esportiva-campinas",
@@ -540,8 +540,8 @@ ARTIGOS = [
         "data": "2026-11-04",
         "temas": ["athx", "radar", "prevencao"],
         "foto": ("foto-mulher-barra", "Atleta com a barra acima da cabeça durante treino", "50% 50%"),
-        "title": "ATHX 2027: calendário das primeiras etapas e como se preparar sem se lesionar",
-        "desc": "O ATHX divulgou o calendário de 2027, com etapas em Londres, San Diego, Las Vegas e Paris. Veja o que o site oficial informa e como montar a base para provas híbridas.",
+        "title": "ATHX 2027: calendário e como se preparar sem lesão",
+        "desc": "O ATHX divulgou o calendário de 2027, com etapas em Londres, San Diego, Las Vegas e Paris. Veja o que o site oficial informa e como montar a base.",
         "h1": "ATHX 2027: calendário das primeiras etapas e como se preparar sem se lesionar",
         "lead": "O ATHX já divulgou o calendário de 2027. Com datas definidas, dá para planejar a preparação aos poucos e proteger ombros, lombar e joelhos.",
         "servico": "fisioterapia-esportiva-campinas",
@@ -570,7 +570,7 @@ ARTIGOS = [
         "data": "2026-11-10",
         "temas": ["hyrox", "radar", "prevencao"],
         "foto": ("foto-remo", "Atleta no remo indoor durante treino funcional", "50% 50%"),
-        "title": "Hyrox São Paulo 2027: datas e como se preparar sem se lesionar",
+        "title": "Hyrox São Paulo 2027: datas e preparo sem lesão",
         "desc": "O Hyrox São Paulo 2027 será em 8 e 9 de maio. Veja o que o site oficial informa e como construir a base até lá, protegendo ombros, lombar e joelhos.",
         "h1": "Hyrox São Paulo 2027: datas e como se preparar sem se lesionar",
         "lead": "O Hyrox já divulgou São Paulo 2027, com dois dias de prova em maio. Dá tempo de construir a base com calma e reduzir o risco de lesão.",
@@ -600,8 +600,8 @@ ARTIGOS = [
         "data": "2026-11-17",
         "temas": ["athx", "crossfit", "radar", "prevencao"],
         "foto": ("foto-barra", "Atleta com barra durante treino de força", "50% 40%"),
-        "title": "ATHX é parceiro oficial do CrossFit: o que muda para quem treina",
-        "desc": "O CrossFit anunciou o ATHX Games como série oficial de eventos parceiros. Veja o que as páginas oficiais informam e como se preparar para provas de formato fixo sem se lesionar.",
+        "title": "ATHX é parceiro do CrossFit: o que muda para quem treina",
+        "desc": "O CrossFit anunciou o ATHX Games como série oficial de eventos parceiros. Veja o que as páginas oficiais informam e como se preparar sem se lesionar.",
         "h1": "ATHX é parceiro oficial do CrossFit: o que muda para quem treina",
         "lead": "O CrossFit passou a tratar o ATHX Games como uma série oficial de eventos parceiros. Para quem treina, o formato fixo da competição ajuda a planejar a preparação.",
         "servico": "fisioterapia-esportiva-campinas",
@@ -634,8 +634,17 @@ def esc(s):
     return s.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
 
 
+def curto(title, limite=60):
+    """Tira a marca do fim do título quando ele passa do limite (o Google corta acima de ~60)."""
+    if len(title) > limite and " | " in title:
+        title = title.rsplit(" | ", 1)[0]
+    return title
+
+
 def head(title, desc, caminho, extra_ld, tipo="website", imagem="/assets/img/foto-sled.webp", robots="index, follow, max-image-preview:large"):
     url = f"{BASE}{caminho}"
+    title = curto(title)
+    preload_poster = '<link rel="preload" as="image" href="/assets/img/foto-sled.webp" fetchpriority="high">\n' if caminho == "/" else ""
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -655,7 +664,7 @@ def head(title, desc, caminho, extra_ld, tipo="website", imagem="/assets/img/fot
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/BarlowCondensed-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Barlow-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/site.css">
+{preload_poster}<link rel="stylesheet" href="/css/site.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="/assets/js/site.js" defer></script>
 <script type="application/ld+json">{json.dumps(extra_ld, ensure_ascii=False)}</script>
@@ -1120,7 +1129,7 @@ PERITO_FAQ = [
 def pagina_perito():
     caminho = "/perito-assistente-tecnico-em-fisioterapia/"
     titulo = "Perito e Assistente Técnico em Fisioterapia em Campinas | Ed Ferrari Jr"
-    desc = "Assistência técnica fisioterapêutica em Campinas e região: parecer de viabilidade, quesitos, acompanhamento da perícia e análise de laudos para advogados e trabalhadores (TRT-15, Justiça Federal e TJSP)."
+    desc = "Assistência técnica fisioterapêutica em Campinas e região: parecer, quesitos, acompanhamento da perícia e análise de laudos para advogados e trabalhadores."
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "ProfessionalService", "@id": f"{BASE}{caminho}#servico", "name": "Assistência técnica e perícia em fisioterapia", "url": f"{BASE}{caminho}",
          "description": desc, "provider": {"@id": f"{BASE}/#pessoa"}, "areaServed": [{"@type": "City", "name": "Campinas"}, {"@type": "AdministrativeArea", "name": "Região Metropolitana de Campinas"}],
