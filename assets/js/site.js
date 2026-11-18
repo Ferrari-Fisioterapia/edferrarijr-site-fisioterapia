@@ -18,6 +18,13 @@
     if(reduz){v.removeAttribute('autoplay');v.pause()}
     else if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?v.play().catch(function(){}):v.pause()})}).observe(v)}
   }
+  // régua: marca a sequência de Fibonacci (1, 2, 3, 5, 8, 13, 21, 34, 55...) com 1 unidade = 24 px, até onde a régua alcança
+  var FIB=[1,2,3,5,8,13,21,34,55,89];
+  function fib(){document.querySelectorAll('.regua').forEach(function(r){
+    var w=r.clientWidth,h='';r.classList.add('fib');r.setAttribute('aria-hidden','true');
+    FIB.forEach(function(n){var x=n*24;if(x<=w-14)h+='<i style="left:'+x+'px"></i><b style="left:'+x+'px">'+n+'</b>'});
+    r.innerHTML=h})}
+  fib();var fw;window.addEventListener('resize',function(){clearTimeout(fw);fw=setTimeout(fib,150)});
   // menu do celular fecha ao navegar
   var mn=document.getElementById('mn');
   if(mn)document.querySelectorAll('.s-nav a').forEach(function(a){a.addEventListener('click',function(){mn.checked=false})});
