@@ -632,6 +632,29 @@ ARTIGOS = [
 <p>Dor que persiste, piora a cada sessão ou muda a forma como você se move merece avaliação antes de ganhar volume. Leia também <a href="/blog/mundial-de-hyrox-2027-hong-kong-como-se-preparar/">Mundial de Hyrox 2027: como se preparar</a>.</p>
 <p>Este texto é um resumo independente do que consta no site oficial do Hyrox e não tem vínculo com a organização. Confira sempre datas e regras no site oficial. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
     },
+    {
+        "slug": "athx-parceiro-oficial-crossfit-o-que-muda-para-quem-treina",
+        "data": "2026-11-17",
+        "temas": ["athx", "crossfit", "radar", "prevencao"],
+        "foto": ("foto-barra", "Atleta com barra durante treino de força", "50% 40%"),
+        "title": "ATHX é parceiro oficial do CrossFit: o que muda para quem treina",
+        "desc": "O CrossFit anunciou o ATHX Games como série oficial de eventos parceiros. Veja o que as páginas oficiais informam e como se preparar para provas de formato fixo sem se lesionar.",
+        "h1": "ATHX é parceiro oficial do CrossFit: o que muda para quem treina",
+        "lead": "O CrossFit passou a tratar o ATHX Games como uma série oficial de eventos parceiros. Para quem treina, o formato fixo da competição ajuda a planejar a preparação.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o CrossFit informa</h2>
+<p>Em uma <a href="https://games.crossfit.com/article/athx-games-an-official-crossfit-partner-event-series" rel="noopener" target="_blank">publicação de 17 de setembro de 2026</a>, o CrossFit apresentou o ATHX Games como uma série oficial de eventos parceiros, uma competição de fitness funcional realizada em várias cidades. Segundo o <a href="https://athxgames.com/events" rel="noopener" target="_blank">site do ATHX</a>, há três divisões (LITE, ATHX e PRO) e três treinos que se mantêm ao longo da temporada, e os melhores colocados avançam para a final.</p>
+<h2>Por que treino fixo ajuda na prevenção</h2>
+<p>Quando os treinos da competição são conhecidos, dá para organizar a preparação com antecedência:</p>
+<ul>
+<li><strong>Carga progressiva:</strong> aumentar volume e intensidade aos poucos, nunca os dois ao mesmo tempo.</li>
+<li><strong>Ombros e lombar:</strong> levantamentos acima da cabeça e movimentos repetidos com carga pedem técnica antes de peso.</li>
+<li><strong>Semanas leves:</strong> intercalar blocos de treino com semanas de menor carga.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Dor que persiste, piora a cada sessão ou muda a forma como você se move merece avaliação antes de ganhar volume. Leia também <a href="/blog/athx-2027-calendario-e-preparacao-sem-lesao/">ATHX 2027: calendário das primeiras etapas e como se preparar</a>.</p>
+<p>Este texto é um resumo independente do que consta nas páginas oficiais do CrossFit e do ATHX e não tem vínculo com as organizações. Confira sempre datas e regras nos sites oficiais. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
