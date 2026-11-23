@@ -300,6 +300,43 @@ SERVICOS = [
 
 ARTIGOS = [
     {
+        "slug": "dor-no-quadril-agachamento",
+        "data": "2026-11-23",
+        "temas": ["crossfit", "prevencao"],
+        "foto": ("foto-afundo", "Atleta fazendo afundo com carga", "50% 40%"),
+        "title": "Dor no quadril no agachamento: causas comuns no CrossFit",
+        "desc": "Quadril travando ou doendo no fundo do agachamento? Veja o que costuma estar por trás no CrossFit e no Hyrox, o que ajustar e quando procurar avaliação.",
+        "h1": "Dor no quadril no agachamento: o que costuma ser e o que ajustar",
+        "lead": "Se o seu quadril pinça ou dói no fundo do agachamento, no wall ball ou no afundo, eu te explico o que eu mais vejo no consultório e o que você pode ajustar no treino.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>Por que o quadril reclama no agachamento</h2>
+<p>No agachamento o quadril dobra muito, e no CrossFit e no Hyrox você repete isso dezenas de vezes por treino: air squat, front squat, wall ball, thruster, afundo com sandbag. Quando o volume sobe rápido ou a posição não se ajusta ao seu corpo, a frente do quadril pode começar a pinçar ou doer.</p>
+<h2>O que eu mais vejo</h2>
+<ul>
+<li><strong>Dor na frente do quadril ou na virilha no fundo do agachamento:</strong> sensação de "pinçar" quando o quadril dobra no limite.</li>
+<li><strong>Dor na lateral do quadril:</strong> costuma piorar no afundo, ao subir escada ou ao deitar sobre o lado que dói.</li>
+<li><strong>Dor no glúteo que desce para a perna:</strong> pode vir da lombar e merece uma olhada mais completa.</li>
+</ul>
+<h2>O que costuma estar por trás</h2>
+<ul>
+<li>Volume de agachamento, wall ball e afundo que subiu de uma semana para a outra.</li>
+<li>Pés sempre na mesma largura e na mesma abertura, mesmo que o seu quadril peça outra posição.</li>
+<li>Ir fundo demais com carga antes de ter controle nessa amplitude.</li>
+<li>Glúteos e abdômen que cansam cedo, e aí o quadril perde a posição.</li>
+</ul>
+<h2>O que você pode ajustar enquanto isso</h2>
+<p>O meu conselho é testar a sua posição em vez de copiar a de alguém. Experimente abrir um pouco mais os pés e girar levemente as pontas para fora, e veja se o fundo fica mais confortável. Enquanto dói, limite a profundidade com carga até onde não pinça, use uma caixa como referência e mantenha o resto do treino. Reduza o volume dos movimentos que doem por alguns dias em vez de parar tudo.</p>
+<h2>Quando vale procurar avaliação</h2>
+<ul>
+<li>A dor passa de duas semanas mesmo reduzindo o treino.</li>
+<li>Você sente o quadril travar ou estalar com dor.</li>
+<li>Dói para calçar o sapato, sair do carro ou à noite.</li>
+<li>A dor desce para a perna ou vem com formigamento.</li>
+</ul>
+<p>Na avaliação eu olho o quadril, a lombar e a forma como você agacha, para entender de onde vem a dor e o que dá para manter no treino. Veja como funciona a <a href="/fisioterapia-crossfit-campinas/">fisioterapia para quem faz CrossFit</a>.</p>
+<p>Se a dor começou depois de uma queda, se você não consegue apoiar a perna ou se vem com febre, procure um médico antes de voltar a treinar.</p>""",
+    },
+    {
         "slug": "dor-no-ombro-crossfit",
         "temas": ["crossfit", "prevencao"],
         "foto": ("foto-overhead", "Atleta com barra acima da cabeça", "50% 22%"),
