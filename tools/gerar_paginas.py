@@ -618,6 +618,35 @@ ARTIGOS = [
 <p>Dor que persiste, piora a cada sessão ou muda a forma como você se move merece avaliação antes de ganhar volume. Leia também <a href="/blog/athx-2027-calendario-e-preparacao-sem-lesao/">ATHX 2027: calendário das primeiras etapas e como se preparar</a>.</p>
 <p>Este texto é um resumo independente do que consta nas páginas oficiais do CrossFit e do ATHX e não tem vínculo com as organizações. Confira sempre datas e regras nos sites oficiais. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
     },
+    {
+        "slug": "athx-world-finals-lisboa-2026-o-que-copiar-na-preparacao",
+        "data": "2026-11-24",
+        "temas": ["athx", "radar", "prevencao"],
+        "foto": ("foto-mulher-barra", "Atleta com a barra acima da cabeça durante treino", "50% 50%"),
+        "title": "ATHX World Finals em Lisboa: o que copiar na preparação sem se lesionar",
+        "desc": "A final do ATHX será em Lisboa, de 27 a 29 de novembro. Veja o que o site oficial informa e como usar treinos fixos de referência para evoluir sem sobrecarregar ombros, lombar e joelhos.",
+        "h1": "ATHX World Finals em Lisboa: o que copiar na preparação sem se lesionar",
+        "lead": "A final do ATHX acontece em Lisboa, de 27 a 29 de novembro. Quem chega lá repetiu os mesmos treinos a cada etapa, e esse método vale mais do que a carga usada.",
+        "servico": "fisioterapia-esportiva-campinas",
+        "corpo": """<h2>O que o ATHX informa</h2>
+<p>Segundo o <a href="https://athxgames.com/events" rel="noopener" target="_blank">site oficial do ATHX</a>, a final de 2026 acontece de 27 a 29 de novembro, na Feira Internacional de Lisboa, no Parque das Nações. De acordo com a <a href="https://athxgames.com/finals-qualification/2026" rel="noopener" target="_blank">página de qualificação</a>, as vagas vão para os melhores colocados de cada etapa, e Amsterdam, em 7 de novembro, foi a última classificatória da Europa. Ao apresentar o ATHX como série oficial de eventos parceiros, o <a href="https://games.crossfit.com/article/athx-games-an-official-crossfit-partner-event-series" rel="noopener" target="_blank">CrossFit</a> informou que os três treinos se mantêm durante toda a temporada.</p>
+<h2>Por que repetir o mesmo treino protege você</h2>
+<p>Treino conhecido permite comparar uma semana com a outra e perceber cedo quando o corpo não responde. Isso reduz o improviso, que costuma ser a origem de sobrecarga:</p>
+<ul>
+<li><strong>Ombros:</strong> levantamentos acima da cabeça repetidos pedem técnica antes de carga.</li>
+<li><strong>Lombar:</strong> transições com o tronco cansado são o momento de maior risco.</li>
+<li><strong>Joelhos e quadris:</strong> agachamentos e corrida em sequência cobram volume bem distribuído.</li>
+</ul>
+<h2>Como aplicar em 2027</h2>
+<ul>
+<li>Escolha uma etapa-alvo e divida a preparação em blocos.</li>
+<li>Repita os mesmos treinos de referência a cada quatro semanas e compare.</li>
+<li>Aumente carga e volume em momentos diferentes e respeite as semanas leves.</li>
+</ul>
+<h2>Quando procurar avaliação</h2>
+<p>Se o ombro, a lombar ou o joelho reclamam a cada sessão, procure avaliação antes de somar peso. Leia também <a href="/blog/athx-parceiro-oficial-crossfit-o-que-muda-para-quem-treina/">ATHX é parceiro oficial do CrossFit: o que muda para quem treina</a>.</p>
+<p>Este texto é um resumo independente do que consta nas páginas oficiais do ATHX e do CrossFit e não tem vínculo com as organizações. Confira sempre datas e regras nos sites oficiais. Conteúdo educativo, que não substitui avaliação profissional.</p>""",
+    },
 ]
 
 # ---------------------------------------------------------------- templates
